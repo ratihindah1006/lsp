@@ -9,6 +9,7 @@ use App\Http\Controllers\UnitController;
 use App\Http\Controllers\ElementController;
 use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\apl02Controller;
+use App\Http\Controllers\AssessiController;
 use App\Http\Controllers\AuthController;
 
 /*
@@ -29,10 +30,10 @@ use App\Http\Controllers\AuthController;
 Route::get('/login', 'App\Http\Controllers\AuthController@index')->name('login');
 Route::post('proses_login', 'App\Http\Controllers\AuthController@proses_login')->name('proses_login');
 Route::get('logout', 'App\Http\Controllers\AuthController@logout')->name('logout');
-Route::get('/apl02', 'App\Http\Controllers\apl02Controller@index')->name('apl02');
+
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['cek_login:admin']], function () {
-        Route::get('/apl02', [apl02Controller::class, 'index']);
+        Route::get('/dashboard', [DashboardController::class, 'index']);
         Route::get('/category', [CategoryController::class, 'index']);
         Route::get('/category/create', [CategoryController::class, 'create']);
         Route::post('/category', [CategoryController::class, 'store']);
@@ -62,5 +63,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/category/{category:category_code}/schema/{schema:schema_code}/unit/{unit:unit_code}/element/{element:element_code}/criteria/{criteria:criteria_code}/edit', [CriteriaController::class, 'edit']);
         Route::put('/category/{category:category_code}/schema/{schema:schema_code}/unit/{unit:unit_code}/element/{element:element_code}/criteria/{criteria:criteria_code}', [CriteriaController::class, 'update']);
         
+    });
+
+    Route::group(['middleware' => ['cek_login:assessi']], function () {
+        Route::get('/dashboardAssessi', [AssessiController::class, 'index']);
+        Route::get('/apl02', [apl02Controller::class, 'index']);
     });
 });

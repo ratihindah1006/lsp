@@ -298,17 +298,19 @@
 
 
                                             </li>
-
-
-                                    </div>
-                                </div>
-                            </li>
-                            <li >
-                                <div class="right-div ">
+                                            <li >
+                               
                                     <a class="btn btn-success pull-right" href="{{url('logout')}}">Logout</a>
                                     <span></span>
                                 </div>
                             </li>
+
+
+                                    </div>
+                                    
+                                </div>
+                            </li>
+                            
                         </ul>
                     </div>
                 </nav>
