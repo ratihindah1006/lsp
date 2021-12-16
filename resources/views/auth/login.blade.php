@@ -56,15 +56,15 @@
 				<span class="login100-form-title p-b-41">
 					Login
 				</span>
-				<form class="login100-form form-floating validate-form p-b-33 p-t-5" action="{{url('proses_login')}}" method="POST" id="logForm">
+				<form class="login100-form form-floating validate-form p-b-33 p-t-5" action="{{url('postLogin')}}" method="POST" id="logForm">
 					{{ csrf_field() }}
-					<div class="wrap-input100 validate-input" for="username">
-						<input class="input100" id="username" name="username" type="text" placeholder="Masukkan Username" required value="{{ old ('username') }}">
+					<div class="wrap-input100 validate-input" for="email">
+						<input class="input100" id="email" name="email" type="text" placeholder="Masukkan email" required value="{{ old ('email') }}">
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
-						@if($errors->has('username'))
-						<span class="error">{{ $errors->first('username') }}</span>
+						@if($errors->has('email'))
+						<span class="error">{{ $errors->first('email') }}</span>
 						@endif
-						@error('username')
+						@error('email')
 						<div class="invalid-feedback">
 							{{ $message }}
 						</div>

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Assessi;
+use App\Models\Assessor;
 use Illuminate\Http\Request;
 
-class AssessiController extends Controller
+class AssessorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,7 @@ class AssessiController extends Controller
      */
     public function index()
     {
-        return view('assessi.assessiDashboard',[
-            'title'=> 'assessi',
-        ]);
+        //
     }
-    
+
 }
