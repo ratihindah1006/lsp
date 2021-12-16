@@ -40,6 +40,24 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'api' =>[
+            'driver' => 'token',
+            'provider' => 'users',
+            'hash' => false,
+        ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        'assessi' => [
+            'driver' => 'session',
+            'provider' => 'assessis',
+        ],
+        'assessor' => [
+            'driver' => 'session',
+            'provider' => 'assessors',
+        ],
     ],
 
     /*
@@ -64,11 +82,18 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\AdminModel::class,
+        ],
+        'assessis' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\AssessiModel::class,
+        ],
+        'assessors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\AssessorModel::class,
+        ],
     ],
 
     /*

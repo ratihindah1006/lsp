@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Auth;
 
 
 class AuthController extends Controller
@@ -18,29 +18,25 @@ class AuthController extends Controller
             'title'=> 'Login',
         ]);
     }
-    public function proses_login(Request $request)
-    {
-        request()->validate([
-        'username' => 'required',
-        'password' => 'required',
-        ]);
-
-        $credentials = $request->only('username', 'password');
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-            if ($user->level == 'admin') {
-                return redirect()->intended('dashboard');
-
-            } elseif ($user->level == 'asessor') {
-                return redirect()->intended('asessor');
-            }else{
-            return redirect('/login');}
+    
+    public function postLogin(Request $request){
+        //dd($request->all());
+        if(Auth::guard('admin')->attempt(['email'=> $request->email, 'password'=> $request->password])){
+            return redirect()->intended('dashboard');
+          
         }
-        return redirect('login')->withSuccess('Oppes! Silahkan Cek Inputanmu');
+        elseif (Auth::guard('assessi')->attempt(['email'=>$request->email, 'password'=> $request->password])){
+            return redirect()->intended('beranda'); 
+        }
+        elseif (Auth::guard('assessor')->attempt(['email'=>$request->email, 'password'=> $request->password])){
+            return redirect()->intended('beranda');  
+        }
+        return redirect('/login');
     }
-    public function logout(Request $request) {
+  
+    public function logout(Request $request){
         $request->session()->flush();
         Auth::logout();
-        return Redirect('login');
+        return redirect('login');
     }
 }

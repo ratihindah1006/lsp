@@ -9,7 +9,7 @@ use App\Models\CriteriaModel;
 
 use Illuminate\Http\Request;
 
-class apl02Controller extends Controller
+class Apl02Controller extends Controller
 {
     /**
      * Display a listing of the resource.
