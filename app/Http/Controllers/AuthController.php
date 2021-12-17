@@ -20,23 +20,31 @@ class AuthController extends Controller
     }
     
     public function postLogin(Request $request){
+        request()->validate([
+            'email' => 'required',
+            'password' => 'required',
+            ]);
         //dd($request->all());
-        if(Auth::guard('admin')->attempt(['email'=> $request->email, 'password'=> $request->password])){
+        $credentials = $request->only('email', 'password');
+        if(Auth::guard('admin')->attempt($credentials)){
             return redirect()->intended('dashboard');
           
         }
-        elseif (Auth::guard('assessi')->attempt(['email'=>$request->email, 'password'=> $request->password])){
+        elseif (Auth::guard('assessi')->attempt($credentials)){
             return redirect()->intended('beranda'); 
         }
-        elseif (Auth::guard('assessor')->attempt(['email'=>$request->email, 'password'=> $request->password])){
+        elseif (Auth::guard('assessor')->attempt($credentials)){
             return redirect()->intended('beranda');  
         }
         return redirect('/login');
     }
   
     public function logout(Request $request){
-        $request->session()->flush();
-        Auth::logout();
+        Auth::logoutOtherDevices($request);
+
+        $request->session()->invalidate();
+    
+        $request->session()->regenerateToken();
         return redirect('login');
     }
 }
