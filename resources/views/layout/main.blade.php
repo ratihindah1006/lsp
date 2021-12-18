@@ -139,7 +139,10 @@
                                                 <a href="/category" class='submenu-link'>Category</a>
                                             </li>
                                             <li class="submenu-item  ">
-                                                <a href="/user" class='submenu-link'>Pengguna</a>
+                                                <a href="/dataAssessi" class='submenu-link'>Data Assessi</a>
+                                            </li>
+                                            <li class="submenu-item  ">
+                                                <a href="/dataAssessor" class='submenu-link'>Data Assessor</a>
                                             </li>
                                             <li class="submenu-item  ">
                                                 <a href="table-datatable-jquery.html" class='submenu-link'>Datatable

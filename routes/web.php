@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DataAssessiController;
+use App\Http\Controllers\DataAssessorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SchemaController;
 use App\Http\Controllers\UnitController;
@@ -36,6 +38,21 @@ Route::post('/postLogin', [AuthController::class, 'postLogin'])->name('postLogin
 
 Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
+
+    Route::get('/dataAssessi', [DataAssessiController::class, 'index']);
+    Route::get('/dataAssessi/create', [DataAssessiController::class, 'create']);
+    Route::post('/dataAssessi', [DataAssessiController::class, 'store']);
+    Route::get('/dataAssessi/{assessi:id}/edit', [DataAssessiController::class, 'edit']);
+    Route::put('/dataAssessi/{assessi:id}', [DataAssessiController::class, 'update']);
+    Route::delete('/dataAssessi/{assessi:id}', [DataAssessiController::class, 'destroy']);
+
+    Route::get('/dataAssessor', [DataAssessorController::class, 'index']);
+    Route::get('/dataAssessor/create', [DataAssessorController::class, 'create']);
+    Route::post('/dataAssessor', [DataAssessorController::class, 'store']);
+    Route::get('/dataAssessor/{assessor:id}/edit', [DataAssessorController::class, 'edit']);
+    Route::put('/dataAssessor/{assessor:id}', [DataAssessorController::class, 'update']);
+    Route::delete('/dataAssessor/{assessor:id}', [DataAssessorController::class, 'destroy']);
+
     Route::get('/category', [CategoryController::class, 'index']);
     Route::get('/category/create', [CategoryController::class, 'create']);
     Route::post('/category', [CategoryController::class, 'store']);
