@@ -1,7 +1,23 @@
 @extends('layout.main')
 
 @section('container')
-<ol class="breadcrumb">
+<div class="container-fluid">
+    <div class="row page-titles mx-0">
+        <div class="col-sm-6 p-md-0">
+            <div class="welcome-text">
+                <h4>Daftar Elemen</h4>
+            </div>
+        </div>
+        <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/category">Kategori</a></li>
+                <li class="breadcrumb-item"><a href="/category/{{ $category }}/schema">Skema</a></li>
+                <li class="breadcrumb-item"><a href="/category/{{ $category }}/schema/{{ $schema }}/unit"> Unit</a></li>
+                <li class="breadcrumb-item active"><a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit }}/element"> Elemen</a></li>
+            </ol>
+        </div>
+    </div>
+
     <li><a href="/category"><i class="fa fa-file-o"></i> Category</a></li>
                     <li >&ensp; > &ensp;</li>
                         <li><a href="/category/{{ $category }}/schema"> Schema</a></li>
@@ -25,9 +41,9 @@
                         </div>
                         @endif
 
-                        <a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit }}/element/create"class="btn btn-primary btn-sm"><i class="bi bi-plus-square-fill ">&nbsp;&nbsp;&nbsp;</i>Add</a><br><br>
+                        <a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit }}/element/create"class="btn btn-primary btn-sm"><i class="ti-plus ">&nbsp;&nbsp;&nbsp;</i>Add</a><br><br>
                         <div class="table-responsive">
-                            <table class="table table-striped" id="table1">
+                            <table class="display" id="example">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -45,12 +61,12 @@
                                         <td>{{ $value->element_code }}</td>
                                         <td>{{ $value->element_title}}</td>
                                         <td >
-                    <a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit }}/element/{{ $value->element_code }}/criteria" class="btn btn-primary btn-sm"><span class="bi bi-info-square"></span></a>
-                    <a href="/category/{{ $category }}/schema/{{$schema}}/unit/{{$unit}}/element/{{ $value->element_code }}/edit" class="btn btn-warning btn-sm"><span class="bi bi-pencil-square"></span></a>
+                    <a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit }}/element/{{ $value->element_code }}/criteria" class="btn btn-primary btn-sm"><span class="ti-info"></span></a>
+                    <a href="/category/{{ $category }}/schema/{{$schema}}/unit/{{$unit}}/element/{{ $value->element_code }}/edit" class="btn btn-warning btn-sm"><span class="ti-pencil"></span></a>
                     <form action="/category/{{ $category }}/schema/{{$schema}}/unit/{{ $unit }}/element/{{ $value->element_code }}" method="POST" class="d-inline">
                     @csrf
                     @method('delete')
-                        <button class="btn btn-danger btn-sm border-0" onclick="return confirm('Yakin ingin menghapus data?')"><span class="bi bi-trash-fill"></span>
+                        <button class="btn btn-danger btn-sm border-0" onclick="return confirm('Yakin ingin menghapus data?')"><span class="ti-trash"></span>
                         </button>
                     </form>
                                     </td>

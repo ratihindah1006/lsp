@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdminModel;
 use App\Models\Event;
 use Illuminate\Http\Request;
 
@@ -12,11 +13,12 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(AdminModel $admin)
     {
         return view('admin.dashboard.dashboard', [
             'event' => Event::all(),
-            'title'=> 'Dashboard'
+            'title'=> 'Dashboard',
+            'admin'=> $admin
         ]);
     }
 

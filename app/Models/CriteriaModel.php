@@ -10,7 +10,6 @@ class CriteriaModel extends Model
 { protected $fillable = [
     'criteria_code',
     'criteria_title',
-    'schema_id',
     'element_id'
    ];
 use HasFactory;

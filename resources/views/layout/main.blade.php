@@ -1,349 +1,199 @@
+
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title }}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{{ $title }} </title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
+    <link href="/assets/vendor/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
+    <link href="/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/bootstrap.css">
-
-    <link rel="stylesheet" href="/assets/vendors/iconly/bold.css">
-
-    <link rel="stylesheet" href="/assets/vendors/simple-datatables/style.css">
-
-    <link rel="stylesheet" href="/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-    <link rel="stylesheet" href="/assets/vendors/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="/assets/css/app.css">
-    <link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="/assets/css/form.css">
 </head>
 
 <body>
-    <div id="app">
-        <div id="main" class="layout-horizontal">
-            <header class="mb-4">
 
-                <nav class="main-navbar">
-                    <div class="container">
-                        <ul>
-                            <li class="menu-item  ">
-                                <a href="/dashboard" class='menu-link'>
-                                    <i class="bi bi-grid-fill"></i>
-                                    <span>Dashboard</span>
-                                </a>
-                            </li>
-                            <li class="menu-item  has-sub">
-                                <a href="#" class='menu-link'>
-                                    <i class="bi bi-file-earmark-medical-fill"></i>
-                                    <span>Forms</span>
-                                </a>
-                                <div class="submenu ">
-                                    <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-                                    <div class="submenu-group-wrapper">
-                                        <ul class="submenu-group">
-
-                                            <li class="submenu-item  has-sub">
-                                                <a href="#" class='submenu-link'>Form Elements</a>
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
 
 
-                                                <!-- 3 Level Submenu -->
-                                                <ul class="subsubmenu">
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
 
-                                                    <li class="subsubmenu-item ">
-                                                        <a href="form-element-input.html"
-                                                            class="subsubmenu-link">Input</a>
-                                                    </li>
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div class="nav-header">
+            <a href="index.html" class="brand-logo">
+                <img class="logo-abbr" src="/assets/images/logo.png" alt="">
+                <img class="logo-compact" src="/assets/images/logo-text.png" alt="">
+                <img class="brand-title" src="/assets/images/logo-text.png" alt="">
+            </a>
 
-                                                    <li class="subsubmenu-item ">
-                                                        <a href="form-element-input-group.html"
-                                                            class="subsubmenu-link">Input Group</a>
-                                                    </li>
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
 
-                                                    <li class="subsubmenu-item ">
-                                                        <a href="form-element-select.html"
-                                                            class="subsubmenu-link">Select</a>
-                                                    </li>
-
-                                                    <li class="subsubmenu-item ">
-                                                        <a href="form-element-radio.html"
-                                                            class="subsubmenu-link">Radio</a>
-                                                    </li>
-
-                                                    <li class="subsubmenu-item ">
-                                                        <a href="form-element-checkbox.html"
-                                                            class="subsubmenu-link">Checkbox</a>
-                                                    </li>
-
-                                                    <li class="subsubmenu-item ">
-                                                        <a href="form-element-textarea.html"
-                                                            class="subsubmenu-link">Textarea</a>
-                                                    </li>
-
-                                                </ul>
-
-                                            </li>
-                                            <li class="submenu-item  ">
-                                                <a href="form-layout.html" class='submenu-link'>Form Layout</a>
-                                            </li>
-                                            <li class="submenu-item  has-sub">
-                                                <a href="#" class='submenu-link'>Form Editor</a>
-
-
-                                                <!-- 3 Level Submenu -->
-                                                <ul class="subsubmenu">
-
-                                                    <li class="subsubmenu-item ">
-                                                        <a href="form-editor-quill.html"
-                                                            class="subsubmenu-link">Quill</a>
-                                                    </li>
-
-                                                    <li class="subsubmenu-item ">
-                                                        <a href="form-editor-ckeditor.html"
-                                                            class="subsubmenu-link">CKEditor</a>
-                                                    </li>
-
-                                                    <li class="subsubmenu-item ">
-                                                        <a href="form-editor-summernote.html"
-                                                            class="subsubmenu-link">Summernote</a>
-                                                    </li>
-
-                                                    <li class="subsubmenu-item ">
-                                                        <a href="form-editor-tinymce.html"
-                                                            class="subsubmenu-link">TinyMCE</a>
-                                                    </li>
-
-                                                </ul>
-
-                                            </li>
-
-
-                                    </div>
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">
+            <div class="header-content">
+                <nav class="navbar navbar-expand">
+                    <div class="collapse navbar-collapse justify-content-between">
+                        <div class="header-left">
+                            <div class="search_bar dropdown">
+                                <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
+                                    <i class="mdi mdi-magnify"></i>
+                                </span>
+                                <div class="dropdown-menu p-0 m-0">
+                                    <form>
+                                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                    </form>
                                 </div>
-                            </li>
+                            </div>
+                        </div>
 
-
-
-                            <li class="menu-item  has-sub">
-                                <a href="#" class='menu-link'>
-                                    <i class="bi bi-plus-square-fill"></i>
-                                    <span>Add</span>
-                                </a>
-                                <div class="submenu ">
-                                    <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-                                    <div class="submenu-group-wrapper">
-                                        <ul class="submenu-group">
-                                            <li class="submenu-item  ">
-                                                <a href="/category" class='submenu-link'>Category</a>
-                                            </li>
-                                            <li class="submenu-item  ">
-                                                <a href="/dataAssessi" class='submenu-link'>Data Assessi</a>
-                                            </li>
-                                            <li class="submenu-item  ">
-                                                <a href="/dataAssessor" class='submenu-link'>Data Assessor</a>
-                                            </li>
-                                            <li class="submenu-item  ">
-                                                <a href="table-datatable-jquery.html" class='submenu-link'>Datatable
-                                                    (jQuery)</a>
-                                            </li>
-                                    </div>
-                                </div>
-                            </li>
-
-
-                            <li class="menu-item  has-sub">
-                                <a href="#" class='menu-link'>
-                                    <i class="bi bi-file-earmark-fill"></i>
-                                    <span>Pages</span>
-                                </a>
-                                <div class="submenu ">
-                                    <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-                                    <div class="submenu-group-wrapper">
-
-
-                                        <ul class="submenu-group">
-
-                                            <li class="submenu-item  has-sub">
-                                                <a href="#" class='submenu-link'>Authentication</a>
-
-
-                                                <!-- 3 Level Submenu -->
-                                                <ul class="subsubmenu">
-
-                                                    <li class="subsubmenu-item ">
-                                                        <a href="auth-login.html" class="subsubmenu-link">Login</a>
-                                                    </li>
-
-                                                    <li class="subsubmenu-item ">
-                                                        <a href="auth-register.html"
-                                                            class="subsubmenu-link">Register</a>
-                                                    </li>
-
-                                                    <li class="subsubmenu-item ">
-                                                        <a href="auth-forgot-password.html"
-                                                            class="subsubmenu-link">Forgot Password</a>
-                                                    </li>
-
-                                                </ul>
-
-                                            </li>
-
-
-
-                                            <li class="submenu-item  has-sub">
-                                                <a href="#" class='submenu-link'>Errors</a>
-
-
-                                                <!-- 3 Level Submenu -->
-                                                <ul class="subsubmenu">
-
-                                                    <li class="subsubmenu-item ">
-                                                        <a href="error-403.html" class="subsubmenu-link">403</a>
-                                                    </li>
-
-                                                    <li class="subsubmenu-item ">
-                                                        <a href="error-404.html" class="subsubmenu-link">404</a>
-                                                    </li>
-
-                                                    <li class="subsubmenu-item ">
-                                                        <a href="error-500.html" class="subsubmenu-link">500</a>
-                                                    </li>
-
-                                                </ul>
-
-                                            </li>
-
-
-
-                                            <li class="submenu-item  ">
-                                                <a href="ui-file-uploader.html" class='submenu-link'>File Uploader</a>
-
-
-                                            </li>
-
-
-
-                                            <li class="submenu-item  has-sub">
-                                                <a href="#" class='submenu-link'>Maps</a>
-
-
-                                                <!-- 3 Level Submenu -->
-                                                <ul class="subsubmenu">
-
-                                                    <li class="subsubmenu-item ">
-                                                        <a href="ui-map-google-map.html" class="subsubmenu-link">Google
-                                                            Map</a>
-                                                    </li>
-
-                                                    <li class="subsubmenu-item ">
-                                                        <a href="ui-map-jsvectormap.html" class="subsubmenu-link">JS
-                                                            Vector Map</a>
-                                                    </li>
-
-                                                </ul>
-
-                                            </li>
-                                            <li class="submenu-item  ">
-                                                <a href="application-email.html" class='submenu-link'>Email
-                                                    Application</a>
-                                            </li>
-                                            <li class="submenu-item  ">
-                                                <a href="application-chat.html" class='submenu-link'>Chat
-                                                    Application</a>
-                                            </li>
-                                            <li class="submenu-item  ">
-                                                <a href="application-gallery.html" class='submenu-link'>Photo
-                                                    Gallery</a>
-                                            </li>
-                                            <li class="submenu-item  ">
-                                                <a href="application-checkout.html" class='submenu-link'>Checkout
-                                                    Page</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="menu-item  has-sub">
-                                <a href="#" class='menu-link'>
-                                    <i class="bi bi-life-preserver"></i>
-                                    <span>Support</span>
-                                </a>
-                                <div class="submenu ">
-                                    <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-                                    <div class="submenu-group-wrapper">
-
-
-                                        <ul class="submenu-group">
-
-                                            <li class="submenu-item  ">
-                                                <a href="https://zuramai.github.io/mazer/docs"
-                                                    class='submenu-link'>Documentation</a>
-
-
-                                            </li>
-
-
-
-                                            <li class="submenu-item  ">
-                                                <a href="https://github.com/zuramai/mazer/blob/main/CONTRIBUTING.md"
-                                                    class='submenu-link'>Contribute</a>
-
-
-                                            </li>
-
-
-
-                                            <li class="submenu-item  ">
-                                                <a href="https://github.com/zuramai/mazer#donate"
-                                                    class='submenu-link'>Donate</a>
-
-
-                                            </li>
-                                            <li >
-                               
-                                    
-                                    <span></span>
-                                </div>
-                            </li>
-
-                            <a class="btn btn-success pull-right" href="{{url('logout')}}">Logout</a>
-                                    </div>
-                                    
-                                </div>
-                            </li>
+                        <ul class="navbar-nav header-right">
                             
+                            <li class="nav-item dropdown header-profile">
+                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                    <i class="mdi mdi-account"></i>
+                                </a>
+                                        <span class="user-avatar">Admin
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="{{ url('logout') }}" class="dropdown-item">
+                                        <i class="ti-power-off"></i>
+                                        <span class="ml-2">Logout </span>
+                                    </a>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </nav>
-
-            </header>
-
-            <div class="content-wrapper container">
-
-                @yield('container')
             </div>
-
-            <footer>
-                
-            </footer>
         </div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="quixnav">
+            <div class="quixnav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li class="nav-label first">Main Menu</li>
+                    <!-- <li><a href="index.html"><i class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
+                    </li> -->
+                    
+                    <li><a href="/dashboard" aria-expanded="false"><i class="icon icon-home"></i><span
+                        class="nav-text">Dashboard</span></a></li>
+                    <li class="nav-label">Data Pengguna</li>
+                    <li><a href="/dataAssessi" aria-expanded="false"><i class="icon icon-single-04"></i><span
+                        class="nav-text">Asesi</span></a></li>
+                    <li><a href="/dataAssessor" aria-expanded="false"><i class="icon icon-single-04"></i><span
+                        class="nav-text">Asesor</span></a></li>
+
+                    <li class="nav-label">Data Skema</li>
+                    <li><a href="/category" aria-expanded="false"><i class="icon icon-single-copy-06"></i><span
+                                class="nav-text">Kategori</span></a></li>
+                  
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+           
+             @yield('container')
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p><a href="#" target="_blank"></a> 2022</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
     </div>
-    <script src="/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
 
-    <script src="/assets/vendors/apexcharts/apexcharts.js"></script>
-    <script src="/assets/js/pages/dashboard.js"></script>
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <script src="/assets/vendor/global/global.min.js"></script>
+    <script src="/assets/js/quixnav-init.js"></script>
+    <script src="/assets/js/custom.min.js"></script>
 
-    
-<script src="/assets/vendors/simple-datatables/simple-datatables.js"></script>
-<script>
-    let table1 = document.querySelector('#table1');
-    let dataTable = new simpleDatatables.DataTable(table1);
-</script>
+    <script src="/assets/vendor/chartist/js/chartist.min.js"></script>
 
-    <script src="/assets/js/pages/horizontal-layout.js"></script>
+    <script src="/assets/vendor/moment/moment.min.js"></script>
+    <script src="/assets/vendor/pg-calendar/js/pignose.calendar.min.js"></script>
+
+
+    <script src="/assets/js/dashboard/dashboard-2.js"></script>
+
+     <!-- Datatable -->
+     <script src="/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
+     <script src="/assets/js/plugins-init/datatables.init.js"></script>
+ 
+    <!-- Circle progress -->
+
 </body>
 
 </html>

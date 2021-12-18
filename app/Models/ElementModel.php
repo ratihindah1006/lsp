@@ -12,7 +12,7 @@ class ElementModel extends Model
         'element_code',
         'element_title',
         'unit_id',
-        'schema_id'
+        
        ];
     use HasFactory;
     use SoftDeletes;
