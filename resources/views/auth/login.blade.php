@@ -56,7 +56,7 @@
 				<span class="login100-form-title p-b-41">
 					Login
 				</span>
-				<form class="login100-form form-floating validate-form p-b-33 p-t-5" action="{{url('postLogin')}}" method="POST" id="logForm">
+				<form class="login100-form form-floating validate-form p-b-33 p-t-5" action="{{route('postLogin')}}" method="POST" id="logForm">
 					{{ csrf_field() }}
 					<div class="wrap-input100 validate-input" for="email">
 						<input class="input100" id="email" name="email" type="text" placeholder="Masukkan email" required value="{{ old ('email') }}">

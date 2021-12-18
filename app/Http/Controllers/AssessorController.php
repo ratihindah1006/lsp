@@ -14,7 +14,9 @@ class AssessorController extends Controller
      */
     public function index()
     {
-        //
+        return view('assessor.assessorDashboard',[
+            'title'=> 'assessor',
+        ]);
     }
 
 }

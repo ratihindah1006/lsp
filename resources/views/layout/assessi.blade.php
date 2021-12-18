@@ -56,7 +56,7 @@
                                     </li>
                                     <li >
                                         <div class="right-div ">
-                                            <a class="btn btn-success pull-right" href="{{url('logout')}}">Logout</a>
+                                            <a class="btn btn-success pull-right" href="{{route('logout')}}">Logout</a>
                                             <span></span>
                                         </div>
                                     </li>

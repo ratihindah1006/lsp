@@ -31,10 +31,10 @@ use App\Http\Controllers\AssessorController;
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/postLogin', [AuthController::class, 'postLogin'])->name('postLogin');
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/apl02', [apl02Controller::class, 'index']);
 
-Route::group(['middleware' => ['auth:admin']], function () {
+
+
+Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/category', [CategoryController::class, 'index']);
     Route::get('/category/create', [CategoryController::class, 'create']);
@@ -65,13 +65,15 @@ Route::group(['middleware' => ['auth:admin']], function () {
         
     });
 
-Route::group(['middleware' => ['auth:assessi']], function () {
-    Route::get('/beranda', [AssessiController::class, 'index'])->name('assessi.beranda');
-    Route::get('/apl01', [Apl01Controller::class, 'index'])->name('apl01');
-    Route::get('/apl02', [Apl02Controller::class, 'index'])->name('apl02');
+Route::group(['middleware' => 'auth:assessi'], function () {
+    Route::get('/beranda', [AssessiController::class, 'index']);
+    Route::get('/apl01', [Apl01Controller::class, 'index']);
+    Route::get('/apl02', [Apl02Controller::class, 'index']);
 });
 
-Route::group(['middleware' => ['auth:assessor']], function () {
-    Route::get('/assessor', [AssessorController::class, 'index'])->name('assessor.beranda');
+Route::group(['middleware' => 'auth:assessor'], function () {
+    Route::get('/assessor', [AssessorController::class, 'index']);
    
 });
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
