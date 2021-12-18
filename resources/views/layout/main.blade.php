@@ -300,12 +300,12 @@
                                             </li>
                                             <li >
                                
-                                    <a class="btn btn-success pull-right" href="{{url('logout')}}">Logout</a>
+                                    
                                     <span></span>
                                 </div>
                             </li>
 
-
+                            <a class="btn btn-success pull-right" href="{{url('logout')}}">Logout</a>
                                     </div>
                                     
                                 </div>
