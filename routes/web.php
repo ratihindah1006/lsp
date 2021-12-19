@@ -38,6 +38,11 @@ Route::post('/postLogin', [AuthController::class, 'postLogin'])->name('postLogin
 
 Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/dashboard/create', [DashboardController::class, 'create']);
+    Route::post('/dashboard', [DashboardController::class, 'store']);
+    Route::get('/dashboard/{{ dashboard:id }}/edit', [DashboardController::class, 'edit']);
+    Route::put('/dashboard/{{ dashboard:id }}', [DashboardController::class, 'update']);
+    Route::delete('/dashboard/{{ dashboard:id }}', [DashboardController::class, 'destroy']);
 
     Route::get('/dataAssessi', [DataAssessiController::class, 'index']);
     Route::get('/dataAssessi/create', [DataAssessiController::class, 'create']);

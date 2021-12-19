@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AdminModel;
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -18,7 +19,7 @@ class DashboardController extends Controller
         return view('admin.dashboard.dashboard', [
             'event' => Event::all(),
             'title'=> 'Dashboard',
-            'admin'=> $admin
+         
         ]);
     }
 
