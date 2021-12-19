@@ -206,6 +206,9 @@
   background: linear-gradient(to right, #a15cff 0%, #ce82fd 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a15cff', endColorstr='#ce82fd',GradientType=1 ); }
 
+.my-text {
+  color: #000000;}
+
 /*
 0 - 600: Phone
 600 - 900: Tablet portrait
@@ -8076,6 +8079,19 @@ a {
   background-color: #343957;
   transition: all .2s ease;
   z-index: 4; }
+
+.navvv-header {
+  height: 5rem;
+  width: 84.1875rem;
+  display: inline-block;
+  text-align: left;
+  position: relative;
+  left: 0;
+  top: 0;
+  background-color: #343957;
+  transition: all .2s ease;
+  z-index: 4; }
+
   .nav-header .logo-abbr {
     max-width: 30px; }
   .nav-header .logo-compact {
@@ -8249,6 +8265,30 @@ a {
     @media only screen and (max-width: 575px) {
       .header .header-content {
         padding-left: 2.375rem; } }
+
+.headerr {
+
+    height: 6rem;
+  z-index: 1;
+  position: relative;
+  padding: 0rem;
+  background-color: #2d802d;
+  z-index: 3;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  padding-left: 3.1875rem;
+padding-right: 3.1875rem;
+padding-top:1.125rem;
+  transition: all .2s ease; }
+  .header .header-content {
+    height: 100%;
+    padding-left: 1.875rem;
+    padding-right: 1.875rem;
+    align-items: center;
+    display: flex; }
+    @media only screen and (max-width: 575px) {
+      .header .header-content {
+        padding-left: 2.375rem; } }
+
   .header .navbar {
     padding: 0;
     height: 100%;
@@ -8369,7 +8409,10 @@ svg.pulse-svg {
   width: 100%; }
 
 [data-header-position="fixed"] .content-body {
-  padding-top: 7rem; }
+  padding-top: 7rem;}
+
+[data-header-position="fixed"] .content-bodyy {
+padding-top: 3rem;}
 
 [data-header-position="fixed"] .quixnav {
   margin-top: 0; }
@@ -8388,6 +8431,7 @@ svg.pulse-svg {
   height: 100%;
   display: flex;
   align-items: center; }
+
   .header-left input {
     background: #fff !important;
     min-width: 300px;
@@ -10280,7 +10324,7 @@ svg.pulse-svg {
 
 html[dir="rtl"] [direction="rtl"] .footer {
   padding-right: 17.1875rem;
-  padding-left: 0; }
+  padding-left: 0;}
   @media (max-width: 767.98px) {
     html[dir="rtl"] [direction="rtl"] .footer {
       padding-right: 0; } }
@@ -10318,7 +10362,15 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
   transition: all .2s ease; }
   @media only screen and (min-width: 1200px) and (max-width: 1350px) {
     .content-body {
-      margin-left: 14.375rem; } }
+      margin-left: 1.875rem; } }
+
+.content-bodyy {
+  margin-left: 1rem;
+  z-index: 0;
+  transition: all .2s ease; }
+  @media only screen and (min-width: 1200px) and (max-width: 1350px) {
+    .content-bodyy {
+      margin-left: 1.375rem; } }
 
 .quixnav {
   width: 17.1875rem;

@@ -1,96 +1,142 @@
+
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title }}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{{ $title }} </title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
+    <link href="/assets/vendor/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
+    <link href="/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/bootstrap.css">
-
-    <link rel="stylesheet" href="/assets/vendors/iconly/bold.css">
-
-    <link rel="stylesheet" href="/assets/vendors/simple-datatables/style.css">
-
-    <link rel="stylesheet" href="/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-    <link rel="stylesheet" href="/assets/vendors/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="/assets/css/app.css">
-    <link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="/assets/css/form.css">
 </head>
+
 <body>
-    <div id="app">
-        <div id="main" class="layout-horizontal">
-            <header class="mb-4">
 
-                <nav class="main-navbar">
-                    <div class="container">
-                        <ul>
-                            <li class="menu-item  ">
-                                <a href="/beranda" class='menu-link'>
-                                    <i class="bi bi-grid-fill"></i>
-                                    <span>Dashboard</span>
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="headerr">
+            <div class="header-contentt">
+                <nav class="navbar navbar-expand">
+                    <div class="collapse navbar-collapse justify-content-between">
+                        <div class="navbar-nav header-left">
+                            <h4>
+                        <a href="/beranda" aria-expanded="false"><i class="icon icon-home"></i>&nbsp; Beranda</a></h4>
+                        </div>
+
+                        <ul class="navbar-nav header-right">
+                            
+                            <li class="nav-item dropdown header-profile">
+                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                    <h4>
+                                    <i class="mdi mdi-account"></i>{{ $assessi }}</h4>
                                 </a>
-                            </li>
-                            <li class="menu-item  has-sub">
-                                <a href="#" class='menu-link'>
-                                    <i class="bi bi-file-earmark-medical-fill"></i>
-                                    <span>APL</span>
-                                </a>
-                                <div class="submenu ">
-                                    <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-                                    <div class="submenu-group-wrapper">
-                                        <ul class="submenu-group">
-
-                                            <li class="submenu-item  has-sub">
-                                                <a href="/apl01" class='submenu-link'>APL 01</a>
-
-                                            </li>
-                                            <li class="submenu-item  has-sub">
-                                                <a href="/apl02" class='submenu-link'>APL 02</a>
-
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li >
-                                        <div class="right-div ">
-                                            <a class="btn btn-success pull-right" href="{{route('logout')}}">Logout</a>
-                                            <span></span>
-                                        </div>
-                                    </li>
+                                        <span class="user-avatar">
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="{{ url('logout') }}" class="dropdown-item">
+                                        <i class="ti-power-off"></i>
+                                        <span class="ml-2">Logout </span>
+                                    </a>
+                                </div>
                             </li>
                         </ul>
                     </div>
                 </nav>
-
-            </header>
-
-            <div class="content-wrapper container">
-
-                @yield('container')
             </div>
-
-            <footer>
-                
-            </footer>
         </div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body content-bodyy">
+           
+             @yield('container')
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p><a href="#" target="_blank"></a> 2022</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
     </div>
-<script src="/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-<script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
 
-<script src="/assets/vendors/apexcharts/apexcharts.js"></script>
-<script src="/assets/js/pages/dashboard.js"></script>
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <script src="/assets/vendor/global/global.min.js"></script>
+    <script src="/assets/js/quixnav-init.js"></script>
+    <script src="/assets/js/custom.min.js"></script>
 
-    
-<script src="/assets/vendors/simple-datatables/simple-datatables.js"></script>
-<script>
-    let table1 = document.querySelector('#table1');
-    let dataTable = new simpleDatatables.DataTable(table1);
-</script>
+    <script src="/assets/vendor/chartist/js/chartist.min.js"></script>
 
-<script src="/assets/js/pages/horizontal-layout.js"></script>
+    <script src="/assets/vendor/moment/moment.min.js"></script>
+    <script src="/assets/vendor/pg-calendar/js/pignose.calendar.min.js"></script>
+
+
+    <script src="/assets/js/dashboard/dashboard-2.js"></script>
+
+     <!-- Datatable -->
+     <script src="/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
+     <script src="/assets/js/plugins-init/datatables.init.js"></script>
+ 
+    <!-- Circle progress -->
+
 </body>
 
 </html>

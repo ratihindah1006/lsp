@@ -28,7 +28,7 @@
                         <a href="/dataAssessi/create" class="btn btn-primary btn-sm"><i class="ti-plus ">&nbsp;&nbsp;&nbsp;</i>Add</a><br><br>
                         <div class="card">
                             <div class="card-body">
-                                <div class="table-responsive">
+                                <div class="table-responsive my-text">
                                     <table class=" display" id="example">
                                         <thead>
                                             <tr>

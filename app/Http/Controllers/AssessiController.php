@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Assessi;
+use App\Models\AssessiModel;
 use Illuminate\Http\Request;
 
 class AssessiController extends Controller
@@ -12,9 +12,10 @@ class AssessiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(AssessiModel $assessi)
     {
         return view('assessi.assessiDashboard',[
+            'assessi' => $assessi->name,
             'title'=> 'assessi',
         ]);
     }
