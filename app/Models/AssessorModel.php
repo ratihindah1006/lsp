@@ -13,7 +13,7 @@ class AssessorModel extends Authenticatable
     protected $table = "assessor";
     protected $primaryKey = "id";
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'field_id',
     ];
 
     protected $hidden = [
@@ -23,4 +23,15 @@ class AssessorModel extends Authenticatable
     protected $casts = [
         'email_verified_at'=>'datetime',
     ]; 
+
+    public function category()
+    {
+        return $this->belongTo(CategoryModel::class);
+    }
+
+    public function assessis()
+    {
+        return $this->hasMany(AssessiModel::class, 'assessor_id', 'id'); 
+    }
+
 }

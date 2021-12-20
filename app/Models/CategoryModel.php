@@ -12,18 +12,25 @@ class CategoryModel extends Model
     protected $fillable = [
         'category_code',
         'category_title',
+        'field_code',
+        'field_title'
        ];
     use HasFactory;
     use SoftDeletes;
 
-    public function schema()
-    {
-        return $this->hasMany(SchemaModel::class, 'id_category', 'id'); 
-    }
-    
     public function schemas()
     {
-        return $this->hasMany(SchemaModel::class, 'id_category', 'id'); 
+        return $this->hasMany(SchemaModel::class, 'field_id', 'id'); 
+    }
+
+    public function assessis()
+    {
+        return $this->hasMany(AssessiModel::class, 'field_id', 'id'); 
+    }
+    
+    public function assessors()
+    {
+        return $this->hasMany(AssessorModel::class, 'field_id', 'id'); 
     }
 
 

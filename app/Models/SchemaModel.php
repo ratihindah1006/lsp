@@ -11,10 +11,9 @@ class SchemaModel extends Model
     protected $fillable = [
         'schema_code',
         'schema_title',
-        'id_category',
+        'reference_number',
+        'field_id',
         'schema_id',
-        'unit_id',
-        'element_id'
        ];
     use HasFactory;
     use SoftDeletes;
@@ -22,11 +21,6 @@ class SchemaModel extends Model
     public function schema()
     {
         return $this->belongTo(CategoryModel::class);
-    }
-
-    public function unit()
-    {
-        return $this->hasMany(UnitModel::class, 'schema_id', 'id'); 
     }
 
     public function units()

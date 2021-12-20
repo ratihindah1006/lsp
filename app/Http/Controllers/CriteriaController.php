@@ -24,7 +24,7 @@ class CriteriaController extends Controller
             'schema' => $schema->schema_code,
             'unit' => $unit->unit_code,
             'element'=> $element->element_code,
-            'criteria'=> $element ->criteria,
+            'criteria'=> $element ->criterias,
             'title'=> 'Kriteria'
         ]);
     }
@@ -58,7 +58,6 @@ class CriteriaController extends Controller
             'criteria_title' => 'required',
         ]);
         $validateData['element_id']=$element->id;
-        $validateData['schema_id']=$schema->id;
         CriteriaModel::create($validateData);
 
         return redirect('/category'.'/'.$category->category_code.'/schema'.'/'.$schema->schema_code.'/unit'.'/'
@@ -110,7 +109,6 @@ class CriteriaController extends Controller
             'criteria_title' => 'required',
         ]);
         $validateData['element_id']=$element->id;
-        $validateData['schema_id']=$schema->id;
         $criteria->update($validateData);
 
         return redirect('/category'.'/'.$category->category_code.'/schema'.'/'.$schema->schema_code.'/unit'.'/'

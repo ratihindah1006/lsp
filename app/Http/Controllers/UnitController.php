@@ -19,7 +19,7 @@ class UnitController extends Controller
         return view('admin.unit.ListUnit', [
             'category'=>$category->category_code,
             'schema' => $schema->schema_code,
-            'unit' => $schema->unit,
+            'unit' => $schema->units,
             'title' => 'Unit'
         ]);
     }

@@ -14,7 +14,7 @@ class AssessiModel extends Authenticatable
     protected $table = "assessi";
     protected $primaryKey = "id";
     protected $fillable = [
-        'name', 'email', 'password', 'schema_code',
+        'name', 'email', 'password', 'schema_code', 'assessor_id', 'field_',
     ];
 
     protected $hidden = [
@@ -24,4 +24,14 @@ class AssessiModel extends Authenticatable
     protected $casts = [
         'email_verified_at'=>'datetime',
     ]; 
+
+    public function assessi_assessor()
+    {
+        return $this->belongTo(AssessorModel::class);
+    }
+
+    public function assessi_category()
+    {
+        return $this->belongTo(CategoryModel::class);
+    }
 }

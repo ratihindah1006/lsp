@@ -34,8 +34,9 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Schema Code</th>
-                                                <th>Schema Title</th>
+                                                <th>Kode Skema</th>
+                                                <th>Judul Skema</th>
+                                                <th>Nomor Rujukan</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -45,6 +46,7 @@
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $value->schema_code }}</td>
                                                     <td>{{ $value->schema_title }}</td>
+                                                    <td>{{ $value->reference_number }}</td>
                                                     <td>
                                                         <a href="/category/{{ $category }}/schema/{{ $value->schema_code }}/unit"
                                                             class="btn btn-primary btn-sm"><span

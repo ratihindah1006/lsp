@@ -15,10 +15,11 @@ class CreateSchemaModelsTable extends Migration
     {
         Schema::create('schema_models', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('id_category')->unsigned();
-            $table->foreign('id_category')->references('id')->on('category_models');
+            $table->bigInteger('field_id')->unsigned();
+            $table->foreign('field_id')->references('id')->on('category_models');
             $table->string('schema_code');
             $table->string('schema_title');
+            $table->string('reference_number');
             $table->timestamps();
             $table->softDeletes();
         });

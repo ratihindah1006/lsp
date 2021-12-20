@@ -21,10 +21,6 @@ class ElementModel extends Model
     {
         return $this->belongTo(UnitModel::class);
     }
-    public function criteria()
-    {
-        return $this->hasMany(CriteriaModel::class, 'element_id', 'id'); 
-    }
 
     public function criterias()
     {
