@@ -4,6 +4,7 @@
 
     <div class="col-lg-8">
         <form method="post" action="/category">
+            @csrf
             <div class="card-center">
                 <div class="row mt-5">
                     <div class="col-md-14">

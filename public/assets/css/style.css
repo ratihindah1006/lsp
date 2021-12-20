@@ -66,13 +66,13 @@
 @import url(./../vendor/metismenu/css/metisMenu.min.css);
 
 .card-center {
-        margin: 100px auto;
+        margin: auto;
         width: 400px;
         padding: 10px;
     }
 
     .card-center-assessi {
-      margin: 10px auto;
+      margin:auto;
       width: 400px;
       padding: 10px;
   }
