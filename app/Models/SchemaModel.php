@@ -20,7 +20,7 @@ class SchemaModel extends Model
 
     public function schema()
     {
-        return $this->belongTo(CategoryModel::class);
+        return $this->belongsTo(CategoryModel::class);
     }
 
     public function units()

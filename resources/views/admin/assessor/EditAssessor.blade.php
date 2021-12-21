@@ -47,7 +47,25 @@
                                                 </div>
                                             @enderror
                                         </div>
-
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                            <label for="field_id" class="form-label">Judul Bidang</label>
+                                              <select style="width: 100%; height:40px;" name="field_id" id="field_id" class="form control select2
+                                                @error('field_id') is-invalid @enderror"
+                                                    id="field_id" name="field_id" value="{{ old('field_id') }}">
+                                                <option disabled value>Pilih Bidang</option>
+                                                <option value="{{  $assessor->field_id}}>{{ $assessor->field_title }}"></option>
+                                                @foreach ($field as $value)
+                                                <option value="{{ $value->field_id }}">{{ $value->field_title }}</option>
+                                                @endforeach
+                                              </select>
+                                                @error('field_id')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
                                         <div class="col">
                                             <center><button type="submit" class="btn btn-success mt-4"
                                                     style="width: 170px">Submit</button>

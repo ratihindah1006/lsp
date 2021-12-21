@@ -41,7 +41,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($schemas as $value)
+                                            @foreach($schema as $value)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $value->schema_code }}</td>

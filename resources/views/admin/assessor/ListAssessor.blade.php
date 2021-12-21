@@ -48,7 +48,7 @@
                                                     <td>{{ $value->name }}</td>
                                                     <td>{{ $value->email }}</td>
                                                     <td>{{ $value->password }}</td>
-                                                    <td>{{ $value->category->name }}</td>
+                                                    <td>{{ $value->category->field_title }}</td>
                                                     <td>
                                                         <a href="/dataAssessor/{{ $value->id }}/edit"
                                                             class="btn btn-warning btn-sm"><span

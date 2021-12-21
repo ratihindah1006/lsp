@@ -14,12 +14,14 @@ class DataAssessorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(CategoryModel $category)
+ 
+    public function index()
+    
     {
-        return view('admin.assessor.listAssessor', [
-            'assessor' => AssessorModel::all(),
-            'title'=> 'Data Assessor'
-        ]);
+            $assessor = AssessorModel::all();
+            $title = 'data asesor';
+            return view('admin.assessor.listAssessor', compact('assessor','title'));
+        
     }
 
     /**
@@ -30,6 +32,7 @@ class DataAssessorController extends Controller
     public function create()
     {
         return view('admin.assessor.CreateAssessor',[
+            'field' => CategoryModel::all(),
             'title'=> 'Data assessor'
         ]);
     }
@@ -45,7 +48,8 @@ class DataAssessorController extends Controller
         $validateData = $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required'
+            'password' => 'required',
+            'field_id' => 'required'
         ]);
         $validateData['field_id']=$category->id;
         AssessorModel::create($validateData);
@@ -63,6 +67,7 @@ class DataAssessorController extends Controller
     {
         return view('admin.assessor.EditAssessor', [
             'assessor' => $assessor,
+            'field' => CategoryModel::all(),
             'title' => 'Data assessor'
         ]);
     }
@@ -79,7 +84,8 @@ class DataAssessorController extends Controller
         $validateData = $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required'
+            'password' => 'required',
+            'field_id' => 'required'
         ]);
         AssessorModel::where('id', $assessor->id)
                 ->update($validateData);

@@ -26,7 +26,7 @@ class AssessorModel extends Authenticatable
 
     public function category()
     {
-        return $this->belongTo(CategoryModel::class);
+        return $this->belongsTo(CategoryModel::class, 'field_id', 'id');
     }
 
     public function assessis()

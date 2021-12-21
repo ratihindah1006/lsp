@@ -38,6 +38,30 @@
                                                 </div>
                                             @enderror
                                         </div>
+                                        <div class="form-group">
+                                            <label for="field_code" class="form-label">Kode Bidang</label>
+                                            <input name="field_code" type="text"
+                                                class="form-control @error('field_code') is-invalid @enderror"
+                                                id="field_code"
+                                                value="{{ old('category_code', $category->field_code) }}">
+                                            @error('field_code')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="field_title" class="form-label">Judul Bidang</label>
+                                            <input type="text"
+                                                class="form-control @error('field_title') is-invalid @enderror"
+                                                id="field_title" name="field_title"
+                                                value="{{ old('field_title', $category->field_title) }}">
+                                            @error('field_title')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
                                         <div class="col">
                                             <center><button type="submit" class="btn btn-success mt-4"
                                                     style="width: 170px">Submit</button></center>

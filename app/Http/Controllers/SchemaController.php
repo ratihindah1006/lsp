@@ -20,7 +20,7 @@ class SchemaController extends Controller
     {
         return view('admin.schema.ListSchema', [
             'category'=>$category->category_code,
-            'schemas' => $category->schemas,
+            'schema' => $category->schemas,
             'title' => 'Skema'
         ]);
     }
@@ -49,8 +49,9 @@ class SchemaController extends Controller
         $validateData = $request->validate([
             'schema_code' => 'required|unique:schema_models',
             'schema_title' => 'required',
+            'reference_number' => 'required',
         ]);
-        $validateData['id_category']=$category->id;
+        $validateData['field_id']=$category->id;
         SchemaModel::create($validateData);
 
         return redirect('/category'.'/'.$category->category_code.'/schema')->with('success', 'Category berhasil di tambahkan!');
@@ -99,12 +100,13 @@ class SchemaController extends Controller
     public function update(Request $request, CategoryModel $category, SchemaModel $schema)
     {
         $rules=[
-            'schema_title' => 'required'
+            'schema_title' => 'required',
+            'reference_number' => 'required'
         ];
         if($request->schema_code != $schema->schema_code){
             $rules['schema_code'] = 'required|unique:schema_models';
         }
-        $validateData['id_category']=$category->id;
+        $validateData['field_id']=$category->id;
         $validateData= $request->validate($rules);
         $schema->update($validateData);
 
