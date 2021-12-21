@@ -20,11 +20,6 @@ class UnitModel extends Model
     {
         return $this->belongTo(SchemaModel::class);
     }
-    public function element()
-    {
-        return $this->hasMany(
-            ElementModel::class, 'unit_id', 'id',); 
-    }
 
     public function elements()
     {

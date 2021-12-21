@@ -20,7 +20,7 @@ class SchemaController extends Controller
     {
         return view('admin.schema.ListSchema', [
             'category'=>$category->category_code,
-            'schema' => $category->schema,
+            'schemas' => $category->schemas,
             'title' => 'Skema'
         ]);
     }

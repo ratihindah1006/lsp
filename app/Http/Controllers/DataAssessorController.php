@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssessorModel;
+use App\Models\CategoryModel;
 
 use Illuminate\Http\Request;
 
@@ -13,11 +14,11 @@ class DataAssessorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(CategoryModel $category)
     {
         return view('admin.assessor.listAssessor', [
             'assessor' => AssessorModel::all(),
-            'title'=> 'Data assessor'
+            'title'=> 'Data Assessor'
         ]);
     }
 
@@ -39,13 +40,14 @@ class DataAssessorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, CategoryModel $category)
     {
         $validateData = $request->validate([
             'name' => 'required',
             'email' => 'required',
             'password' => 'required'
         ]);
+        $validateData['field_id']=$category->id;
         AssessorModel::create($validateData);
 
         return redirect('/dataAssessor')->with('success', 'Data Asesi berhasil di tambahkan!');

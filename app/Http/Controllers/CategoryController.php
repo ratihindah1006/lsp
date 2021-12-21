@@ -43,9 +43,12 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'category_code' => 'required|unique:category_models',
+            'category_code' => 'required',
             'category_title' => 'required',
+            'field_code' => 'required|unique:category_models',
+            'field_title' => 'required',
         ]);
+
         CategoryModel::create($validateData);
 
         return redirect('/category')->with('success', 'Category berhasil di tambahkan!');
@@ -86,10 +89,12 @@ class CategoryController extends Controller
     public function update(Request $request, CategoryModel $category)
     {
         $rules=[
-            'category_title' => 'required'
+            'category_title' => 'required',
+            'category_code' => 'required',
+            'field_title' => 'required',
         ];
-        if($request->category_code != $category->category_code){
-            $rules['category_code'] = 'required|unique:category_models';
+        if($request->field_code != $category->field_code){
+            $rules['field_code'] = 'required|unique:category_models';
         }
         $validateData= $request->validate($rules);
         $category->update($validateData);

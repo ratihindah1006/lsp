@@ -33,8 +33,10 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Category Code</th>
-                                                <th>Category Title</th>
+                                                <th>Kode Kategori</th>
+                                                <th>Judul Kategori</th>
+                                                <th>Kode Bidang</th>
+                                                <th>Judul Bidang</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -44,6 +46,8 @@
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $value->category_code }}</td>
                                                     <td>{{ $value->category_title }}</td>
+                                                    <td>{{ $value->field_code }}</td>
+                                                    <td>{{ $value->field_title }}</td>
                                                     <td>
                                                         <a href="/category/{{ $value->category_code }}/schema"
                                                             class="btn btn-primary btn-sm"><span

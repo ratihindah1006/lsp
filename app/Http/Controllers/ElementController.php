@@ -22,7 +22,7 @@ class ElementController extends Controller
             'category'=>$category->category_code,
             'schema' => $schema->schema_code,
             'unit' => $unit->unit_code,
-            'element'=> $unit->element,
+            'element'=> $unit->elements,
             'title'=>'Element'
         ]);
     }
@@ -55,7 +55,6 @@ class ElementController extends Controller
             'element_title' => 'required',
         ]);
         $validateData['unit_id']=$unit->id;
-        $validateData['schema_id']=$schema->id;
         ElementModel::create($validateData);
 
         return redirect('/category'.'/'.$category->category_code.'/schema'.'/'.$schema->schema_code.'/unit'.'/'.$unit->unit_code.'/element')
@@ -106,7 +105,6 @@ class ElementController extends Controller
             $rules['element_code'] = 'required|unique:element_models';
         }
         $validateData['unit_id']=$unit->id;
-        $validateData['schema_id']=$schema->id;
         $validateData= $request->validate($rules);
         $element->update($validateData);
 

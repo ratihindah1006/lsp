@@ -15,6 +15,8 @@ class CreateAssessorsTable extends Migration
     {
         Schema::create('assessor', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('field_id')->unsigned();
+            $table->foreign('field_id')->references('id')->on('category_models');
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
