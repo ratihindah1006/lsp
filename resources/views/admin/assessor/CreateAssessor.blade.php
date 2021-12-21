@@ -42,9 +42,9 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="password" class="form-label">Password</label>
-                                            <input name="password" type="text"
+                                            <input  type="text"
                                                 class="form-control @error('password') is-invalid @enderror" id="password"
-                                                value="{{ old('password') }}">
+                                                name="password" value="{{ old('password') }}">
                                             @error('password')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -58,12 +58,18 @@
                                           <select style="width: 100%; height:40px;" name="field_id" id="field_id" class="form control select2">
                                             <option value="">Pilih Bidang</option>
                                             @foreach ($field as $value)
-                                            <option value="{{ $value->field_id }}">{{ $value->field_title }}</option>
+                                            <option value="{{ $value->id }}" {{ old("field_id") == $value->id ? 'selected' : null }}>{{ $value->field_title }}</option>
                                             @endforeach
                                           </select>
+                                          @error('field_id')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                            
                                         </div>
                                     </div>
+                                    
                                     <div class="col">
                                         <center><button type="submit" class="btn btn-success mt-4"
                                                 style="width: 100px">Submit</button></center>

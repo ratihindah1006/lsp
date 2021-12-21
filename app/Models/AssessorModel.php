@@ -28,6 +28,10 @@ class AssessorModel extends Authenticatable
     {
         return $this->belongsTo(CategoryModel::class, 'field_id', 'id');
     }
+    public function schema()
+    {
+        return $this->belongsTo(SchemayModel::class, 'schema_id', 'id');
+    }
 
     public function assessis()
     {

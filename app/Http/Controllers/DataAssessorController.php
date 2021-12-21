@@ -31,10 +31,10 @@ class DataAssessorController extends Controller
      */
     public function create()
     {
-        return view('admin.assessor.CreateAssessor',[
-            'field' => CategoryModel::all(),
-            'title'=> 'Data assessor'
-        ]);
+        
+            $field = CategoryModel::all();
+            $title= 'Data assessor';
+            return view('admin.assessor.CreateAssessor', compact('field','title'));
     }
 
     /**
@@ -45,16 +45,22 @@ class DataAssessorController extends Controller
      */
     public function store(Request $request, CategoryModel $category)
     {
-        $validateData = $request->validate([
+        
+        $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:assessor',
             'password' => 'required',
             'field_id' => 'required'
         ]);
-        $validateData['field_id']=$category->id;
-        AssessorModel::create($validateData);
-
-        return redirect('/dataAssessor')->with('success', 'Data Asesi berhasil di tambahkan!');
+       $assessors = new AssessorModel([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password'=> $request->password,
+        'field_id' =>  $request->field_id,
+        ]);
+      
+       $assessors->save();
+         return redirect('/dataAssessor')->with('success', 'Data Asesi berhasil di tambahkan!');
     }
 
     /**

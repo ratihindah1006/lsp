@@ -56,7 +56,7 @@
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
                                     <h4>
-                                    <i class="mdi mdi-account"></i>{{ $assessi }}</h4>
+                                    {{-- <i class="mdi mdi-account"></i>{{ $assessi }}</h4> --}}
                                 </a>
                                         <span class="user-avatar">
                                 <div class="dropdown-menu dropdown-menu-right">
