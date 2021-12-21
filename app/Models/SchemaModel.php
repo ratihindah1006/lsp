@@ -20,12 +20,16 @@ class SchemaModel extends Model
 
     public function schema()
     {
-        return $this->belongsTo(CategoryModel::class);
+        return $this->belongsTo(CategoryModel::class, 'field_id', 'id');
     }
 
     public function units()
     {
         return $this->hasMany(UnitModel::class, 'schema_id', 'id'); 
+    }
+    public function assessors()
+    {
+        return $this->hasMany(AssessorsModel::class, 'schema_id', 'id'); 
     }
 
 }

@@ -13,7 +13,7 @@ class AssessorModel extends Authenticatable
     protected $table = "assessor";
     protected $primaryKey = "id";
     protected $fillable = [
-        'name', 'email', 'password', 'field_id',
+        'name', 'email', 'password', 'field_id', 'schema_id',
     ];
 
     protected $hidden = [
@@ -30,7 +30,7 @@ class AssessorModel extends Authenticatable
     }
     public function schema()
     {
-        return $this->belongsTo(SchemayModel::class, 'schema_id', 'id');
+        return $this->belongsTo(SchemaModel::class, 'schema_id', 'id');
     }
 
     public function assessis()

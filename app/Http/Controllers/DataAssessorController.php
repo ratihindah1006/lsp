@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\AssessorModel;
 use App\Models\CategoryModel;
+use App\Models\SchemaModel;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
@@ -23,7 +25,10 @@ class DataAssessorController extends Controller
             return view('admin.assessor.listAssessor', compact('assessor','title'));
         
     }
+   
 
+
+   
     /**
      * Show the form for creating a new resource.
      *
@@ -31,10 +36,14 @@ class DataAssessorController extends Controller
      */
     public function create()
     {
-        
+           // $data = DB::table('category_models')->get();
             $field = CategoryModel::all();
             $title= 'Data assessor';
-            return view('admin.assessor.CreateAssessor', compact('field','title'));
+            return view('admin.assessor.CreateAssessor', compact('title','field'));
+    }
+    public function schemaAssessor($id){
+        $sA=(DB::table('schema_models')->where('field_id', $id)->get());
+        return response()->json($sA);
     }
 
     /**
@@ -43,20 +52,22 @@ class DataAssessorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, CategoryModel $category)
+    public function store(Request $request)
     {
         
         $request->validate([
             'name' => 'required',
             'email' => 'required|unique:assessor',
             'password' => 'required',
-            'field_id' => 'required'
+            'field_id' => 'required',
+            'schema_id' => 'required'
         ]);
        $assessors = new AssessorModel([
         'name' => $request->name,
         'email' => $request->email,
         'password'=> $request->password,
         'field_id' =>  $request->field_id,
+        'schema_id' =>  $request->schema_id,
         ]);
       
        $assessors->save();

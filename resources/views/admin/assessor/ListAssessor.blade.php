@@ -38,6 +38,7 @@
                                                 <th>Email</th>
                                                 <th>Password</th>
                                                 <th>Kategori</th>
+                                                <th>Skema</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -49,6 +50,7 @@
                                                     <td>{{ $value->email }}</td>
                                                     <td>{{ $value->password }}</td>
                                                     <td>{{ $value->category->field_title }}</td>
+                                                    <td>{{ $value->schema->schema_title }}</td>
                                                     <td>
                                                         <a href="/dataAssessor/{{ $value->id }}/edit"
                                                             class="btn btn-warning btn-sm"><span
