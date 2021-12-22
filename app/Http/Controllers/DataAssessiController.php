@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssessiModel;
+use App\Models\AssessorModel;
+use App\Models\CategoryModel;
 
 use Illuminate\Http\Request;
 
@@ -15,10 +17,9 @@ class DataAssessiController extends Controller
      */
     public function index()
     {
-        return view('admin.assessi.listAssessi', [
-            'assessi' => AssessiModel::all(),
-            'title'=> 'Data Assessi'
-        ]);
+        $assessi = AssessiModel::all();
+        $title = 'data asesi';
+        return view('admin.assessi.listAssessi', compact('assessi','title'));
     }
 
     /**
@@ -28,9 +29,10 @@ class DataAssessiController extends Controller
      */
     public function create()
     {
-        return view('admin.assessi.CreateAssessi',[
-            'title'=> 'Data Assessi'
-        ]);
+        $field = CategoryModel::all();
+        $assessor = AssessorModel::all();
+        $title= 'Data asesi';
+        return view('admin.assessi.CreateAssessi', compact('field', 'assessor', 'title'));
     }
 
     /**
@@ -41,15 +43,23 @@ class DataAssessiController extends Controller
      */
     public function store(Request $request)
     {
-        $validateData = $request->validate([
+        $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:assessi',
             'password' => 'required',
-            'schema_code' => 'required'
+            'field_id' => 'required',
+            'assessor_id' => 'required'
         ]);
-        AssessiModel::create($validateData);
-
-        return redirect('/dataAssessi')->with('success', 'Data Asesi berhasil di tambahkan!');
+       $assessis = new AssessiModel([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password'=> $request->password,
+        'field_id' =>  $request->field_id,
+        'assessor_id' =>  $request->assessor_id,
+        ]);
+      
+       $assessis->save();
+        return redirect('/dataAssessi')->with('success', 'Data Asesor berhasil di tambahkan!');
     }
 
     /**
@@ -62,6 +72,8 @@ class DataAssessiController extends Controller
     {
         return view('admin.assessi.EditAssessi', [
             'assessi' => $assessi,
+            'field' => CategoryModel::all(),
+            'assessor' => AssessorModel::all(),
             'title' => 'Data Assessi'
         ]);
     }
@@ -79,7 +91,8 @@ class DataAssessiController extends Controller
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'schema_code' => 'required'
+            'field_id' => 'required',
+            'assessor_id' => 'required'
         ]);
         AssessiModel::where('id', $assessi->id)
                 ->update($validateData);

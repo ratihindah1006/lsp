@@ -55,7 +55,7 @@
                                         <div class="form-group">
                                             <label>Judul Bidang</label>
                                             <select class="form-control select2" placeholder="Select Category"
-                                                id="category_name" name="category_name">
+                                                id="field_id" name="field_id">
                                                 <option value="" >Select Category</option>
                                                 @foreach ($field as $categories)
                                                     <option value="{{ $categories->id }}">
@@ -68,27 +68,11 @@
                                         <div class="form-group">
                                             <label>Judul Skema</label>
                                             <select class="form-control select2" placeholder="Select Schema"
-                                                id="schema_name" name="schema_name">
+                                                id="schema_id" name="schema_id">
                                             </select>
                                         </div>
                                     </div>
-                                    {{-- <div class="col-12">
-                                        <div class="form-group">
-                                        <label>Judul Bidang</label>
-                                          <select data-live-search="true" style="width: 100%; height:40px;" name="field_id" id="field_id" class="form control select2">
-                                            <option value="">Pilih Bidang</option>
-                                            @foreach ($field as $value)
-                                            <option value="{{ $value->id }}" {{ old("field_id") == $value->id ? 'selected' : null }}>{{ $value->field_title }}</option>
-                                            @endforeach
-                                          </select>
-                                          @error('field_id')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                           
-                                        </div>
-                                    </div> --}}
+                                    
                                     <div class="col">
                                         <center><button type="submit" class="btn btn-success mt-4"
                                                 style="width: 100px">Submit</button></center>
@@ -109,7 +93,7 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
-            $('#category_name').on('change', function() {
+            $('#field_id').on('change', function() {
                 var categoryID = $(this).val();
                 if (categoryID) {
                     $.ajax({
@@ -121,16 +105,16 @@
                         dataType: "json",
                         success: function(data) {
                             if (data) {
-                                $('#schema_name').empty();
-                                $('#schema_name').append(
+                                $('#schema_id').empty();
+                                $('#schema_id').append(
                                     '<option hidden>Pilih Skema</option>');
                                 $.each(data, function(key, sA) {
-                                    $('select[name="schema_name"]').append(
+                                    $('select[name="schema_id"]').append(
                                         '<option value="' + key + '">' + sA
                                         .schema_title + '</option>');
                                 });
                             } else {
-                                $('#schema_name').empty();
+                                $('#schema_id').empty();
                             }
                         }
                     });

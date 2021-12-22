@@ -58,6 +58,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::put('/dataAssessor/{assessor:id}', [DataAssessorController::class, 'update']);
     Route::delete('/dataAssessor/{assessor:id}', [DataAssessorController::class, 'destroy']);
     Route::get('schemaAssessor/{id}',[DataAssessorController::class, 'schemaAssessor'] );
+    Route::get('schemaAssessors/{assessor:id}/{id}',[DataAssessorController::class, 'schemaAssessors'] );
 
     Route::get('/category', [CategoryController::class, 'index']);
     Route::get('/category/create', [CategoryController::class, 'create']);
