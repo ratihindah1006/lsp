@@ -36,10 +36,10 @@ class DataAssessorController extends Controller
      */
     public function create()
     {
-           // $data = DB::table('category_models')->get();
-            $field = CategoryModel::all();
+           $data = DB::table('category_models')->get();
+            //$field = CategoryModel::all();
             $title= 'Data assessor';
-            return view('admin.assessor.CreateAssessor', compact('title','field'));
+            return view('admin.assessor.CreateAssessor', compact('title','data'));
     }
     public function schemaAssessor($id){
         $sA=(DB::table('schema_models')->where('field_id', $id)->get());
@@ -69,7 +69,7 @@ class DataAssessorController extends Controller
         'field_id' =>  $request->field_id,
         'schema_id' =>  $request->schema_id,
         ]);
-      
+     
        $assessors->save();
          return redirect('/dataAssessor')->with('success', 'Data Asesi berhasil di tambahkan!');
     }
