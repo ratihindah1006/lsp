@@ -17,13 +17,14 @@ class CreateAssessisTable extends Migration
             $table->id();
             $table->bigInteger('field_id')->unsigned();
             $table->foreign('field_id')->references('id')->on('category_models');
+            $table->bigInteger('schema_id')->unsigned();
+            $table->foreign('schema_id')->references('id')->on('schema_models');
             $table->bigInteger('assessor_id')->unsigned();
             $table->foreign('assessor_id')->references('id')->on('assessor');
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('schema_code');
             $table->rememberToken();
             $table->timestamps();
         });

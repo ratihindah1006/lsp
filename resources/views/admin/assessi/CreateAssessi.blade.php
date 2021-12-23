@@ -56,15 +56,37 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="schema_code" class="form-label">Schema Code</label>
-                                            <input name="schema_code" type="text"
-                                                class="form-control @error('schema_code') is-invalid @enderror"
-                                                id="schema_code" value="{{ old('schema_code') }}">
-                                            @error('schema_code')
+                                        <label>Judul Bidang</label>
+                                          <select style="width: 100%; height:40px;" name="field_id" id="field_id" class="form control select2">
+                                            <option value="">Pilih Bidang</option>
+                                            @foreach ($field as $value)
+                                            <option value="{{ $value->id }}" {{ old("field_id") == $value->id ? 'selected' : null }}>{{ $value->field_title }}</option>
+                                            @endforeach
+                                          </select>
+                                          @error('field_id')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>
                                             @enderror
+                                           
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                        <label>Nama Asesor</label>
+                                          <select style="width: 100%; height:40px;" name="assessor_id" id="assessor_id" class="form control select2">
+                                            <option value="">Pilih Asesor</option>
+                                            @foreach ($assessor as $value)
+                                            <option value="{{ $value->id }}" {{ old("assessor_id") == $value->id ? 'selected' : null }}>{{ $value->name }}</option>
+                                            @endforeach
+                                          </select>
+                                          @error('field_id')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                           
                                         </div>
                                     </div>
                                     <div class="col">

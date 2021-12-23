@@ -82,11 +82,17 @@ class DataAssessorController extends Controller
      */
     public function edit(AssessorModel $assessor)
     {
-        return view('admin.assessor.EditAssessor', [
-            'assessor' => $assessor,
-            'field' => CategoryModel::all(),
-            'title' => 'Data assessor'
-        ]);
+        $field = CategoryModel::all();
+        $title= 'Data assessor';
+        $assessor= $assessor;
+        $fieldse = $assessor->category;
+        $schemaSelected = $assessor->schema;
+        return view('admin.assessor.EditAssessor', compact('title','field', 'assessor','fieldse','schemaSelected'));
+    }
+
+    public function schemaAssessors($id){
+        $sA=(DB::table('schema_models')->where('field_id', $id)->get());
+        return response()->json($sA);
     }
 
     /**
@@ -98,15 +104,22 @@ class DataAssessorController extends Controller
      */
     public function update(Request $request, AssessorModel $assessor)
     {
-        $validateData = $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'field_id' => 'required'
-        ]);
-        AssessorModel::where('id', $assessor->id)
-                ->update($validateData);
-
+        // $validateData = $request->validate([
+        //     'name' => 'required',
+        //     'email' => 'required',
+        //     'password' => 'required',
+        //     'field_id' => 'required',
+        //     'schema_id' => 'required'
+        // ]);
+        // AssessorModel::where('id', $assessor->id)
+        //         ->update($validateData);
+        $assessor->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password'=> $request->password,
+            'field_id' =>  $request->field_id,
+            'schema_id' =>  $request->schema_id,
+            ]);
         return redirect('/dataAssessor')->with('success', 'Data assessor berhasil di Update!');
     }
 

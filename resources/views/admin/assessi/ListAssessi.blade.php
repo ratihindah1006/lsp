@@ -36,7 +36,8 @@
                                                 <th>Nama</th>
                                                 <th>Email</th>
                                                 <th>Password</th>
-                                                <th>Kode Skema</th>
+                                                <th>Judul Bidang</th>
+                                                <th>Nama Asesor</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -47,7 +48,8 @@
                                                 <td>{{ $value->name }}</td>
                                                 <td>{{ $value->email}}</td>
                                                 <td>{{ $value->password}}</td>
-                                                <td>{{ $value->schema_code}}</td>
+                                                <td>{{ $value->category->field_title }}</td>
+                                                <td>{{ $value->assessor->name }}</td>
                                                 <td>
                                                     <a href="/dataAssessi/{{$value->id}}/edit" class="btn btn-warning btn-sm"><span class="ti-pencil"></span></a>
                                                     <form action="/dataAssessi/{{$value->id}}" method="POST" class="d-inline">
