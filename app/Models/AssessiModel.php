@@ -14,7 +14,7 @@ class AssessiModel extends Authenticatable
     protected $table = "assessi";
     protected $primaryKey = "id";
     protected $fillable = [
-        'name', 'email', 'password', 'assessor_id', 'field_id',
+        'name', 'email', 'password', 'assessor_id', 'field_id', 'schema_id',
     ];
 
     //protected $guard = "schema_code";
@@ -34,6 +34,11 @@ class AssessiModel extends Authenticatable
     public function category()
     {
         return $this->belongsTo(CategoryModel::class, 'field_id', 'id');
+    }
+
+    public function schema()
+    {
+        return $this->belongsTo(SchemaModel::class, 'schema_id', 'id');
     }
 
 }

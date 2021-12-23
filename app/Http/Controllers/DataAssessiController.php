@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AssessiModel;
 use App\Models\AssessorModel;
 use App\Models\CategoryModel;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
@@ -29,10 +30,21 @@ class DataAssessiController extends Controller
      */
     public function create()
     {
-        $field = CategoryModel::all();
-        $assessor = AssessorModel::all();
+        $category = DB::table('category_models')->get();
+        $assessor = DB::table('assessor')->get();
         $title= 'Data asesi';
-        return view('admin.assessi.CreateAssessi', compact('field', 'assessor', 'title'));
+        return view('admin.assessi.CreateAssessi', compact('category', 'assessor', 'title'));
+    }
+
+    public function schemaAssessi($id)
+    {
+        $schema=(DB::table('schema_models')->where('field_id', $id)->get());
+        return response()->json($schema);
+    }
+
+    public function assessorAssessi($id){
+        $assessor=(DB::table('assessor')->where('schema_id', $id)->get());
+        return response()->json($assessor);
     }
 
     /**
@@ -48,6 +60,7 @@ class DataAssessiController extends Controller
             'email' => 'required|unique:assessi',
             'password' => 'required',
             'field_id' => 'required',
+            'schema_id' => 'required',
             'assessor_id' => 'required'
         ]);
        $assessis = new AssessiModel([
@@ -55,6 +68,7 @@ class DataAssessiController extends Controller
         'email' => $request->email,
         'password'=> $request->password,
         'field_id' =>  $request->field_id,
+        'schema_id' =>  $request->schema_id,
         'assessor_id' =>  $request->assessor_id,
         ]);
       
@@ -70,12 +84,13 @@ class DataAssessiController extends Controller
      */
     public function edit(AssessiModel $assessi)
     {
-        return view('admin.assessi.EditAssessi', [
-            'assessi' => $assessi,
-            'field' => CategoryModel::all(),
-            'assessor' => AssessorModel::all(),
-            'title' => 'Data Assessi'
-        ]);
+        $field = CategoryModel::all();
+        $title= 'Data assessi';
+        $assessi= $assessi;
+        $assessorSelected= $assessi->assessor;
+        $fieldse = $assessi->category;
+        $schemaSelected = $assessi->schema;
+        return view('admin.assessi.EditAssessi', compact('title','field', 'assessi', 'assessorSelected', 'fieldse','schemaSelected'));
     }
 
     /**
@@ -92,6 +107,7 @@ class DataAssessiController extends Controller
             'email' => 'required',
             'password' => 'required',
             'field_id' => 'required',
+            'schema_id' => 'required',
             'assessor_id' => 'required'
         ]);
         AssessiModel::where('id', $assessi->id)

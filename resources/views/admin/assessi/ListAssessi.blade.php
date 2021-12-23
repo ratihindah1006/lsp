@@ -35,8 +35,9 @@
                                                 <th>No</th>
                                                 <th>Nama</th>
                                                 <th>Email</th>
-                                                <th>Password</th>
+                                                <th width="150px">Password</th>
                                                 <th>Judul Bidang</th>
+                                                <th>Skema</th>
                                                 <th>Nama Asesor</th>
                                                 <th>Aksi</th>
                                             </tr>
@@ -47,8 +48,9 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $value->name }}</td>
                                                 <td>{{ $value->email}}</td>
-                                                <td>{{ $value->password}}</td>
+                                                <td width="150px">{{ $value->password}}</td>
                                                 <td>{{ $value->category->field_title }}</td>
+                                                <td>{{ $value->schema->schema_title }}</td>
                                                 <td>{{ $value->assessor->name }}</td>
                                                 <td>
                                                     <a href="/dataAssessi/{{$value->id}}/edit" class="btn btn-warning btn-sm"><span class="ti-pencil"></span></a>

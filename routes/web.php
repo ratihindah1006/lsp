@@ -50,6 +50,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/dataAssessi/{assessi:id}/edit', [DataAssessiController::class, 'edit']);
     Route::put('/dataAssessi/{assessi:id}', [DataAssessiController::class, 'update']);
     Route::delete('/dataAssessi/{assessi:id}', [DataAssessiController::class, 'destroy']);
+    Route::get('schemaAssessi/{id}',[DataAssessiController::class, 'schemaAssessi'] );
+    Route::get('assessorAssessi/{id}',[DataAssessiController::class, 'assessorAssessi'] );
 
     Route::get('/dataAssessor', [DataAssessorController::class, 'index']);
     Route::get('/dataAssessor/create', [DataAssessorController::class, 'create']);
