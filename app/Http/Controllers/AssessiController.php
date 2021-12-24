@@ -13,12 +13,17 @@ class AssessiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(AssessiModel $assessi)
-    { $data=$assessi->where('id', Auth::user()->id)->get();
-       
-        //dd($data);
+    public function index(AssessiModel $assessis)
+    {
+        $assessis = AssessiModel::all();
+
+        foreach ($assessis as $assessi) {
+        echo $assessi->schema->schema_title;}
+
+        //$data=$assessi->where('id', Auth::user()->id)->get();
+        //dd($assessis);
         return view('assessi.assessiDashboard',[
-            'assessi' => $data,
+            'assessi' => $assessi,
             'title'=> 'assessi',
             
         ]);

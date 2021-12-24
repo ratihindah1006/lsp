@@ -1,3 +1,7 @@
+
+@extends('layout.assessi')
+
+@section('container')
 <br>
 <h1 align="center">APL-02 ASESMEN MANDIRI</h1>
 <br><br>
@@ -21,13 +25,14 @@ pertanyaan tersebut, tuliskan tanda ? pada kolom (K), dan bilamana Anda menilai 
 
 
 <table border="1">
-    @foreach ($assessi as $u)
+  
+    @foreach ($assessis as $assessi)
     <tr>
-        <td width="1500px">Kode Unit : {{ $u->schema_code}}</td>
+        <td width="1500px">Kode Schema : {{ $assessi->schema->schema_code}}</td>
     </tr>
 
     <tr>
-        <td>Judul Unit : {{ $u->schema_title }}</td>
+         <td>Judul Schema :  {{ $assessi->schema->schema_title}}</td>
     </tr>
 
     <tr>
@@ -40,7 +45,10 @@ pertanyaan tersebut, tuliskan tanda ? pada kolom (K), dan bilamana Anda menilai 
         <th>BK</th>
     </tr>
 
-    
+
+
+
     @endforeach
 </table>
 
+@endsection

@@ -31,5 +31,8 @@ class SchemaModel extends Model
     {
         return $this->hasMany(AssessorsModel::class, 'schema_id', 'id'); 
     }
-
+    public function assessis()
+    {
+        return $this->hasMany(AssessiModel::class, 'schema_id', 'id'); 
+    }
 }

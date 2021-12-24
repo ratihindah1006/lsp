@@ -57,7 +57,8 @@
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
                                     <i class="mdi mdi-account"></i>
                                 </a>
-                                        <span class="user-avatar"> @foreach ($assessi as $value) {{ $value->name }} @endforeach
+                                        <span class="user-avatar">Rahmadila
+                                             {{-- @foreach ($assessi as $value) {{ $value->name }} @endforeach --}}
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="{{ url('logout') }}" class="dropdown-item">
                                         <i class="ti-power-off"></i>
