@@ -21,6 +21,11 @@ class UnitModel extends Model
         return $this->belongTo(SchemaModel::class);
     }
 
+    public function assessi()
+    {
+        return $this->belongTo(AssessiModel::class);
+    }
+
     public function elements()
     {
         return $this->hasMany(ElementModel::class, 'unit_id', 'id'); 

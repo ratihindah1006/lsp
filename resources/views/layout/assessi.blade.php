@@ -58,7 +58,7 @@
                                     <h4>
                                     {{-- <i class="mdi mdi-account"></i>{{ $assessi }}</h4> --}}
                                 </a>
-                                        <span class="user-avatar">
+                                        <span class="user-avatar">{{ $assessi }}
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="{{ url('logout') }}" class="dropdown-item">
                                         <i class="ti-power-off"></i>

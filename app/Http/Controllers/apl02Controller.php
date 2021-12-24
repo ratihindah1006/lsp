@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\CategoryModel;
-use App\Models\SchemaModel;
-use App\Models\UnitModel;
-use App\Models\ElementModel;
-use App\Models\CriteriaModel;
 
+use App\Models\AssessiModel;
+use Illuminate\Support\Facades\Auth;
+use App\Models\APL02Model;
+use App\Models\SchemaModel;
 use Illuminate\Http\Request;
 
 class Apl02Controller extends Controller
@@ -16,13 +15,13 @@ class Apl02Controller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(SchemaModel $schema)
+    public function index(AssessiModel $assessi)
     {
-        $data = $schema->units()->get();
+        $data=$assessi->where('id', Auth::user()->id)->get();
 
-        return view('admin.APL02.detailSchema', [
-            'schema' => $schema,
-            'unit' => $data,]
+        return view('assessi.apl02', [
+            'schema' => $assessi->schema,
+            'assessi' => $data,]
         );
     }
 }

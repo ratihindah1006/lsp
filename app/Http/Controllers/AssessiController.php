@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssessiModel;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class AssessiController extends Controller
@@ -14,8 +15,10 @@ class AssessiController extends Controller
      */
     public function index(AssessiModel $assessi)
     {
+        $data=$assessi->where('id', Auth::user()->id)->get();
+        dd($data);
         return view('assessi.assessiDashboard',[
-            'assessi' => $assessi->name,
+            'assessi' => $data,
             'title'=> 'assessi',
         ]);
     }

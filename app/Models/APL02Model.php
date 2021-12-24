@@ -2,29 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-
-
-class AssessiModel extends Authenticatable
+class APL02Model extends Model
 {
-    use Notifiable;
-    
-    protected $table = "assessi";
-    protected $primaryKey = "id";
     protected $fillable = [
-        'name', 'email', 'password', 'assessor_id', 'field_id', 'schema_id',
+        'assessment'
     ];
-
-    //protected $guard = "schema_code";
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    protected $casts = [
-        'email_verified_at'=>'datetime',
-    ]; 
+    use HasFactory;
 
     public function assessor()
     {
@@ -41,9 +27,13 @@ class AssessiModel extends Authenticatable
         return $this->belongsTo(SchemaModel::class, 'schema_id', 'id');
     }
 
+    public function apl01()
+    {
+        return $this->belongsTo(APL01Model::class, 'apl01_id', 'id');
+    }
+
     public function units()
     {
         return $this->hasMany(UnitModel::class, 'schema_id', 'id'); 
     }
-
 }
