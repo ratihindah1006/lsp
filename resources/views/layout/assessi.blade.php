@@ -51,14 +51,13 @@
                         <a href="/beranda" aria-expanded="false"><i class="icon icon-home"></i>&nbsp; Beranda</a></h4>
                         </div>
 
+
                         <ul class="navbar-nav header-right">
-                            
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <h4>
-                                    {{-- <i class="mdi mdi-account"></i>{{ $assessi }}</h4> --}}
+                                    <i class="mdi mdi-account"></i>
                                 </a>
-                                        <span class="user-avatar">
+                                        <span class="user-avatar"> @foreach ($assessi as $value) {{ $value->name }} @endforeach
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="{{ url('logout') }}" class="dropdown-item">
                                         <i class="ti-power-off"></i>

@@ -62,7 +62,7 @@
                                 <div class="col-md-4 col-12">
                                     <div class="form-group">
                                         <div >
-                                            <label for="domisili">Kota Domisili</label>
+                                            <label for="domicile">Kota Domisili</label>
                                             <div class="form-group">
                                                 <select class="choices form-select">
                                                     <option value="lampung">Lampung</option>

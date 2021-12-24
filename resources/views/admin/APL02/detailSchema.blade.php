@@ -21,13 +21,13 @@ pertanyaan tersebut, tuliskan tanda ? pada kolom (K), dan bilamana Anda menilai 
 
 
 <table border="1">
-    @foreach ($unit as $u)
+    @foreach ($assessi as $u)
     <tr>
-        <td width="1500px">Kode Unit : {{ $u->unit_code }}</td>
+        <td width="1500px">Kode Unit : {{ $u->schema_id}}</td>
     </tr>
 
     <tr>
-        <td>Judul Unit : {{ $u->unit_title }}</td>
+        <td>Judul Unit : {{ $u->schema_title }}</td>
     </tr>
 
     <tr>
@@ -40,22 +40,7 @@ pertanyaan tersebut, tuliskan tanda ? pada kolom (K), dan bilamana Anda menilai 
         <th>BK</th>
     </tr>
 
-    <tr>
-        @foreach ($u->elements as $e)
-        <td>Elemen : {{ $e->element_title }}<br>
-            Kriteria Unjuk Kerja : <br>
-            @foreach ($e->criterias as $c)
-            <br>{{ $c->criteria_title }}
-            @endforeach
-        </td>
-        <td><input type="checkbox" name="k"></td>
-        <td><input type="checkbox" name="bk"></td>
-        <td><input type="checkbox" name="file"></td>
-
-    </tr>
-    @endforeach
-
-
+    
     @endforeach
 </table>
 

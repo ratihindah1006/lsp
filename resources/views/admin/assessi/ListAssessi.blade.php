@@ -25,7 +25,7 @@
                             {{ session('success') }}
                         </div>
                         @endif
-                        <a href="/dataAssessi/create" class="btn btn-primary btn-sm"><i class="ti-plus ">&nbsp;&nbsp;&nbsp;</i>Add</a><br><br>
+                        <a href="/dataAssessi/create" class="btn btn-primary btn-sm "><i class="ti-plus ">&nbsp;&nbsp;&nbsp;</i>Add</a><br><br>
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive my-text">
@@ -53,7 +53,7 @@
                                                 <td>{{ $value->schema->schema_title }}</td>
                                                 <td>{{ $value->assessor->name }}</td>
                                                 <td>
-                                                    <a href="/dataAssessi/{{$value->id}}/edit" class="btn btn-warning btn-sm"><span class="ti-pencil"></span></a>
+                                                    <a href="/dataAssessi/{{$value->id}}/edit" class="btn btn-warning btn-sm "><span class="ti-pencil"></span></a>
                                                     <form action="/dataAssessi/{{$value->id}}" method="POST" class="d-inline">
                                                         @csrf
                                                         @method('delete')

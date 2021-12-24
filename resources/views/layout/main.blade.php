@@ -74,7 +74,7 @@
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
                                     <i class="mdi mdi-account"></i>
                                 </a>
-                                        <span class="user-avatar">Admin
+                                        <span class="user-avatar"> Admin
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="{{ url('logout') }}" class="dropdown-item">
                                         <i class="ti-power-off"></i>
@@ -143,19 +143,6 @@
                 <p><a href="#" target="_blank"></a> 2022</p>
             </div>
         </div>
-        <!--**********************************
-            Footer end
-        ***********************************-->
-
-        <!--**********************************
-           Support ticket button start
-        ***********************************-->
-
-        <!--**********************************
-           Support ticket button end
-        ***********************************-->
-
-
     </div>
     <!--**********************************
         Main wrapper end

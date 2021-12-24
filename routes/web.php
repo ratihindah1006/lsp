@@ -32,6 +32,7 @@ use App\Http\Controllers\AssessorController;
 
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::get('/', [AuthController::class, 'index'])->name('login');
 Route::post('/postLogin', [AuthController::class, 'postLogin'])->name('postLogin');
 
 

@@ -16,8 +16,10 @@ class DashboardController extends Controller
      */
     public function index(AdminModel $admin)
     {
+        $data=$admin->where('id', Auth::user()->id)->get();
         return view('admin.dashboard.dashboard', [
             'event' => Event::all(),
+            'admin' => $data,
             'title'=> 'Dashboard',
          
         ]);

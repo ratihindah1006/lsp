@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdminModel;
 use App\Models\CategoryModel;
 use App\Models\SchemaModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -13,12 +15,14 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(AdminModel $admin)
     {
+        $data=$admin->where('id', Auth::user()->id)->get();
         return view('admin.category.ListCategory', [
             'category' => CategoryModel::all(),
             'schema' => SchemaModel::all(),
-            'title'=> 'Category'
+            'title'=> 'Category',
+            'admin'=> $data
         ]);
     }
 

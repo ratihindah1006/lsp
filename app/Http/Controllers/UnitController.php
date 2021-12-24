@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdminModel;
 use App\Models\CategoryModel;
 use App\Models\SchemaModel;
 use App\Models\UnitModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UnitController extends Controller
 {
@@ -14,13 +16,15 @@ class UnitController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(CategoryModel $category, SchemaModel $schema)
+    public function index(CategoryModel $category, SchemaModel $schema,AdminModel $admin)
     {
+        $data=$admin->where('id', Auth::user()->id)->get();
         return view('admin.unit.ListUnit', [
             'category'=>$category->category_code,
             'schema' => $schema->schema_code,
             'unit' => $schema->units,
-            'title' => 'Unit'
+            'title' => 'Unit',
+            'admin'=>$data
         ]);
     }
 

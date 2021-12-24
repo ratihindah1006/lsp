@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdminModel;
 use App\Models\CategoryModel;
 use App\Models\SchemaModel;
 use App\Models\UnitModel;
 use App\Models\ElementModel;
 use App\Models\CriteriaModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SchemaController extends Controller
 {
@@ -16,12 +18,14 @@ class SchemaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(CategoryModel $category)
+    public function index(CategoryModel $category, AdminModel $admin)
     {
+        $data=$admin->where('id', Auth::user()->id)->get();
         return view('admin.schema.ListSchema', [
             'category'=>$category->category_code,
             'schema' => $category->schemas,
-            'title' => 'Skema'
+            'title' => 'Skema',
+            'admin'=>$data
         ]);
     }
 

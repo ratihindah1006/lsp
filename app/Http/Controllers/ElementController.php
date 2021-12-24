@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdminModel;
 use Illuminate\Http\Request;
 use App\Models\CategoryModel;
 use App\Models\SchemaModel;
 use App\Models\UnitModel;
 use App\Models\ElementModel;
+use Illuminate\Support\Facades\Auth;
 
 
 class ElementController extends Controller
@@ -16,13 +18,15 @@ class ElementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(CategoryModel $category, SchemaModel $schema, UnitModel $unit)
+    public function index(CategoryModel $category, SchemaModel $schema, UnitModel $unit, AdminModel $admin)
     {
+        $data=$admin->where('id', Auth::user()->id)->get();
         return view('admin.element.ListElement', [
             'category'=>$category->category_code,
             'schema' => $schema->schema_code,
             'unit' => $unit->unit_code,
             'element'=> $unit->elements,
+            'admin'=> $data,
             'title'=>'Element'
         ]);
     }

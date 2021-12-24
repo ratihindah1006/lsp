@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdminModel;
 use App\Models\AssessiModel;
 use App\Models\AssessorModel;
 use App\Models\CategoryModel;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -16,11 +18,12 @@ class DataAssessiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(AdminModel $admin)
     {
+        $admin=$admin->where('id', Auth::user()->id)->get();
         $assessi = AssessiModel::all();
         $title = 'data asesi';
-        return view('admin.assessi.listAssessi', compact('assessi','title'));
+        return view('admin.assessi.listAssessi', compact('assessi','title','admin'));
     }
 
     /**
