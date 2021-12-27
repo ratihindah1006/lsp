@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\AssessiModel;
 use Illuminate\Support\Facades\Auth;
 use App\Models\APL02Model;
+use App\Models\ElementModel;
 use App\Models\SchemaModel;
+use App\Models\UnitModel;
 use Illuminate\Http\Request;
 
 class Apl02Controller extends Controller
@@ -15,17 +17,15 @@ class Apl02Controller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(AssessiModel $assessi)
+    public function index(AssessiModel $assessi, SchemaModel $schema, UnitModel $unit, ElementModel $element)
     {
-       // $data=$assessi->where('id', Auth::user()->id)->get();
-        $assessis = AssessiModel::all();
-
-        
-//dd($assessi);
+        $assessi=AssessiModel::find(Auth::user()->id);
+        //dd($assessi);
+    
         return view('assessi.apl02', [
-            'schema' => $assessi->schema,
+            'assessi' => $assessi,
             'title'=> 'apl02',
-            'assessis' => $assessis,]
+            ]
         );
     }
 }

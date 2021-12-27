@@ -1,11 +1,11 @@
 @extends('layout.assessi')
 
 @section('container')
-<section id="multiple-column-form">
+{{-- <section id="multiple-column-form">
     <h2 align="center">Data Diri</h2>
     <div class="row match-height">
-        <div class="col-12">
-            <div class="card">
+        <div  class="col-10">
+            <div class="card ">
                 <div class="card-header">
                     <h5 class="card-title">Data Pribadi</h5>
                 </div>
@@ -263,5 +263,236 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
+<div class="row">
+    <div class="col-lg-12">
+        <h2 align="center">Data Diri</h2>
+        <div class="card">
+            <div class="card-body">
+                <div class="form-validation">
+                    <form class="form-valide" action="#" method="post">
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <h4 class="card-title">Data Pribadi</h4><br>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="name">Nama Lengkap
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" id="name" name="name" >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="nik">NIK <span
+                                            class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" id="nik" name="nik" >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="gender">Jenis Kelamin
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <select class="form-control" id="gender" name="gender">
+                                            <option value="">- - Pilih - -</option>
+                                            <option value="male">Laki-Laki</option>
+                                            <option value="female">Perempuan</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="place_of_birth">Tempat Lahir <span
+                                            class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" id="place_of_birth" name="place_of_birth" >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="date_of_birth">Tanggal Lahir <span
+                                            class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="domicile">Kota Domisili
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" id="domicile" name="domicile" >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="address">Alamat <span
+                                            class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <textarea class="form-control" id="address" name="address" rows="5" placeholder="Tuliskan alamat lengkap"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="no.hp">Nomor Ponsel
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="text"  class="form-control" id="no.hp" name="no.hp" >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="email">Email
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="email" class="form-control" id="email" name="email" >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="last_education">Pendidikan Terakhir
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <select class="form-control" id="last_education" name="last_education">
+                                            <option value="">- - Pilih - -</option>
+                                            <option value="sma">SMA</option>
+                                            <option value="s1">S1</option>
+                                            <option value="s2">S2</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="nationality">Kebangsaan
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <select class="form-control" id="nationality" name="nationality">
+                                            <option value="">- - Pilih - -</option>
+                                            <option value="wni">WNI</option>
+                                            <option value="wna">WNA</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <h4 class="card-title">Data Pekerjaan</h4><br>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="comp_name">Nama Perusahaan
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" id="comp_name" name="comp_name" >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="job_title">Pekerjaan
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" id="job_title" name="job_title" >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="position">Jabatan
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" id="position" name="position" >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="comp_address">Alamat Kantor<span
+                                            class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <textarea class="form-control" id="comp_address" name="comp_address" rows="5" placeholder="Tuliskan alamat kantor"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="comp_telp">Telepon Kantor
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" id="comp_telp" name="comp_telp" placeholder="212-999-0000">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="comp_email">Email Kantor 
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="email" class="form-control" id="comp_email" name="comp_email" placeholder="xxxx@mail.com">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="comp_fax">Fax Kantor
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" id="comp_fax" name="comp_fax" >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="postal_code">Kode Pos
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" id="postal_code" name="postal_code" >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Data Sertifikasi</h4>
+            </div>
+            <div class="card-body">
+                <div class="basic-form">
+                    <form class="form-valide-with-icon" action="#" method="post">
+                        <div class="row">
+                        <div class="col-xl-6">
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="sert_schema">Skema Sertifikasi
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-lg-6">
+                                    <select class="form-control" id="sert_schema" name="sert_schema">
+                                        <option value="">- - Pilih - -</option>
+                                        <option value="kkni">KKNI</option>
+                                        <option value="klaster">Klaster</option>
+                                        <option value="okupasi">Okupasi</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="assessment_purpose">Tujuan Assessment
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-lg-6">
+                                    <select class="form-control" id="assessment_purpose" name="assessment_purpose">
+                                        <option value="">- - Pilih - -</option>
+                                        <option value="newSert">Sertifikasi Ulang</option>
+                                        <option value="reSert">Sertifikasi Baru</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection

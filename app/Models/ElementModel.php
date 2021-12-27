@@ -19,7 +19,7 @@ class ElementModel extends Model
 
     public function element()
     {
-        return $this->belongTo(UnitModel::class);
+        return $this->belongsTo(UnitModel::class,'unit_id','id');
     }
 
     public function criterias()

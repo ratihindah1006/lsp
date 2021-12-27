@@ -15,15 +15,9 @@ class AssessiController extends Controller
      */
     public function index(AssessiModel $assessis)
     {
-        $assessis = AssessiModel::all();
-
-        foreach ($assessis as $assessi) {
-        echo $assessi->schema->schema_title;}
-
-        //$data=$assessi->where('id', Auth::user()->id)->get();
-        //dd($assessis);
+      
         return view('assessi.assessiDashboard',[
-            'assessi' => $assessi,
+           
             'title'=> 'assessi',
             
         ]);

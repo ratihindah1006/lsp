@@ -31,13 +31,17 @@ class CreateApl01sTable extends Migration
             $table->string('gender');
             $table->string('nationality');
             $table->string('address');
+            $table->string('no_hp');
+            $table->string('email');
             $table->string('last_education');
             $table->string('comp_name');
+            $table->string('job_title');
             $table->string('position');
             $table->string('comp_address');
             $table->string('comp_telp');
             $table->string('comp_fax');
             $table->string('comp_email');
+            $table->string('postal_code');
             $table->string('sert_schema');
             $table->string('assessment_purpose');
             $table->string('ijazah');

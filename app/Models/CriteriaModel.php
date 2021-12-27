@@ -17,6 +17,6 @@ use SoftDeletes;
 
 public function criteria()
 {
-    return $this->belongTo(ElementModel::class);
+    return $this->belongsTo(ElementModel::class, 'element_id','id');
 }
 }

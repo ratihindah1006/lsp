@@ -26,14 +26,42 @@ pertanyaan tersebut, tuliskan tanda ? pada kolom (K), dan bilamana Anda menilai 
 
 <table border="1">
   
-    @foreach ($assessis as $assessi)
+    @foreach ($assessi as $a)
     <tr>
-        <td width="1500px">Kode Schema : {{ $assessi->schema->schema_code}}</td>
+        <td width="1500px">Kode Schema : {{ $a->schema->schema_code}}</td>
     </tr>
 
     <tr>
          <td>Judul Schema :  {{ $assessi->schema->schema_title}}</td>
     </tr>
+    @foreach ($schemas as $item)
+<tr>
+    
+    <td width="1500px">Kode Unit : {{ $item->units->pluck('unit_code')}}</td>
+    
+</tr>
+<tr>
+    
+    <td width="1500px">judul Unit : {{ $item->units->pluck('unit_title')}}</td>
+    
+</tr>
+
+<tr>
+    @foreach ($units as $item)
+    <td width="1500px">Kode Element : {{ $item->elements->pluck('element_code')}}</td>
+    
+</tr>
+<tr>
+    
+    <td width="1500px">judul elemen : {{ $item->elements->pluck('element_title')}}</td>
+    
+</tr>
+@foreach ($elements as $item)
+<tr>
+  
+    <td width="1500px">Kode Element : {{ $item->criterias->pluck('criteria_title')}}</td>
+    
+</tr>
 
     <tr>
         <th rowspan="2">Dapatkah Saya...?</th>
@@ -44,8 +72,9 @@ pertanyaan tersebut, tuliskan tanda ? pada kolom (K), dan bilamana Anda menilai 
         <th>K</th>
         <th>BK</th>
     </tr>
-
-
+@endforeach
+@endforeach
+    @endforeach
 
 
     @endforeach
