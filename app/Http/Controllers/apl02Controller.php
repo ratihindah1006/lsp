@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AssessiModel;
 use Illuminate\Support\Facades\Auth;
 use App\Models\APL02Model;
-use App\Models\SchemaModel;
+use App\Models\CriteriaModel;
 use Illuminate\Http\Request;
 
 class Apl02Controller extends Controller
@@ -15,17 +15,29 @@ class Apl02Controller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(AssessiModel $assessi)
+    public function index()
     {
-       // $data=$assessi->where('id', Auth::user()->id)->get();
-        $assessis = AssessiModel::all();
+        $assessi = AssessiModel::find(Auth::user()->id);
 
-        
-//dd($assessi);
-        return view('assessi.apl02', [
-            'schema' => $assessi->schema,
-            'title'=> 'apl02',
-            'assessis' => $assessis,]
+        return view(
+            'assessi.apl02',
+            [
+                'title' => 'apl02',
+                'assessis' => $assessi->schema->units,
+            ]
         );
     }
+
+    public function store(Request $request)
+    {
+        $criteria = CriteriaModel::get('id');
+
+        $apl02 = new APL02Model([
+            'assessment' => $request->$criteria ,
+        ]);
+        dd($apl02);
+        $apl02->save();
+        return redirect('/beranda')->with('success', 'assessment berhasil di tambahkan!');
+    }
+    
 }

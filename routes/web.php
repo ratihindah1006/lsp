@@ -105,6 +105,7 @@ Route::group(['middleware' => 'auth:assessi'], function () {
     Route::get('/beranda', [AssessiController::class, 'index']);
     Route::get('/apl01', [Apl01Controller::class, 'index']);
     Route::get('/apl02', [Apl02Controller::class, 'index']);
+    Route::post('/apl02/store', [Apl02Controller::class, 'store']);
 });
 
 Route::group(['middleware' => 'auth:assessor'], function () {

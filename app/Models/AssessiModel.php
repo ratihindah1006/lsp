@@ -41,9 +41,4 @@ class AssessiModel extends Authenticatable
         return $this->belongsTo(SchemaModel::class, 'schema_id', 'id');
     }
 
-    public function units()
-    {
-        return $this->hasMany(UnitModel::class, 'schema_id', 'id'); 
-    }
-
 }
