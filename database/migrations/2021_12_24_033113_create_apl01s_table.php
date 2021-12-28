@@ -13,14 +13,8 @@ class CreateApl01sTable extends Migration
      */
     public function up()
     {
-        Schema::create('apl01', function (Blueprint $table) {
+        Schema::create('apl01s', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('field_id')->unsigned();
-            $table->foreign('field_id')->references('id')->on('category_models');
-            $table->bigInteger('schema_id')->unsigned();
-            $table->foreign('schema_id')->references('id')->on('schema_models');
-            $table->bigInteger('assessor_id')->unsigned();
-            $table->foreign('assessor_id')->references('id')->on('assessor');
             $table->bigInteger('assessi_id')->unsigned();
             $table->foreign('assessi_id')->references('id')->on('assessi');
             $table->string('nik');
@@ -63,6 +57,6 @@ class CreateApl01sTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('apl01');
+        Schema::dropIfExists('apl01s');
     }
 }

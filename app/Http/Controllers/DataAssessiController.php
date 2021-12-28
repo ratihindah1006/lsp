@@ -9,6 +9,7 @@ use App\Models\CategoryModel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+
 use Illuminate\Http\Request;
 
 class DataAssessiController extends Controller
@@ -69,7 +70,7 @@ class DataAssessiController extends Controller
        $assessis = new AssessiModel([
         'name' => $request->name,
         'email' => $request->email,
-        'password'=> $request->password,
+        'password'=> bcrypt($request->input('password')),
         'field_id' =>  $request->field_id,
         'schema_id' =>  $request->schema_id,
         'assessor_id' =>  $request->assessor_id,

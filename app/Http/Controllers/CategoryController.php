@@ -46,13 +46,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        
         $validateData = $request->validate([
             'category_code' => 'required',
             'category_title' => 'required',
             'field_code' => 'required|unique:category_models',
             'field_title' => 'required',
         ]);
-
+       
         CategoryModel::create($validateData);
 
         return redirect('/category')->with('success', 'Category berhasil di tambahkan!');
