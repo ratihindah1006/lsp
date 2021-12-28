@@ -45,16 +45,15 @@ class Apl01Controller extends Controller
             'postal_code' => 'required',
             'sert_schema' => 'required',
             'assessment_purpose' => 'required',
-            // 'ijazah' => 'required|mimes:pdf',
-            // 'photo' => 'required|mimes:pdf',
-            // 'ktp' => 'required|mimes:pdf',
-            // 'transcript' => 'required|mimes:pdf',
+            'ijazah' => 'required',
+            'photo' => 'required|mimes:jpg',
+            'ktp' => 'required|mimes:pdf',
+            'transcript' => 'required|mimes:pdf',
         ]);
-       //dd($validateData);
-    //    $validateData['assessi_id']=$assessi->id;
-       // Apl01::create($validateData);
+        $photos = $request->file('photo');
+        $photoName = $photos->getClientOriginalName();
        $apl01 = new Apl01([
-           'assessi_id'=>$assessi->id,
+        'assessi_id'=>$assessi->id,
         'nik' => $request->nik,
         'name' =>$request->name,
         'domicile' => $request->domicile,
@@ -77,7 +76,7 @@ class Apl01Controller extends Controller
         'sert_schema' => $request->sert_schema,
         'assessment_purpose' => $request->assessment_purpose,
         'ijazah' => $request->ijazah,
-         'photo' => $request->photo,
+         'photo' => $photoName,
         'ktp' => $request->ktp,
          'transcript' =>$request->transcript,
          'assessor_signature'=>$request->assessor_signature,
@@ -85,8 +84,6 @@ class Apl01Controller extends Controller
          'work_exper_certif'=>$request->work_exper_certif,
          'note'=>$request->note,
        ]);
-      // dd($apl01);
-      // $apl01['assessi_id']=$assessi->id;
        $apl01->save();
         return redirect('/beranda')->with('success', 'Apl01 Berhasil diinput');
     }

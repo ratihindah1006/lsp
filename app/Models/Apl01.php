@@ -16,8 +16,7 @@ class Apl01 extends Model
         'postal_code','sert_schema','assessment_purpose','ijazah','photo','ktp','transcript','work_exper_certif','assessi_signature',
         'assessor_signature','note'
     ];
-
- 
+  
     use HasFactory;
 
     public function assessi()
