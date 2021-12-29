@@ -6,6 +6,7 @@ use App\Models\AssessiModel;
 use Illuminate\Support\Facades\Auth;
 use App\Models\APL02Model;
 use App\Models\CriteriaModel;
+use App\Models\SchemaModel;
 use Illuminate\Http\Request;
 
 class Apl02Controller extends Controller
@@ -28,9 +29,10 @@ class Apl02Controller extends Controller
         );
     }
 
-    public function store(Request $request)
+    public function store(Request $request, SchemaModel $schema)
     {
-        $criteria = CriteriaModel::get('id');
+        $criteria = $schema->with(["units", "units.elements", "units.elements.criterias"]);
+
 
         $apl02 = new APL02Model([
             'assessment' => $request->$criteria ,

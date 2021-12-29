@@ -24,7 +24,7 @@ class CreateApl02sTable extends Migration
             $table->bigInteger('assessi_id')->unsigned();
             $table->foreign('assessi_id')->references('id')->on('assessi');
             $table->bigInteger('apl01_id')->unsigned();
-            $table->foreign('apl01_id')->references('id')->on('apl01');
+            $table->foreign('apl01_id')->references('id')->on('apl01s');
             $table->string('assessment');
             $table->string('note');
             $table->timestamps();
