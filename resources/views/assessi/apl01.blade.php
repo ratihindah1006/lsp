@@ -5,7 +5,7 @@
         @csrf
         <div class="row">
             <div class="col-lg-12">
-                <h2 align="center">Data Diri</h2>
+                <h2 align="center " class="font-weight-bold s" >Data Diri</h2>
                 <div class="cards">
                     <div class="card-header">
                         <button type="submit" class="btn btn-whatsapp button-right">Simpan <span class="btn-icon-right"><i
@@ -19,7 +19,7 @@
                         <div class="form-validation">
                             <div class="row">
                                 <div class="col-xl-6">
-                                    <h4 class="card-title">Data Pribadi</h4><br>
+                                    <h4 class="font-weight-bold ">Data Pribadi</h4><br>
                                     <div class="form-group row">
                                         <label class="col-lg-4 col-form-label font-weight-bold text-success" for="name">Nama
                                             Lengkap
@@ -133,7 +133,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label" for="no_hp">Nomor Ponsel
+                                        <label class="col-lg-4 col-form-label font-weight-bold text-success" for="no_hp">Nomor Ponsel
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -147,7 +147,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label" for="email">Email
+                                        <label class="col-lg-4 col-form-label font-weight-bold text-success" for="email">Email
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -161,7 +161,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label" for="last_education">Pendidikan Terakhir
+                                        <label class="col-lg-4 col-form-label font-weight-bold text-success" for="last_education">Pendidikan Terakhir
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -183,7 +183,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label" for="nationality">Kebangsaan
+                                        <label class="col-lg-4 col-form-label font-weight-bold text-success" for="nationality">Kebangsaan
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -204,9 +204,9 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
-                                    <h4 class="card-title">Data Pekerjaan</h4><br>
+                                    <h4 class="font-weight-bold">Data Pekerjaan</h4><br>
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label" for="comp_name">Nama Perusahaan
+                                        <label class="col-lg-4 col-form-label font-weight-bold text-success" for="comp_name">Nama Perusahaan
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -220,7 +220,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label" for="job_title">Pekerjaan
+                                        <label class="col-lg-4 col-form-label font-weight-bold text-success" for="job_title">Pekerjaan
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -234,7 +234,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label" for="position">Jabatan
+                                        <label class="col-lg-4 col-form-label font-weight-bold text-success" for="position">Jabatan
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -248,7 +248,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label" for="comp_address">Alamat Kantor<span
+                                        <label class="col-lg-4 col-form-label font-weight-bold text-success" for="comp_address">Alamat Kantor<span
                                                 class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -263,7 +263,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label" for="comp_telp">Telepon Kantor
+                                        <label class="col-lg-4 col-form-label font-weight-bold text-success" for="comp_telp">Telepon Kantor
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -279,7 +279,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label" for="comp_email">Email Kantor
+                                        <label class="col-lg-4 col-form-label font-weight-bold text-success" for="comp_email">Email Kantor
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -295,7 +295,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label" for="comp_fax">Fax Kantor
+                                        <label class="col-lg-4 col-form-label font-weight-bold text-success" for="comp_fax">Fax Kantor
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -309,7 +309,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label" for="postal_code">Kode Pos
+                                        <label class="col-lg-4 col-form-label font-weight-bold text-success" for="postal_code">Kode Pos
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -332,14 +332,14 @@
             <div class="col-lg-12">
                 <div class="cards">
                     <div class="card-header">
-                        <h4 class="card-title">Data Sertifikasi</h4>
+                        <h4 class="font-weight-bold">Data Sertifikasi</h4>
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
                             <div class="row">
                                 <div class="col-xl-6">
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label " for="sert_schema">Skema Sertifikasi
+                                        <label class="col-lg-4 col-form-label font-weight-bold text-success " for="sert_schema">Skema Sertifikasi
                                         </label>
                                         <div class="col-lg-6">
                                             <select class="form-control @error('sert_schema') is-invalid @enderror"
@@ -357,7 +357,7 @@
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label" for="assessment_purpose">Tujuan Assessment
+                                        <label class="col-lg-4 col-form-label font-weight-bold text-success" for="assessment_purpose">Tujuan Assessment
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -378,7 +378,7 @@
                             <div class="row">
                                 <div class="col-xl-6">
                                     <div class="form-group row">
-                                        <label class="col-lg-10 my-text font-weight-bold" for="">Skema Sertifikasi
+                                        <label class="col-lg-10 my-text " for="">Skema Sertifikasi
                                             &emsp;&emsp;:&emsp;&emsp;
                                             {{ $assessis->schema_title }}
                                         </label>
@@ -386,7 +386,7 @@
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="form-group row">
-                                        <label class="col-lg-10  my-text font-weight-bold" for="">Nomor
+                                        <label class="col-lg-10  my-text " for="">Nomor
                                             Skema&emsp;&emsp;:&emsp;&emsp;
                                             {{ $assessis->reference_number }}
                                         </label>
@@ -394,7 +394,7 @@
                                 </div>
                                 <div class="table-responsive my-text">
                                     <table class="table table-bordered ">
-                                        <thead class="thead-bg">
+                                        <thead class="my-text font-weight-bold">
                                             <tr>
                                                 <th>No</th>
                                                 <th>Kode Unit</th>
@@ -402,7 +402,7 @@
                                                 <th>Jenis Standar</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody  class="my-text">
                                             @foreach ($assessis->units as $value)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
@@ -421,13 +421,13 @@
             <div class="col-lg-12">
                 <div class="cards">
                     <div class="card-header">
-                        <h4 class="card-title">Berkas Kelengkapan Pemohon </h4>
+                        <h4 class="font-weight-bold">Berkas Kelengkapan Pemohon </h4>
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
                             <div class="row">
                                 <div class="col-xl-6">
-                                    <label class="my-text">1.&ensp; Ijazah Pendidikan Terakhir ( Minimal SMA)
+                                    <label class="font-weight-bold text-success">1.&ensp; Ijazah Pendidikan Terakhir ( Minimal SMA)
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="input-group mb-3">
@@ -443,7 +443,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <label class="my-text">2.&ensp; Pas Foto Berwarna
+                                    <label class="font-weight-bold text-success">2.&ensp; Pas Foto Berwarna
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="input-group mb-3">
@@ -461,7 +461,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
-                                    <label class="my-text">3.&ensp; KTP/SIM/Paspor
+                                    <label class="font-weight-bold text-success">3.&ensp; KTP/SIM/Paspor
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="input-group mb-3">
@@ -477,7 +477,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <label class="my-text">4.&ensp; Transkip Nilai
+                                    <label class="font-weight-bold text-success">4.&ensp; Transkip Nilai
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="input-group mb-3">
@@ -495,7 +495,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
-                                    <label class="my-text">5.&ensp; Surat Keterangan Pengalaman Kerja Minimal 1
+                                    <label class="font-weight-bold text-success">5.&ensp; Surat Keterangan Pengalaman Kerja Minimal 1
                                         Tahun
                                         (Jika Ada)
                                     </label>
@@ -518,7 +518,7 @@
             <div class="col-lg-12">
                 <div class="cards">
                     <div class="card-header">
-                        <h4 class="card-title">Halaman Persetujuan</h4>
+                        <h4 class="font-weight-bold ">Halaman Persetujuan</h4>
                     </div>
                     <div class="card-body">
                         <div class="basic-form">

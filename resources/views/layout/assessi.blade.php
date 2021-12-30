@@ -50,8 +50,6 @@
                             <h4>
                         <a href="/beranda" aria-expanded="false"><i class="icon icon-home"></i>&nbsp; Beranda</a></h4>
                         </div>
-
-
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
