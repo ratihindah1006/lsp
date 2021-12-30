@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Apl01 extends Model
 {
-    protected $table = "apl01s";
+    
     protected $primaryKey = "id";
     protected $fillable = [
         'assessi_id', 'nik','name','domicile','place_of_birth','date_of_birth','gender','nationality','address','email','no_hp',

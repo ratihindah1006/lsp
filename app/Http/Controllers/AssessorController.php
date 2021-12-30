@@ -35,10 +35,12 @@ class AssessorController extends Controller
 
     public function apl01(AssessiModel $assessi)
     {
+        $assessor = AssessorModel::find(Auth::user()->id);
         return view('assessor.apl01', [
           //  'assessi'=>$assessi,
            'apl01' => $assessi->apl01,
             'title' => 'Skema',
+            'assessis'=> $assessor->schema,
 
         ]);
     }
