@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Assessor;
+use App\Models\APL02Model;
+use App\Models\AssessorModel;
+use App\Models\AssessiModel;
+use App\Models\Apl01;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class AssessorController extends Controller
@@ -18,5 +22,26 @@ class AssessorController extends Controller
             'title'=> 'assessor',
         ]);
     }
+
+    public function list(AssessiModel $assessi)
+    {
+        $assessor = AssessorModel::find(Auth::user()->id);
+        return view('assessor.listAssessi',[
+            'title'=> 'List Assessi',
+            'assessi'=>$assessi->apl01,
+            'assessis' => $assessor->assessis,
+        ]);
+    }
+
+    public function apl01(AssessiModel $assessi)
+    {
+        return view('assessor.apl01', [
+          //  'assessi'=>$assessi,
+           'apl01' => $assessi->apl01,
+            'title' => 'Skema',
+
+        ]);
+    }
+
 
 }
