@@ -47,12 +47,12 @@
                                         </label>
                                         <div class="col-lg-6">
                                             <input type="text" class="form-control @error('nik') is-invalid @enderror"
-                                            @if ($apl01 != null){
-                                                value= "{{ $apl01->nik }}"
-                                                }else{
-                                                value="{{ old('nik') }}"
-                                                }
-                                                @endif id="nik" name="nik">
+                                                @if ($apl01 != null){
+                                            value= "{{ $apl01->nik }}"
+                                            }else{
+                                            value="{{ old('nik') }}"
+                                            }
+                                            @endif id="nik" name="nik">
                                             @error('nik')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -66,13 +66,13 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
-                                            <select class="form-control @error('gender') is-invalid @enderror"
-                                             id="gender"
+                                            <select class="form-control @error('gender') is-invalid @enderror" id="gender"
                                                 name="gender">
                                                 <option value="">- - Pilih - -</option>
-                                                <option value="male" {{($apl01->gender === 'male') ? 'selected' : '' }}>
+                                                <option value="male" {{ $apl01->gender === 'male' ? 'selected' : '' }}>
                                                     Laki-Laki</option>
-                                                <option value="female" {{($apl01->gender ==='female') ? 'selected' : '' }}>
+                                                <option value="female"
+                                                    {{ $apl01->gender === 'female' ? 'selected' : '' }}>
                                                     Perempuan</option>
                                             </select>
                                             @error('gender')
@@ -90,12 +90,12 @@
                                             <input type="text"
                                                 class="form-control @error('place_of_birth') is-invalid @enderror"
                                                 @if ($apl01 != null){
-                                                    value= "{{ $apl01->place_of_birth }}"
-                                                    }else{
-                                                    value="{{ old('place_of_birth') }}"
-                                                    }
-                                                    @endif id="place_of_birth"
-                                                name="place_of_birth">
+                                            value= "{{ $apl01->place_of_birth }}"
+                                            }else{
+                                            value="{{ old('place_of_birth') }}"
+                                            }
+                                            @endif id="place_of_birth"
+                                            name="place_of_birth">
                                             @error('place_of_birth')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -111,12 +111,12 @@
                                             <input type="date"
                                                 class="form-control @error('date_of_birth') is-invalid @enderror"
                                                 @if ($apl01 != null){
-                                                    value= "{{ $apl01->date_of_birth }}"
-                                                    }else{
-                                                    value="{{ old('date_of_birth') }}"
-                                                    }
-                                                    @endif id="date_of_birth"
-                                                name="date_of_birth">
+                                            value= "{{ $apl01->date_of_birth }}"
+                                            }else{
+                                            value="{{ old('date_of_birth') }}"
+                                            }
+                                            @endif id="date_of_birth"
+                                            name="date_of_birth">
                                             @error('date_of_birth')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -131,12 +131,12 @@
                                         </label>
                                         <div class="col-lg-6">
                                             <input type="text" class="form-control @error('domicile') is-invalid @enderror"
-                                            @if ($apl01 != null){
-                                                value= "{{ $apl01->domicile }}"
-                                                }else{
-                                                value="{{ old('domicile') }}"
-                                                }
-                                                @endif  id="domicile" name="domicile">
+                                                @if ($apl01 != null){
+                                            value= "{{ $apl01->domicile }}"
+                                            }else{
+                                            value="{{ old('domicile') }}"
+                                            }
+                                            @endif id="domicile" name="domicile">
                                             @error('domicile')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -151,12 +151,12 @@
                                         </label>
                                         <div class="col-lg-6">
                                             <input type="text" class="form-control @error('address') is-invalid @enderror"
-                                            @if ($apl01 != null){
-                                                value= "{{ $apl01->address }}"
-                                                }else{
-                                                value="{{ old('address') }}"
-                                                }
-                                                @endif  id="address" name="address">
+                                                @if ($apl01 != null){
+                                            value= "{{ $apl01->address }}"
+                                            }else{
+                                            value="{{ old('address') }}"
+                                            }
+                                            @endif id="address" name="address">
                                             @error('address')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -171,12 +171,12 @@
                                         </label>
                                         <div class="col-lg-6">
                                             <input type="text" class="form-control @error('no_hp') is-invalid @enderror"
-                                            @if ($apl01 != null){
-                                                value= "{{ $apl01->no_hp }}"
-                                                }else{
-                                                value="{{ old('no_hp') }}"
-                                                }
-                                                @endif  id="no_hp" name="no_hp">
+                                                @if ($apl01 != null){
+                                            value= "{{ $apl01->no_hp }}"
+                                            }else{
+                                            value="{{ old('no_hp') }}"
+                                            }
+                                            @endif id="no_hp" name="no_hp">
                                             @error('no_hp')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -191,12 +191,12 @@
                                         </label>
                                         <div class="col-lg-6">
                                             <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                            @if ($apl01 != null){
-                                                value= "{{ $apl01->email }}"
-                                                }else{
-                                                value="{{ old('email') }}"
-                                                }
-                                                @endif  id="email" name="email">
+                                                @if ($apl01 != null){
+                                            value= "{{ $apl01->email }}"
+                                            }else{
+                                            value="{{ old('email') }}"
+                                            }
+                                            @endif id="email" name="email">
                                             @error('email')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -214,12 +214,14 @@
                                                 id="last_education" name="last_education">
                                                 <option value="">- - Pilih - -</option>
                                                 <option value="sma"
-                                                    {{  ($apl01->last_education == 'sma') ? 'selected' : '' }}>
+                                                    {{ $apl01->last_education == 'sma' ? 'selected' : '' }}>
                                                     SMA</option>
-                                                <option value="s1" {{( $apl01->last_education == 's1') ? 'selected' : '' }}>
+                                                <option value="s1"
+                                                    {{ $apl01->last_education == 's1' ? 'selected' : '' }}>
                                                     S1
                                                 </option>
-                                                <option value="s2" {{ ( $apl01->last_education== 's2') ? 'selected' : '' }}>
+                                                <option value="s2"
+                                                    {{ $apl01->last_education == 's2' ? 'selected' : '' }}>
                                                     S2
                                                 </option>
                                             </select>
@@ -239,10 +241,12 @@
                                             <select class="form-control @error('nationality') is-invalid @enderror"
                                                 id="nationality" name="nationality">
                                                 <option value="">- - Pilih - -</option>
-                                                <option value="wni" {{( $apl01->nationality== 'wni') ? 'selected' : '' }}>
+                                                <option value="wni"
+                                                    {{ $apl01->nationality == 'wni' ? 'selected' : '' }}>
                                                     WNI
                                                 </option>
-                                                <option value="wna" {{(  $apl01->nationality == 'wna' )? 'selected' : '' }}>
+                                                <option value="wna"
+                                                    {{ $apl01->nationality == 'wna' ? 'selected' : '' }}>
                                                     WNA
                                                 </option>
                                             </select>
@@ -263,12 +267,12 @@
                                         </label>
                                         <div class="col-lg-6">
                                             <input type="text" class="form-control @error('comp_name') is-invalid @enderror"
-                                            @if ($apl01 != null){
-                                                value= "{{ $apl01->comp_name }}"
-                                                }else{
-                                                value="{{ old('comp_name') }}"
-                                                }
-                                                @endif  id="comp_name" name="comp_name">
+                                                @if ($apl01 != null){
+                                            value= "{{ $apl01->comp_name }}"
+                                            }else{
+                                            value="{{ old('comp_name') }}"
+                                            }
+                                            @endif id="comp_name" name="comp_name">
                                             @error('comp_name')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -283,12 +287,12 @@
                                         </label>
                                         <div class="col-lg-6">
                                             <input type="text" class="form-control @error('job_title') is-invalid @enderror"
-                                            @if ($apl01 != null){
-                                                value= "{{ $apl01->job_title }}"
-                                                }else{
-                                                value="{{ old('job_title') }}"
-                                                }
-                                                @endif  id="job_title" name="job_title">
+                                                @if ($apl01 != null){
+                                            value= "{{ $apl01->job_title }}"
+                                            }else{
+                                            value="{{ old('job_title') }}"
+                                            }
+                                            @endif id="job_title" name="job_title">
                                             @error('job_title')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -303,12 +307,12 @@
                                         </label>
                                         <div class="col-lg-6">
                                             <input type="text" class="form-control @error('position') is-invalid @enderror"
-                                            @if ($apl01 != null){
-                                                value= "{{ $apl01->position }}"
-                                                }else{
-                                                value="{{ old('position') }}"
-                                                }
-                                                @endif  id="position" name="position">
+                                                @if ($apl01 != null){
+                                            value= "{{ $apl01->position }}"
+                                            }else{
+                                            value="{{ old('position') }}"
+                                            }
+                                            @endif id="position" name="position">
                                             @error('position')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -322,13 +326,13 @@
                                         </label>
                                         <div class="col-lg-6">
                                             <input class="form-control @error('comp_address') is-invalid @enderror"
-                                            @if ($apl01 != null){
-                                                value= "{{ $apl01->comp_address }}"
-                                                }else{
-                                                value="{{ old('comp_address') }}"
-                                                }
-                                                @endif  id="comp_address" name="comp_address"
-                                                rows="5" placeholder="Tuliskan alamat kantor">
+                                                @if ($apl01 != null){
+                                            value= "{{ $apl01->comp_address }}"
+                                            }else{
+                                            value="{{ old('comp_address') }}"
+                                            }
+                                            @endif id="comp_address" name="comp_address"
+                                            rows="5" placeholder="Tuliskan alamat kantor">
                                             @error('comp_address')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -343,14 +347,13 @@
                                         </label>
                                         <div class="col-lg-6">
                                             <input type="text"
-                                                class="form-control @error('comp_telp') is-invalid @enderror"
-                                                @if ($apl01 != null){
-                                                    value= "{{ $apl01->comp_telp }}"
-                                                    }else{
-                                                    value="{{ old('comp_telp') }}"
-                                                    }
-                                                    @endif  id="comp_telp" name="comp_telp"
-                                                placeholder="212-999-0000">
+                                                class="form-control @error('comp_telp') is-invalid @enderror" @if ($apl01 != null){
+                                            value= "{{ $apl01->comp_telp }}"
+                                            }else{
+                                            value="{{ old('comp_telp') }}"
+                                            }
+                                            @endif id="comp_telp" name="comp_telp"
+                                            placeholder="212-999-0000">
                                             @error('comp_telp')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -365,14 +368,13 @@
                                         </label>
                                         <div class="col-lg-6">
                                             <input type="email"
-                                                class="form-control @error('comp_email') is-invalid @enderror"
-                                                @if ($apl01 != null){
-                                                    value= "{{ $apl01->comp_email}}"
-                                                    }else{
-                                                    value="{{ old('comp_email') }}"
-                                                    }
-                                                    @endif  id="comp_email" name="comp_email"
-                                                placeholder="xxxx@mail.com">
+                                                class="form-control @error('comp_email') is-invalid @enderror" @if ($apl01 != null){
+                                            value= "{{ $apl01->comp_email }}"
+                                            }else{
+                                            value="{{ old('comp_email') }}"
+                                            }
+                                            @endif id="comp_email" name="comp_email"
+                                            placeholder="xxxx@mail.com">
                                             @error('comp_email')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -387,12 +389,12 @@
                                         </label>
                                         <div class="col-lg-6">
                                             <input type="text" class="form-control @error('comp_fax') is-invalid @enderror"
-                                            @if ($apl01 != null){
-                                                value= "{{ $apl01->comp_fax}}"
-                                                }else{
-                                                value="{{ old('comp_fax') }}"
-                                                }
-                                                @endif  id="comp_fax" name="comp_fax">
+                                                @if ($apl01 != null){
+                                            value= "{{ $apl01->comp_fax }}"
+                                            }else{
+                                            value="{{ old('comp_fax') }}"
+                                            }
+                                            @endif id="comp_fax" name="comp_fax">
                                             @error('comp_fax')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -409,11 +411,11 @@
                                             <input type="text"
                                                 class="form-control @error('postal_code') is-invalid @enderror"
                                                 @if ($apl01 != null){
-                                                    value= "{{ $apl01->postal_code}}"
-                                                    }else{
-                                                    value="{{ old('postal_code') }}"
-                                                    }
-                                                    @endif  id="postal_code" name="postal_code">
+                                            value= "{{ $apl01->postal_code }}"
+                                            }else{
+                                            value="{{ old('postal_code') }}"
+                                            }
+                                            @endif id="postal_code" name="postal_code">
                                             @error('postal_code')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -445,13 +447,13 @@
                                                 id="sert_schema" name="sert_schema">
                                                 <option value="">- - Pilih - -</option>
                                                 <option value="kkni"
-                                                    {{ ($apl01->sert_schema == 'kkni') ? 'selected' : '' }}>
+                                                    {{ $apl01->sert_schema == 'kkni' ? 'selected' : '' }}>
                                                     KKNI</option>
                                                 <option value="klaster"
-                                                    {{( $apl01->sert_schema == 'klaster') ? 'selected' : '' }}>Klaster
+                                                    {{ $apl01->sert_schema == 'klaster' ? 'selected' : '' }}>Klaster
                                                 </option>
                                                 <option value="okupasi"
-                                                    {{( $apl01->sert_schema == 'okupasi') ? 'selected' : '' }}>Okupasi
+                                                    {{ $apl01->sert_schema == 'okupasi' ? 'selected' : '' }}>Okupasi
                                                 </option>
                                             </select>
                                         </div>
@@ -468,10 +470,10 @@
                                                 id="assessment_purpose" name="assessment_purpose">
                                                 <option value="">- - Pilih - -</option>
                                                 <option value="newSert"
-                                                    {{ ($apl01->assessment_purpose == 'newSert') ? 'selected' : '' }}>
+                                                    {{ $apl01->assessment_purpose == 'newSert' ? 'selected' : '' }}>
                                                     Sertifikasi Ulang</option>
                                                 <option value="reSert"
-                                                    {{ ($apl01->assessment_purpose == 'reSert') ? 'selected' : '' }}>
+                                                    {{ $apl01->assessment_purpose == 'reSert' ? 'selected' : '' }}>
                                                     Sertifikasi Baru</option>
                                             </select>
                                         </div>

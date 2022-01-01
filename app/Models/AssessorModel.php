@@ -12,6 +12,7 @@ class AssessorModel extends Authenticatable
    
     protected $table = "assessor";
     protected $primaryKey = "id";
+    protected $with =["schema","category","assessis"];
     protected $fillable = [
         'name', 'email', 'password', 'field_id', 'schema_id',
     ];

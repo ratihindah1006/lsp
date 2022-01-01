@@ -1,8 +1,8 @@
 @extends('layout.assessi')
 
 @section('container')
-<form action="/beranda" method="post" enctype="multipart/form-data">
-  
+<form action="/list" method="post" enctype="multipart/form-data">
+  @method('put')
     @csrf
     <div class="row">
         <div class="col-lg-12">
@@ -290,6 +290,25 @@
                                         <label class="custom-file-label">Choose file</label>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
+                                for="status">Status
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-lg-6">
+                                <select class="form-control @error('status') is-invalid @enderror" id="status"
+                                    name="status">
+                                    <option value=>- - Pilih - -</option>
+                                    <option value='0' {{ $apl01->status == '0' ? 'selected' : '' }}> 0</option>
+                                    <option value='1'{{ $apl01->status == '1' ? 'selected' : '' }}>1</option>
+                                </select>
+                                @error('status')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                     </div>

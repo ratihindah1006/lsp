@@ -26,12 +26,20 @@ class AssessorController extends Controller
     public function list(AssessiModel $assessi)
     {
         $assessor = AssessorModel::find(Auth::user()->id);
+        //dd($assessor->assessis);
         return view('assessor.listAssessi',[
             'title'=> 'List Assessi',
-            'assessi'=>$assessi->apl01,
+            //'assessi'=>$assessi->apl01,
             'assessis' => $assessor->assessis,
-        ]);
+        ]); 
     }
+    // public function listAssessi(AssessiModel $assessi)
+    // {
+    //     $assessor = AssessorModel::all();
+    //     //dd($assessor->assessis);
+    //     return response()->json([$assessor]);
+        
+    // }
 
     public function apl01(AssessiModel $assessi)
     {
@@ -45,5 +53,17 @@ class AssessorController extends Controller
         ]);
     }
 
-
+    // public function status(Request $request, AssessiModel $assessi)
+    // {
+      
+    //     $validateData = $request->validate([
+    //         'status' => 'required',
+    //     ]);
+    //     Apl01::where('assessi_id', $assessi->id)
+    //         ->update(['status'=>$validateData]);
+        
+    //     dd($validateData);
+    //   // $apl01->save();
+    //     return redirect('/list')->with('success', 'Status berhasil di Update!');
+    // }
 }

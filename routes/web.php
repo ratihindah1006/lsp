@@ -113,8 +113,10 @@ Route::group(['middleware' => 'auth:assessi'], function () {
 Route::group(['middleware' => 'auth:assessor'], function () {
     Route::get('/assessor', [AssessorController::class, 'index']);
     Route::get('/list', [AssessorController::class, 'list']);
-    Route::get('/apl01/{assessi:id}', [AssessorController::class, 'apl01']);
+   // Route::put('/list', [AssessorController::class, 'status']);
+    Route::get('/list/{assessi:id}', [AssessorController::class, 'apl01']);
    
 });
+//Route::get('/listAssessi', [AssessorController::class, 'listAssessi']);
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
