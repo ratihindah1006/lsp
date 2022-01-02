@@ -23,12 +23,11 @@ class AssessorController extends Controller
         ]);
     }
 
-    public function list(AssessiModel $assessi)
+    public function list()
     {
         $assessor = AssessorModel::find(Auth::user()->id);
         return view('assessor.listAssessi',[
             'title'=> 'List Assessi',
-            'assessi'=>$assessi->apl01,
             'assessis' => $assessor->assessis,
         ]);
     }
@@ -37,12 +36,26 @@ class AssessorController extends Controller
     {
         $assessor = AssessorModel::find(Auth::user()->id);
         return view('assessor.apl01', [
-          //  'assessi'=>$assessi,
            'apl01' => $assessi->apl01,
             'title' => 'Skema',
             'assessis'=> $assessor->schema,
 
         ]);
+    }
+
+    public function status(Request $request, AssessiModel $assessi)
+    {
+      
+        $validateData = $request->validate([
+            'status' => 'required',
+        ]);
+        $validateData['assessi_id']=$assessi->id;
+        Apl01::where('assessi_id', $assessi->id)
+            ->update(['status'=>$validateData]);
+        
+        //dd($validateData);
+      //$apl01->save();
+        return redirect('/list')->with('success', 'Status berhasil di Update!');
     }
 
 

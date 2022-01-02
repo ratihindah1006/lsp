@@ -40,10 +40,15 @@
                                                 <td>{{ $value->name }}</td>
                                                 <td>{{ $value->email}}</td>
                                                 <td>
-                                                <a href="/apl01/{{$value->id}}"
-                                                            class="btn btn-primary btn-sm"><span
-                                                                class="ti-info"></span></a>
-                                                        
+                                                @if ($value->apl01 != null)
+                                                                <a href="/list/{{ $value->id }}"
+                                                                    class="btn btn-primary btn-sm"><span
+                                                                        class="ti-info"></span></a>
+                                                            @else
+                                                            <a href="/list/{{ $value->id }}"
+                                                                class="btn btn-primary btn-sm disabled"><span
+                                                                    class="ti-info"></span></a>
+                                                            @endif
                                                     </td>
                                                 </tr>
                                             @endforeach
