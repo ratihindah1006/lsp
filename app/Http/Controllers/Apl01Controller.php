@@ -25,10 +25,11 @@ class Apl01Controller extends Controller
 
     public function store(Request $request, Apl01 $apl01)
     {
+
         $assessi = AssessiModel::find(Auth::user()->id);
-        // dd($assessi->id);
-       $validateData = $request->validate([
-            'nik' => 'required|unique:apl01s',
+
+        $validateData = $request->validate([
+            'nik' => 'required',
             'name' => 'required',
             'domicile' => 'required',
             'place_of_birth' => 'required',
@@ -49,58 +50,29 @@ class Apl01Controller extends Controller
             'postal_code' => 'required',
             'sert_schema' => 'required',
             'assessment_purpose' => 'required',
-            // 'ijazah' => 'required',
-            // 'photo' => 'required|mimes:jpg',
-            // 'ktp' => 'required|mimes:pdf',
-            // 'transcript' => 'required|mimes:pdf',
+            'ijazah' => 'required|mimes:pdf|max:1024',
+            'photo' => 'required|image|file|max:1024',
+            'ktp' => 'required|mimes:pdf|max:1024',
+            'transcript' => 'required|mimes:pdf|max:1024',
+            'assessi_signature' => 'required|image|file|max:1024',
         ]);
-        // $photos = $request->file('photo');
-        // $photoName = $photos->getClientOriginalName();
-        // $apl01 = new Apl01([
-        //     'assessi_id' => $assessi->id,
-        //     'nik' => $request->nik,
-        //     'name' => $request->name,
-        //     'domicile' => $request->domicile,
-        //     'place_of_birth' => $request->place_of_birth,
-        //     'date_of_birth' => $request->date_of_birth,
-        //     'gender' => $request->gender,
-        //     'nationality' => $request->nationality,
-        //     'address' => $request->address,
-        //     'email' => $request->email,
-        //     'no_hp' => $request->no_hp,
-        //     'last_education' => $request->last_education,
-        //     'comp_name' => $request->comp_name,
-        //     'comp_telp' => $request->comp_telp,
-        //     'position' => $request->position,
-        //     'job_title' => $request->job_title,
-        //     'comp_address' => $request->comp_address,
-        //     'comp_email' => $request->comp_email,
-        //     'comp_fax' => $request->comp_fax,
-        //     'postal_code' => $request->postal_code,
-        //     'sert_schema' => $request->sert_schema,
-        //     'assessment_purpose' => $request->assessment_purpose,
-        //     'ijazah' => $request->ijazah,
-        //     'photo' => $photoName,
-        //     'ktp' => $request->ktp,
-        //     'transcript' => $request->transcript,
-        //     'assessor_signature' => $request->assessor_signature,
-        //     'assessi_signature' => $request->assessi_signature,
-        //     'work_exper_certif' => $request->work_exper_certif,
-        //     'note' => $request->note,
-        // ]);
-        // dd($apl01);
-        $validateData['assessi_id']=$assessi->id;
+
+        $validateData['photo'] = $request->file('photo')->store('photo');
+        $validateData['ijazah'] = $request->file('ijazah')->store('ijazah');
+        $validateData['ktp'] = $request->file('ktp')->store('ktp');
+        $validateData['transcript'] = $request->file('transcript')->store('transcript');
+        $validateData['assessi_signature'] = $request->file('assessi_signature')->store('assessi_signature');
+        $validateData['assessi_id'] = $assessi->id;
         $cek = $assessi->apl01;
         //dd($validateData);
-       
-        if($cek==Null){
+
+        if ($cek == Null) {
             Apl01::create($validateData);
-        }else{
+        } else {
             Apl01::where('assessi_id', $assessi->id)
-            ->update($validateData);
+                ->update($validateData);
         }
-        
+
         return redirect('/beranda')->with('success', 'Apl01 Berhasil diinput');
     }
-  
 }

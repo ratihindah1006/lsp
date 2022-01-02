@@ -49,15 +49,15 @@ class AssessorController extends Controller
         $assessi = $assessi->assessi_id;
         $cek = $assessor->assessis;
         $validateData = $request->validate([
+            'assessor_signature'=>'required|image|file|max:1024',
             'status' => 'required',
         ]);
+        $validateData['assessor_signature'] = $request->file('assessor_signature')->store('assessor_signature');
         foreach($cek as $value)
         { 
             if($value->apl01 != null){
                 $value->apl01->update($validateData);
             } }
-        //dd($validateData);
-      //$apl01->save();
         return redirect('/list')->with('success', 'Status berhasil di Update!');
     }
 

@@ -248,37 +248,24 @@
                             <div class="col-xl-6">
                                 <label class="font-weight-bold text-success">1.&ensp; Ijazah Pendidikan Terakhir ( Minimal SMA)</label>
                                 <div class="input-group mb-3">
-                                    <div class="custom-file">
-                                        <input type="file"
-                                            class="custom-file-input" value="{{ old('ijazah', $apl01->ijazah) }}" id="ijazah" name="ijazah" disabled>
-                                        <label class="custom-file-label">Choose file</label>
-                                    </div>
+                                    <iframe type="application/pdf" src="{{ asset('storage/'.$apl01->ijazah) }}" width="600" height="400"></iframe>
                                 </div>
                                 <label class="font-weight-bold text-success">2.&ensp; Pas Foto Berwarna</label>
                                 <div class="input-group mb-3">
-                                    <div class="custom-file">
-                                        <input type="file"
-                                            class="custom-file-input" value="{{ old('photo', $apl01->photo) }}" id="photo" name="photo" disabled>
-                                        <label class="custom-file-label">Choose file</label>
+                                    <div class="col">
+                                        <img src="{{ asset('storage/'.$apl01->photo) }}" width="250px" height="400px">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-6">
                                 <label class="font-weight-bold text-success">3.&ensp; KTP/SIM/Paspor</label>
                             <div class="input-group mb-3">
-                                <div class="custom-file">
-                                    <input type="file"
-                                        class="custom-file-input" value="{{ old('ktp', $apl01->ktp) }}" id="ktp" name="ktp" disabled>
-                                    <label class="custom-file-label">Choose file</label>
-                                </div>
+                                <iframe type="application/pdf" src="{{ asset('storage/'.$apl01->ktp) }}" width="600" height="400"></iframe>
+                               
                             </div>
                             <label class="font-weight-bold text-success">4.&ensp; Transkip Nilai</label>
                             <div class="input-group mb-3">
-                                <div class="custom-file">
-                                    <input type="file"
-                                        class="custom-file-input" value="{{ old('transcript', $apl01->transcript) }}" id="transcript" name="transcript" disabled>
-                                    <label class="custom-file-label">Choose file</label>
-                                </div>
+                                <iframe type="application/pdf" src="{{ asset('storage/'.$apl01->transcript) }}" width="600" height="400"></iframe>
                             </div>
                             </div>
                             <div class="col-xl-12">
@@ -292,25 +279,89 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
-                                for="status">Status
-                                <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-lg-6">
-                                <select class="form-control @error('status') is-invalid @enderror" id="status"
-                                    name="status">
-                                    <option value=>- - Pilih - -</option>
-                                    <option value='0' {{ $apl01->status == '0' ? 'selected' : '' }}> 0</option>
-                                    <option value='1'{{ $apl01->status == '1' ? 'selected' : '' }}>1</option>
-                                </select>
-                                @error('status')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="cards">
+                <div class="card-header">
+                    <h4 class="font-weight-bold ">Halaman Persetujuan</h4>
+                </div>
+                <div class="card-body">
+                    <div class="basic-form">
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="form-group row">
+                                    <p class="my-text">
+                                        Berdasarkan Ketentuan Persyaratan Dasar Pemohon,<br>
+                                        Maka Pemohon &emsp;:<br>
+                                        Diterima / Ditolak
+                                    </p>
+                                </div>
+                                <div class="form-group row">
+                                    <label class=" font-weight-bold text-success"
+                                        for="status">Status
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <select class="form-control @error('status') is-invalid @enderror" id="status"
+                                            name="status">
+                                            <option value=>- - Pilih - -</option>
+                                            <option value='0' {{ $apl01->status == '0' ? 'selected' : '' }}> Ditolak</option>
+                                            <option value='1'{{ $apl01->status == '1' ? 'selected' : '' }}>Diterima</option>
+                                        </select>
+                                        @error('status')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
-                                @enderror
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="form-group row">
+                                    <label class="my-text">Catatan&emsp;:</label>
+                                    <textarea class="form-control @error('note') is-invalid @enderror"
+                                        value="{{ old('note') }}" id="note" name="note" rows="5"
+                                        placeholder="Tuliskan alamat lengkap"></textarea>
+                                    @error('note')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="form-group row">
+                                    <div class="input-group mb-3">
+                                        <input type="file" class="form-control @error('assessor_signature') is-invalid @enderror"
+                                            value="{{ old('assessor_signature') }}" id="assessor_signature" name="assessor_signature">
+                                        @error('assessor_signature')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <label class="my-text txt ">TTD Assssor
+                                        <span class="text-danger txt">*</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="form-group row">
+                                    <div class="input-group mb-3">
+                                        <img class="txt" src="{{ asset('storage/'.$apl01->assessi_signature) }}" width="200px" height="150px">
+                                    </div>
+                                    <label class="my-text txt ">TTD Assssi
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
