@@ -612,7 +612,7 @@
                                         <label class="my-text">Catatan&emsp;:</label>
                                         <textarea class="form-control @error('note') is-invalid @enderror"
                                             value="{{ old('note') }}" id="note" name="note" rows="5"
-                                            placeholder="Tuliskan alamat lengkap"></textarea>
+                                            placeholder="catatan" disabled></textarea>
                                         @error('note')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -625,16 +625,7 @@
                                 <div class="col-xl-6">
                                     <div class="form-group row">
                                         <div class="input-group mb-3">
-                                            <input type="file" class="form-control @error('assessor_signature') is-invalid @enderror"
-                                                value="{{ old('assessor_signature') }}" id="assessor_signature" name="assessor_signature">
-                                            @error('assessor_signature')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
                                         </div>
-                                        <label class="my-text txt ">TTD Assssor
-                                        </label>
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
