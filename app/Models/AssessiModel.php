@@ -12,7 +12,6 @@ class AssessiModel extends Authenticatable
     use Notifiable;
     
     protected $table = "assessi";
-    protected $with = ["apl01","assessor","category","schema"];
     protected $primaryKey = "id";
     protected $fillable = [
         'name', 'email', 'password', 'assessor_id', 'field_id', 'schema_id',
