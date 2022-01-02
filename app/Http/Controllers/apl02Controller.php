@@ -26,6 +26,7 @@ class Apl02Controller extends Controller
                 'title' => 'apl02',
                 'asesi' => $assessi,
                 'skema' => $assessi->schema,
+                'apl01' => $assessi->apl01,
                 'asesor' => $assessi->assessor,
                 'units' => $assessi->schema->units,
             ]
