@@ -14,6 +14,7 @@
     <link href="/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet">
     <link href="/assets/css/style.css" rel="stylesheet">
     <link href="/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    
 
 </head>
 

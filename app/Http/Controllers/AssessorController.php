@@ -23,29 +23,19 @@ class AssessorController extends Controller
         ]);
     }
 
-    public function list(AssessiModel $assessi)
+    public function list()
     {
         $assessor = AssessorModel::find(Auth::user()->id);
-        //dd($assessor->assessis);
         return view('assessor.listAssessi',[
             'title'=> 'List Assessi',
-            //'assessi'=>$assessi->apl01,
             'assessis' => $assessor->assessis,
-        ]); 
+        ]);
     }
-    // public function listAssessi(AssessiModel $assessi)
-    // {
-    //     $assessor = AssessorModel::all();
-    //     //dd($assessor->assessis);
-    //     return response()->json([$assessor]);
-        
-    // }
 
     public function apl01(AssessiModel $assessi)
     {
         $assessor = AssessorModel::find(Auth::user()->id);
         return view('assessor.apl01', [
-          //  'assessi'=>$assessi,
            'apl01' => $assessi->apl01,
             'title' => 'Skema',
             'assessis'=> $assessor->schema,
@@ -53,17 +43,23 @@ class AssessorController extends Controller
         ]);
     }
 
-    // public function status(Request $request, AssessiModel $assessi)
-    // {
-      
-    //     $validateData = $request->validate([
-    //         'status' => 'required',
-    //     ]);
-    //     Apl01::where('assessi_id', $assessi->id)
-    //         ->update(['status'=>$validateData]);
-        
-    //     dd($validateData);
-    //   // $apl01->save();
-    //     return redirect('/list')->with('success', 'Status berhasil di Update!');
-    // }
+    public function status(Request $request, AssessiModel $assessi, Apl01 $apl01)
+    {
+        $assessor = AssessorModel::find(Auth::user()->id);
+        $assessi = $assessi->assessi_id;
+        $cek = $assessor->assessis;
+        $validateData = $request->validate([
+            'status' => 'required',
+        ]);
+        foreach($cek as $value)
+        { 
+            if($value->apl01 != null){
+                $value->apl01->update($validateData);
+            } }
+        //dd($validateData);
+      //$apl01->save();
+        return redirect('/list')->with('success', 'Status berhasil di Update!');
+    }
+
+
 }

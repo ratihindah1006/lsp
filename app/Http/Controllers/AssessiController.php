@@ -15,11 +15,11 @@ class AssessiController extends Controller
      */
     public function index(AssessiModel $assessis)
     {
-      
+        $assessi = AssessiModel::find(Auth::user()->id);
+
         return view('assessi.assessiDashboard',[
-           
             'title'=> 'assessi',
-            
+            'assessi'=> $assessi->apl01,
         ]);
     }
     

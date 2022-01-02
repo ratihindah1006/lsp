@@ -42,14 +42,22 @@
                                                         <td>
                                                             @if ($value->apl01 != null)
                                                                 <a href="/list/{{ $value->id }}"
-                                                                    class="btn btn-primary btn-sm"><span
-                                                                        class="ti-info"></span></a>
+                                                                    class="btn btn-success btn-sm">
+                                                                    <span>Apl 01</span></a>
                                                             @else
                                                             <a href="/list/{{ $value->id }}"
-                                                                class="btn btn-primary btn-sm disabled"><span
-                                                                    class="ti-info"></span></a>
+                                                                class="btn btn-success btn-sm disabled">
+                                                                <span>Apl 01</span></a>
                                                             @endif
-
+                                                            @if ($value->apl02 != null)
+                                                                <a href="/list/{{ $value->id }}"
+                                                                    class="btn btn-primary btn-sm">
+                                                                    <span>Apl 02</span></a>
+                                                            @else
+                                                            <a href="/list/{{ $value->id }}"
+                                                                class="btn btn-primary btn-sm disabled">
+                                                                <span>Apl 02</span></a>
+                                                            @endif
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -63,4 +71,5 @@
                 </div>
             </div>
         </div>
+    </div>
     @endsection

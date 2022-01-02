@@ -14,5 +14,21 @@
             </ol>
         </div>
     </div>
+    <div class="col">
+        <div class="row ">
+            <a href="/apl01" class="btn btn-success btn-sm">
+                <span>Apl 01</span>
+            </a>&emsp;
+            @if($assessi->status == '1')
+                <a href="/apl02" class="btn btn-success btn-sm">
+                    <span>Apl 02</span>
+                </a>
+            @else
+            <a href="/apl02" class="btn btn-success btn-sm disabled">
+                <span>Apl 02</span>
+            </a>
+            @endif
+        </div>
+    </div>
 @endsection
 

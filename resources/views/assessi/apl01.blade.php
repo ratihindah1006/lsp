@@ -69,10 +69,9 @@
                                             <select class="form-control @error('gender') is-invalid @enderror" id="gender"
                                                 name="gender">
                                                 <option value="">- - Pilih - -</option>
-                                                <option value="male" {{ $apl01->gender === 'male' ? 'selected' : '' }}>
+                                                <option value="laki-laki" @if ($apl01 != null){{ $apl01->gender === 'laki-laki' ? 'selected' : '' }}@else{{ old('gender') == 'laki-laki' ? 'selected' : '' }}@endif>
                                                     Laki-Laki</option>
-                                                <option value="female"
-                                                    {{ $apl01->gender === 'female' ? 'selected' : '' }}>
+                                                <option value="perempuan" @if ($apl01 != null) {{ $apl01->gender === 'perempuan' ? 'selected' : '' }} @else {{ old('gender') == 'perempuan' ? 'selected' : '' }}@endif>
                                                     Perempuan</option>
                                             </select>
                                             @error('gender')
@@ -214,14 +213,14 @@
                                                 id="last_education" name="last_education">
                                                 <option value="">- - Pilih - -</option>
                                                 <option value="sma"
-                                                    {{ $apl01->last_education == 'sma' ? 'selected' : '' }}>
+                                                @if ($apl01 != null){{ $apl01->last_education === 'sma' ? 'selected' : '' }}@else{{ old('gelast_education') == 'sma' ? 'selected' : '' }}@endif>
                                                     SMA</option>
                                                 <option value="s1"
-                                                    {{ $apl01->last_education == 's1' ? 'selected' : '' }}>
+                                                @if ($apl01 != null){{ $apl01->last_education === 's1' ? 'selected' : '' }}@else{{ old('gelast_education') == 's1' ? 'selected' : '' }}@endif>
                                                     S1
                                                 </option>
                                                 <option value="s2"
-                                                    {{ $apl01->last_education == 's2' ? 'selected' : '' }}>
+                                                @if ($apl01 != null){{ $apl01->last_education === 's2' ? 'selected' : '' }}@else{{ old('gelast_education') == 's2' ? 'selected' : '' }}@endif>
                                                     S2
                                                 </option>
                                             </select>
@@ -241,12 +240,12 @@
                                             <select class="form-control @error('nationality') is-invalid @enderror"
                                                 id="nationality" name="nationality">
                                                 <option value="">- - Pilih - -</option>
-                                                <option value="wni"
-                                                    {{ $apl01->nationality == 'wni' ? 'selected' : '' }}>
+                                                <option value="wni" 
+                                                    @if ($apl01 != null){{ $apl01->nationality === 'wni' ? 'selected' : '' }}@else{{ old('nationality') == 'wni' ? 'selected' : '' }}@endif>
                                                     WNI
                                                 </option>
-                                                <option value="wna"
-                                                    {{ $apl01->nationality == 'wna' ? 'selected' : '' }}>
+                                                <option value="wna" 
+                                                    @if ($apl01 != null){{ $apl01->nationality === 'wna' ? 'selected' : '' }}@else{{ old('nationality') == 'wna' ? 'selected' : '' }}@endif>
                                                     WNA
                                                 </option>
                                             </select>
@@ -447,13 +446,13 @@
                                                 id="sert_schema" name="sert_schema">
                                                 <option value="">- - Pilih - -</option>
                                                 <option value="kkni"
-                                                    {{ $apl01->sert_schema == 'kkni' ? 'selected' : '' }}>
-                                                    KKNI</option>
+                                                    @if ($apl01 != null){{ $apl01->sert_schema === 'kkni' ? 'selected' : '' }}@else{{ old('sert_schema') == 'kkni' ? 'selected' : '' }}@endif>KKNI
+                                                </option>
                                                 <option value="klaster"
-                                                    {{ $apl01->sert_schema == 'klaster' ? 'selected' : '' }}>Klaster
+                                                    @if ($apl01 != null){{ $apl01->sert_schema === 'klaster' ? 'selected' : '' }}@else{{ old('sert_schema') == 'klaster' ? 'selected' : '' }}@endif>Klaster
                                                 </option>
                                                 <option value="okupasi"
-                                                    {{ $apl01->sert_schema == 'okupasi' ? 'selected' : '' }}>Okupasi
+                                                    @if ($apl01 != null){{ $apl01->sert_schema === 'okupasi' ? 'selected' : '' }}@else{{ old('sert_schema') == 'okupasi' ? 'selected' : '' }}@endif>Okupasi
                                                 </option>
                                             </select>
                                         </div>
@@ -469,11 +468,11 @@
                                             <select class="form-control @error('assessment_purpose') is-invalid @enderror"
                                                 id="assessment_purpose" name="assessment_purpose">
                                                 <option value="">- - Pilih - -</option>
-                                                <option value="newSert"
-                                                    {{ $apl01->assessment_purpose == 'newSert' ? 'selected' : '' }}>
+                                                <option value="sertifikasi baru"
+                                                    @if ($apl01 != null){{ $apl01->assessment_purpose === 'sertifikasi baru' ? 'selected' : '' }}@else{{ old('assessment_purpose') == 'sertifikasi baru' ? 'selected' : '' }}@endif>
                                                     Sertifikasi Ulang</option>
-                                                <option value="reSert"
-                                                    {{ $apl01->assessment_purpose == 'reSert' ? 'selected' : '' }}>
+                                                <option value="sertifikasi ulang"
+                                                @if ($apl01 != null){{ $apl01->assessment_purpose === 'sertifikasi ulang' ? 'selected' : '' }}@else{{ old('assessment_purpose') == 'sertifikasi ulang' ? 'selected' : '' }}@endif>
                                                     Sertifikasi Baru</option>
                                             </select>
                                         </div>
