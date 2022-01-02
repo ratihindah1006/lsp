@@ -14,7 +14,7 @@ class Apl01 extends Model
         'assessi_id', 'nik','name','domicile','place_of_birth','date_of_birth','gender','nationality','address','email','no_hp',
         'last_education','comp_name','job_title','position','comp_address','comp_telp','comp_fax','comp_email',
         'postal_code','sert_schema','assessment_purpose','ijazah','photo','ktp','transcript','work_exper_certif','assessi_signature',
-        'assessor_signature','note'
+        'assessor_signature','note','status'
     ];
   
     use HasFactory;

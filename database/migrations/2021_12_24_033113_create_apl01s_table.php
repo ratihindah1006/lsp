@@ -38,14 +38,15 @@ class CreateApl01sTable extends Migration
             $table->string('postal_code');
             $table->string('sert_schema');
             $table->string('assessment_purpose');
-            $table->string('ijazah');
-            $table->string('photo');
-            $table->string('ktp');
-            $table->string('transcript');
-            $table->string('work_exper_certif');
-            $table->string('assessi_signature');
-            $table->string('assessor_signature');
-            $table->string('note');
+            $table->string('ijazah')->nullable();
+            $table->string('photo')->nullable();
+            $table->string('ktp')->nullable();
+            $table->string('transcript')->nullable();
+            $table->string('work_exper_certif')->nullable();
+            $table->string('assessi_signature')->nullable();
+            $table->string('assessor_signature')->nullable();
+            $table->string('note')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
