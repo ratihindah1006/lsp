@@ -212,15 +212,12 @@
                                             <select class="form-control @error('last_education') is-invalid @enderror"
                                                 id="last_education" name="last_education">
                                                 <option value="">- - Pilih - -</option>
-                                                <option value="sma"
-                                                @if ($apl01 != null){{ $apl01->last_education === 'sma' ? 'selected' : '' }}@else{{ old('gelast_education') == 'sma' ? 'selected' : '' }}@endif>
+                                                <option value="sma" @if ($apl01 != null){{ $apl01->last_education === 'sma' ? 'selected' : '' }}@else{{ old('gelast_education') == 'sma' ? 'selected' : '' }}@endif>
                                                     SMA</option>
-                                                <option value="s1"
-                                                @if ($apl01 != null){{ $apl01->last_education === 's1' ? 'selected' : '' }}@else{{ old('gelast_education') == 's1' ? 'selected' : '' }}@endif>
+                                                <option value="s1" @if ($apl01 != null){{ $apl01->last_education === 's1' ? 'selected' : '' }}@else{{ old('gelast_education') == 's1' ? 'selected' : '' }}@endif>
                                                     S1
                                                 </option>
-                                                <option value="s2"
-                                                @if ($apl01 != null){{ $apl01->last_education === 's2' ? 'selected' : '' }}@else{{ old('gelast_education') == 's2' ? 'selected' : '' }}@endif>
+                                                <option value="s2" @if ($apl01 != null){{ $apl01->last_education === 's2' ? 'selected' : '' }}@else{{ old('gelast_education') == 's2' ? 'selected' : '' }}@endif>
                                                     S2
                                                 </option>
                                             </select>
@@ -240,12 +237,10 @@
                                             <select class="form-control @error('nationality') is-invalid @enderror"
                                                 id="nationality" name="nationality">
                                                 <option value="">- - Pilih - -</option>
-                                                <option value="wni" 
-                                                    @if ($apl01 != null){{ $apl01->nationality === 'wni' ? 'selected' : '' }}@else{{ old('nationality') == 'wni' ? 'selected' : '' }}@endif>
+                                                <option value="wni" @if ($apl01 != null){{ $apl01->nationality === 'wni' ? 'selected' : '' }}@else{{ old('nationality') == 'wni' ? 'selected' : '' }}@endif>
                                                     WNI
                                                 </option>
-                                                <option value="wna" 
-                                                    @if ($apl01 != null){{ $apl01->nationality === 'wna' ? 'selected' : '' }}@else{{ old('nationality') == 'wna' ? 'selected' : '' }}@endif>
+                                                <option value="wna" @if ($apl01 != null){{ $apl01->nationality === 'wna' ? 'selected' : '' }}@else{{ old('nationality') == 'wna' ? 'selected' : '' }}@endif>
                                                     WNA
                                                 </option>
                                             </select>
@@ -445,14 +440,11 @@
                                             <select class="form-control @error('sert_schema') is-invalid @enderror"
                                                 id="sert_schema" name="sert_schema">
                                                 <option value="">- - Pilih - -</option>
-                                                <option value="kkni"
-                                                    @if ($apl01 != null){{ $apl01->sert_schema === 'kkni' ? 'selected' : '' }}@else{{ old('sert_schema') == 'kkni' ? 'selected' : '' }}@endif>KKNI
+                                                <option value="kkni" @if ($apl01 != null){{ $apl01->sert_schema === 'kkni' ? 'selected' : '' }}@else{{ old('sert_schema') == 'kkni' ? 'selected' : '' }}@endif>KKNI
                                                 </option>
-                                                <option value="klaster"
-                                                    @if ($apl01 != null){{ $apl01->sert_schema === 'klaster' ? 'selected' : '' }}@else{{ old('sert_schema') == 'klaster' ? 'selected' : '' }}@endif>Klaster
+                                                <option value="klaster" @if ($apl01 != null){{ $apl01->sert_schema === 'klaster' ? 'selected' : '' }}@else{{ old('sert_schema') == 'klaster' ? 'selected' : '' }}@endif>Klaster
                                                 </option>
-                                                <option value="okupasi"
-                                                    @if ($apl01 != null){{ $apl01->sert_schema === 'okupasi' ? 'selected' : '' }}@else{{ old('sert_schema') == 'okupasi' ? 'selected' : '' }}@endif>Okupasi
+                                                <option value="okupasi" @if ($apl01 != null){{ $apl01->sert_schema === 'okupasi' ? 'selected' : '' }}@else{{ old('sert_schema') == 'okupasi' ? 'selected' : '' }}@endif>Okupasi
                                                 </option>
                                             </select>
                                         </div>
@@ -468,11 +460,9 @@
                                             <select class="form-control @error('assessment_purpose') is-invalid @enderror"
                                                 id="assessment_purpose" name="assessment_purpose">
                                                 <option value="">- - Pilih - -</option>
-                                                <option value="sertifikasi baru"
-                                                    @if ($apl01 != null){{ $apl01->assessment_purpose === 'sertifikasi baru' ? 'selected' : '' }}@else{{ old('assessment_purpose') == 'sertifikasi baru' ? 'selected' : '' }}@endif>
+                                                <option value="sertifikasi baru" @if ($apl01 != null){{ $apl01->assessment_purpose === 'sertifikasi baru' ? 'selected' : '' }}@else{{ old('assessment_purpose') == 'sertifikasi baru' ? 'selected' : '' }}@endif>
                                                     Sertifikasi Ulang</option>
-                                                <option value="sertifikasi ulang"
-                                                @if ($apl01 != null){{ $apl01->assessment_purpose === 'sertifikasi ulang' ? 'selected' : '' }}@else{{ old('assessment_purpose') == 'sertifikasi ulang' ? 'selected' : '' }}@endif>
+                                                <option value="sertifikasi ulang" @if ($apl01 != null){{ $apl01->assessment_purpose === 'sertifikasi ulang' ? 'selected' : '' }}@else{{ old('assessment_purpose') == 'sertifikasi ulang' ? 'selected' : '' }}@endif>
                                                     Sertifikasi Baru</option>
                                             </select>
                                         </div>
@@ -535,85 +525,64 @@
                                         Minimal SMA)
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <div class="input-group mb-3">
-                                        <div class="custom-file">
-                                            <input type="file"
-                                                class="custom-file-input  @error('ijazah') is-invalid @enderror"
-                                                value="{{ old('ijazah') }}" id="ijazah" name="ijazah">
-                                            <label class="custom-file-label">Choose file</label>
-                                            @error('ijazah')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
+                                    <div class=" input-group mb-3">
+                                        <input class="form-control" type="file"
+                                            class="form-group @error('ijazah') is-invalid @enderror"
+                                            value="{{ old('ijazah') }}" id="ijazah" name="ijazah">
+                                        @error('ijazah')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                     <label class="font-weight-bold text-success">2.&ensp; Pas Foto Berwarna
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <div class="input-group mb-3">
-                                        <div class="custom-file">
-                                            <input type="file"
-                                                class="custom-file-input  @error('photo') is-invalid @enderror"
-                                                value="{{ old('photo') }}" id="photo" name="photo">
-                                            <label class="custom-file-label">Choose file</label>
-                                            @error('photo')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
+                                    <div class="mb-3">
+                                        <input type="file"
+                                            class="form-control
+                                         @error('photo') is-invalid @enderror"
+                                            value="{{ old('photo') }}" id="photo" name="photo">
+                                        @error('photo')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
                                     <label class="font-weight-bold text-success">3.&ensp; KTP/SIM/Paspor
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <div class="input-group mb-3">
-                                        <div class="custom-file">
-                                            <input type="file"
-                                                class="custom-file-input  @error('ktp') is-invalid @enderror"
-                                                value="{{ old('ktp') }}" id="ktp" name="ktp">
-                                            <label class="custom-file-label">Choose file</label>
-                                            @error('ktp')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
+                                    <div class="mb-3">
+                                        <input type="file" class="form-control @error('ktp') is-invalid @enderror"
+                                            value="{{ old('ktp') }}" id="ktp" name="ktp">
+                                        @error('ktp')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                     <label class="font-weight-bold text-success">4.&ensp; Transkip Nilai
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <div class="input-group mb-3">
-                                        <div class="custom-file">
-                                            <input type="file"
-                                                class="custom-file-input  @error('transcript') is-invalid @enderror"
-                                                value="{{ old('transcript') }}" id="transcript" name="transcript">
-                                            <label class="custom-file-label">Choose file</label>
-                                            @error('transcript')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
+                                    <div class="mb-3">
+                                        <input type="file" class="form-control @error('transcript') is-invalid @enderror"
+                                            value="{{ old('transcript') }}" id="transcript" name="transcript">
+                                        @error('transcript')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
                                     <label class="font-weight-bold text-success">5.&ensp; Surat Keterangan Pengalaman Kerja
-                                        Minimal 1
-                                        Tahun
-                                        (Jika Ada)
+                                        Minimal 1 Tahun (Jika Ada)
                                     </label>
-                                    <div class="form-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input form-control "
-                                                id="work_exper_certif" name="work_exper_certif">
-                                            <label for="exampleInputEmail1" class="custom-file-label"></label>
-                                        </div>
-                                        @error('work_exper_certif')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
+                                    <div class="mb-3">
+                                        <input type="file" class="form-control" id="work_exper_certif"
+                                            name="work_exper_certif">
                                     </div>
                                 </div>
                             </div>
@@ -655,19 +624,14 @@
                             <div class="row">
                                 <div class="col-xl-6">
                                     <div class="form-group row">
-                                        <div class="input-group mb-3 ">
-                                            <div class="custom-file">
-                                                <input type="file"
-                                                    class="custom-file-input  @error('assessor_signature') is-invalid @enderror"
-                                                    value="{{ old('assessor_signature') }}" id="assessor_signature"
-                                                    name="assessor_signature">
-                                                <label class="custom-file-label">Choose file</label>
-                                                @error('assessor_signature')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
-                                            </div>
+                                        <div class="input-group mb-3">
+                                            <input type="file" class="form-control @error('assessor_signature') is-invalid @enderror"
+                                                value="{{ old('assessor_signature') }}" id="assessor_signature" name="assessor_signature">
+                                            @error('assessor_signature')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <label class="my-text txt ">TTD Assssor
                                         </label>
@@ -676,18 +640,13 @@
                                 <div class="col-xl-6">
                                     <div class="form-group row">
                                         <div class="input-group mb-3">
-                                            <div class="custom-file">
-                                                <input type="file"
-                                                    class="custom-file-input  @error('assessi_signature') is-invalid @enderror"
-                                                    value="{{ old('assessi_signature') }}" id="assessi_signature"
-                                                    name="assessi_signature">
-                                                <label class="custom-file-label">Choose file</label>
-                                                @error('assessi_signature')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
-                                            </div>
+                                            <input type="file" class="form-control @error('assessi_signature') is-invalid @enderror"
+                                                value="{{ old('assessi_signature') }}" id="assessi_signature" name="assessi_signature">
+                                            @error('assessi_signature')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <label class="my-text txt ">TTD Assssi
                                             <span class="text-danger txt">*</span>
