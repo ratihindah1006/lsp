@@ -12,28 +12,8 @@ class APL02Model extends Model
     ];
     use HasFactory;
 
-    public function assessor()
+    public function assessi()
     {
-        return $this->belongsTo(AssessorModel::class, 'assessor_id', 'id');
-    }
-
-    public function category()
-    {
-        return $this->belongsTo(CategoryModel::class, 'field_id', 'id');
-    }
-
-    public function schema()
-    {
-        return $this->belongsTo(SchemaModel::class, 'schema_id', 'id');
-    }
-
-    public function apl01()
-    {
-        return $this->belongsTo(APL01Model::class, 'apl01_id', 'id');
-    }
-
-    public function units()
-    {
-        return $this->hasMany(UnitModel::class, 'schema_id', 'id'); 
+        return $this->belongsTo(AssessiModel::class, 'assessi_id', 'id');
     }
 }
