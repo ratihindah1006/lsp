@@ -1,4 +1,4 @@
-@extends('layout.assessi')
+@extends('layout.assessor')
 
 @section('container')
 <form action="/list" method="post" enctype="multipart/form-data">
@@ -11,7 +11,7 @@
                 <div class="card-header">
                     <button type="submit" class="btn btn-whatsapp button-right">Simpan <span class="btn-icon-right"><i class="fa fa-check"></i></span>
                     </button>&nbsp;
-                    <a href="/beranda" type="submit" class="btn btn-reddit ">Batal <span class="btn-icon-right"><i class="fa fa-close"></i></span>
+                    <a href="/list" type="submit" class="btn btn-reddit ">Batal <span class="btn-icon-right"><i class="fa fa-close"></i></span>
                     </a>
                 </div>
                 <div class="card-body">

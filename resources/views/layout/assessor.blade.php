@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -14,7 +13,7 @@
     <link href="/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet">
     <link href="/assets/css/style.css" rel="stylesheet">
     <link href="/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
-    
+
 
 </head>
 
@@ -48,22 +47,26 @@
                 <nav class="navbar navbar-expand">
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="navbar-nav header-left">
-                            <h4>
-                        <a href="/beranda" class="text-white " aria-expanded="false" ><i class="icon icon-home text-white font-weight-bold"></i>&nbsp; Beranda</a></h4>
+                            <li>
+                                <a href="/beranda" class="text-white " aria-expanded="false"><i
+                                        class="icon icon-home text-white "></i>&nbsp; Beranda</a>&emsp;
+                                <a href="/list" class="text-white " aria-expanded="false"><i
+                                        class=" ti-view-list-alt text-white "></i>&nbsp; Daftar Assessi</a>
+                            </li>
                         </div>
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <i class="mdi mdi-account text-white"></i>
+                                    <i class="mdi mdi-account"></i>
                                 </a>
-                                        <span class="user-avatar text-white">Rahmadila
-                                             {{-- @foreach ($assessi as $value) {{ $value->name }} @endforeach --}}
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="{{ url('logout') }}" class="dropdown-item">
-                                        <i class="ti-power-off"></i>
-                                        <span class="ml-2">Logout </span>
-                                    </a>
-                                </div>
+                                <span class="user-avatar">Assessor
+                                    {{-- @foreach ($assessi as $value) {{ $value->name }} @endforeach --}}
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="{{ url('logout') }}" class="dropdown-item">
+                                            <i class="ti-power-off"></i>
+                                            <span class="ml-2">Logout </span>
+                                        </a>
+                                    </div>
                             </li>
                         </ul>
                     </div>
@@ -79,32 +82,32 @@
             Content body start
         ***********************************-->
         <div class="content-body content-bodyy">
-           
-             @yield('container')
-            </div>
+
+            @yield('container')
         </div>
-        <!--**********************************
+    </div>
+    <!--**********************************
             Content body end
         ***********************************-->
 
 
-        <!--**********************************
+    <!--**********************************
             Footer start
         ***********************************-->
-        <div class="footer">
-            <div class="copyright">
-                <p><a href="#" target="_blank"></a> 2022</p>
-            </div>
+    <div class="footer">
+        <div class="copyright">
+            <p><a href="#" target="_blank"></a> 2022</p>
         </div>
-        <!--**********************************
+    </div>
+    <!--**********************************
             Footer end
         ***********************************-->
 
-        <!--**********************************
+    <!--**********************************
            Support ticket button start
         ***********************************-->
 
-        <!--**********************************
+    <!--**********************************
            Support ticket button end
         ***********************************-->
 
@@ -130,10 +133,10 @@
 
     <script src="/assets/js/dashboard/dashboard-2.js"></script>
 
-     <!-- Datatable -->
-     <script src="/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
-     <script src="/assets/js/plugins-init/datatables.init.js"></script>
- 
+    <!-- Datatable -->
+    <script src="/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/assets/js/plugins-init/datatables.init.js"></script>
+
     <!-- Circle progress -->
 
 </body>
