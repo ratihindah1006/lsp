@@ -59,23 +59,21 @@
                 </th>
 
                 <th>
-                    @foreach ($element->criterias as $criteria)
                     <br>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="{{ $criteria->id }}" id="{{ $criteria->id }}">
-                        <label class="form-check-label" for="{{ $criteria->id }}">
+                        <input class="form-check-input" type="radio" name="{{ $element->id }}" id="{{ $element->id }}">
+                        <label class="form-check-label" for="{{ $element->id }}">
                         </label>
                     </div>
-                    @endforeach
                 </th>
+
                 <th>
-                    @foreach ($element->criterias as $criteria)
                     <br>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="{{ $criteria->id }}" id="{{ $criteria->id }}">
-                        <label class="form-check-label" for="{{ $criteria->id }}">
+                        <input class="form-check-input" type="radio" name="{{ $element->id }}" id="{{ $element->id }}">
+                        <label class="form-check-label" for="{{ $element->id }}">
                         </label>
-                    </div>@endforeach
+                    </div>
                 </th>
                 <td>
                     <a href="{{ asset('storage/'.$apl01->transcript) }}" class="my-text-link">Transkip nilai atau sertifikat pelatihan yang relevan dengan skema {{$skema->schema_title}}</a><br><br>
