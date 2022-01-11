@@ -36,13 +36,13 @@ class Apl02Controller extends Controller
     public function store(Request $request, SchemaModel $schema)
     {
         $criteria = $schema->with(["units", "units.elements", "units.elements.criterias"]);
+        $assessi = AssessiModel::find(Auth::user()->id);
 
-
-        $apl02 = new APL02Model([
-            'assessment' => $request->$criteria ,
-        ]);
-        dd($apl02);
-        $apl02->save();
+        // foreach($criteria as $criterias)
+        $invoice=APL02Model::all();
+        $invoice->value='k';
+        $invoice->create();
+        
         return redirect('/beranda')->with('success', 'assessment berhasil di tambahkan!');
     }
     

@@ -15,18 +15,12 @@ class CreateApl02sTable extends Migration
     {
         Schema::create('apl02', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('field_id')->unsigned();
-            $table->foreign('field_id')->references('id')->on('category_models');
-            $table->bigInteger('schema_id')->unsigned();
-            $table->foreign('schema_id')->references('id')->on('schema_models');
-            $table->bigInteger('assessor_id')->unsigned();
-            $table->foreign('assessor_id')->references('id')->on('assessor');
-            $table->bigInteger('assessi_id')->unsigned();
             $table->foreign('assessi_id')->references('id')->on('assessi');
-            $table->bigInteger('apl01_id')->unsigned();
-            $table->foreign('apl01_id')->references('id')->on('apl01s');
+            $table->bigInteger('assessi_id')->unsigned();
             $table->string('assessment');
-            $table->string('note');
+            $table->string('status')->nullable();
+            $table->string('lane')->nullable();
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }

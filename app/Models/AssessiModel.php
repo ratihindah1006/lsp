@@ -47,6 +47,6 @@ class AssessiModel extends Authenticatable
     }
     public function apl02()
     {
-        return $this->hasOne(Apl02::class,'assessi_id','id'); 
+        return $this->hasOne(APL02Model::class,'assessi_id','id'); 
     }
 }
