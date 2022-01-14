@@ -92,7 +92,7 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EventModel $event)
+    public function update(Request $request, EventModel $event, AdminModel $admin)
     {
         $validateData = $request->validate([
             'event_code' => 'required',
@@ -102,7 +102,8 @@ class EventController extends Controller
             'type' => 'required',
             'status' => 'required',
         ]);
-        
+        //dd($validateData);
+      $validateData['admin_id']=Auth::user()->id;
         EventModel::where('id', $event->id)
                 ->update($validateData);
 

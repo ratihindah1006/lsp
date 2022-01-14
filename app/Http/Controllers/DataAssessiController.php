@@ -34,7 +34,7 @@ class DataAssessiController extends Controller
      */
     public function create()
     {
-        $category = DB::table('category_models')->get();
+        $category = DB::table('category')->get();
         $assessor = DB::table('assessor')->get();
         $title= 'Data asesi';
         return view('admin.assessi.CreateAssessi', compact('category', 'assessor', 'title'));
@@ -106,18 +106,20 @@ class DataAssessiController extends Controller
      */
     public function update(Request $request, AssessiModel $assessi)
     {
-        $validateData = $request->validate([
+        $rules=[
             'name' => 'required',
-            'email' => 'required',
             'password' => 'required',
             'field_id' => 'required',
             'schema_id' => 'required',
             'assessor_id' => 'required'
-        ]);
-        AssessiModel::where('id', $assessi->id)
-                ->update($validateData);
-
+        ];
+        if($request->email != $assessi->email){
+            $rules['email'] = 'required|unique:assessi';
+        }
+        $validateData= $request->validate($rules);
+        $assessi->update($validateData);
         return redirect('/dataAssessi')->with('success', 'Data Assessi berhasil di Update!');
+        
     }
 
     /**

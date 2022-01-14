@@ -38,7 +38,7 @@ class DataAssessorController extends Controller
      */
     public function create()
     {
-        $data = DB::table('category_models')->get();
+        $data = DB::table('category')->get();
         //$field = CategoryModel::all();
         $title = 'Data assessor';
         return view('admin.assessor.CreateAssessor', compact('title', 'data'));
