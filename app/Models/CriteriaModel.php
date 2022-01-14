@@ -17,7 +17,7 @@ class CriteriaModel extends Model
 use HasFactory;
 use SoftDeletes;
 
-public function criteria()
+public function element()
 {
     return $this->belongsTo(ElementModel::class, 'element_id','id');
 }

@@ -21,11 +21,10 @@ class SchemaModel extends Model
     use HasFactory;
     use SoftDeletes;
 
-    public function schema()
+    public function category()
     {
         return $this->belongsTo(CategoryModel::class, 'field_id', 'id');
     }
-
     public function units()
     {
         return $this->hasMany(UnitModel::class, 'schema_id', 'id'); 

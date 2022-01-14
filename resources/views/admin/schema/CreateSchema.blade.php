@@ -56,33 +56,22 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="competency_package" class="form-label">Competency Package</label>
-                                            <input type="text"
-                                                class="form-control @error('competency_package') is-invalid @enderror"
-                                                id="competency_package" name="competency_package" value="{{ old('competency_package') }}">
-                                            @error('competency_package')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
+                                            <label for="competency_package" class="form-label">Kemasan Kompetensi</label>
+                                            <select class="form-control @error('competency_package') is-invalid @enderror" id="competency_package"
+                                                name="competency_package">
+                                                <option value="">- - Pilih - -</option>
+                                                <option value="KKNI">
+                                                    KKNI</option>
+                                                <option value="Okupasi Nasional">
+                                                    Okupasi Nasional</option>
+                                                <option value="Klaster">
+                                                    Klaster</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="cost" class="form-label">Cost</label>
-                                            <input type="text"
-                                                class="form-control @error('cost') is-invalid @enderror"
-                                                id="cost" name="cost" value="{{ old('cost') }}">
-                                            @error('cost')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="requirement" class="form-label">Requirement</label>
+                                            <label for="requirement" class="form-label">Persyaratan Dasar Permohonan</label>
                                             <input type="text"
                                                 class="form-control @error('requirement') is-invalid @enderror"
                                                 id="requirement" name="requirement" value="{{ old('requirement') }}">
@@ -93,6 +82,20 @@
                                             @enderror
                                         </div>
                                     </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="cost" class="form-label">Biaya</label>
+                                            <input type="text"
+                                                class="form-control @error('cost') is-invalid @enderror"
+                                                id="cost" name="cost" value="{{ old('cost') }}">
+                                            @error('cost')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    
                                     <div class="col">
                                         <center><button type="submit" class="btn btn-success mt-4"
                                                 style="width: 170px">Submit</button></center>

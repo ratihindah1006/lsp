@@ -55,7 +55,7 @@ class ElementController extends Controller
     public function store(Request $request, CategoryModel $category, SchemaModel $schema, UnitModel $unit)
     {
         $validateData = $request->validate([
-            'element_code' => 'required|unique:element_models',
+            'element_code' => 'required|unique:element',
             'element_title' => 'required',
         ]);
         $validateData['unit_id']=$unit->id;
@@ -106,7 +106,7 @@ class ElementController extends Controller
             'element_title' => 'required'
         ];
         if($request->element_code != $element->element_code){
-            $rules['element_code'] = 'required|unique:element_models';
+            $rules['element_code'] = 'required|unique:element';
         }
         $validateData['unit_id']=$unit->id;
         $validateData= $request->validate($rules);

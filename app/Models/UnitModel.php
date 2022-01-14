@@ -17,7 +17,7 @@ class UnitModel extends Model
     use HasFactory;
     use SoftDeletes;
 
-    public function unit()
+    public function schema()
     {
         return $this->belongTo(SchemaModel::class);
     }

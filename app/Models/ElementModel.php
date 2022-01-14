@@ -18,7 +18,7 @@ class ElementModel extends Model
     use HasFactory;
     use SoftDeletes;
 
-    public function element()
+    public function unit()
     {
         return $this->belongsTo(UnitModel::class,'unit_id','id');
     }
