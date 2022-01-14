@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class UnitModel extends Model
 {
+    protected $table = "unit";
     protected $fillable = [
         'unit_code',
         'unit_title',

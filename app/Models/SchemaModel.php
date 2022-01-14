@@ -8,12 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class SchemaModel extends Model
 {
+    protected $table = "schema";
     protected $fillable = [
         'schema_code',
         'schema_title',
-        'reference_number',
+        'no_skkni',
         'field_id',
-        'schema_id',
+        'cost',
+        'requirement',
+        'competency_package'
        ];
     use HasFactory;
     use SoftDeletes;

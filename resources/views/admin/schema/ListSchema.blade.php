@@ -46,7 +46,7 @@
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $value->schema_code }}</td>
                                                     <td>{{ $value->schema_title }}</td>
-                                                    <td>{{ $value->reference_number }}</td>
+                                                    <td>{{ $value->no_skkni }}</td>
                                                     <td>
                                                         <a href="/category/{{ $category }}/schema/{{ $value->schema_code }}/unit"
                                                             class="btn btn-primary btn-sm"><span

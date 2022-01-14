@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CategoryModel extends Model
 {
+    protected $table = "category";
     protected $fillable = [
         'category_code',
         'category_title',

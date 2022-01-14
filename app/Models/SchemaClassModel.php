@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SchemaClassModel extends Model
 {
+    protected $table = "schema_class";
     protected $fillable = [
         'name',
         'description',

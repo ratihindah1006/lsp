@@ -37,5 +37,9 @@ class AssessorModel extends Authenticatable
     {
         return $this->hasMany(AssessiModel::class, 'assessor_id', 'id'); 
     }
+    public function schema_class()
+    {
+        return $this->belongsTo(SchemaClassModel::class, 'schema_id','id');
+    }
 
 }

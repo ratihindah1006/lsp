@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAssessorsTable extends Migration
+class CreateSchemasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,18 @@ class CreateAssessorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('assessor', function (Blueprint $table) {
-            $table->id();
+        Schema::create('schema', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->bigInteger('field_id')->unsigned();
             $table->foreign('field_id')->references('id')->on('category');
-            $table->bigInteger('schema_id')->unsigned();
-            $table->foreign('schema_id')->references('id')->on('schema');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('schema_code');
+            $table->string('schema_title');
+            $table->string('no_skkni');
+            $table->string('competency_package');
+            $table->string('requirement');
+            $table->string('cost');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -35,6 +35,6 @@ class CreateAssessorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assessor');
+        Schema::dropIfExists('schema');
     }
 }

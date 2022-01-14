@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CriteriaModel extends Model
-{ protected $fillable = [
+{ 
+    protected $table = "criteria";
+    protected $fillable = [
     'criteria_code',
     'criteria_title',
     'element_id'

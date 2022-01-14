@@ -43,18 +43,56 @@
 
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="reference_number" class="form-label">Nomor Rujukan</label>
+                                            <label for="no_skkni" class="form-label">No. Skkni</label>
                                             <input type="text"
-                                                class="form-control @error('reference_number') is-invalid @enderror"
-                                                id="reference_number" name="reference_number" value="{{ old('reference_number') }}">
-                                            @error('reference_number')
+                                                class="form-control @error('no_skkni') is-invalid @enderror"
+                                                id="no_skkni" name="no_skkni" value="{{ old('no_skkni') }}">
+                                            @error('no_skkni')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>
                                             @enderror
                                         </div>
                                     </div>
-
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="competency_package" class="form-label">Competency Package</label>
+                                            <input type="text"
+                                                class="form-control @error('competency_package') is-invalid @enderror"
+                                                id="competency_package" name="competency_package" value="{{ old('competency_package') }}">
+                                            @error('competency_package')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="cost" class="form-label">Cost</label>
+                                            <input type="text"
+                                                class="form-control @error('cost') is-invalid @enderror"
+                                                id="cost" name="cost" value="{{ old('cost') }}">
+                                            @error('cost')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="requirement" class="form-label">Requirement</label>
+                                            <input type="text"
+                                                class="form-control @error('requirement') is-invalid @enderror"
+                                                id="requirement" name="requirement" value="{{ old('requirement') }}">
+                                            @error('requirement')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
                                     <div class="col">
                                         <center><button type="submit" class="btn btn-success mt-4"
                                                 style="width: 170px">Submit</button></center>

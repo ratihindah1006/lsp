@@ -49,4 +49,10 @@ class AssessiModel extends Authenticatable
     {
         return $this->hasOne(Apl02Model::class,'assessi_id','id'); 
     }
+
+    public function schema_class()
+    {
+        return $this->belongsTo(SchemaClassModel::class, 'schema_id','id');
+    }
+
 }

@@ -51,9 +51,12 @@ class SchemaController extends Controller
     public function store(Request $request, CategoryModel $category)
     {
         $validateData = $request->validate([
-            'schema_code' => 'required|unique:schema_models',
+            'schema_code' => 'required|unique:schema',
             'schema_title' => 'required',
-            'reference_number' => 'required',
+            'no_skkni' => 'required',
+            'requirement' => 'required',
+            'competency_package' => 'required',
+            'cost' => 'required',
         ]);
         $validateData['field_id']=$category->id;
         SchemaModel::create($validateData);
@@ -108,7 +111,7 @@ class SchemaController extends Controller
             'reference_number' => 'required'
         ];
         if($request->schema_code != $schema->schema_code){
-            $rules['schema_code'] = 'required|unique:schema_models';
+            $rules['schema_code'] = 'required|unique:schema';
         }
         $validateData['field_id']=$category->id;
         $validateData= $request->validate($rules);
