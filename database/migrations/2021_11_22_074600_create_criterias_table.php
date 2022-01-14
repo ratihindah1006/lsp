@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateElementModelsTable extends Migration
+class CreateCriteriaModelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,15 @@ class CreateElementModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('element_models', function (Blueprint $table) {
+        Schema::create('criteria', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('unit_id')->unsigned();
-            $table->foreign('unit_id')->references('id')->on('unit_models');
-            $table->string('element_code');
-            $table->string('element_title');
+            $table->bigInteger('element_id')->unsigned();
+            $table->foreign('element_id')->references('id')->on('element');
+            $table->string('criteria_code');
+            $table->string('criteria_title');
             $table->timestamps();
             $table->softDeletes();
         });
-            
-        
     }
 
     /**
@@ -33,6 +31,6 @@ class CreateElementModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('element_models');
+        Schema::dropIfExists('criteria');
     }
 }

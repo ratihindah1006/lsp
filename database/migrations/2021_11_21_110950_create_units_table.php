@@ -13,10 +13,10 @@ class CreateUnitModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('unit_models', function (Blueprint $table) {
+        Schema::create('unit', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('schema_id')->unsigned();
-            $table->foreign('schema_id')->references('id')->on('schema_models');
+            $table->foreign('schema_id')->references('id')->on('schema');
             $table->string('unit_code');
             $table->string('unit_title');
             $table->timestamps();
@@ -31,6 +31,6 @@ class CreateUnitModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('unit_models');
+        Schema::dropIfExists('unit');
     }
 }

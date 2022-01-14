@@ -13,7 +13,7 @@ class CreateApl01sTable extends Migration
      */
     public function up()
     {
-        Schema::create('apl01s', function (Blueprint $table) {
+        Schema::create('apl01', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('assessi_id')->unsigned();
             $table->foreign('assessi_id')->references('id')->on('assessi');
@@ -38,12 +38,12 @@ class CreateApl01sTable extends Migration
             $table->string('postal_code');
             $table->string('sert_schema');
             $table->string('assessment_purpose');
-            $table->string('ijazah')->nullable();
-            $table->string('photo')->nullable();
-            $table->string('ktp')->nullable();
-            $table->string('transcript')->nullable();
+            $table->string('ijazah');
+            $table->string('photo');
+            $table->string('ktp');
+            $table->string('transcript');
             $table->string('work_exper_certif')->nullable();
-            $table->string('assessi_signature')->nullable();
+            $table->string('assessi_signature');
             $table->string('assessor_signature')->nullable();
             $table->string('note')->nullable();
             $table->string('status')->nullable();
@@ -58,6 +58,6 @@ class CreateApl01sTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('apl01s');
+        Schema::dropIfExists('apl01');
     }
 }

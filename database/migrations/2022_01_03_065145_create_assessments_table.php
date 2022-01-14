@@ -13,7 +13,7 @@ class CreateAssessmentModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('assessment_models', function (Blueprint $table) {
+        Schema::create('assessment', function (Blueprint $table) {
             $table->id();
             $table->foreign('assessment_id')->references('id')->on('apl02');
             $table->bigInteger('assessment_id')->unsigned();
@@ -29,6 +29,6 @@ class CreateAssessmentModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assessment_models');
+        Schema::dropIfExists('assessment');
     }
 }
