@@ -36,7 +36,10 @@
                                                 <th>No</th>
                                                 <th>Kode Skema</th>
                                                 <th>Judul Skema</th>
-                                                <th>Nomor Rujukan</th>
+                                                <th>No. SKKNI</th>
+                                                <th>Kemasan Kompetensi</th>
+                                                <th>Persyaratan Dasar Permohonan</th>
+                                                <th>Biaya</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -47,6 +50,9 @@
                                                     <td>{{ $value->schema_code }}</td>
                                                     <td>{{ $value->schema_title }}</td>
                                                     <td>{{ $value->no_skkni }}</td>
+                                                    <td>{{ $value->competency_package }}</td>
+                                                    <td>{{ $value->requirement }}</td>
+                                                    <td>{{ $value->cost }}</td>
                                                     <td>
                                                         <a href="/category/{{ $category }}/schema/{{ $value->schema_code }}/unit"
                                                             class="btn btn-primary btn-sm"><span

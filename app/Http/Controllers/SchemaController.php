@@ -108,7 +108,10 @@ class SchemaController extends Controller
     {
         $rules=[
             'schema_title' => 'required',
-            'reference_number' => 'required'
+            'no_skkni' => 'required',
+            'requirement' => 'required',
+            'competency_package' => 'required',
+            'cost' => 'required',
         ];
         if($request->schema_code != $schema->schema_code){
             $rules['schema_code'] = 'required|unique:schema';

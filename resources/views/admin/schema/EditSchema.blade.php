@@ -41,12 +41,57 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="reference_number" class="form-label">Nomor Rujukan</label>
+                                            <label for="no_skkni" class="form-label">No. Skkni</label>
                                             <input type="text"
-                                                class="form-control @error('reference_number') is-invalid @enderror"
-                                                id="reference_number" name="reference_number"
-                                                value="{{ old('reference_number', $schema->reference_number) }}">
-                                            @error('reference_number')
+                                                class="form-control @error('no_skkni') is-invalid @enderror"
+                                                id="no_skkni" name="no_skkni"
+                                                value="{{ old('no_skkni', $schema->no_skkni) }}">
+                                            @error('no_skkni')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="competency_package" class="form-label">Kemasan Kompetensi</label>
+                                            <select class="form-control @error('competency_package') is-invalid @enderror" id="competency_package"
+                                                name="competency_package">
+                                                
+                                                <option value="{{ old('competency_package', $schema->competency_package) == 'KKNI' ? 'selected' : '' }}">
+                                                    KKNI</option>
+                                                <option value="{{ old('competency_package', $schema->competency_package) == 'Okupasi Nasional' ? 'selected' : '' }}">
+                                                    Okupasi Nasional</option>
+                                                <option value="{{ old('competency_package', $schema->competency_package) == 'Klaster' ? 'selected' : '' }}">
+                                                    Klaster</option>
+                                            </select>
+                                            @error('competency_package')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="requirement" class="form-label">Persyaratan Dasar Permohonan</label>
+                                            <input type="text"
+                                                class="form-control @error('requirement') is-invalid @enderror"
+                                                id="requirement" name="requirement"
+                                                value="{{ old('requirement', $schema->requirement) }}">
+                                            @error('requirement')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="cost" class="form-label">Biaya</label>
+                                            <input type="text"
+                                                class="form-control @error('cost') is-invalid @enderror"
+                                                id="cost" name="cost"
+                                                value="{{ old('cost', $schema->cost) }}">
+                                            @error('cost')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>

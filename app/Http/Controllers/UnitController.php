@@ -51,7 +51,7 @@ class UnitController extends Controller
     public function store(Request $request, CategoryModel $category, SchemaModel $schema)
     {
         $validateData = $request->validate([
-            'unit_code' => 'required|unique:unit_models',
+            'unit_code' => 'required|unique:unit',
             'unit_title' => 'required',
         ]);
         $validateData['schema_id']=$schema->id;
@@ -100,7 +100,7 @@ class UnitController extends Controller
             'unit_title' => 'required'
         ];
         if($request->unit_code != $unit->unit_code){
-            $rules['unit_code'] = 'required|unique:unit_models';
+            $rules['unit_code'] = 'required|unique:unit';
         }
         $validateData['schema_id']=$schema->id;
         $validateData= $request->validate($rules);

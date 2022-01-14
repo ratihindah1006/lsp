@@ -54,7 +54,7 @@ class CriteriaController extends Controller
     public function store(Request $request, CategoryModel $category, SchemaModel $schema, UnitModel $unit, ElementModel $element)
     {
         $validateData = $request->validate([
-            'criteria_code' => 'required|unique:criteria_models',
+            'criteria_code' => 'required|unique:criteria',
             'criteria_title' => 'required',
         ]);
         $validateData['element_id']=$element->id;
@@ -104,11 +104,14 @@ class CriteriaController extends Controller
      */
     public function update(Request $request, CategoryModel $category, SchemaModel $schema, UnitModel $unit, ElementModel $element, CriteriaModel $criteria)
     {
-        $validateData = $request->validate([
-            'criteria_code' => 'required',
-            'criteria_title' => 'required',
-        ]);
+        $rules=[
+            'criteria_title' => 'required'
+        ];
+        if($request->criteria_code != $criteria->criteria_code){
+            $rules['criteria_code'] = 'required|unique:criteria';
+        }
         $validateData['element_id']=$element->id;
+        $validateData= $request->validate($rules);
         $criteria->update($validateData);
 
         return redirect('/category'.'/'.$category->category_code.'/schema'.'/'.$schema->schema_code.'/unit'.'/'
