@@ -13,10 +13,10 @@ class CreateSchemaModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('schema_models', function (Blueprint $table) {
+        Schema::create('schema', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('field_id')->unsigned();
-            $table->foreign('field_id')->references('id')->on('category_models');
+            $table->foreign('field_id')->references('id')->on('category');
             $table->string('schema_code');
             $table->string('schema_title');
             $table->string('reference_number');
@@ -32,6 +32,6 @@ class CreateSchemaModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('schema_models');
+        Schema::dropIfExists('schema');
     }
 }
