@@ -55,10 +55,10 @@
                                                         <td align="center">
                                                             <a href="'#'" class="btn btn-primary btn-sm"><span
                                                                     class="ti-info"></span></a>
-                                                            <a href="/event/{{ $value->event_code }}/edit"
+                                                            <a href="/event/{{ $value->id }}/edit"
                                                                 class="btn btn-warning btn-sm"><span
                                                                     class="ti-pencil"></span></a>
-                                                            <form action="/event/{{ $value->event_code }}" method="POST"
+                                                            <form action="/event/{{ $value->id }}" method="POST"
                                                                 class="d-inline">
                                                                 @csrf
                                                                 @method('delete')

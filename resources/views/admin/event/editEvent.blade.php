@@ -17,7 +17,7 @@
                                         <div class="mb-3">
                                             <label for="event_code" class="form-label">Kode Event</label>
                                             <input type="text" class="form-control @error('event_code') is-invalid @enderror"
-                                                id="event_code" name="event_code" value="{{ old('event_code', $event->code) }}">
+                                                id="event_code" name="event_code" value="{{ old('event_code', $event->event_code) }}">
                                             @error('event_code')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -25,11 +25,11 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="event_start" class="form-label">Event Dimulai</label>
-                                            <input name="event_start" type="date"
-                                                class="form-control @error('event_start') is-invalid @enderror" id="event_start"
-                                                value="{{ old('event_start', $event->event_start) }}">
-                                            @error('event_start')
+                                            <label for="event_starts" class="form-label">Event Dimulai</label>
+                                            <input name="event_starts" type="date"
+                                                class="form-control @error('event_starts') is-invalid @enderror" id="event_starts"
+                                                value="{{ old('event_starts', $event->event_starts) }}">
+                                            @error('event_starts')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>
@@ -49,7 +49,7 @@
                                         <div class="mb-3">
                                             <label for="event_name" class="form-label">Nama Event</label>
                                             <input type="text" class="form-control @error('event_name') is-invalid @enderror"
-                                                id="event_name" name="event_name" value="{{ old('event_nama', $event->event_nama) }}">
+                                                id="event_name" name="event_name" value="{{ old('event_name', $event->event_name) }}">
                                             @error('event_name')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}

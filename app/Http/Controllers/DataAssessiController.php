@@ -34,7 +34,7 @@ class DataAssessiController extends Controller
      */
     public function create()
     {
-        $category = DB::table('category_models')->get();
+        $category = DB::table('category')->get();
         $assessor = DB::table('assessor')->get();
         $title= 'Data asesi';
         return view('admin.assessi.CreateAssessi', compact('category', 'assessor', 'title'));
@@ -42,7 +42,7 @@ class DataAssessiController extends Controller
 
     public function schemaAssessi($id)
     {
-        $schema=(DB::table('schema_models')->where('field_id', $id)->get());
+        $schema=(DB::table('schema')->where('field_id', $id)->get());
         return response()->json($schema);
     }
 

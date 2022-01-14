@@ -94,17 +94,18 @@ class EventController extends Controller
      */
     public function update(Request $request, EventModel $event)
     {
-        $validateData = $request->validate([
-            'event_code' => 'required',
+        $rules=[
             'event_name' => 'required',
             'event_starts' => 'required',
             'event_ends' => 'required',
             'type' => 'required',
             'status' => 'required',
-        ]);
-        
-        EventModel::where('id', $event->id)
-                ->update($validateData);
+        ];
+        if($request->event_code != $event->event_code){
+            $rules['event_code'] = 'required|unique:event';
+        }
+        $validateData= $request->validate($rules);
+        $event->update($validateData);
 
         return redirect('/event')->with('success', 'Event berhasil di Update!');
     }
