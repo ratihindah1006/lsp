@@ -15,6 +15,7 @@ class EventModel extends Model
         'event_ends',
         'status',
         'type',
+        'admin_id'
        ];
     use HasFactory;
 

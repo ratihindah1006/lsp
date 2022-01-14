@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\DataAssessiController;
 use App\Http\Controllers\DataAssessorController;
 use App\Http\Controllers\CategoryController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\Apl02Controller;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AssessiController;
 use App\Http\Controllers\AssessorController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +46,13 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/dashboard/{{ dashboard:id }}/edit', [DashboardController::class, 'edit']);
     Route::put('/dashboard/{{ dashboard:id }}', [DashboardController::class, 'update']);
     Route::delete('/dashboard/{{ dashboard:id }}', [DashboardController::class, 'destroy']);
+
+    Route::get('/event', [EventController::class, 'index']);
+    Route::get('/event/create', [EventController::class, 'create']);
+    Route::post('/event', [EventController::class, 'store']);
+    Route::get('/event/{{ event:event_code }}/edit', [EventController::class, 'edit']);
+    Route::put('/event/{{ event:event_code }}', [EventController::class, 'update']);
+    Route::delete('/event/{{ event:event_code }}', [EventController::class, 'destroy']);
 
     Route::get('/dataAssessi', [DataAssessiController::class, 'index']);
     Route::get('/dataAssessi/create', [DataAssessiController::class, 'create']);

@@ -103,6 +103,8 @@
                     
                     <li><a href="/dashboard" aria-expanded="false"><i class="icon icon-home"></i><span
                         class="nav-text">Dashboard</span></a></li>
+                    <li><a href="/event" aria-expanded="false"><i class="icon icon-time"></i><span
+                        class="nav-text">Event</span></a></li>
                     <li class="nav-label">Data Pengguna</li>
                     <li><a href="/dataAssessi" aria-expanded="false"><i class="icon icon-single-04"></i><span
                         class="nav-text">Asesi</span></a></li>
@@ -112,6 +114,8 @@
                     <li class="nav-label">Data Skema</li>
                     <li><a href="/category" aria-expanded="false"><i class="icon icon-single-copy-06"></i><span
                                 class="nav-text">Kategori</span></a></li>
+                    <li><a href="/kelasSkema" aria-expanded="false"><i class="icon icon-single-copy-06"></i><span
+                                class="nav-text">Kelas Skema</span></a></li>
                   
                         </ul>
                     </li>

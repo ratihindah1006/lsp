@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdminModel;
-use App\Models\Event;
+use App\Models\EventModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+class EventController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +17,10 @@ class DashboardController extends Controller
     public function index(AdminModel $admin)
     {
         $data=$admin->where('id', Auth::user()->id)->get();
-        return view('admin.dashboard.dashboard', [
-            //'event' => Event::all(),
+        return view('admin.event.listEvent', [
+            'event' => EventModel::all(),
             'admin' => $data,
-            'title'=> 'Dashboard',
-         
+            'title'=> 'Event'
         ]);
     }
 
@@ -32,8 +31,8 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        return view('admin.dashboard.create',[
-            'title'=> 'Dashboard'
+        return view('admin.event.createEvent',[
+            'title'=> 'create Event'
         ]);
     }
 
@@ -43,19 +42,21 @@ class DashboardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, AdminModel $admin)
     {
         
         $validateData = $request->validate([
-            'mulai' => 'required',
-            'akhir' => 'required',
-            'nama' => 'required',
-            'tempat' => 'required',
-            'tipe' => 'required'
+            'event_code' => 'required',
+            'event_name' => 'required',
+            'event_starts' => 'required',
+            'event_ends' => 'required',
+            'type' => 'required',
+            'status' => 'required',
         ]);
-        Event::create($validateData);
+        $validateData['admin_id']=Auth::user()->id;
+        EventModel::create($validateData);
 
-        return redirect('/dashboard')->with('success', 'Event berhasil di tambahkan!');
+        return redirect('/event')->with('success', 'Event berhasil di tambahkan!');
     }
 
     /**
@@ -64,7 +65,7 @@ class DashboardController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show(EventModel $event)
     {
         //
     }
@@ -75,11 +76,12 @@ class DashboardController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function edit(Event $dashboard)
+    public function edit(EventModel $event)
     {
-        return view('admin.dashboard.edit', [
-            'event' => $dashboard,
-            'title'=> 'Dashboard'
+       
+        return view('admin.event.editEvent', [
+            'event' => $event,
+            'title'=> 'Edit Event'
         ]);
     }
 
@@ -90,19 +92,21 @@ class DashboardController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $dashboard)
+    public function update(Request $request, EventModel $event)
     {
         $validateData = $request->validate([
-            'mulai' => 'required',
-            'akhir' => 'required',
-            'nama' => 'required',
-            'tempat' => 'required',
-            'tipe' => 'required'
+            'event_code' => 'required',
+            'event_name' => 'required',
+            'event_starts' => 'required',
+            'event_ends' => 'required',
+            'type' => 'required',
+            'status' => 'required',
         ]);
-        Event::where('id', $dashboard->id)
+        
+        EventModel::where('id', $event->id)
                 ->update($validateData);
 
-        return redirect('/dashboard')->with('success', 'Event berhasil di Update!');
+        return redirect('/event')->with('success', 'Event berhasil di Update!');
     }
 
     /**
@@ -111,9 +115,9 @@ class DashboardController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $dashboard)
+    public function destroy(EventModel $event)
     {
-        Event::destroy($dashboard->id);
-        return redirect('/dashboard')->with('success', 'Event berhasil di hapus!');
+        EventModel::destroy($event->id);
+        return redirect('/event')->with('success', 'Event berhasil di hapus!');
     }
 }

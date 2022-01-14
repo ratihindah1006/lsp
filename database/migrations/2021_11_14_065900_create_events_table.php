@@ -15,7 +15,7 @@ class CreateEventsTable extends Migration
     {
         Schema::create('event', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('event_code');
+            $table->string('event_code');
             $table->bigInteger('admin_id')->unsigned();
             $table->foreign('admin_id')->references('id')->on('admin');
             $table->date('event_starts');
