@@ -42,7 +42,7 @@ class DataAssessiController extends Controller
 
     public function schemaAssessi($id)
     {
-        $schema=(DB::table('schema_models')->where('field_id', $id)->get());
+        $schema=(DB::table('schema')->where('field_id', $id)->get());
         return response()->json($schema);
     }
 

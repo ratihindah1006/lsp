@@ -16,7 +16,7 @@ use App\Http\Controllers\Apl02Controller;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AssessiController;
 use App\Http\Controllers\AssessorController;
-
+use App\Http\Controllers\SchemaClassController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +53,15 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/event/{event:id}/edit', [EventController::class, 'edit']);
     Route::put('/event/{event:id}', [EventController::class, 'update']);
     Route::delete('/event/{event:id}', [EventController::class, 'destroy']);
+
+    Route::get('/KelasSkema', [SchemaClassController::class, 'index']);
+    Route::get('/KelasSkema/create', [SchemaClassController::class, 'create']);
+    Route::post('/KelasSkema', [SchemaClassController::class, 'store']);
+    Route::get('/KelasSkema/{class:id}/edit', [SchemaClassController::class, 'edit']);
+    Route::put('/KelasSkema/{class:id}', [SchemaClassController::class, 'update']);
+    Route::delete('/KelasSkema/{class:id}', [SchemaClassController::class, 'destroy']);
+    Route::put('schema/{id}', [SchemaClassController::class, 'schema']);
+    Route::delete('event/{id}', [SchemaClassController::class, 'event']);
 
     Route::get('/dataAssessi', [DataAssessiController::class, 'index']);
     Route::get('/dataAssessi/create', [DataAssessiController::class, 'create']);

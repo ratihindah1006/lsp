@@ -5,7 +5,7 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Daftar Event</h4>
+                    <h4>Daftar Kelas Skema</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -24,7 +24,7 @@
                                     {{ session('success') }}
                                 </div>
                             @endif
-                            <a href="/event/create" class="btn btn-primary btn-sm"><i
+                            <a href="/KelasSkema/create" class="btn btn-primary btn-sm"><i
                                     class="ti-plus">&nbsp;&nbsp;&nbsp;</i>Add</a><br><br>
                             <div class="card">
                                 <div class="card-body">
@@ -33,25 +33,23 @@
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>Kode Event</th>
+                                                    <th>Nama Kelas</th>
                                                     <th>Nama Event</th>
-                                                    <th>Mulai</th>
-                                                    <th>Selesai </th>
-                                                    <th>Tipe</th>
-                                                    <th>Status</th>
+                                                    <th>Judul Skema</th>
+                                                    <th>TUK</th>
+                                                    <th>Deskripsi</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($event as $value)
+                                                @foreach ($class as $value)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $value->event_code }}</td>
-                                                        <td>{{ $value->event_name }}</td>
-                                                        <td>{{ $value->event_starts }}</td>
-                                                        <td>{{ $value->event_ends }}</td>
-                                                        <td>{{ $value->type }}</td>
-                                                        <td>{{ $value->status }}</td>
+                                                        <td>{{ $value->name }}</td>
+                                                        <td>{{ $value->event->event_name }}</td>
+                                                        <td>{{ $value->schema->schema_title }}</td>
+                                                        <td>{{ $value->tuk }}</td>
+                                                        <td>{{ $value->description }}</td>
                                                         <td align="center">
                                                             <a href="'#'" class="btn btn-primary btn-sm"><span
                                                                     class="ti-info"></span></a>

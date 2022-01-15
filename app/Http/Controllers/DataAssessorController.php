@@ -45,7 +45,7 @@ class DataAssessorController extends Controller
     }
     public function schemaAssessor($id)
     {
-        $sA = (DB::table('schema_models')->where('field_id', $id)->get());
+        $sA = (DB::table('schema')->where('field_id', $id)->get());
         return response()->json($sA);
     }
 

@@ -114,7 +114,7 @@
                     <li class="nav-label">Data Skema</li>
                     <li><a href="/category" aria-expanded="false"><i class="icon icon-single-copy-06"></i><span
                                 class="nav-text">Kategori</span></a></li>
-                    <li><a href="/kelasSkema" aria-expanded="false"><i class="icon icon-single-copy-06"></i><span
+                    <li><a href="/KelasSkema" aria-expanded="false"><i class="icon icon-single-copy-06"></i><span
                                 class="nav-text">Kelas Skema</span></a></li>
                   
                         </ul>
