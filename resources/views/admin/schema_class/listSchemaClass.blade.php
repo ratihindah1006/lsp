@@ -51,12 +51,14 @@
                                                         <td>{{ $value->tuk }}</td>
                                                         <td>{{ $value->description }}</td>
                                                         <td align="center">
-                                                            <a href="'#'" class="btn btn-primary btn-sm"><span
-                                                                    class="ti-info"></span></a>
-                                                            <a href="/event/{{ $value->id }}/edit"
+                                                            <a href="'#'" class="btn btn-primary btn-sm">Asesi<span
+                                                                    ></span></a>
+                                                             <a href="/KelasSkema/{{ $value->id}}/dataAsesor" class="btn btn-primary btn-sm">Asesor<span
+                                                                    ></span></a>
+                                                            <a href="/KelasSkema/{{ $value->id }}/edit"
                                                                 class="btn btn-warning btn-sm"><span
                                                                     class="ti-pencil"></span></a>
-                                                            <form action="/event/{{ $value->id }}" method="POST"
+                                                            <form action="/KelasSkema/{{ $value->id }}" method="POST"
                                                                 class="d-inline">
                                                                 @csrf
                                                                 @method('delete')

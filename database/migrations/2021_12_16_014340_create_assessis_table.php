@@ -15,10 +15,8 @@ class CreateAssessisTable extends Migration
     {
         Schema::create('assessi', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('field_id')->unsigned();
-            $table->foreign('field_id')->references('id')->on('category');
-            $table->bigInteger('schema_id')->unsigned();
-            $table->foreign('schema_id')->references('id')->on('schema');
+            $table->bigInteger('class_id')->unsigned();
+            $table->foreign('class_id')->references('id')->on('schema_class');
             $table->bigInteger('assessor_id')->unsigned();
             $table->foreign('assessor_id')->references('id')->on('assessor');
             $table->string('name');

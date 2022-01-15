@@ -53,7 +53,7 @@
                                                         <td>{{ $value->type }}</td>
                                                         <td>{{ $value->status }}</td>
                                                         <td align="center">
-                                                            <a href="'#'" class="btn btn-primary btn-sm"><span
+                                                            <a href="/event/{{ $value->event_code }}/KelasSkema" class="btn btn-primary btn-sm"><span
                                                                     class="ti-info"></span></a>
                                                             <a href="/event/{{ $value->id }}/edit"
                                                                 class="btn btn-warning btn-sm"><span

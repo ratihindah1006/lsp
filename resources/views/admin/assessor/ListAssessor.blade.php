@@ -10,8 +10,8 @@
         </div>
         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/category">Dashboard</a></li>
-                <li class="breadcrumb-item "><a href="/dataAssessor">Daftar Asesor</a></li>
+                <li class="breadcrumb-item"><a href="/KelasSkema">Kelas Skema</a></li>
+                <li class="breadcrumb-item active"><a href="/KelasSkema/{{ $class }}/dataAsesor">Data Asesor</a></li>
             </ol>
         </div>
     </div>
@@ -25,7 +25,7 @@
                                 {{ session('success') }}
                             </div>
                         @endif
-                        <a href="/dataAssessor/create" class="btn btn-primary btn-sm"><i
+                        <a href="/KelasSkema/{{ $class }}/dataAsesor/create" class="btn btn-primary btn-sm"><i
                                 class="ti-plus ">&nbsp;&nbsp;&nbsp;</i>Add</a><br><br>
                         <div class="card">
                             <div class="card-body">
@@ -37,8 +37,6 @@
                                                 <th>Nama</th>
                                                 <th>Email</th>
                                                 <th>Password</th>
-                                                <th>Kategori</th>
-                                                <th>Skema</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -49,13 +47,11 @@
                                                     <td>{{ $value->name }}</td>
                                                     <td>{{ $value->email }}</td>
                                                     <td>{{ $value->password }}</td>
-                                                    <td>{{ $value->category->field_title }}</td>
-                                                    <td>{{ $value->schema->schema_title }}</td>
                                                     <td>
-                                                        <a href="/dataAssessor/{{ $value->id }}/edit"
+                                                        <a href="/KelasSkema/{{ $class }}/dataAsesor/{{ $value->id }}/edit"
                                                             class="btn btn-warning btn-sm"><span
                                                                 class="ti-pencil"></span></a>
-                                                        <form action="/dataAssessor/{{ $value->id }}" method="POST"
+                                                        <form action="/KelasSkema/{{ $class }}/dataAsesor/{{ $value->id }}" method="POST"
                                                             class="d-inline">
                                                             @csrf
                                                             @method('delete')

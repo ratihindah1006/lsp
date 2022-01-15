@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AdminModel;
 use App\Models\AssessorModel;
 use App\Models\CategoryModel;
+use App\Models\SchemaClassModel;
 use App\Models\SchemaModel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -18,30 +19,32 @@ class DataAssessorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function index(AdminModel $admin)
+    
+    public function index(AdminModel $admin, SchemaClassModel $class)
 
     {
-        $admin=$admin->where('id', Auth::user()->id)->get();
-        $assessor = AssessorModel::all();
-        $title = 'data asesor';
-        return view('admin.assessor.listAssessor', compact('assessor', 'title','admin'));
+        $data=$admin->where('id', Auth::user()->id)->get();
+        return view('admin.assessor.listAssessor', [
+            'class'=>$class->id,
+            'assessor' => $class->assessors,
+            'title' => 'asesor',
+            'admin'=>$data
+        ]);
+      
     }
-
-
-
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($class)
     {
         $data = DB::table('category')->get();
+        $class=$class;
         //$field = CategoryModel::all();
         $title = 'Data assessor';
-        return view('admin.assessor.CreateAssessor', compact('title', 'data'));
+        return view('admin.assessor.CreateAssessor', compact('title', 'data','class'));
     }
     public function schemaAssessor($id)
     {
@@ -55,26 +58,23 @@ class DataAssessorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, SchemaClassModel $class)
     {
 
         $request->validate([
             'name' => 'required',
             'email' => 'required|unique:assessor',
             'password' => 'required',
-            'field_id' => 'required',
-            'schema_id' => 'required'
         ]);
         $assessors = new AssessorModel([
             'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
-            'field_id' =>  $request->field_id,
-            'schema_id' =>  $request->schema_id,
+            'class_id' => $class->id
         ]);
-
         $assessors->save();
-        return redirect('/dataAssessor')->with('success', 'Data Asesi berhasil di tambahkan!');
+   
+        return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesor')->with('success', 'Data Asesi berhasil di tambahkan!');
     }
 
     /**
@@ -83,14 +83,14 @@ class DataAssessorController extends Controller
      * @param  \App\Models\AssessorModel  $schemaModel
      * @return \Illuminate\Http\Response
      */
-    public function edit(AssessorModel $assessor)
+   
+    public function edit(SchemaClassModel $class,AssessorModel $assessor)
     {
         $field = CategoryModel::all();
         $title = 'Data assessor';
+        $class = $class;
         $assessor = $assessor;
-        $fieldse = $assessor->category;
-        $schemaSelected = $assessor->schema;
-        return view('admin.assessor.EditAssessor', compact('title', 'field', 'assessor', 'fieldse', 'schemaSelected'));
+        return view('admin.assessor.EditAssessor', compact('title','class', 'field', 'assessor', ));
     }
 
     public function schemaAssessors($id)
@@ -106,25 +106,22 @@ class DataAssessorController extends Controller
      * @param  \App\Models\AssessorModel  $schemaModel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AssessorModel $assessor)
+  
+
+    public function update(Request $request, SchemaClassModel $class,AssessorModel $assessor)
     {
-        // $validateData = $request->validate([
-        //     'name' => 'required',
-        //     'email' => 'required',
-        //     'password' => 'required',
-        //     'field_id' => 'required',
-        //     'schema_id' => 'required'
-        // ]);
-        // AssessorModel::where('id', $assessor->id)
-        //         ->update($validateData);
-        $assessor->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
-            'field_id' =>  $request->field_id,
-            'schema_id' =>  $request->schema_id,
-        ]);
-        return redirect('/dataAssessor')->with('success', 'Data assessor berhasil di Update!');
+        $rules=[
+            'name' =>'required',
+            'password' =>'required',
+        ];
+        if($request->email != $assessor->email){
+            $rules['email'] = 'required|unique:assessor';
+        }
+        $validateData['class_id']=$class->id;
+        $validateData= $request->validate($rules);
+        $assessor->update($validateData);
+
+        return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesor')->with('success', 'Data assessor berhasil di Update!');
     }
 
     /**
@@ -133,9 +130,9 @@ class DataAssessorController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AssessorModel $assessor)
+    public function destroy(SchemaClassModel $class,AssessorModel $assessor,)
     {
         AssessorModel::destroy($assessor->id);
-        return redirect('/dataAssessor')->with('success', 'Data Assessor berhasil di hapus!');
+        return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesor')->with('success', 'Data Assessor berhasil di hapus!');
     }
 }

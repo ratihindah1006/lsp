@@ -62,6 +62,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::delete('/KelasSkema/{class:id}', [SchemaClassController::class, 'destroy']);
     Route::put('schema/{id}', [SchemaClassController::class, 'schema']);
     Route::delete('event/{id}', [SchemaClassController::class, 'event']);
+    Route::get('/event/{event:event_code}/KelasSkema', [SchemaClassController::class, 'index']);
 
     Route::get('/dataAssessi', [DataAssessiController::class, 'index']);
     Route::get('/dataAssessi/create', [DataAssessiController::class, 'create']);
@@ -72,14 +73,14 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('schemaAssessi/{id}',[DataAssessiController::class, 'schemaAssessi'] );
     Route::get('assessorAssessi/{id}',[DataAssessiController::class, 'assessorAssessi'] );
 
-    Route::get('/dataAssessor', [DataAssessorController::class, 'index']);
-    Route::get('/dataAssessor/create', [DataAssessorController::class, 'create']);
-    Route::post('/dataAssessor', [DataAssessorController::class, 'store']);
-    Route::get('/dataAssessor/{assessor:id}/edit', [DataAssessorController::class, 'edit']);
-    Route::put('/dataAssessor/{assessor:id}', [DataAssessorController::class, 'update']);
-    Route::delete('/dataAssessor/{assessor:id}', [DataAssessorController::class, 'destroy']);
-    Route::get('schemaAssessor/{id}',[DataAssessorController::class, 'schemaAssessor'] );
-    Route::get('schemaAssessors/{assessor:id}/{id}',[DataAssessorController::class, 'schemaAssessors'] );
+    Route::get('/KelasSkema/{class:id}/dataAsesor', [DataAssessorController::class, 'index']);
+    Route::get('/KelasSkema/{class:id}/dataAsesor/create', [DataAssessorController::class, 'create']);
+    Route::post('/KelasSkema/{class:id}/dataAsesor', [DataAssessorController::class, 'store']);
+    Route::get('/KelasSkema/{class:id}/dataAsesor/{assessor:id}/edit', [DataAssessorController::class, 'edit']);
+    Route::put('/KelasSkema/{class:id}/dataAsesor/{assessor:id}', [DataAssessorController::class, 'update']);
+    Route::delete('/KelasSkema/{class:id}/dataAsesor/{assessor:id}', [DataAssessorController::class, 'destroy']);
+    Route::get('/KelasSkema/{class:id}schemaAsesor/{id}',[DataAssessorController::class, 'schemaAssessor'] );
+    Route::get('/KelasSkema/{class:idschmaAsesors/{assessor:id}/{id}',[DataAssessorController::class, 'schemaAssessors'] );
 
     Route::get('/category', [CategoryController::class, 'index']);
     Route::get('/category/create', [CategoryController::class, 'create']);
