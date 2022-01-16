@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AdminModel;
 use App\Models\AssessiModel;
-use App\Models\AssessorModel;
-use App\Models\CategoryModel;
+use App\Models\SchemaClassModel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,12 +18,15 @@ class DataAssessiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(AdminModel $admin)
+    public function index(AdminModel $admin, SchemaClassModel $class)
     {
-        $admin=$admin->where('id', Auth::user()->id)->get();
-        $assessi = AssessiModel::all();
-        $title = 'data asesi';
-        return view('admin.assessi.listAssessi', compact('assessi','title','admin'));
+        $data=$admin->where('id', Auth::user()->id)->get();
+        return view('admin.assessi.listAssessi', [
+            'class'=>$class->id,
+            'assessi' => $class->assessis,
+            'title' => 'asesi',
+            'admin'=>$data
+        ]);
     }
 
     /**
@@ -32,23 +34,12 @@ class DataAssessiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(SchemaClassModel $class)
     {
-        $category = DB::table('category')->get();
-        $assessor = DB::table('assessor')->get();
-        $title= 'Data asesi';
-        return view('admin.assessi.CreateAssessi', compact('category', 'assessor', 'title'));
-    }
-
-    public function schemaAssessi($id)
-    {
-        $schema=(DB::table('schema')->where('field_id', $id)->get());
-        return response()->json($schema);
-    }
-
-    public function assessorAssessi($id){
-        $assessor=(DB::table('assessor')->where('schema_id', $id)->get());
-        return response()->json($assessor);
+        $class=$class;
+        $title = 'Data assessi';
+        $assessor = $class->assessors;
+        return view('admin.assessi.CreateAssessi', compact('title', 'assessor', 'class'));
     }
 
     /**
@@ -57,27 +48,24 @@ class DataAssessiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, SchemaClassModel $class)
     {
         $request->validate([
             'name' => 'required',
             'email' => 'required|unique:assessi',
             'password' => 'required',
-            'field_id' => 'required',
-            'schema_id' => 'required',
-            'assessor_id' => 'required'
+            'assessor_id' => 'required',
         ]);
-       $assessis = new AssessiModel([
-        'name' => $request->name,
-        'email' => $request->email,
-        'password'=> bcrypt($request->input('password')),
-        'field_id' =>  $request->field_id,
-        'schema_id' =>  $request->schema_id,
-        'assessor_id' =>  $request->assessor_id,
+        $assessis = new AssessiModel([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            'assessor_id' => $request->assessor_id,
+            'class_id' => $class->id
         ]);
-      
-       $assessis->save();
-        return redirect('/dataAssessi')->with('success', 'Data Asesor berhasil di tambahkan!');
+        $assessis->save();
+   
+        return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesi')->with('success', 'Data Asesi berhasil di tambahkan!');
     }
 
     /**
@@ -86,15 +74,13 @@ class DataAssessiController extends Controller
      * @param  \App\Models\AssessiModel  $schemaModel
      * @return \Illuminate\Http\Response
      */
-    public function edit(AssessiModel $assessi)
+    public function edit(SchemaClassModel $class, AssessiModel $assessi)
     {
-        $field = CategoryModel::all();
-        $title= 'Data assessi';
-        $assessi= $assessi;
-        $assessorSelected= $assessi->assessor;
-        $fieldse = $assessi->category;
-        $schemaSelected = $assessi->schema;
-        return view('admin.assessi.EditAssessi', compact('title','field', 'assessi', 'assessorSelected', 'fieldse','schemaSelected'));
+        $title = 'Data assessi';
+        $class = $class;
+        $assessi = $assessi;
+        $assessor = $class->assessors;
+        return view('admin.assessi.EditAssessi', compact('title','class', 'assessor', 'assessi', ));
     }
 
     /**
@@ -104,21 +90,21 @@ class DataAssessiController extends Controller
      * @param  \App\Models\AssessiModel  $schemaModel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AssessiModel $assessi)
+    public function update(Request $request, SchemaClassModel $class, AssessiModel $assessi)
     {
         $rules=[
-            'name' => 'required',
-            'password' => 'required',
-            'field_id' => 'required',
-            'schema_id' => 'required',
-            'assessor_id' => 'required'
+            'name' =>'required',
+            'password' =>'required',
+            'assessor_id' => 'required',
         ];
         if($request->email != $assessi->email){
             $rules['email'] = 'required|unique:assessi';
         }
+        $validateData['class_id']=$class->id;
         $validateData= $request->validate($rules);
         $assessi->update($validateData);
-        return redirect('/dataAssessi')->with('success', 'Data Assessi berhasil di Update!');
+
+        return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesi')->with('success', 'Data assessi berhasil di Update!');
         
     }
 
@@ -128,9 +114,9 @@ class DataAssessiController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AssessiModel $assessi)
+    public function destroy(SchemaClassModel $class, AssessiModel $assessi)
     {
         AssessiModel::destroy($assessi->id);
-        return redirect('/dataAssessi')->with('success', 'Data Assessi berhasil di hapus!');
+        return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesi')->with('success', 'Data Assessi berhasil di hapus!');
     }
 }

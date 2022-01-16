@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('container')
-    <form method="post" action="/dataAssessi/{{ $assessi->id }}">
+    <form method="post" action="/KelasSkema/{{ $class->id }}/dataAsesi/{{ $assessi->id }}">
         @method('put')
         @csrf
         <div class="col-lg-8">
@@ -49,37 +49,21 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="field_id" class="form-label">Judul Bidang</label>
-                                            <select style="width: 100%; height:40px;" name="field_id" id="field_id" class="form control select2">
-                                                <option value="">Pilih Bidang</option>
-                                                @foreach ($field as $categories)
-                                                <option value="{{ $categories->id }}" {{ old('field_id', $assessi->field_id) == $categories->id ? 'selected' : null }}>{{ $categories->field_title }}</option>
+                                            <label for="assessor_id" class="form-label">Nama Asesor</label>
+                                            <select style="width: 100%; height:40px;" name="assessor_id" id="assessor_id" class="form control select2">
+                                                <option value="">Pilih Asesor</option>
+                                                @foreach ($assessor as $assessor)
+                                                <option value="{{ $assessor->id }}" {{ old('assessor_id', $assessi->assessor_id) == $assessor->id ? 'selected' : null }}>{{ $assessor->name }}</option>
                                                 @endforeach
                                             </select>
-                                            @error('field_id')
+                                            @error('assessor_id')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
                                                     </div>
                                                 @enderror
                                             </div>
 
-                                            <div class="form-group">
-                                            <label>Judul Skema</label>
-                                            <select class="form-control select2" placeholder="Select Schema"
-                                                id="schema_id" name="schema_id">
-                                                <option value="">Pilih Bidang</option>
-                                                <option value="{{ $schemaSelected->id }}" selected>{{ $schemaSelected->schema_title }}</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>Nama Asesor</label>
-                                            <select class="form-control select2" placeholder="Select Schema"
-                                                id="assessor_id" name="assessor_id">
-                                                <option value="">Pilih Asesor</option>
-                                                <option value="{{ $assessorSelected->id }}" selected>{{ $assessorSelected->name }}</option>
-                                            </select>
-                                        </div>
+                                            
                                         <div class="col">
                                             <center><button type="submit" class="btn btn-success mt-4"
                                                     style="width: 170px">Submit</button></center>

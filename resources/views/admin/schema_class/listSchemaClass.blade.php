@@ -51,9 +51,9 @@
                                                         <td>{{ $value->tuk }}</td>
                                                         <td>{{ $value->description }}</td>
                                                         <td align="center">
-                                                            <a href="'#'" class="btn btn-primary btn-sm">Asesi<span
+                                                            <a href="/KelasSkema/{{ $value->id}}/dataAsesor" class="btn btn-primary btn-sm">Asesor<span
                                                                     ></span></a>
-                                                             <a href="/KelasSkema/{{ $value->id}}/dataAsesor" class="btn btn-primary btn-sm">Asesor<span
+                                                            <a href="/KelasSkema/{{ $value->id}}/dataAsesi" class="btn btn-primary btn-sm">Asesi<span
                                                                     ></span></a>
                                                             <a href="/KelasSkema/{{ $value->id }}/edit"
                                                                 class="btn btn-warning btn-sm"><span

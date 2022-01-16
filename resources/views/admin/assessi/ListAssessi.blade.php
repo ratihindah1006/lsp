@@ -10,8 +10,8 @@
         </div>
         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/category">Dashboard</a></li>
-                <li class="breadcrumb-item "><a href="/dataAssessi">Daftar Asesi</a></li>
+                <li class="breadcrumb-item"><a href="/KelasSkema">Kelas Skema</a></li>
+                <li class="breadcrumb-item active"><a href="/KelasSkema/{{ $class }}/dataAsesi">Data Asesi</a></li>
             </ol>
         </div>
     </div>
@@ -21,47 +21,49 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="data-table-list">
                         @if(session()->has ('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('success') }}
-                        </div>
+                            <div class="alert alert-success" role="alert">
+                                {{ session('success') }}
+                            </div>
                         @endif
-                        <a href="/dataAssessi/create" class="btn btn-primary btn-sm "><i class="ti-plus ">&nbsp;&nbsp;&nbsp;</i>Add</a><br><br>
+                        <a href="/KelasSkema/{{ $class }}/dataAsesi/create" class="btn btn-primary btn-sm"><i
+                                class="ti-plus ">&nbsp;&nbsp;&nbsp;</i>Add</a><br><br>
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive my-text">
-                                    <table class=" display" id="example">
+                                    <table class="display" id="example">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
                                                 <th>Nama</th>
                                                 <th>Email</th>
-                                                <th width="150px">Password</th>
-                                                <th>Judul Bidang</th>
-                                                <th>Skema</th>
-                                                <th>Nama Asesor</th>
-                                                <th>Aksi</th>
+                                                <th>Password</th>
+                                                <th>Asesor</th>
+                                                <th width="100px">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($assessi as $value)
-                                            <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $value->name }}</td>
-                                                <td>{{ $value->email}}</td>
-                                                <td width="150px">{{ $value->password}}</td>
-                                                <td>{{ $value->category->field_title }}</td>
-                                                <td>{{ $value->schema->schema_title }}</td>
-                                                <td>{{ $value->assessor->name }}</td>
-                                                <td>
-                                                    <a href="/dataAssessi/{{$value->id}}/edit" class="btn btn-warning btn-sm "><span class="ti-pencil"></span></a>
-                                                    <form action="/dataAssessi/{{$value->id}}" method="POST" class="d-inline">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button class="btn btn-danger btn-sm border-0" onclick="return confirm('Yakin ingin menghapus data?')"><span class="ti-trash"></span>
-                                                        </button>
-                                                    </form>
-                                                </td>
-                                            </tr>
+                                            @foreach($assessi as $value)
+                                                <tr>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>{{ $value->name }}</td>
+                                                    <td>{{ $value->email }}</td>
+                                                    <td>{{ $value->password }}</td>
+                                                    <td>{{ $value->assessor->name }}</td>
+                                                    <td align="center">
+                                                        <a href="/KelasSkema/{{ $class }}/dataAsesi/{{ $value->id }}/edit"
+                                                            class="btn btn-warning btn-sm"><span
+                                                                class="ti-pencil"></span></a>
+                                                        <form action="/KelasSkema/{{ $class }}/dataAsesi/{{ $value->id }}" method="POST"
+                                                            class="d-inline">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button class="btn btn-danger btn-sm border-0"
+                                                                onclick="return confirm('Yakin ingin menghapus data?')"><span
+                                                                    class="ti-trash"></span>
+                                                            </button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
