@@ -75,8 +75,9 @@
                                                     <label for="type" class="form-label">Tipe Event</label>
                                                     <select class="form-control @error('type') is-invalid @enderror"
                                                         id="type" name="type" value="{{ old('type') }}">
-                                                        <option value="Online">Online</option>
-                                                        <option value="Offline">Offline</option>
+                                                        <option value="">--pilih--</option>
+                                                        <option value="Online"{{ old('type') == 'Online' ? 'selected' : '' }}>Online</option>
+                                                        <option value="Offline"{{ old('type') == 'Offline' ? 'selected' : '' }}>Offline</option>
                                                     </select>
                                                     @error('type')
                                                         <div class="invalid-feedback">

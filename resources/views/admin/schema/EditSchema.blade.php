@@ -58,11 +58,11 @@
                                             <select class="form-control @error('competency_package') is-invalid @enderror" id="competency_package"
                                                 name="competency_package">
                                                 
-                                                <option value="{{ old('competency_package', $schema->competency_package) == 'KKNI' ? 'selected' : '' }}">
+                                                <option value="KKNI"{{  $schema->competency_package == 'KKNI' ? 'selected' : '' }}>
                                                     KKNI</option>
-                                                <option value="{{ old('competency_package', $schema->competency_package) == 'Okupasi Nasional' ? 'selected' : '' }}">
+                                                <option value="Okupasi Nasional"{{  $schema->competency_package == 'Okupasi Nasional' ? 'selected' : '' }}>
                                                     Okupasi Nasional</option>
-                                                <option value="{{ old('competency_package', $schema->competency_package) == 'Klaster' ? 'selected' : '' }}">
+                                                <option value="Klaster"{{  $schema->competency_package == 'Klaster' ? 'selected' : '' }}>
                                                     Klaster</option>
                                             </select>
                                             @error('competency_package')

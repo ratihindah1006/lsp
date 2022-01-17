@@ -212,12 +212,12 @@
                                             <select class="form-control @error('last_education') is-invalid @enderror"
                                                 id="last_education" name="last_education">
                                                 <option value="">- - Pilih - -</option>
-                                                <option value="sma" @if ($apl01 != null){{ $apl01->last_education === 'sma' ? 'selected' : '' }}@else{{ old('gelast_education') == 'sma' ? 'selected' : '' }}@endif>
+                                                <option value="sma" @if ($apl01 != null){{ $apl01->last_education === 'sma' ? 'selected' : '' }}@else{{ old('last_education') == 'sma' ? 'selected' : '' }}@endif>
                                                     SMA</option>
-                                                <option value="s1" @if ($apl01 != null){{ $apl01->last_education === 's1' ? 'selected' : '' }}@else{{ old('gelast_education') == 's1' ? 'selected' : '' }}@endif>
+                                                <option value="s1" @if ($apl01 != null){{ $apl01->last_education === 's1' ? 'selected' : '' }}@else{{ old('last_education') == 's1' ? 'selected' : '' }}@endif>
                                                     S1
                                                 </option>
-                                                <option value="s2" @if ($apl01 != null){{ $apl01->last_education === 's2' ? 'selected' : '' }}@else{{ old('gelast_education') == 's2' ? 'selected' : '' }}@endif>
+                                                <option value="s2" @if ($apl01 != null){{ $apl01->last_education === 's2' ? 'selected' : '' }}@else{{ old('last_education') == 's2' ? 'selected' : '' }}@endif>
                                                     S2
                                                 </option>
                                             </select>

@@ -59,9 +59,10 @@
                                         <div class="mb-3">
                                             <label for="type" class="form-label">Tipe Event</label>
                                             <select class="form-control @error('type') is-invalid @enderror" id="type"
-                                                name="type" value="{{ old('type', $event->type) }}">
-                                                <option value="Online">Online</option>
-                                                <option value="Offline">Offline</option>
+                                                name="type" >
+                                                
+                                                <option value="Online"{{ $event->type == 'Online' ? 'selected' : '' }}>Online</option>
+                                                <option value="Offline"{{ $event->type == 'Offline' ? 'selected' : '' }}>Offline</option>
                                             </select>
                                             @error('type')
                                                 <div class="invalid-feedback">

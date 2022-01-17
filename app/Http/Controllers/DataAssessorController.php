@@ -46,11 +46,7 @@ class DataAssessorController extends Controller
         $title = 'Data assessor';
         return view('admin.assessor.CreateAssessor', compact('title', 'data','class'));
     }
-    public function schemaAssessor($id)
-    {
-        $sA = (DB::table('schema')->where('field_id', $id)->get());
-        return response()->json($sA);
-    }
+  
 
     /**
      * Store a newly created resource in storage.
@@ -86,19 +82,14 @@ class DataAssessorController extends Controller
    
     public function edit(SchemaClassModel $class,AssessorModel $assessor)
     {
-        $field = CategoryModel::all();
+       
         $title = 'Data assessor';
         $class = $class;
         $assessor = $assessor;
-        return view('admin.assessor.EditAssessor', compact('title','class', 'field', 'assessor', ));
+        return view('admin.assessor.EditAssessor', compact('title','class', 'assessor', ));
     }
 
-    public function schemaAssessors($id)
-    {
-        $sA = (DB::table('schema_models')->where('field_id', $id)->get());
-        return response()->json($sA);
-    }
-
+ 
     /**
      * Update the specified resource in storage.
      *
