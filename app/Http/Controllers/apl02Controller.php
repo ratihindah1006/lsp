@@ -19,29 +19,58 @@ class Apl02Controller extends Controller
     public function index()
     {
         $assessi = AssessiModel::find(Auth::user()->id);
-
+        //dd(json_decode($assessi->apl02->assessment));
+        if (isset($assessi->apl02->assessment)){
+            $varr=json_decode($assessi->apl02->assessment);
+        }
+        else{
+            $varr=[];
+        }
         return view(
             'assessi.apl02',
             [
                 'title' => 'apl02',
                 'asesi' => $assessi,
-                'skema' => $assessi->schema,
+                'skema' => $assessi->schema_class->schema,
                 'apl01' => $assessi->apl01,
                 'asesor' => $assessi->assessor,
-                'units' => $assessi->schema->units,
+                'class' => $assessi->schema_class,
+                'units' => $assessi->schema_class->schema->units,
+                'apl02' => $assessi->apl02,
+                'assessment' => $varr,
             ]
         );
     }
 
     public function store(Request $request, SchemaModel $schema)
     {
-        $criteria = $schema->with(["units", "units.elements", "units.elements.criterias"]);
+        //dd($request->all());
         $assessi = AssessiModel::find(Auth::user()->id);
+        $varriable = [];
+        $i = 1;
+        foreach ($request->all() as $basing){
+            if($i==1 || $i==count($request->all())){
+                $i=$i+1; continue;}
+            $varriable[]=$basing;
+        echo $basing;
+        $i= $i+1;
+        }
+        //dd($varriable);
+        $validateData = $request->validate([
+            'note' => 'required',
+        ]);
+        $validateData['assessi_id'] = $assessi->id;
+        $validateData['assessment'] = json_encode($varriable);
+        $cek = $assessi->apl02;
+        //dd($validateData);
 
-        // foreach($criteria as $criterias)
-        $invoice=APL02Model::all();
-        $invoice->value='k';
-        $invoice->create();
+        if ($cek == Null) {
+            APL02Model::create($validateData);
+        } else {
+            APL02Model::where('assessi_id', $assessi->id)
+                ->update($validateData);
+        }
+
         
         return redirect('/beranda')->with('success', 'assessment berhasil di tambahkan!');
     }

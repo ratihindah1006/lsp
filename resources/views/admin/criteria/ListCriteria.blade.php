@@ -45,7 +45,7 @@
                                                     <th>No</th>
                                                     <th>Criteria Code</th>
                                                     <th>Criteria Title</th>
-                                                    <th>Action</th>
+                                                    <th width="100px">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

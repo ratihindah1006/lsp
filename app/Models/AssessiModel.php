@@ -52,7 +52,7 @@ class AssessiModel extends Authenticatable
 
     public function schema_class()
     {
-        return $this->belongsTo(SchemaClassModel::class, 'schema_id','id');
+        return $this->belongsTo(SchemaClassModel::class, 'class_id','id');
     }
 
 }

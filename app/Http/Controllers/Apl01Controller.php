@@ -18,7 +18,7 @@ class Apl01Controller extends Controller
         //dd($assessi->schema);
         return view('assessi.apl01', [
             'title' => 'APL 01',
-            'assessis' => $assessi->schema,
+            'assessis' => $assessi->schema_class->schema,
             'apl01' => $assessi->apl01,
         ]);
     }

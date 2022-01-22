@@ -40,7 +40,7 @@
                                                     <th>No</th>
                                                     <th>Unit Code</th>
                                                     <th>Unit Title</th>
-                                                    <th>Action</th>
+                                                    <th width="100px">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
