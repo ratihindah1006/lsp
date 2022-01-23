@@ -21,10 +21,10 @@ class Apl02Controller extends Controller
         $assessi = AssessiModel::find(Auth::user()->id);
         //dd(json_decode($assessi->apl02->assessment));
         if (isset($assessi->apl02->assessment)){
-            $varr=json_decode($assessi->apl02->assessment);
+            $assessment=json_decode($assessi->apl02->assessment);
         }
         else{
-            $varr=[];
+            $assessment=[];
         }
         return view(
             'assessi.apl02',
@@ -37,7 +37,7 @@ class Apl02Controller extends Controller
                 'class' => $assessi->schema_class,
                 'units' => $assessi->schema_class->schema->units,
                 'apl02' => $assessi->apl02,
-                'assessment' => $varr,
+                'assessment' => $assessment,
             ]
         );
     }
@@ -46,21 +46,20 @@ class Apl02Controller extends Controller
     {
         //dd($request->all());
         $assessi = AssessiModel::find(Auth::user()->id);
-        $varriable = [];
+        $assessment = [];
         $i = 1;
-        foreach ($request->all() as $basing){
+        foreach ($request->all() as $data){
             if($i==1 || $i==count($request->all())){
                 $i=$i+1; continue;}
-            $varriable[]=$basing;
-        echo $basing;
+            $assessment[]=$data;
         $i= $i+1;
         }
         //dd($varriable);
-        $validateData = $request->validate([
-            'note' => 'required',
-        ]);
+        // $validateData = $request->validate([
+        //     'note' => 'required',
+        // ]);
         $validateData['assessi_id'] = $assessi->id;
-        $validateData['assessment'] = json_encode($varriable);
+        $validateData['assessment'] = json_encode($assessment);
         $cek = $assessi->apl02;
         //dd($validateData);
 

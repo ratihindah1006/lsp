@@ -11,7 +11,7 @@
     <p class="my-text">Nomor &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : &emsp; {{$skema->no_skkni}}</p>
     <p class="my-text">Tempat Uji Kompetensi&emsp;&ensp; : &emsp; {{$class->tuk}}</p>
     <p class="my-text">Nama Asesor &emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : &emsp; {{$asesor->name}}</p>
-    <p class="my-text">Nama Asesi &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; : &emsp; {{$asesi->name}}</p>
+    <p class="my-text">Nama Asesi &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; : &emsp; {{$asesi->name}} </p>
     <p class="my-text">Tanggal &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; :</p><br>
     <p class="my-text">Asesi diminta untuk :</p>
     <p class="my-text">1. Mempelajari Kriteria Unjuk Kerja (KUK), Batasan Variabel, Panduan Penilaian, dan Aspek Kritis seluruh Unit Kompetensi yang diminta

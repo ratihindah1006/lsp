@@ -38,12 +38,35 @@ class AssessorController extends Controller
         return view('assessor.apl01', [
            'apl01' => $assessi->apl01,
             'title' => 'Skema',
-            'assessis'=> $assessor->schema,
+            'assessis'=> $assessor->schema_class->schema,
 
         ]);
     }
 
-    public function status(Request $request, AssessiModel $assessi, Apl01 $apl01)
+    public function apl02(AssessiModel $assessi)
+    {
+        $assessor = AssessorModel::find(Auth::user()->id);
+        if (isset($assessi->apl02->assessment)){
+            $assessment=json_decode($assessi->apl02->assessment);
+        }
+        else{
+            $assessment=[];
+        }
+        return view('assessor.apl02', [
+            'title' => 'APL02',
+            'asesi' => $assessi,
+            'skema' => $assessor->schema_class->schema,
+            'asesor' => $assessor,
+            'apl01' => $assessi->apl01,
+            'class' => $assessor->schema_class,
+            'units' => $assessor->schema_class->schema->units,
+            'apl02' => $assessi->apl02,
+            'assessment' => $assessment,
+
+        ]);
+    }
+
+    public function status(Request $request, AssessiModel $assessi)
     {
         $assessor = AssessorModel::find(Auth::user()->id);
         $assessi = $assessi->assessi_id;
