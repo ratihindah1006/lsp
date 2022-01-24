@@ -4,21 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\AssessiModel;
 use App\Models\Apl01;
+use App\Models\SchemaClassModel;
+use App\Models\SchemaModel;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 use phpDocumentor\Reflection\Types\Null_;
 
 class Apl01Controller extends Controller
 {
-    public function index()
+    public function index(SchemaClassModel $schema_class)
     {
         $assessi = AssessiModel::find(Auth::user()->id);
+        //$posts = Post::where('user_id', $user->id)->get();
         //dd($assessi->schema);
+       
         return view('assessi.apl01', [
             'title' => 'APL 01',
-            'assessis' => $assessi->schema,
+            'assessis' => $assessi->schema_class->schema,
             'apl01' => $assessi->apl01,
         ]);
     }
@@ -27,6 +32,7 @@ class Apl01Controller extends Controller
     {
 
         $assessi = AssessiModel::find(Auth::user()->id);
+      
 
         $validateData = $request->validate([
             'nik' => 'required',
