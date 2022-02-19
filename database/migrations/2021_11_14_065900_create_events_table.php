@@ -18,8 +18,7 @@ class CreateEventsTable extends Migration
             $table->string('event_code');
             $table->bigInteger('admin_id')->unsigned();
             $table->foreign('admin_id')->references('id')->on('admin');
-            $table->date('event_starts');
-            $table->date('event_ends');
+            $table->string('event_time');
             $table->string('event_name');
             $table->string('status');
             $table->string('type');

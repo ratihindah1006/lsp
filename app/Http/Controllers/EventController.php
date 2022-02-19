@@ -48,8 +48,7 @@ class EventController extends Controller
         $validateData = $request->validate([
             'event_code' => 'required|unique:event',
             'event_name' => 'required',
-            'event_starts' => 'required',
-            'event_ends' => 'required',
+            'event_time' => 'required',
             'type' => 'required',
             'status' => 'required',
         ]);
@@ -96,8 +95,7 @@ class EventController extends Controller
     {
         $rules=[
             'event_name' => 'required',
-            'event_starts' => 'required',
-            'event_ends' => 'required',
+            'event_time' => 'required',
             'type' => 'required',
             'status' => 'required',
         ];

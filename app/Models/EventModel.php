@@ -11,8 +11,7 @@ class EventModel extends Model
     protected $fillable = [
         'event_code',
         'event_name',
-        'event_starts',
-        'event_ends',
+        'event_time',
         'status',
         'type',
         'admin_id'

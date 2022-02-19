@@ -14,7 +14,7 @@
     <link href="/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet">
     <link href="/assets/css/style.css" rel="stylesheet">
     <link href="/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
-
+    <link href="/assets/vendor/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 </head>
 
 <body>
@@ -172,7 +172,12 @@
      <script src="/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
      <script src="/assets/js/plugins-init/datatables.init.js"></script>
  
-    <!-- Circle progress -->
+    <!-- Date Picker -->
+    <script src="/assets/vendor/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- clockpicker -->
+    <script src="/assets/vendor/clockpicker/js/bootstrap-clockpicker.min.js"></script>
+    <!-- Daterangepicker -->
+    <script src="/assets/js/plugins-init/bs-daterange-picker-init.js"></script>
 
 </body>
 

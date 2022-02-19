@@ -35,8 +35,7 @@
                                                     <th>No</th>
                                                     <th>Kode Event</th>
                                                     <th>Nama Event</th>
-                                                    <th>Mulai</th>
-                                                    <th>Selesai </th>
+                                                    <th>Waktu Event</th>
                                                     <th>Tipe</th>
                                                     <th>Status</th>
                                                     <th>Action</th>
@@ -48,8 +47,7 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $value->event_code }}</td>
                                                         <td>{{ $value->event_name }}</td>
-                                                        <td>{{ $value->event_starts }}</td>
-                                                        <td>{{ $value->event_ends }}</td>
+                                                        <td>{{ $value->event_time }}</td>
                                                         <td>{{ $value->type }}</td>
                                                         <td>{{ $value->status }}</td>
                                                         <td align="center">

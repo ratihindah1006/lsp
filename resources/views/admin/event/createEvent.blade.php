@@ -37,23 +37,10 @@
                                                     @enderror
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="event_starts" class="form-label">Event Dimulai</label>
-                                                    <input name="event_starts" type="date"
-                                                        class="form-control @error('event_starts') is-invalid @enderror" id="event_starts"
-                                                        value="{{ old('event_starts') }}">
-                                                    @error('event_starts')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-
-                                                <div class="mb-3">
-                                                    <label for="event_ends" class="form-label">Event Berakhir</label>
-                                                    <input type="date"
-                                                        class="form-control @error('event_ends') is-invalid @enderror" id="event_ends"
-                                                        name="event_ends" value="{{ old('event_ends') }}">
-                                                    @error('event_ends')
+                                                    <label for="event_time" class="form-label">Event Dimulai</label>
+                                                    <input class="form-control input-daterange-datepicker @error('event_time') is-invalid @enderror"
+                                                     type="text" name="event_time" id="event_time" value="{{ old('event_time') }}">
+                                                    @error('event_time')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
                                                         </div>
@@ -61,16 +48,18 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="status" class="form-label">Status</label>
-                                                    <input type="text"
-                                                        class="form-control @error('status') is-invalid @enderror"
+                                                    <select class="form-control @error('status') is-invalid @enderror"
                                                         id="status" name="status" value="{{ old('status') }}">
+                                                        <option value="">--pilih--</option>
+                                                        <option value="Open"{{ old('status') == 'Open' ? 'selected' : '' }}>Open</option>
+                                                        <option value="Close"{{ old('status') == 'Close' ? 'selected' : '' }}>Close</option>
+                                                    </select>
                                                     @error('status')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
                                                         </div>
                                                     @enderror
                                                 </div>
-
                                                 <div class="mb-3">
                                                     <label for="type" class="form-label">Tipe Event</label>
                                                     <select class="form-control @error('type') is-invalid @enderror"
