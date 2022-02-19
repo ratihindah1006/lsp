@@ -42,7 +42,7 @@
                                                     <th>No</th>
                                                     <th>Element Code</th>
                                                     <th>Element Title</th>
-                                                    <th>Action</th>
+                                                    <th width="100px">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

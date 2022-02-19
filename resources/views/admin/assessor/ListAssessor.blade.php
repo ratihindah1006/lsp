@@ -25,8 +25,13 @@
                                 {{ session('success') }}
                             </div>
                         @endif
+                        @if($count < 2)
                         <a href="/KelasSkema/{{ $class }}/dataAsesor/create" class="btn btn-primary btn-sm"><i
                                 class="ti-plus ">&nbsp;&nbsp;&nbsp;</i>Add</a><br><br>
+                        @else
+                        <a href="/KelasSkema/{{ $class }}/dataAsesor/create" class="btn btn-primary btn-sm  disabled"><i
+                            class="ti-plus ">&nbsp;&nbsp;&nbsp;</i>Add</a><br><br>
+                        @endif
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive my-text">

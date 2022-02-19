@@ -24,11 +24,16 @@ class DataAssessorController extends Controller
 
     {
         $data=$admin->where('id', Auth::user()->id)->get();
+        $class_id=$class->id;
+       
+        $count=AssessorModel::where('class_id',$class_id)->count();
+        // dd($count);
         return view('admin.assessor.listAssessor', [
             'class'=>$class->id,
             'assessor' => $class->assessors,
             'title' => 'asesor',
-            'admin'=>$data
+            'admin'=>$data,
+            'count'=>$count,
         ]);
       
     }
@@ -65,7 +70,7 @@ class DataAssessorController extends Controller
         $assessors = new AssessorModel([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
             'class_id' => $class->id
         ]);
         $assessors->save();
@@ -109,6 +114,7 @@ class DataAssessorController extends Controller
             $rules['email'] = 'required|unique:assessor';
         }
         $validateData['class_id']=$class->id;
+        $validateData['password']=$assessor->password;
         $validateData= $request->validate($rules);
         $assessor->update($validateData);
 

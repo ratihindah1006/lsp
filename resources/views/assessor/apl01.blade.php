@@ -325,7 +325,7 @@
                                     <label class="my-text">Catatan&emsp;:</label>
                                     <textarea class="form-control @error('note') is-invalid @enderror"
                                         value="{{ old('note') }}" id="note" name="note" rows="5"
-                                        placeholder="Tuliskan alamat lengkap"></textarea>
+                                        ></textarea>
                                     @error('note')
                                         <div class="invalid-feedback">
                                             {{ $message }}
