@@ -140,6 +140,7 @@ Route::group(['middleware' => 'auth:assessor'], function () {
     Route::get('/list/{assessi:id}', [AssessorController::class, 'apl01']);
     Route::get('/list02/{assessi:id}', [AssessorController::class, 'apl02']);
     Route::put('/list', [AssessorController::class, 'status']);
+    Route::put('/list/02', [AssessorController::class, 'asesmen']);
    
 });
 

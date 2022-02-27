@@ -36,7 +36,6 @@
                                                 <th>No</th>
                                                 <th>Nama</th>
                                                 <th>Email</th>
-                                                <th>Password</th>
                                                 <th>Asesor</th>
                                                 <th width="100px">Aksi</th>
                                             </tr>
@@ -47,7 +46,6 @@
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $value->name }}</td>
                                                     <td>{{ $value->email }}</td>
-                                                    <td>{{ $value->password }}</td>
                                                     <td>{{ $value->assessor->name }}</td>
                                                     <td align="center">
                                                         <a href="/KelasSkema/{{ $class }}/dataAsesi/{{ $value->id }}/edit"

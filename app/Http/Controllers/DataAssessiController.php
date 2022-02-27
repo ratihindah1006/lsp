@@ -52,14 +52,14 @@ class DataAssessiController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|unique:assessi',
+            'email' => 'required',
             'password' => 'required',
             'assessor_id' => 'required',
         ]);
         $assessis = new AssessiModel([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
             'assessor_id' => $request->assessor_id,
             'class_id' => $class->id
         ]);
@@ -98,7 +98,7 @@ class DataAssessiController extends Controller
             'assessor_id' => 'required',
         ];
         if($request->email != $assessi->email){
-            $rules['email'] = 'required|unique:assessi';
+            $rules['email'] = 'required';
         }
         $validateData['class_id']=$class->id;
         $validateData= $request->validate($rules);
