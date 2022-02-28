@@ -66,21 +66,41 @@ class AssessorController extends Controller
         ]);
     }
 
-    public function status(Request $request, AssessiModel $assessi)
+    public function status(Request $request, AssessiModel $assessi, Apl01 $apl01)
     {
-        $assessor = AssessorModel::find(Auth::user()->id);
-        $assessi = $assessi->assessi_id;
-        $cek = $assessor->assessis;
-        $validateData = $request->validate([
-            'assessor_signature'=>'required|image|file|max:1024',
-            'status' => 'required',
-        ]);
-        $validateData['assessor_signature'] = $request->file('assessor_signature')->store('assessor_signature');
-        foreach($cek as $value)
-        { 
-            if($value->apl01 != null){
-                $value->apl01->update($validateData);
-            } }
+        // $assessor = AssessorModel::find(Auth::user()->id);
+        // $a=$assessi->id;
+        // $c=Apl01::where('assessi_id',$a)->get();
+        // $assessi = $assessi->assessi_id;
+        // $cek = $assessor->assessis;
+        // dd($apl01);
+        // $validateData = $request->validate([
+        //     'assessor_signature'=>'required|image|file|max:1024',
+        //     'status' => 'required',
+        // ]);
+        // $validateData['assessor_signature'] = $request->file('assessor_signature')->store('assessor_signature');
+        // foreach($cek as $value)
+        // { 
+        //     if($value->apl01 != null){
+        //         $value->apl01->update($validateData);
+        //     } }
+        
+         
+            // if($cek->apl01->assessi_id == $cek->id){
+            //     dd($cek->apl01->name);
+            //     $cek->apl01->update($validateData);
+            //     }
+            
+            $rules=[
+                'assessor_signature'=>'required|image|file|max:1024',
+                'status' => 'required',
+            ];
+            $validateData['assessor_signature'] = $request->file('assessor_signature')->store('assessor_signature');
+            $validateData['assessi_id']=$assessi->id;
+            dd($assessi->id);
+            $validateData= $request->validate($rules);
+            $apl01->update($validateData);
+
         return redirect('/list')->with('success', 'Status berhasil di Update!');
     }
 
