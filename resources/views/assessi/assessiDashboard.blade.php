@@ -14,7 +14,14 @@
                 </ol>
             </div>
         </div>
+        @foreach ($assessis as $p)<br>
+        <div class="cards"><br><br>
+
         <div class="col">
+        
+        <p class="my-text">Nama &emsp; : &emsp; {{ $p->name }}</p><br>
+        <p class="my-text">email &emsp; : &emsp; {{ $p->email }} </p>
+        <p class="my-text">kelas skema &emsp; : &emsp; {{ $p->schema_class->name}} </p>
             <div class="row ">
                 <a href="/apl01" class="btn btn-success btn-sm">
                     <span>Apl 01</span>
@@ -35,5 +42,10 @@
                         </a>
                 @endif
             </div>
+            
         </div>
+        
+        </div>
+        @endforeach
+        
     @endsection

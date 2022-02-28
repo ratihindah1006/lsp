@@ -104,5 +104,22 @@ class AssessorController extends Controller
         return redirect('/list')->with('success', 'Status berhasil di Update!');
     }
 
+    public function asesmen(Request $request, AssessiModel $assessi)
+    {
+        $assessor = AssessorModel::find(Auth::user()->id);
+        $assessi = $assessi->assessi_id;
+        $cek = $assessor->assessis;
+        $validateData = $request->validate([
+            'note' => 'required',
+            'status' => 'required',
+        ]);
+        foreach($cek as $value)
+        { 
+            if($value->apl02 != null){
+                $value->apl02->update($validateData);
+            } }
+        return redirect('/list')->with('success', 'Status berhasil di Update!');
+    }
+
 
 }

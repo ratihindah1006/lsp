@@ -21,7 +21,8 @@
     <p class="my-text">3. Mengisi bukti-bukti kompetensi yang relevan atas sejumlah pertanyaan yang dinyatakan Kompeten (bila ada).</p>
     <p class="my-text">4. Menandatangani form Asesmen Mandiri.</p>
     <?php $i=0 ; ?>
-    <form method="post" action="/apl02/store">
+    <form method="post" action="/list/02">
+    @method('put')
         @csrf
         @foreach ($units as $unit)<br>
         <table border="1" class="my-text">
@@ -62,7 +63,7 @@
                 <th>
                     <br>
                     <div class="form-check">
-                        <input required class="form-check-input" type="radio" name="element_{{ $element->id }}" id="{{ $element->id }}" value="K" @if($assessment && $assessment[$i]=='K') checked @endif>
+                        <input required class="form-check-input" type="radio" name="element_{{ $element->id }}" id="{{ $element->id }}" value="K" @if($assessment && $assessment[$i]=='K') checked @endif disabled>
                         <label class="form-check-label" for="{{ $element->id }}">
                         </label>
                     </div>
@@ -71,7 +72,7 @@
                 <th>
                     <br>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="element_{{ $element->id }}" id="{{ $element->id }}" value="BK" @if($assessment && $assessment[$i]=='BK') checked @endif>
+                        <input class="form-check-input" type="radio" name="element_{{ $element->id }}" id="{{ $element->id }}" value="BK" @if($assessment && $assessment[$i]=='BK') checked @endif disabled>
                         <label class="form-check-label" for="{{ $element->id }}">
                         </label>
                         <?php $i++ ; ?>
@@ -99,7 +100,16 @@
             </tr>
             <tr>
                 <th rowspan="2">
-                    <p>&emsp;1. Assessment</p>
+                    <p class="form-check-inline">&emsp;1. Assessment 
+                    <div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="status" id="status" value="dilanjutkan">
+  <label class="form-check-label" for="status">Dilanjutkan</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="status" id="status" value="tidak dilanjutkan">
+  <label class="form-check-label" for="status">Tidak Dilanjutkan</label>
+</div>
+                    </p>
                     <p>&emsp;2. Proses Assessment dilanjutkan Melalui</p>
                 </th>
                 <th>&ensp;Nama&ensp;</th>
