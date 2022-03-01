@@ -64,12 +64,13 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::delete('event/{id}', [SchemaClassController::class, 'event']);
     Route::get('/event/{event:event_code}/KelasSkema', [SchemaClassController::class, 'index']);
 
-    Route::get('/dataAssessi', [DataAssessiController::class, 'data_assessi']);
-    Route::post('/dataAssessi', [DataAssessiController::class, 'store_data']);
-    Route::get('/dataAssessi/create', [DataAssessiController::class, 'create_data']);
-    Route::get('/dataAssessi/{assessi:id}/edit', [DataAssessiController::class, 'edit']);
-    Route::put('/dataAssessi/{assessi:id}', [DataAssessiController::class, 'update']);
-    Route::delete('/dataAssessi/{assessi:id}', [DataAssessiController::class, 'destroy']);
+    Route::get('/dataAssessi', [DataAssessiController::class, 'index_data_assessi']);
+    Route::get('/dataAssessi/create', [DataAssessiController::class, 'create_data_assessi']);
+    Route::post('/dataAssessi', [DataAssessiController::class, 'store_data_assessi']);
+    Route::delete('/dataAssessi/{data_assessi:id}', [DataAssessiController::class, 'destroy_data_assessi']);
+    Route::get('/dataAssessi/{data_assessi:id}/edit', [DataAssessiController::class, 'edit_data_assessi']);
+    Route::put('/dataAssessi/{data_assessi:id}', [DataAssessiController::class, 'update_data_assessi']);
+    
     Route::get('schemaAssessi/{id}',[DataAssessiController::class, 'schemaAssessi'] );
     Route::get('assessorAssessi/{id}',[DataAssessiController::class, 'assessorAssessi'] );
 

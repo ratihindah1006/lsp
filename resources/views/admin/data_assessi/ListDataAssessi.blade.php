@@ -10,8 +10,7 @@
         </div>
         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/KelasSkema">Kelas Skema</a></li>
-                <li class="breadcrumb-item active"><a href="/KelasSkema/{{ $class }}/dataAsesi">Data Asesi</a></li>
+                <li class="breadcrumb-item"><a href="/dataAssessi">Data Asesi</a></li>
             </ol>
         </div>
     </div>
@@ -36,22 +35,20 @@
                                                 <th>No</th>
                                                 <th>Nama</th>
                                                 <th>Email</th>
-                                                <th>Asesor</th>
                                                 <th width="100px">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($assessi as $value)
+                                            @foreach($data_assessi as $value)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $value->name }}</td>
                                                     <td>{{ $value->email }}</td>
-                                                    <td>{{ $value->assessor->name }}</td>
                                                     <td align="center">
-                                                        <a href="/KelasSkema/{{ $class }}/dataAsesi/{{ $value->id }}/edit"
+                                                        <a href="/dataAssessi/{{ $value->id }}/edit"
                                                             class="btn btn-warning btn-sm"><span
                                                                 class="ti-pencil"></span></a>
-                                                        <form action="/KelasSkema/{{ $class }}/dataAsesi/{{ $value->id }}" method="POST"
+                                                        <form action="/dataAssessi/{{ $value->id }}" method="POST"
                                                             class="d-inline">
                                                             @csrf
                                                             @method('delete')
