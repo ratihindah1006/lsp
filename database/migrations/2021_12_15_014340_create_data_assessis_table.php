@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAssessorsTable extends Migration
+class CreateDataAssessisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateAssessorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('assessor', function (Blueprint $table) {
+        Schema::create('data_assessi', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('class_id')->unsigned();
-            $table->foreign('class_id')->references('id')->on('schema_class');
-            $table->bigInteger('assessor_id')->unsigned();
-            $table->foreign('assessor_id')->references('id')->on('assessor');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreateAssessorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assessor');
+        Schema::dropIfExists('data_assessi');
     }
 }

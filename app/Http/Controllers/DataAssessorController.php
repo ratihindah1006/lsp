@@ -27,6 +27,7 @@ class DataAssessorController extends Controller
         $class_id=$class->id;
        
         $count=AssessorModel::where('class_id',$class_id)->count();
+        dd($class->assessors);
         // dd($count);
         return view('admin.assessor.listAssessor', [
             'class'=>$class->id,

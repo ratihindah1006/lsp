@@ -19,10 +19,8 @@ class CreateAssessisTable extends Migration
             $table->foreign('class_id')->references('id')->on('schema_class');
             $table->bigInteger('assessor_id')->unsigned();
             $table->foreign('assessor_id')->references('id')->on('assessor');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->bigInteger('assessi_id')->unsigned();
+            $table->foreign('assessi_id')->references('id')->on('data_assessi');
             $table->rememberToken();
             $table->timestamps();
         });

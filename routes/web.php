@@ -65,8 +65,10 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/event/{event:event_code}/KelasSkema', [SchemaClassController::class, 'index']);
 
     Route::get('/dataAssessi', [DataAssessiController::class, 'index']);
+    Route::get('/dataAssessi/add', [DataAssessiController::class, 'add']);
+    Route::post('/dataAssessi', [DataAssessiController::class, 'storee']);
     Route::get('/dataAssessi/create', [DataAssessiController::class, 'create']);
-    Route::post('/dataAssessi', [DataAssessiController::class, 'store']);
+    // Route::post('/dataAssessi', [DataAssessiController::class, 'store']);
     Route::get('/dataAssessi/{assessi:id}/edit', [DataAssessiController::class, 'edit']);
     Route::put('/dataAssessi/{assessi:id}', [DataAssessiController::class, 'update']);
     Route::delete('/dataAssessi/{assessi:id}', [DataAssessiController::class, 'destroy']);
@@ -140,7 +142,7 @@ Route::group(['middleware' => 'auth:assessor'], function () {
     Route::get('/list/{assessi:id}', [AssessorController::class, 'apl01']);
     Route::get('/list02/{assessi:id}', [AssessorController::class, 'apl02']);
     Route::put('/list', [AssessorController::class, 'status']);
-    Route::put('/list/02', [AssessorController::class, 'asesmen']);
+    Route::put('/list/02/{assessi:id}', [AssessorController::class, 'asesmen']);
    
 });
 

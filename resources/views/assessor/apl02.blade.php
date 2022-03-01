@@ -21,7 +21,7 @@
     <p class="my-text">3. Mengisi bukti-bukti kompetensi yang relevan atas sejumlah pertanyaan yang dinyatakan Kompeten (bila ada).</p>
     <p class="my-text">4. Menandatangani form Asesmen Mandiri.</p>
     <?php $i=0 ; ?>
-    <form method="post" action="/list/02">
+    <form method="post" action="/list/02/{{ $apl02->id }}">
     @method('put')
         @csrf
         @foreach ($units as $unit)<br>

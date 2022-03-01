@@ -4,7 +4,7 @@
 
 
     <div class="col-lg-8">
-        <form method="post" action="/KelasSkema/{{ $class->id }}/dataAsesi">
+        <form method="post" action="/dataAssessi">
             @csrf
             <div class="card-center-assessi">
                 <div class="row mt-5">
@@ -18,32 +18,36 @@
 
                                     <div class="col-12">
                                         <div class="form-group">
-                                        <label>Nama Asesor</label>
-                                          <select style="width: 100%; height:40px;" name="assessi_id" id="assessi_id" class="form control select2">
-                                            <option value="">Pilih Asesi</option>
-                                            @foreach ($assessi as $assessi)
-                                            <option value="{{ $assessi->id }}" {{ old("assessi_id") == $assessi->id ? 'selected' : null }}>{{ $assessi->name }}</option>
-                                            @endforeach
-                                          </select>
-                                          @error('assessi_id')
+                                            <label for="name" class="form-label">Nama</label>
+                                            <input name="name" type="text"
+                                                class="form-control @error('name') is-invalid @enderror" id="name"
+                                                value="{{ old('name') }}">
+                                            @error('name')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>
                                             @enderror
                                         </div>
                                     </div>
-
-
                                     <div class="col-12">
                                         <div class="form-group">
-                                        <label>Nama Asesor</label>
-                                          <select style="width: 100%; height:40px;" name="assessor_id" id="assessor_id" class="form control select2">
-                                            <option value="">Pilih Asesor</option>
-                                            @foreach ($assessor as $assessor)
-                                            <option value="{{ $assessor->id }}" {{ old("assessor_id") == $assessor->id ? 'selected' : null }}>{{ $assessor->name }}</option>
-                                            @endforeach
-                                          </select>
-                                          @error('assessor_id')
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="text" class="form-control @error('email') is-invalid @enderror"
+                                                id="email" name="email" value="{{ old('email') }}">
+                                            @error('email')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="password" class="form-label">Password</label>
+                                            <input name="password" type="text"
+                                                class="form-control @error('password') is-invalid @enderror" id="password"
+                                                value="{{ old('password') }}">
+                                            @error('password')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>

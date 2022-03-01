@@ -106,6 +106,7 @@ class AssessorController extends Controller
 
     public function asesmen(Request $request, AssessiModel $assessi)
     {
+        dd($assessi);
         $assessor = AssessorModel::find(Auth::user()->id);
         $assessi = $assessi->assessi_id;
         $cek = $assessor->assessis;
