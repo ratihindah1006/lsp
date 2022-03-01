@@ -17,8 +17,8 @@ class CreateAssessorsTable extends Migration
             $table->id();
             $table->bigInteger('class_id')->unsigned();
             $table->foreign('class_id')->references('id')->on('schema_class');
-            $table->bigInteger('assessor_id')->unsigned();
-            $table->foreign('assessor_id')->references('id')->on('assessor');
+            $table->bigInteger('data_assessor_id')->unsigned();
+            $table->foreign('data_assessor_id')->references('id')->on('data_assessor');
             $table->rememberToken();
             $table->timestamps();
         });

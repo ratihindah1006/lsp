@@ -22,12 +22,12 @@ class DataAssessiController extends Controller
      */
     public function index(AdminModel $admin, SchemaClassModel $class)
     {
-        $data=$admin->where('id', Auth::user()->id)->get();
+        $data = $admin->where('id', Auth::user()->id)->get();
         return view('admin.assessi.listAssessi', [
-            'class'=>$class->id,
+            'class' => $class->id,
             'assessi' => $class->assessis,
             'title' => 'asesi',
-            'admin'=>$data
+            'admin' => $data
         ]);
     }
 
@@ -38,12 +38,12 @@ class DataAssessiController extends Controller
      */
     public function create(SchemaClassModel $class, DataAssessiModel $assessi)
     {
-        $class=$class;
+        $class = $class;
         $title = 'Data assessi';
         $assessor = $class->assessors;
-        
+
         $assessi = DataAssessiModel::all();
-        
+
         return view('admin.assessi.CreateAssessi', compact('title', 'assessor', 'class', 'assessi'));
     }
 
@@ -65,8 +65,8 @@ class DataAssessiController extends Controller
             'class_id' => $class->id
         ]);
         $assessis->save();
-   
-        return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesi')->with('success', 'Data Asesi berhasil di tambahkan!');
+
+        return redirect('/KelasSkema' . '/' . $class->id . '/dataAsesi')->with('success', 'Data Asesi berhasil di tambahkan!');
     }
 
     /**
@@ -81,7 +81,7 @@ class DataAssessiController extends Controller
         $class = $class;
         $assessi = $assessi;
         $assessor = $class->assessors;
-        return view('admin.assessi.EditAssessi', compact('title','class', 'assessor', 'assessi', ));
+        return view('admin.assessi.EditAssessi', compact('title', 'class', 'assessor', 'assessi',));
     }
 
     /**
@@ -93,20 +93,19 @@ class DataAssessiController extends Controller
      */
     public function update(Request $request, SchemaClassModel $class, AssessiModel $assessi)
     {
-        $rules=[
-            'name' =>'required',
-            'password' =>'required',
+        $rules = [
+            'name' => 'required',
+            'password' => 'required',
             'assessor_id' => 'required',
         ];
-        if($request->email != $assessi->email){
+        if ($request->email != $assessi->email) {
             $rules['email'] = 'required';
         }
-        $validateData['class_id']=$class->id;
-        $validateData= $request->validate($rules);
+        $validateData['class_id'] = $class->id;
+        $validateData = $request->validate($rules);
         $assessi->update($validateData);
 
-        return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesi')->with('success', 'Data assessi berhasil di Update!');
-        
+        return redirect('/KelasSkema' . '/' . $class->id . '/dataAsesi')->with('success', 'Data assessi berhasil di Update!');
     }
 
     /**
@@ -118,34 +117,73 @@ class DataAssessiController extends Controller
     public function destroy(SchemaClassModel $class, AssessiModel $assessi)
     {
         AssessiModel::destroy($assessi->id);
-        return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesi')->with('success', 'Data Assessi berhasil di hapus!');
+        return redirect('/KelasSkema' . '/' . $class->id . '/dataAsesi')->with('success', 'Data Assessi berhasil di hapus!');
     }
 
-    public function add()
+    // .
+    // .
+    // .
+    // DATA ASSESSI KESELURUHAN
+
+    //index
+    public function index_data_assessi(AdminModel $admin)
+    {
+        $data = $admin->where('id', Auth::user()->id)->get();
+        return view('admin.data_assessi.ListDataAssessi', [
+            'data_assessi' => DataAssessiModel::all(),
+            'title' => 'asesi',
+            'admin' => $data
+        ]);
+    }
+    //create
+    public function create_data_assessi()
     {
         $title = 'Data assessi';
-        return view('admin.assessi.AddAssessi', compact('title'));
+        return view('admin.data_assessi.CreateDataAssessi', compact('title'));
     }
-
-    public function storee(Request $request)
+    //store
+    public function store_data_assessi(Request $request)
     {
-  
         $request->validate([
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
-          
         ]);
-        
-        $assessis = new DataAssessiModel([
+        $data_assessi = new DataAssessiModel([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-           
         ]);
-        
-        $assessis->save();
-   
+        $data_assessi->save();
+
         return redirect('/dataAssessi')->with('success', 'Data Asesi berhasil di tambahkan!');
+    }
+    //edit
+    public function edit_data_assessi(DataAssessiModel $data_assessi)
+    {
+        $title = 'Data assessi';
+        $data_assessi = $data_assessi;
+        return view('admin.data_assessi.EditDataAssessi', compact('title', 'data_assessi',));
+    }
+    //update
+    public function update_data_assessi(Request $request, DataAssessiModel $data_assessi)
+    {
+        $rules = [
+            'name' => 'required',
+            'password' => 'required',
+        ];
+        if ($request->email != $data_assessi->email) {
+            $rules['email'] = 'required';
+        }
+        $validateData = $request->validate($rules);
+        $data_assessi->update($validateData);
+
+        return redirect('/dataAssessi')->with('success', 'Data assessi berhasil di Update!');
+    }
+    //destroy
+    public function destroy_data_assessi(DataAssessiModel $data_assessi)
+    {
+        DataAssessiModel::destroy($data_assessi->id);
+        return redirect('/dataAssessi')->with('success', 'Data Assessi berhasil di hapus!');
     }
 }

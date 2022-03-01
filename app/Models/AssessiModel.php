@@ -54,5 +54,9 @@ class AssessiModel extends Authenticatable
     {
         return $this->belongsTo(SchemaClassModel::class, 'class_id','id');
     }
+    public function data_assessi()
+    {
+        return $this->belongsTo(DataAssessiModel::class, 'data_assessi_id','id');
+    }
 
 }
