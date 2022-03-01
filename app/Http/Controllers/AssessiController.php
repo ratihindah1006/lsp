@@ -19,7 +19,6 @@ class AssessiController extends Controller
         $data2=$assessis->where('id', Auth::user()->id)->get();
         $assessi = AssessiModel::find(Auth::user()->id);
 
-     
         return view('assessi.assessiDashboard',[
             'title'=> 'assessi',
             'assessis'=> $data,

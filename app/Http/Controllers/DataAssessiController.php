@@ -31,6 +31,17 @@ class DataAssessiController extends Controller
         ]);
     }
 
+    public function data_assessi(AdminModel $admin, SchemaClassModel $class)
+    {
+        $data=$admin->where('id', Auth::user()->id)->get();
+        return view('admin.dataAssessi.listDataAssessi', [
+            'class'=>$class->id,
+            'assessi' => $class->assessis,
+            'title' => 'asesi',
+            'admin'=>$data
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -60,7 +71,7 @@ class DataAssessiController extends Controller
             'assessor_id' => 'required',
         ]);
         $assessis = new AssessiModel([
-            'assessi_id' => $request->assessi_id,
+            'data_assessi_id' => $request->assessi_id,
             'assessor_id' => $request->assessor_id,
             'class_id' => $class->id
         ]);
@@ -121,13 +132,13 @@ class DataAssessiController extends Controller
         return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesi')->with('success', 'Data Assessi berhasil di hapus!');
     }
 
-    public function add()
+    public function create_data()
     {
         $title = 'Data assessi';
-        return view('admin.assessi.AddAssessi', compact('title'));
+        return view('admin.dataAssessi.CreateDataAssessi', compact('title'));
     }
 
-    public function storee(Request $request)
+    public function store_data(Request $request)
     {
   
         $request->validate([

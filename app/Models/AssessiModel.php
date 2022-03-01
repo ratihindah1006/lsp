@@ -14,7 +14,7 @@ class AssessiModel extends Authenticatable
     protected $table = "assessi";
     protected $primaryKey = "id";
     protected $fillable = [
-        'assessi_id', 'assessor_id', 'class_id',
+        'data_assessi_id', 'assessor_id', 'class_id',
     ];
 
     //protected $guard = "schema_code";

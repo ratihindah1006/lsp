@@ -6,6 +6,7 @@ use App\Models\AdminModel;
 use App\Models\AssessorModel;
 use App\Models\CategoryModel;
 use App\Models\SchemaClassModel;
+use App\Models\DataAssessorModel;
 use App\Models\SchemaModel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -27,9 +28,24 @@ class DataAssessorController extends Controller
         $class_id=$class->id;
        
         $count=AssessorModel::where('class_id',$class_id)->count();
-        dd($class->assessors);
-        // dd($count);
         return view('admin.assessor.listAssessor', [
+            'class'=>$class->id,
+            'assessor' => $class->assessors,
+            'title' => 'asesor',
+            'admin'=>$data,
+            'count'=>$count,
+        ]);
+      
+    }
+
+    public function data_assessor(AdminModel $admin, SchemaClassModel $class)
+
+    {
+        $data=$admin->where('id', Auth::user()->id)->get();
+        $class_id=$class->id;
+       
+        $count=AssessorModel::where('class_id',$class_id)->count();
+        return view('admin.dataAssessor.ListDataAssessor', [
             'class'=>$class->id,
             'assessor' => $class->assessors,
             'title' => 'asesor',
@@ -48,9 +64,9 @@ class DataAssessorController extends Controller
     {
         $data = DB::table('category')->get();
         $class=$class;
-        //$field = CategoryModel::all();
+        $assessor = DataAssessorModel::all();
         $title = 'Data assessor';
-        return view('admin.assessor.CreateAssessor', compact('title', 'data','class'));
+        return view('admin.assessor.CreateAssessor', compact('title', 'data','class', 'assessor'));
     }
   
 
@@ -64,14 +80,10 @@ class DataAssessorController extends Controller
     {
 
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|unique:assessor',
-            'password' => 'required',
+            'data_assessor_id' => 'required',
         ]);
         $assessors = new AssessorModel([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'data_assessor_id' => $request->data_assessor_id,
             'class_id' => $class->id
         ]);
         $assessors->save();
@@ -132,5 +144,33 @@ class DataAssessorController extends Controller
     {
         AssessorModel::destroy($assessor->id);
         return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesor')->with('success', 'Data Assessor berhasil di hapus!');
+    }
+
+    public function create_data()
+    {
+        $title = 'Data assessor';
+        return view('admin.dataAssessor.CreateDataAssessor', compact('title'));
+    }
+
+    public function store_data(Request $request)
+    {
+  
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+          
+        ]);
+        
+        $assessis = new DataAssessorModel([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+           
+        ]);
+        
+        $assessis->save();
+   
+        return redirect('/dataAssessor')->with('success', 'Data Asesi berhasil di tambahkan!');
     }
 }

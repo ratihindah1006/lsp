@@ -13,7 +13,7 @@ class AssessorModel extends Authenticatable
     protected $table = "assessor";
     protected $primaryKey = "id";
     protected $fillable = [
-        'name', 'email', 'password', 'class_id',
+        'data_assessor_id', 'class_id',
     ];
 
     protected $hidden = [
