@@ -10,8 +10,7 @@
         </div>
         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/KelasSkema">Kelas Skema</a></li>
-                <li class="breadcrumb-item active"><a href="/KelasSkema/{{ $class }}/dataAsesor">Data Asesor</a></li>
+                <li class="breadcrumb-item"><a href="/dataAssessor">Data Asesor</a></li>
             </ol>
         </div>
     </div>
@@ -42,17 +41,17 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($assessor as $value)
+                                            @foreach($data_assessor as $value)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $value->name }}</td>
                                                     <td>{{ $value->email }}</td>
                                                     
                                                     <td>
-                                                        <a href="/KelasSkema/{{ $class }}/dataAsesor/{{ $value->id }}/edit"
+                                                        <a href="/dataAssessor/{{ $value->id }}/edit"
                                                             class="btn btn-warning btn-sm"><span
                                                                 class="ti-pencil"></span></a>
-                                                        <form action="/KelasSkema/{{ $class }}/dataAsesor/{{ $value->id }}" method="POST"
+                                                        <form action="/dataAssessor/{{ $value->id }}" method="POST"
                                                             class="d-inline">
                                                             @csrf
                                                             @method('delete')

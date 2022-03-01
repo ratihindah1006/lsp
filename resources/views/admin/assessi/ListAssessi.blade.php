@@ -35,7 +35,6 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>Nama</th>
-                                                <th>Email</th>
                                                 <th>Asesor</th>
                                                 <th width="100px">Aksi</th>
                                             </tr>
@@ -44,9 +43,8 @@
                                             @foreach($assessi as $value)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $value->name }}</td>
-                                                    <td>{{ $value->email }}</td>
-                                                    <td>{{ $value->assessor->name }}</td>
+                                                    <td>{{ $value->data_assessi->name }}</td>
+                                                    <td>{{ $value->assessor->data_assessor->name }}</td>
                                                     <td align="center">
                                                         <a href="/KelasSkema/{{ $class }}/dataAsesi/{{ $value->id }}/edit"
                                                             class="btn btn-warning btn-sm"><span

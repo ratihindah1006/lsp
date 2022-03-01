@@ -74,9 +74,10 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('schemaAssessi/{id}',[DataAssessiController::class, 'schemaAssessi'] );
     Route::get('assessorAssessi/{id}',[DataAssessiController::class, 'assessorAssessi'] );
 
-    Route::get('/dataAssessor', [DataAssessorController::class, 'data_assessor']);
+    //Route::get('/dataAssessor', [DataAssessorController::class, 'data_assessor']);
     Route::get('/dataAssessor/create', [DataAssessorController::class, 'create_data']);
     Route::post('/dataAssessor', [DataAssessorController::class, 'store_data']);
+    Route::get('/dataAssessor', [DataAssessorController::class, 'index_data_assessor']);
 
     Route::get('/KelasSkema/{class:id}/dataAsesor', [DataAssessorController::class, 'index']);
     Route::get('/KelasSkema/{class:id}/dataAsesor/create', [DataAssessorController::class, 'create']);

@@ -40,7 +40,7 @@
                                           <select style="width: 100%; height:40px;" name="assessor_id" id="assessor_id" class="form control select2">
                                             <option value="">Pilih Asesor</option>
                                             @foreach ($assessor as $assessor)
-                                            <option value="{{ $assessor->id }}" {{ old("assessor_id") == $assessor->id ? 'selected' : null }}>{{ $assessor->name }}</option>
+                                            <option value="{{ $assessor->id }}" {{ old("assessor_id") == $assessor->id ? 'selected' : null }}>{{ $assessor->data_assessor->name }}</option>
                                             @endforeach
                                           </select>
                                           @error('assessor_id')

@@ -38,22 +38,22 @@ class DataAssessorController extends Controller
       
     }
 
-    public function data_assessor(AdminModel $admin, SchemaClassModel $class)
+    // public function data_assessor(AdminModel $admin, SchemaClassModel $class)
 
-    {
-        $data=$admin->where('id', Auth::user()->id)->get();
-        $class_id=$class->id;
+    // {
+    //     $data=$admin->where('id', Auth::user()->id)->get();
+    //     $class_id=$class->id;
        
-        $count=AssessorModel::where('class_id',$class_id)->count();
-        return view('admin.dataAssessor.ListDataAssessor', [
-            'class'=>$class->id,
-            'assessor' => $class->assessors,
-            'title' => 'asesor',
-            'admin'=>$data,
-            'count'=>$count,
-        ]);
+    //     $count=AssessorModel::where('class_id',$class_id)->count();
+    //     return view('admin.dataAssessor.ListDataAssessor', [
+    //         'class'=>$class->id,
+    //         'assessor' => $class->assessors,
+    //         'title' => 'asesor',
+    //         'admin'=>$data,
+    //         'count'=>$count,
+    //     ]);
       
-    }
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -145,11 +145,22 @@ class DataAssessorController extends Controller
         AssessorModel::destroy($assessor->id);
         return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesor')->with('success', 'Data Assessor berhasil di hapus!');
     }
-
+    //.
+    //.
+    //DATA ASESOR KESELURUHAN
+    public function index_data_assessor(AdminModel $admin)
+    {
+        $data = $admin->where('id', Auth::user()->id)->get();
+        return view('admin.data_assessor.ListDataAssessor', [
+            'data_assessor' => DataAssessorModel::all(),
+            'title' => 'asesor',
+            'admin' => $data
+        ]);
+    }
     public function create_data()
     {
         $title = 'Data assessor';
-        return view('admin.dataAssessor.CreateDataAssessor', compact('title'));
+        return view('admin.data_assessor.CreateDataAssessor', compact('title'));
     }
 
     public function store_data(Request $request)
@@ -168,7 +179,7 @@ class DataAssessorController extends Controller
             'password' => bcrypt($request->password),
            
         ]);
-        
+      
         $assessis->save();
    
         return redirect('/dataAssessor')->with('success', 'Data Asesi berhasil di tambahkan!');

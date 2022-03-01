@@ -42,4 +42,9 @@ class AssessorModel extends Authenticatable
         return $this->belongsTo(SchemaClassModel::class, 'class_id','id');
     }
 
+    public function data_assessor()
+    {
+        return $this->belongsTo(DataAssessorModel::class, 'data_assessor_id','id');
+    }
+
 }

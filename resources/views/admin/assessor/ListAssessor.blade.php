@@ -48,9 +48,8 @@
                                             @foreach($assessor as $value)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $value->name }}</td>
-                                                    <td>{{ $value->email }}</td>
-                                                    
+                                                    <td>{{ $value->data_assessor->name }}</td>
+                                                    <td>{{ $value->data_assessor->email }}</td>
                                                     <td>
                                                         <a href="/KelasSkema/{{ $class }}/dataAsesor/{{ $value->id }}/edit"
                                                             class="btn btn-warning btn-sm"><span

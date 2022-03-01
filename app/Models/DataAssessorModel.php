@@ -18,5 +18,8 @@ class DataAssessorModel extends Authenticatable
     ];
     public $timestamps = false;
 
-    
+    public function assessors()
+    {
+        return $this->hasMany(AssessorModel::class, 'data_assessor_id', 'id'); 
+    }
 }
