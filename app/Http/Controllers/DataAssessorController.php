@@ -98,13 +98,14 @@ class DataAssessorController extends Controller
      * @return \Illuminate\Http\Response
      */
    
-    public function edit(SchemaClassModel $class,AssessorModel $assessor)
+    public function edit(SchemaClassModel $class, AssessorModel $assessor)
     {
        
         $title = 'Data assessor';
         $class = $class;
-        $assessor = $assessor;
-        return view('admin.assessor.EditAssessor', compact('title','class', 'assessor', ));
+        $assessors = $assessor;
+        $data_assessor = DataAssessorModel::all();
+        return view('admin.assessor.EditAssessor', compact('title','class', 'assessors','data_assessor' ));
     }
 
  
@@ -117,17 +118,14 @@ class DataAssessorController extends Controller
      */
   
 
-    public function update(Request $request, SchemaClassModel $class,AssessorModel $assessor)
+    public function update(Request $request, SchemaClassModel $class, AssessorModel $assessor)
     {
         $rules=[
-            'name' =>'required',
-            'password' =>'required',
+            'data_assessor_id' => 'required',
         ];
-        if($request->email != $assessor->email){
-            $rules['email'] = 'required|unique:assessor';
-        }
+        
+        $validateData['data_assessor_id']=$request->data_assessor_id;
         $validateData['class_id']=$class->id;
-        $validateData['password']=$assessor->password;
         $validateData= $request->validate($rules);
         $assessor->update($validateData);
 
@@ -140,7 +138,7 @@ class DataAssessorController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SchemaClassModel $class,AssessorModel $assessor,)
+    public function destroy(SchemaClassModel $class, AssessorModel $assessor)
     {
         AssessorModel::destroy($assessor->id);
         return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesor')->with('success', 'Data Assessor berhasil di hapus!');
@@ -148,6 +146,8 @@ class DataAssessorController extends Controller
     //.
     //.
     //DATA ASESOR KESELURUHAN
+
+    //index
     public function index_data_assessor(AdminModel $admin)
     {
         $data = $admin->where('id', Auth::user()->id)->get();
@@ -157,13 +157,16 @@ class DataAssessorController extends Controller
             'admin' => $data
         ]);
     }
-    public function create_data()
+
+    //create
+    public function create_data_assessor()
     {
         $title = 'Data assessor';
         return view('admin.data_assessor.CreateDataAssessor', compact('title'));
     }
 
-    public function store_data(Request $request)
+    //store
+    public function store_data_assessor(Request $request)
     {
   
         $request->validate([
@@ -179,9 +182,37 @@ class DataAssessorController extends Controller
             'password' => bcrypt($request->password),
            
         ]);
-      
         $assessis->save();
-   
         return redirect('/dataAssessor')->with('success', 'Data Asesi berhasil di tambahkan!');
+    }
+
+    //edit
+    public function edit_data_assessor(DataAssessorModel $data_assessor)
+    {
+        $title = 'Data assessor';
+        $data_assessor = $data_assessor;
+        return view('admin.data_assessor.EditDataAssessor', compact('title', 'data_assessor',));
+    }
+
+    //update
+    public function update_data_assessor(Request $request, DataAssessorModel $data_assessor)
+    {
+        $rules = [
+            'name' => 'required',
+            'password' => 'required',
+        ];
+        if ($request->email != $data_assessor->email) {
+            $rules['email'] = 'required';
+        }
+        $validateData = $request->validate($rules);
+        $data_assessor->update($validateData);
+
+        return redirect('/dataAssessor')->with('success', 'Data assessor berhasil di Update!');
+    }
+    //destroy
+    public function destroy_data_assessor(DataAssessorModel $data_assessor)
+    {
+        DataAssessorModel::destroy($data_assessor->id);
+        return redirect('/dataAssessor')->with('success', 'Data Assessor berhasil di hapus!');
     }
 }

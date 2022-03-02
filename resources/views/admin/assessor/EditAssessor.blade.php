@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('container')
-    <form method="post" action="/KelasSkema/{{ $class->id }}/dataAsesor/{{ $assessor->id }}">
+    <form method="post" action="/KelasSkema/{{ $class->id }}/dataAsesor/{{ $assessors->id }}">
         @method('put')
         @csrf
         <div class="col-lg-8">
@@ -14,39 +14,22 @@
                             </div>
                             <div class="card-content-center">
                                 <div class="card-body">
-                                    <div class="col-12">
+                                <div class="col-12">
                                         <div class="form-group">
-                                            <label for="name" class="form-label">Nama</label>
-                                            <input name="name" type="text"
-                                                class="form-control @error('name') is-invalid @enderror" id="name"
-                                                value="{{ old('name', $assessor->name) }}">
-                                            @error('name')
+                                        <label>Nama Asesor</label>
+                                          <select style="width: 100%; height:40px;" name="data_assessor_id" id="data_assessor_id" class="form control select2">
+                                            <option value="">Pilih Asesor</option>
+                                            @foreach ($data_assessor as $assessor)
+                                            <option value="{{ $assessor->id }}" {{ old('data_assessor_id', $assessors->data_assessor_id) == $assessor->id ? 'selected' : null }}>{{ $assessor->name }}</option>
+                                            @endforeach
+                                          </select>
+                                          @error('data_assessor_id')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>
                                             @enderror
                                         </div>
-                                        <div class="form-group">
-                                            <label for="email" class="form-label">Email</label>
-                                            <input type="text" class="form-control @error('email') is-invalid @enderror"
-                                                id="email" name="email" value="{{ old('email', $assessor->email) }}">
-                                            @error('email')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="password" class="form-label">Password</label>
-                                            <input name="password" type="text"
-                                                class="form-control @error('password') is-invalid @enderror" id="password"
-                                                value="{{ old('password', $assessor->password) }}">
-                                            @error('password')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
+                                    </div>
                                         <div class="col">
                                             <center><button type="submit" class="btn btn-success mt-4"
                                                     style="width: 170px">Submit</button>

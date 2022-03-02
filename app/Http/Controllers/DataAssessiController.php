@@ -31,17 +31,6 @@ class DataAssessiController extends Controller
         ]);
     }
 
-    public function data_assessi(AdminModel $admin, SchemaClassModel $class)
-    {
-        $data=$admin->where('id', Auth::user()->id)->get();
-        return view('admin.dataAssessi.listDataAssessi', [
-            'class'=>$class->id,
-            'assessi' => $class->assessis,
-            'title' => 'asesi',
-            'admin'=>$data
-        ]);
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -90,9 +79,10 @@ class DataAssessiController extends Controller
     {
         $title = 'Data assessi';
         $class = $class;
-        $assessi = $assessi;
+        $assessis = $assessi;
+        $data_assessi = DataAssessiModel::all();
         $assessor = $class->assessors;
-        return view('admin.assessi.EditAssessi', compact('title', 'class', 'assessor', 'assessi',));
+        return view('admin.assessi.EditAssessi', compact('title', 'class', 'assessor', 'assessis', 'data_assessi'));
     }
 
     /**
@@ -104,16 +94,15 @@ class DataAssessiController extends Controller
      */
     public function update(Request $request, SchemaClassModel $class, AssessiModel $assessi)
     {
-        $rules = [
-            'name' => 'required',
-            'password' => 'required',
+        $rules=[
             'assessor_id' => 'required',
+            'data_assessi_id' => 'required',
         ];
-        if ($request->email != $assessi->email) {
-            $rules['email'] = 'required';
-        }
-        $validateData['class_id'] = $class->id;
-        $validateData = $request->validate($rules);
+        
+        $validateData['assessor_id']=$request->assessor_id;
+        $validateData['data_assessi_id']=$request->data_assessi_id;
+        $validateData['class_id']=$class->id;
+        $validateData= $request->validate($rules);
         $assessi->update($validateData);
 
         return redirect('/KelasSkema' . '/' . $class->id . '/dataAsesi')->with('success', 'Data assessi berhasil di Update!');
