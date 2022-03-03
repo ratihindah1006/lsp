@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AssessiModel;
+use App\Models\DataAssessiModel;
 use App\Models\Apl01;
 use App\Models\SchemaClassModel;
 use App\Models\SchemaModel;
@@ -17,9 +17,9 @@ class Apl01Controller extends Controller
 {
     public function index(SchemaClassModel $schema_class)
     {
-        $assessi = AssessiModel::find(Auth::user()->id);
+        $assessi = DataAssessiModel::find(Auth::user()->id);
         //$posts = Post::where('user_id', $user->id)->get();
-        //dd($assessi->schema);
+        dd($assessi->assessis->apl01);
        
         return view('assessi.apl01', [
             'title' => 'APL 01',
@@ -31,7 +31,7 @@ class Apl01Controller extends Controller
     public function store(Request $request, Apl01 $apl01)
     {
 
-        $assessi = AssessiModel::find(Auth::user()->id);
+        $assessi = DataAssessiModel::find(Auth::user()->id);
       
 
         $validateData = $request->validate([

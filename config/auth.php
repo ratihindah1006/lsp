@@ -88,11 +88,11 @@ return [
         ],
         'assessis' => [
             'driver' => 'eloquent',
-            'model' => App\Models\AssessiModel::class,
+            'model' => App\Models\DataAssessiModel::class,
         ],
         'assessors' => [
             'driver' => 'eloquent',
-            'model' => App\Models\AssessorModel::class,
+            'model' => App\Models\DataAssessorModel::class,
         ],
     ],
 

@@ -11,11 +11,7 @@ use Illuminate\Http\Request;
 
 class Apl02Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+  
     public function index()
     {
         $assessi = AssessiModel::find(Auth::user()->id);

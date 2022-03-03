@@ -38,13 +38,13 @@ class DataAssessiController extends Controller
      */
     public function create(SchemaClassModel $class, DataAssessiModel $assessi)
     {
-        $class = $class;
-        $title = 'Data assessi';
-        $assessor = $class->assessors;
-
-        $assessi = DataAssessiModel::all();
-
-        return view('admin.assessi.CreateAssessi', compact('title', 'assessor', 'class', 'assessi'));
+        
+        return view('admin.assessi.CreateAssessi',[
+            'class' => $class,
+            'title'=>'Data Assessi',
+            'assessor'=>  $class->assessors,
+            'assessi'=>DataAssessiModel::all(),
+        ]);
     }
 
     /**
@@ -56,14 +56,15 @@ class DataAssessiController extends Controller
     public function store(Request $request, SchemaClassModel $class)
     {
         $request->validate([
-            'assessi_id' => 'required',
+            'data_assessi_id' => 'required',
             'assessor_id' => 'required',
         ]);
         $assessis = new AssessiModel([
-            'data_assessi_id' => $request->assessi_id,
+            'data_assessi_id' => $request->data_assessi_id,
             'assessor_id' => $request->assessor_id,
             'class_id' => $class->id
         ]);
+       
         $assessis->save();
 
         return redirect('/KelasSkema' . '/' . $class->id . '/dataAsesi')->with('success', 'Data Asesi berhasil di tambahkan!');
@@ -77,12 +78,13 @@ class DataAssessiController extends Controller
      */
     public function edit(SchemaClassModel $class, AssessiModel $assessi)
     {
-        $title = 'Data assessi';
-        $class = $class;
-        $assessis = $assessi;
-        $data_assessi = DataAssessiModel::all();
-        $assessor = $class->assessors;
-        return view('admin.assessi.EditAssessi', compact('title', 'class', 'assessor', 'assessis', 'data_assessi'));
+        return view('admin.assessi.EditAssessi',[
+            'title' => 'Data assessi',
+            'class'=>$class,
+            'assessis'=>$assessi,
+            'assessor'=>$class->assessors,
+            'data_assessi'=> DataAssessiModel::all(),
+        ]);
     }
 
     /**
@@ -138,8 +140,10 @@ class DataAssessiController extends Controller
     //create
     public function create_data_assessi()
     {
-        $title = 'Data assessi';
-        return view('admin.data_assessi.CreateDataAssessi', compact('title'));
+       
+        return view('admin.data_assessi.CreateDataAssessi',[
+            'title' => 'Data assessi',
+        ]);
     }
     //store
     public function store_data_assessi(Request $request)
@@ -161,9 +165,11 @@ class DataAssessiController extends Controller
     //edit
     public function edit_data_assessi(DataAssessiModel $data_assessi)
     {
-        $title = 'Data assessi';
-        $data_assessi = $data_assessi;
-        return view('admin.data_assessi.EditDataAssessi', compact('title', 'data_assessi',));
+        
+        return view('admin.data_assessi.EditDataAssessi',[
+            'title' => 'Data assessi',
+            'data_assessi' => $data_assessi,
+        ]);
     }
     //update
     public function update_data_assessi(Request $request, DataAssessiModel $data_assessi)

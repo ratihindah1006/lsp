@@ -23,6 +23,7 @@ class CreateAssessisTable extends Migration
             $table->foreign('data_assessi_id')->references('id')->on('data_assessi');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

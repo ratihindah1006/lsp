@@ -42,8 +42,8 @@
                                                 @foreach ($assessis as $value)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $value->name }}</td>
-                                                        <td>{{ $value->email }}</td>
+                                                        <td>{{ $value->data_assessi->name }}</td>
+                                                        <td>{{ $value->data_assessi->email }}</td>
                                                         <td>
                                                             @if ($value->apl01 != null)
                                                                 <a href="/list/{{ $value->id }}"

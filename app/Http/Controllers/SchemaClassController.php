@@ -18,20 +18,21 @@ class SchemaClassController extends Controller
 {
     public function index(AdminModel $admin, EventModel $event)
     {
-        $admin=$admin->where('id', Auth::user()->id)->get();
-        $event= $event->event_code;
-        $class = SchemaClassModel::all();
-        $assessor = AssessorModel::all();
-        $title = 'Kelas Skema';
-        return view('admin.schema_class.listSchemaClass', compact('class','title','admin', 'event','assessor'));
+        return view('admin.schema_class.listSchemaClass', [
+            'admin'=>$admin->where('id', Auth::user()->id)->get(),
+            'event'=> $event->event_code,
+            'class' => SchemaClassModel::all(),
+            'assessor' => AssessorModel::all(),
+            'title' => 'Kelas Skema',      ]);
     }
 
     public function create()
     {
-        $event = DB::table('event')->get();
-        $schema = DB::table('schema')->get();
-        $title= 'Tambah Kelas Skema';
-        return view('admin.schema_class.createSchemaClass', compact('event', 'schema', 'title'));
+        return view('admin.schema_class.createSchemaClass', [
+            'event' => DB::table('event')->get(),
+            'schema' => DB::table('schema')->get(),
+            'title'=> 'Tambah Kelas Skema',
+        ]);
     }
 
     public function event($id){
@@ -67,11 +68,12 @@ class SchemaClassController extends Controller
 
     public function edit(SchemaClassModel $class)
     {
-        $event = EventModel::all();
-        $schema = SchemaModel::all();
-        $title= 'Data Kelas Skema';
-        $class= $class;
-        return view('admin.schema_class.editSchemaClass', compact('title','event', 'class','schema'));
+        return view('admin.schema_class.editSchemaClass',[
+            'event' => EventModel::all(),
+            'schema' => SchemaModel::all(),
+            'title'=> 'Data Kelas Skema',
+            'class'=> $class,
+        ]);
     }
 
     public function update(Request $request, SchemaClassModel $class)

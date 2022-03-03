@@ -21,6 +21,7 @@ class CreateAssessorsTable extends Migration
             $table->foreign('data_assessor_id')->references('id')->on('data_assessor');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

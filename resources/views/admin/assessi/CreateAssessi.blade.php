@@ -18,14 +18,14 @@
 
                                     <div class="col-12">
                                         <div class="form-group">
-                                        <label>Nama Asesor</label>
-                                          <select style="width: 100%; height:40px;" name="assessi_id" id="assessi_id" class="form control select2">
+                                        <label>Nama Asesi</label>
+                                          <select style="width: 100%; height:40px;" name="data_assessi_id" id="data_assessi_id" class="form control select2">
                                             <option value="">Pilih Asesi</option>
                                             @foreach ($assessi as $assessi)
-                                            <option value="{{ $assessi->id }}" {{ old("assessi_id") == $assessi->id ? 'selected' : null }}>{{ $assessi->name }}</option>
+                                            <option value="{{ $assessi->id }}" {{ old("data_assessi_id") == $assessi->id ? 'selected' : null }}>{{ $assessi->name }}</option>
                                             @endforeach
                                           </select>
-                                          @error('assessi_id')
+                                          @error('data_assessi_id')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>

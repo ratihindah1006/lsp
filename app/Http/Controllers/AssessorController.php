@@ -11,23 +11,19 @@ use Illuminate\Http\Request;
 
 class AssessorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        return view('assessor.assessorDashboard',[
-            'title'=> 'assessor',
+        return view('assessor.assessorDashboard', [
+            'title' => 'assessor',
         ]);
     }
 
     public function list()
     {
         $assessor = AssessorModel::find(Auth::user()->id);
-        return view('assessor.listAssessi',[
-            'title'=> 'List Assessi',
+        return view('assessor.listAssessi', [
+            'title' => 'List Assessi',
             'assessis' => $assessor->assessis,
         ]);
     }
@@ -36,9 +32,9 @@ class AssessorController extends Controller
     {
         $assessor = AssessorModel::find(Auth::user()->id);
         return view('assessor.apl01', [
-           'apl01' => $assessi->apl01,
+            'apl01' => $assessi->apl01,
             'title' => 'Skema',
-            'assessis'=> $assessor->schema_class->schema,
+            'assessis' => $assessor->schema_class->schema,
 
         ]);
     }
@@ -46,11 +42,10 @@ class AssessorController extends Controller
     public function apl02(AssessiModel $assessi)
     {
         $assessor = AssessorModel::find(Auth::user()->id);
-        if (isset($assessi->apl02->assessment)){
-            $assessment=json_decode($assessi->apl02->assessment);
-        }
-        else{
-            $assessment=[];
+        if (isset($assessi->apl02->assessment)) {
+            $assessment = json_decode($assessi->apl02->assessment);
+        } else {
+            $assessment = [];
         }
         return view('assessor.apl02', [
             'title' => 'APL02',
@@ -84,22 +79,22 @@ class AssessorController extends Controller
         //     if($value->apl01 != null){
         //         $value->apl01->update($validateData);
         //     } }
-        
-         
-            // if($cek->apl01->assessi_id == $cek->id){
-            //     dd($cek->apl01->name);
-            //     $cek->apl01->update($validateData);
-            //     }
-            
-            $rules=[
-                'assessor_signature'=>'required|image|file|max:1024',
-                'status' => 'required',
-            ];
-            $validateData['assessor_signature'] = $request->file('assessor_signature')->store('assessor_signature');
-            $validateData['assessi_id']=$assessi->id;
-            dd($assessi->id);
-            $validateData= $request->validate($rules);
-            $apl01->update($validateData);
+
+
+        // if($cek->apl01->assessi_id == $cek->id){
+        //     dd($cek->apl01->name);
+        //     $cek->apl01->update($validateData);
+        //     }
+
+        $rules = [
+            'assessor_signature' => 'required|image|file|max:1024',
+            'status' => 'required',
+        ];
+        $validateData['assessor_signature'] = $request->file('assessor_signature')->store('assessor_signature');
+        $validateData['assessi_id'] = $assessi->id;
+        dd($assessi->id);
+        $validateData = $request->validate($rules);
+        $apl01->update($validateData);
 
         return redirect('/list')->with('success', 'Status berhasil di Update!');
     }
@@ -114,13 +109,11 @@ class AssessorController extends Controller
             'note' => 'required',
             'status' => 'required',
         ]);
-        foreach($cek as $value)
-        { 
-            if($value->apl02 != null){
+        foreach ($cek as $value) {
+            if ($value->apl02 != null) {
                 $value->apl02->update($validateData);
-            } }
+            }
+        }
         return redirect('/list')->with('success', 'Status berhasil di Update!');
     }
-
-
 }

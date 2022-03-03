@@ -62,11 +62,14 @@ class DataAssessorController extends Controller
      */
     public function create($class)
     {
-        $data = DB::table('category')->get();
-        $class=$class;
-        $assessor = DataAssessorModel::all();
-        $title = 'Data assessor';
-        return view('admin.assessor.CreateAssessor', compact('title', 'data','class', 'assessor'));
+        
+        
+        return view('admin.assessor.CreateAssessor', [
+            'class'=> $class,
+            'assessor' => DataAssessorModel::all(),
+            'title' => 'Data assessor',
+            'data' =>DB::table('category')->get(),
+        ]);
     }
   
 
@@ -100,12 +103,12 @@ class DataAssessorController extends Controller
    
     public function edit(SchemaClassModel $class, AssessorModel $assessor)
     {
-       
-        $title = 'Data assessor';
-        $class = $class;
-        $assessors = $assessor;
-        $data_assessor = DataAssessorModel::all();
-        return view('admin.assessor.EditAssessor', compact('title','class', 'assessors','data_assessor' ));
+        return view('admin.assessor.EditAssessor', [
+            'title' => 'Data assessor',
+            'class' => $class,
+            'assessors' => $assessor,
+            'data_assessor' => DataAssessorModel::all(),
+        ]);
     }
 
  
@@ -161,8 +164,9 @@ class DataAssessorController extends Controller
     //create
     public function create_data_assessor()
     {
-        $title = 'Data assessor';
-        return view('admin.data_assessor.CreateDataAssessor', compact('title'));
+        return view('admin.data_assessor.CreateDataAssessor',[
+            'title' => 'Data Assessor'
+        ]);
     }
 
     //store
@@ -189,9 +193,11 @@ class DataAssessorController extends Controller
     //edit
     public function edit_data_assessor(DataAssessorModel $data_assessor)
     {
-        $title = 'Data assessor';
-        $data_assessor = $data_assessor;
-        return view('admin.data_assessor.EditDataAssessor', compact('title', 'data_assessor',));
+       
+        return view('admin.data_assessor.EditDataAssessor',[
+            'title' => 'Data assessor',
+            'data_assessor' => $data_assessor,
+        ]);
     }
 
     //update
