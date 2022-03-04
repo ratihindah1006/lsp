@@ -18,11 +18,11 @@
             <br>
             <div class="cards"><br><br>
                 <div class="col">
-                    <p class="my-text">Nama &emsp; : &emsp; {{ $p->name }}</p><br>
-                    <p class="my-text">email &emsp; : &emsp; {{ $p->email }} </p>
-                    {{-- <p class="my-text">kelas skema &emsp; : &emsp; {{ $p->assessis->schema_class->name}} </p> --}}
+                    <p class="my-text">Nama &emsp; : &emsp; {{ $p->data_assessi->name }}</p><br>
+                    <p class="my-text">email &emsp; : &emsp; {{ $p->data_assessi->email }} </p>
+                    <p class="my-text">kelas skema &emsp; : &emsp; {{ $p->schema_class->name}} </p>
                     <div class="row">
-                        <a href="/apl01" class="btn btn-success btn-sm">
+                        <a href="/apl01/{{ $p->id }}" class="btn btn-success btn-sm">
                             <span>Apl 01</span>
                         </a>&emsp;
                         @if ($assessi != null)

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataAssessiModel;
+use App\Models\AssessiModel;
 use App\Models\Apl01;
 use App\Models\SchemaClassModel;
 use App\Models\SchemaModel;
@@ -19,19 +20,19 @@ class Apl01Controller extends Controller
     {
         $assessi = DataAssessiModel::find(Auth::user()->id);
         //$posts = Post::where('user_id', $user->id)->get();
-        dd($assessi->assessis->apl01);
+       // dd($assessi->assessis->find(Auth::user()->id)->schema_class->schema);
        
         return view('assessi.apl01', [
             'title' => 'APL 01',
-            'assessis' => $assessi->schema_class->schema,
-            'apl01' => $assessi->apl01,
+            'assessis' => $assessi->assessis->find(Auth::user()->id)->schema_class->schema,
+            'apl01' => $assessi->assessis->find(Auth::user()->id)->apl01,
         ]);
     }
 
-    public function store(Request $request, Apl01 $apl01)
+    public function store(Request $request, Apl01 $apl01, AssessiModel $assessi)
     {
 
-        $assessi = DataAssessiModel::find(Auth::user()->id);
+        //$assessi = AssessiModel::find(Auth::user()->id);
       
 
         $validateData = $request->validate([
@@ -69,8 +70,9 @@ class Apl01Controller extends Controller
         $validateData['transcript'] = $request->file('transcript')->store('transcript');
         $validateData['assessi_signature'] = $request->file('assessi_signature')->store('assessi_signature');
         $validateData['assessi_id'] = $assessi->id;
-        $cek = $assessi->apl01;
-        //dd($validateData);
+        $cek = $assessi->apl01->assessi_id;
+
+        dd($validateData);
 
         if ($cek == Null) {
             Apl01::create($validateData);
