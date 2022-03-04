@@ -137,10 +137,10 @@ Route::group(['middleware' => 'auth:admin'], function () {
 Route::group(['middleware' => 'auth:assessi'], function () {
     Route::get('/beranda', [AssessiController::class, 'index']);
     Route::get('/apl01', [Apl01Controller::class, 'index']);
-    Route::post('/beranda', [Apl01Controller::class, 'store']);
+    Route::post('/beranda/{assessi:id}', [Apl01Controller::class, 'store']);
     Route::get('/apl01/{assessis:id}', [Apl01Controller::class, 'index']);
     Route::get('/apl02', [Apl02Controller::class, 'index']);
-    Route::post('/apl02/store', [Apl02Controller::class, 'store']);
+    Route::post('/apl02/store/{assessi:id}', [Apl02Controller::class, 'store']);
 });
 
 Route::group(['middleware' => 'auth:assessor'], function () {

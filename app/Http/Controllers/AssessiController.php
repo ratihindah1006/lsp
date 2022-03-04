@@ -22,7 +22,7 @@ class AssessiController extends Controller
             'title' => 'assessi',
             'assessis' => $data3,
             'data2' => $data2,
-            'assessi' => $assessi->assessis->find(Auth::user()->id)->apl01,
+            'assessi' => $assessi->assessis->find(Auth::user()->id),
         ]);
     }
 }
