@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\APL02Model;
 use App\Models\AssessorModel;
+use App\Models\DataAssessorModel;
 use App\Models\AssessiModel;
 use App\Models\Apl01;
 use Illuminate\Support\Facades\Auth;
@@ -21,10 +22,11 @@ class AssessorController extends Controller
 
     public function list()
     {
-        $assessor = AssessorModel::find(Auth::user()->id);
+        $data_assessor = DataAssessorModel::find(Auth::user()->id);
+       
         return view('assessor.listAssessi', [
             'title' => 'List Assessi',
-            'assessis' => $assessor->assessis,
+            'assessi' => $data_assessor,
         ]);
     }
 

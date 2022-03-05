@@ -1,7 +1,7 @@
 @extends('layout.assessi')
 
 @section('container')
-    <form action="/beranda" method="post" enctype="multipart/form-data">
+    <form action="/beranda/{{ $assessi->id }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-lg-12">

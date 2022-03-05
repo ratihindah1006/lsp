@@ -35,36 +35,40 @@
                                                     <th>No</th>
                                                     <th>Nama</th>
                                                     <th>Email</th>
+                                                    <th>Kelas Skema</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($assessis as $value)
+                                                @foreach ($assessi->assessors as $value)
+                                                @foreach($value->assessis as $v)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $value->data_assessi->name }}</td>
-                                                        <td>{{ $value->data_assessi->email }}</td>
+                                                        <td>{{ $v->data_assessi->name}}</td>
+                                                        <td>{{ $v->data_assessi->email }}</td>
+                                                        <td>{{$v->schema_class->name}}</td>
                                                         <td>
-                                                            @if ($value->apl01 != null)
-                                                                <a href="/list/{{ $value->id }}"
+                                                            @if ($v->apl01 != null)
+                                                                <a href="/list/{{ $v->id }}"
                                                                     class="btn btn-success btn-sm">
                                                                     <span>Apl 01</span></a>
                                                             @else
-                                                            <a href="/list/{{ $value->id }}"
+                                                            <a href="/list/{{ $v->id }}"
                                                                 class="btn btn-success btn-sm disabled">
                                                                 <span>Apl 01</span></a>
                                                             @endif
-                                                            @if ($value->apl02 != null)
-                                                                <a href="/list02/{{ $value->id }}"
+                                                            @if ($v->apl02 != null)
+                                                                <a href="/list02/{{ $v->id }}"
                                                                     class="btn btn-primary btn-sm">
                                                                     <span>Apl 02</span></a>
                                                             @else
-                                                            <a href="/list02/{{ $value->id }}"
+                                                            <a href="/list02/{{ $v->id }}"
                                                                 class="btn btn-primary btn-sm disabled">
                                                                 <span>Apl 02</span></a>
                                                             @endif
                                                         </td>
                                                     </tr>
+                                                    @endforeach
                                                 @endforeach
                                             </tbody>
                                         </table>

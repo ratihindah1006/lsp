@@ -16,23 +16,27 @@ use phpDocumentor\Reflection\Types\Null_;
 
 class Apl01Controller extends Controller
 {
-    public function index(SchemaClassModel $schema_class)
+    public function index(SchemaClassModel $schema_class, $id)
     {
+        $data = DataAssessiModel::find(Auth::user()->id);
+        $data3=$data->assessis->find($id);
         $assessi = DataAssessiModel::find(Auth::user()->id);
         //$posts = Post::where('user_id', $user->id)->get();
-       // dd($assessi->assessis->find(Auth::user()->id)->schema_class->schema);
+        //dd($assessi->assessis->find($id)->schema_class->schema);
        
         return view('assessi.apl01', [
             'title' => 'APL 01',
-            'assessis' => $assessi->assessis->find(Auth::user()->id)->schema_class->schema,
-            'apl01' => $assessi->assessis->find(Auth::user()->id)->apl01,
+            'assessi'=>$data3,
+            'assessis' => $assessi->assessis->find($id)->schema_class->schema,
+            'apl01' => $assessi->assessis->find($id)->apl01,
         ]);
     }
 
-    public function store(Request $request, Apl01 $apl01, AssessiModel $assessi)
+    public function store($id, Request $request)
     {
+        $assessi = DataAssessiModel::find(Auth::user()->id);
+        $asesi = $assessi->assessis->find($id);
 
-        $assessi = AssessiModel::find(Auth::user()->id);
       
 
         $validateData = $request->validate([
@@ -69,15 +73,15 @@ class Apl01Controller extends Controller
         $validateData['ktp'] = $request->file('ktp')->store('ktp');
         $validateData['transcript'] = $request->file('transcript')->store('transcript');
         $validateData['assessi_signature'] = $request->file('assessi_signature')->store('assessi_signature');
-        $validateData['assessi_id'] = $assessi->id;
-        $cek = $assessi->apl01;
-
+        $validateData['assessi_id'] = $asesi->id;
+        //dd($validateData);
+        $cek = $asesi->apl01;
         //dd($validateData);
 
         if ($cek == Null) {
             Apl01::create($validateData);
         } else {
-            Apl01::where('assessi_id', $assessi->id)
+            Apl01::where('assessi_id', $asesi->id)
                 ->update($validateData);
         }
 
