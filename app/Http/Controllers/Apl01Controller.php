@@ -32,7 +32,7 @@ class Apl01Controller extends Controller
     public function store(Request $request, Apl01 $apl01, AssessiModel $assessi)
     {
 
-        //$assessi = AssessiModel::find(Auth::user()->id);
+        $assessi = AssessiModel::find(Auth::user()->id);
       
 
         $validateData = $request->validate([
@@ -70,9 +70,9 @@ class Apl01Controller extends Controller
         $validateData['transcript'] = $request->file('transcript')->store('transcript');
         $validateData['assessi_signature'] = $request->file('assessi_signature')->store('assessi_signature');
         $validateData['assessi_id'] = $assessi->id;
-        $cek = $assessi->apl01->assessi_id;
+        $cek = $assessi->apl01;
 
-        dd($validateData);
+        //dd($validateData);
 
         if ($cek == Null) {
             Apl01::create($validateData);
