@@ -94,7 +94,7 @@ class AssessorController extends Controller
         ];
         $validateData['assessor_signature'] = $request->file('assessor_signature')->store('assessor_signature');
         $validateData['assessi_id'] = $assessi->id;
-        dd($assessi->id);
+        //dd($assessi->id);
         $validateData = $request->validate($rules);
         $apl01->update($validateData);
 
@@ -103,7 +103,7 @@ class AssessorController extends Controller
 
     public function asesmen(Request $request, AssessiModel $assessi)
     {
-        dd($assessi);
+        //dd($assessi);
         $assessor = AssessorModel::find(Auth::user()->id);
         $assessi = $assessi->assessi_id;
         $cek = $assessor->assessis;

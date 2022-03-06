@@ -139,7 +139,7 @@ Route::group(['middleware' => 'auth:assessi'], function () {
     Route::get('/apl01', [Apl01Controller::class, 'index']);
     Route::post('/beranda/{assessi:id}', [Apl01Controller::class, 'store']);
     Route::get('/apl01/{assessis:id}', [Apl01Controller::class, 'index']);
-    Route::get('/apl02', [Apl02Controller::class, 'index']);
+    Route::get('/apl02/{assessis:id}', [Apl02Controller::class, 'index']);
     Route::post('/apl02/store/{assessi:id}', [Apl02Controller::class, 'store']);
 });
 

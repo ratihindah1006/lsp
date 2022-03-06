@@ -23,6 +23,7 @@ class Apl01Controller extends Controller
         $assessi = DataAssessiModel::find(Auth::user()->id);
         //$posts = Post::where('user_id', $user->id)->get();
         //dd($assessi->assessis->find($id)->schema_class->schema);
+        //dd($data3);
        
         return view('assessi.apl01', [
             'title' => 'APL 01',
