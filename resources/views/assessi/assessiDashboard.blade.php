@@ -20,28 +20,35 @@
                 <div class="col">
                     <p class="my-text">Nama &emsp; : &emsp; {{ $p->data_assessi->name }}</p><br>
                     <p class="my-text">email &emsp; : &emsp; {{ $p->data_assessi->email }} </p>
-                    <p class="my-text">kelas skema &emsp; : &emsp; {{ $p->schema_class->name}} </p>
+                    <p class="my-text">kelas skema &emsp; : &emsp; {{ $p->schema_class->name }} </p>
                     <div class="row">
-                        <a href="/apl01/{{ $p->id }}" class="btn btn-success btn-sm">
-                            <span>Apl 01</span>
-                        </a>&emsp;
-                       
-                        @if ($p->apl01 != null)
-                            @if ($p->apl01->status == '1')
-                                <a href="/apl02/{{ $p->id }}" class="btn btn-success btn-sm">
-                                    <span>Apl 02</span>
-                                </a>
+                        @if ($p->schema_class->event->status == 'Open')
+                            <a href="/apl01/{{ $p->id }}" class="btn btn-success btn-sm">
+                                <span>Apl 01</span>
+                            </a>&emsp;
+                            @if ($p->apl01 != null)
+                                @if ($p->apl01->status == '1')
+                                    <a href="/apl02/{{ $p->id }}" class="btn btn-success btn-sm">
+                                        <span>Apl 02</span>
+                                    </a>
+                                @else
+                                    <a href="/apl02" class="btn btn-success btn-sm disabled">
+                                        <span>Apl 02</span>
+                                    </a>
+                                @endif
                             @else
                                 <a href="/apl02" class="btn btn-success btn-sm disabled">
                                     <span>Apl 02</span>
                                 </a>
                             @endif
                         @else
+                            <a href="/apl01/{{ $p->id }}" class="btn btn-success btn-sm disabled">
+                                <span>Apl 01</span>
+                            </a>&emsp;
                             <a href="/apl02" class="btn btn-success btn-sm disabled">
                                 <span>Apl 02</span>
                             </a>
                         @endif
-                      
                     </div><br><br>
                 </div>
             </div>

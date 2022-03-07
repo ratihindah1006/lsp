@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AssessiModel;
 use Illuminate\Support\Facades\Auth;
 use App\Models\APL02Model;
+use App\Models\DataAssessiModel;
 use App\Models\CriteriaModel;
 use App\Models\SchemaModel;
 use Illuminate\Http\Request;
@@ -12,9 +13,11 @@ use Illuminate\Http\Request;
 class Apl02Controller extends Controller
 {
   
-    public function index()
+    public function index($id)
     {
-        $assessi = AssessiModel::find(Auth::user()->id);
+        $dataAssessi = DataAssessiModel::find(Auth::user()->id);
+        $assessi=$dataAssessi->assessis->find($id);
+        //$assessi = AssessiModel::find(Auth::user()->id);
         //dd(json_decode($assessi->apl02->assessment));
         if (isset($assessi->apl02->assessment)){
             $assessment=json_decode($assessi->apl02->assessment);
@@ -38,10 +41,12 @@ class Apl02Controller extends Controller
         );
     }
 
-    public function store(Request $request, SchemaModel $schema)
+    public function store(Request $request, SchemaModel $schema, $id)
     {
         //dd($request->all());
-        $assessi = AssessiModel::find(Auth::user()->id);
+        //$assessi = AssessiModel::find(Auth::user()->id);
+        $dataAssessi = DataAssessiModel::find(Auth::user()->id);
+        $assessi = $dataAssessi->assessis->find($id);
         $assessment = [];
         $i = 1;
         foreach ($request->all() as $data){

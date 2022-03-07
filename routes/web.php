@@ -139,7 +139,7 @@ Route::group(['middleware' => 'auth:assessi'], function () {
     Route::get('/apl01', [Apl01Controller::class, 'index']);
     Route::post('/beranda/{assessi:id}', [Apl01Controller::class, 'store']);
     Route::get('/apl01/{assessis:id}', [Apl01Controller::class, 'index']);
-    Route::get('/apl02', [Apl02Controller::class, 'index']);
+    Route::get('/apl02/{assessis:id}', [Apl02Controller::class, 'index']);
     Route::post('/apl02/store/{assessi:id}', [Apl02Controller::class, 'store']);
 });
 
@@ -148,8 +148,8 @@ Route::group(['middleware' => 'auth:assessor'], function () {
     Route::get('/list', [AssessorController::class, 'list']);
     Route::get('/list/{assessi:id}', [AssessorController::class, 'apl01']);
     Route::get('/list02/{assessi:id}', [AssessorController::class, 'apl02']);
-    Route::put('/list', [AssessorController::class, 'status']);
-    Route::put('/list/02/{assessi:id}', [AssessorController::class, 'asesmen']);
+    Route::put('/list01/{assessi:id}', [AssessorController::class, 'status_apl01']);
+    Route::put('/list/02/{assessi:id}', [AssessorController::class, 'status_apl02']);
    
 });
 

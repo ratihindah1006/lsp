@@ -1,7 +1,7 @@
 @extends('layout.assessor')
 
 @section('container')
-<form action="/list" method="post" enctype="multipart/form-data">
+<form action="/list01/{{ $assessi->id }}" method="post" enctype="multipart/form-data">
   @method('put')
     @csrf
     <div class="row">
@@ -15,7 +15,7 @@
                     </a>
                 </div>
                 <div class="card-body">
-                    <div class="form-validation">
+                    <div class="form-validation"> 
                         <div class="row">
                             <div class="col-xl-6">
                                 <h4 class="card-title">Data Pribadi</h4><br>

@@ -34,6 +34,7 @@ class AssessorController extends Controller
         $assessor = AssessorModel::find(Auth::user()->id);
         return view('assessor.apl01', [
             'apl01' => $assessi->apl01,
+            'assessi' => $assessi,
             'title' => 'Skema',
             'assessis' => $assessor->schema_class->schema,
 
@@ -50,7 +51,7 @@ class AssessorController extends Controller
         }
         return view('assessor.apl02', [
             'title' => 'APL02',
-            'asesi' => $assessi,
+            'assessi' => $assessi,
             'skema' => $assessor->schema_class->schema,
             'asesor' => $assessor,
             'apl01' => $assessi->apl01,
@@ -62,57 +63,40 @@ class AssessorController extends Controller
         ]);
     }
 
-    public function status(Request $request, AssessiModel $assessi, Apl01 $apl01)
+    public function status_apl01(Request $request, Apl01 $apl01, $id)
     {
-        // $assessor = AssessorModel::find(Auth::user()->id);
-        // $a=$assessi->id;
-        // $c=Apl01::where('assessi_id',$a)->get();
-        // $assessi = $assessi->assessi_id;
-        // $cek = $assessor->assessis;
-        // dd($apl01);
-        // $validateData = $request->validate([
-        //     'assessor_signature'=>'required|image|file|max:1024',
-        //     'status' => 'required',
-        // ]);
-        // $validateData['assessor_signature'] = $request->file('assessor_signature')->store('assessor_signature');
-        // foreach($cek as $value)
-        // { 
-        //     if($value->apl01 != null){
-        //         $value->apl01->update($validateData);
-        //     } }
-
-
-        // if($cek->apl01->assessi_id == $cek->id){
-        //     dd($cek->apl01->name);
-        //     $cek->apl01->update($validateData);
-        //     }
-
-        $rules = [
-            'assessor_signature' => 'required|image|file|max:1024',
-            'status' => 'required',
-        ];
-        $validateData['assessor_signature'] = $request->file('assessor_signature')->store('assessor_signature');
-        $validateData['assessi_id'] = $assessi->id;
-        dd($assessi->id);
-        $validateData = $request->validate($rules);
-        $apl01->update($validateData);
-
+        $data_assessor = DataAssessorModel::find(Auth::user()->id);
+        foreach ($data_assessor->assessors as $a) {
+            foreach ($a->assessis as $b) {
+                $assessi = $b->find($id);
+                if ($assessi->apl01 != null) {
+                    $validateData = $request->validate([
+                        'assessor_signature' => 'required|image|file|max:1024',
+                        'status' => 'required',
+                    ]);
+                    $validateData['assessi_id'] = $assessi->id;
+                    $validateData['assessor_signature'] = $request->file('assessor_signature')->store('assessor_signature');
+                    $assessi->apl01->update($validateData);
+                }
+            }
+        }
         return redirect('/list')->with('success', 'Status berhasil di Update!');
     }
 
-    public function asesmen(Request $request, AssessiModel $assessi)
+    public function status_apl02(Request $request, $id)
     {
-        dd($assessi);
-        $assessor = AssessorModel::find(Auth::user()->id);
-        $assessi = $assessi->assessi_id;
-        $cek = $assessor->assessis;
-        $validateData = $request->validate([
-            'note' => 'required',
-            'status' => 'required',
-        ]);
-        foreach ($cek as $value) {
-            if ($value->apl02 != null) {
-                $value->apl02->update($validateData);
+        $data_assessor = DataAssessorModel::find(Auth::user()->id);
+        foreach ($data_assessor->assessors as $a) {
+            foreach ($a->assessis as $b) {
+                $assessi = $b->find($id);
+                if ($assessi->apl02 != null) {
+                    $validateData = $request->validate([
+                        'note' => 'required',
+                        'status' => 'required',
+                    ]);
+                    $validateData['assessi_id'] = $assessi->id;
+                    $assessi->apl02->update($validateData);
+                }
             }
         }
         return redirect('/list')->with('success', 'Status berhasil di Update!');
