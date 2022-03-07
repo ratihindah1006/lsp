@@ -25,9 +25,10 @@
                         <a href="/apl01/{{ $p->id }}" class="btn btn-success btn-sm">
                             <span>Apl 01</span>
                         </a>&emsp;
-                        @if ($assessi != null)
-                            @if ($assessi->status == '1')
-                                <a href="/apl02" class="btn btn-success btn-sm">
+                       
+                        @if ($p->apl01 != null)
+                            @if ($p->apl01->status == '1')
+                                <a href="/apl02/{{ $p->id }}" class="btn btn-success btn-sm">
                                     <span>Apl 02</span>
                                 </a>
                             @else
@@ -40,6 +41,7 @@
                                 <span>Apl 02</span>
                             </a>
                         @endif
+                      
                     </div><br><br>
                 </div>
             </div>

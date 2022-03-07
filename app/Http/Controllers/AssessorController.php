@@ -23,7 +23,6 @@ class AssessorController extends Controller
     public function list()
     {
         $data_assessor = DataAssessorModel::find(Auth::user()->id);
-       
         return view('assessor.listAssessi', [
             'title' => 'List Assessi',
             'assessi' => $data_assessor,
