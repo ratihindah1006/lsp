@@ -14,13 +14,21 @@
                 </ol>
             </div>
         </div>
+
+        <div class="cards"><br><br>
+                <div class="col">
+                    <p class="my-text">Nama &emsp; : &emsp; {{ $assessi->name }}</p><br>
+                    <p class="my-text">email &emsp; : &emsp; {{ $assessi->email }} </p><br>
+                </div>
+        </div>
         @foreach ($assessis as $p)
             <br>
             <div class="cards"><br><br>
                 <div class="col">
-                    <p class="my-text">Nama &emsp; : &emsp; {{ $p->data_assessi->name }}</p><br>
-                    <p class="my-text">email &emsp; : &emsp; {{ $p->data_assessi->email }} </p>
-                    <p class="my-text">kelas skema &emsp; : &emsp; {{ $p->schema_class->name }} </p>
+                    <p class="my-text">Event &emsp;  &emsp;  &emsp;  &emsp; : &emsp; {{ $p->schema_class->event->event_name }}</p>
+                    <p class="my-text">Schema &emsp;  &emsp;  &emsp; : &emsp; {{ $p->schema_class->schema->schema_title }}</p>
+                    <p class="my-text">kelas skema &emsp; &ensp; : &emsp; {{ $p->schema_class->name }} </p>
+                    <p class="my-text">Assessor &emsp;  &emsp; &ensp; : &emsp; {{ $p->assessor->data_assessor->name }} </p> <br>
                     <div class="row">
                         @if ($p->schema_class->event->status == 'Open')
                             <a href="/apl01/{{ $p->id }}" class="btn btn-success btn-sm">

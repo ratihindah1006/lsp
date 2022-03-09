@@ -35,7 +35,7 @@ class AuthController extends Controller
         elseif (Auth::guard('assessor')->attempt(['email'=>$request->email, 'password'=> $request->password])){
             return redirect()->intended('assessor');  
         }
-        return redirect('/login');
+        return redirect('/login')->with('loginError','akun tidak valid');
     }
   
     public function logout(Request $request){

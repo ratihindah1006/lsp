@@ -113,21 +113,21 @@
                     <th rowspan="2">
                         <p class="form-check-inline">&emsp;1. Assessment
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="status" id="status" value="1">
+                            <input class="form-check-input" type="radio" name="status" id="status" value="1" @if ($apl02->status  == '1') checked @endif>
                             <label class="form-check-label" for="status">Dilanjutkan</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="status" id="status" value="0">
+                            <input class="form-check-input" type="radio" name="status" id="status" value="0" @if ($apl02->status  == '0') checked @endif>
                             <label class="form-check-label" for="status">Tidak Dilanjutkan</label>
                         </div>
                         </p>
-                        <p>&emsp;2. Proses Assessment dilanjutkan Melalui
+                        <p class="form-check-inline">&emsp;2. Proses Assessment dilanjutkan Melalui
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="lane" id="lane" value="Uji Kompetensi">
+                            <input class="form-check-input" type="radio" name="lane" id="lane" value="Uji Kompetensi" @if ($apl02->lane  == 'Uji Kompetensi') checked @endif>
                             <label class="form-check-label" for="lane">Uji Kompetensi</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="lane" id="lane" value="Asesmen Portofolio">
+                            <input class="form-check-input" type="radio" name="lane" id="lane" value="Asesmen Portofolio" @if ($apl02->lane  == 'Asesmen Portofolio') checked @endif>
                             <label class="form-check-label" for="lane">Asesmen Portofolio</label>
                         </div>
                         </p>
@@ -152,7 +152,7 @@
                     <th rowspan="3">&ensp;
                         <div class="col-xl-10">
                             <label class="my-text">&emsp;Catatan&emsp;:</label>
-                            <textarea class="form-control @error('note') is-invalid @enderror" value="{{ old('note') }}"
+                            <textarea class="form-control @error('note') is-invalid @enderror" value="{{ old('note', $apl02->note) }}"
                                 id="note" name="note" rows="5" placeholder="Catatan"></textarea>
                             @error('note')
                                 <div class="invalid-feedback">

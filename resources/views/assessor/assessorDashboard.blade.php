@@ -14,5 +14,11 @@
             </ol>
         </div>
     </div>
+    <div class="cards"><br><br>
+                <div class="col">
+                    <p class="my-text">Nama &emsp; : &emsp; {{ $assessor->name }}</p><br>
+                    <p class="my-text">email &emsp; : &emsp; {{ $assessor->email }} </p><br>
+                </div>
+        </div>
 </div>
 @endsection

@@ -44,18 +44,19 @@
 		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 	</div>
 	@endif
-	@if(session()->has('loginError'))
-	<div class="alert alert-danger alert-dismissable fade show" role="alert">
-		{{ session('loginError') }}
-		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-	</div>
-	@endif
+
 	<div class="limiter">
 		<div class="container-login100" style="background:rgb(80, 221, 80);">
 			<div class="wrap-login100 p-t-30 p-b-50">
 				<span class="login100-form-title p-b-41">
 					Login
 				</span>
+				@if (session()->has('loginError'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('loginError') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
 				<form class="login100-form form-floating validate-form p-b-33 p-t-5" action="{{route('postLogin')}}" method="POST" id="logForm">
 					{{ csrf_field() }}
 					<div class="wrap-input100 validate-input" for="email">

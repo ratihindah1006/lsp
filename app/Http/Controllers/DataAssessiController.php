@@ -38,12 +38,17 @@ class DataAssessiController extends Controller
      */
     public function create(SchemaClassModel $class, DataAssessiModel $assessi)
     {
-        
+        $classId = $class->event->schema_class->pluck("id");
+        $assessis = DataAssessiModel::whereDoesntHave('assessis', function ($query) use ($classId) {
+            return $query->whereIn('class_id', $classId);
+        })->get();
+
+
         return view('admin.assessi.CreateAssessi',[
             'class' => $class,
             'title'=>'Data Assessi',
             'assessor'=>  $class->assessors,
-            'assessi'=>DataAssessiModel::all(),
+            'assessi'=>$assessis,
         ]);
     }
 

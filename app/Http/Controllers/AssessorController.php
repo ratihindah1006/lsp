@@ -15,8 +15,10 @@ class AssessorController extends Controller
 
     public function index()
     {
+        $data_assessor = DataAssessorModel::find(Auth::user()->id);
         return view('assessor.assessorDashboard', [
             'title' => 'assessor',
+            'assessor' => $data_assessor,
         ]);
     }
 
@@ -91,9 +93,10 @@ class AssessorController extends Controller
                 $assessi = $b->find($id);
                 if ($assessi->apl02 != null) {
                     $validateData = $request->validate([
-                        'note' => 'required',
                         'status' => 'required',
+                        'lane' => 'required',
                     ]);
+                    $validateData['note'] = $request->note;
                     $validateData['assessi_id'] = $assessi->id;
                     $assessi->apl02->update($validateData);
                 }

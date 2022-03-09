@@ -10,9 +10,9 @@
     <p class="my-text">Judul Skema Sertifikasi &emsp; : &emsp; {{$skema->schema_title}}</p>
     <p class="my-text">Nomor &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : &emsp; {{$skema->no_skkni}}</p>
     <p class="my-text">Tempat Uji Kompetensi&emsp;&ensp; : &emsp; {{$class->tuk}}</p>
-    <p class="my-text">Nama Asesor &emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : &emsp; {{$asesor->name}}</p>
-    <p class="my-text">Nama Asesi &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; : &emsp; {{$asesi->name}}</p>
-    <p class="my-text">Tanggal &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; :</p><br>
+    <p class="my-text">Nama Asesor &emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : &emsp; {{$asesor->data_assessor->name}}</p>
+    <p class="my-text">Nama Asesi &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; : &emsp; {{$asesi->data_assessi->name}}</p>
+    <p class="my-text">Tanggal &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; : &emsp; {{$asesi->schema_class->event->event_time}}</p><br>
     <p class="my-text">Asesi diminta untuk :</p>
     <p class="my-text">1. Mempelajari Kriteria Unjuk Kerja (KUK), Batasan Variabel, Panduan Penilaian, dan Aspek Kritis seluruh Unit Kompetensi yang diminta
         untuk di Ases.</p>
@@ -97,14 +97,33 @@
                 <th width="700px">&ensp;Rekomendasi </th>
                 <th colspan="2" width="300px">&ensp;Pemohon **)&ensp;</th>
             </tr>
+            
             <tr>
-                <th rowspan="2">
-                    <p>&emsp;1. Assessment</p>
-                    <p>&emsp;2. Proses Assessment dilanjutkan Melalui</p>
-                </th>
-                <th>&ensp;Nama&ensp;</th>
-                <th>&ensp;{{$asesi->name}}&ensp;</th>
-            </tr>
+                    <th rowspan="2">
+                        <p class="form-check-inline">&emsp;1. Assessment
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="status" id="status" disabled>
+                            <label class="form-check-label" for="status">Dilanjutkan</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="status" id="status" disabled>
+                            <label class="form-check-label" for="status">Tidak Dilanjutkan</label>
+                        </div>
+                        </p>
+                        <p class="form-check-inline">&emsp;2. Proses Assessment dilanjutkan Melalui
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="lane" id="lane" disabled>
+                            <label class="form-check-label" for="lane">Uji Kompetensi</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="lane" id="lane" disabled>
+                            <label class="form-check-label" for="lane">Asesmen Portofolio</label>
+                        </div>
+                        </p>
+                    </th>
+                    <th>&ensp;Nama&ensp;</th>
+                    <th>&ensp;{{ $asesi->name }}&ensp;</th>
+                </tr>
 
             <tr>
                 <th>&ensp;TTD&ensp;</th>
