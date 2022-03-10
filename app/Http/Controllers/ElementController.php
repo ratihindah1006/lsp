@@ -57,6 +57,7 @@ class ElementController extends Controller
         $validateData = $request->validate([
             'element_code' => 'required|unique:element',
             'element_title' => 'required',
+            'benchmark' => 'required',
         ]);
         $validateData['unit_id']=$unit->id;
         ElementModel::create($validateData);
@@ -103,7 +104,8 @@ class ElementController extends Controller
     public function update(Request $request, CategoryModel $category, SchemaModel $schema, UnitModel $unit, ElementModel $element)
     {
         $rules=[
-            'element_title' => 'required'
+            'element_title' => 'required',
+            'benchmark' => 'required',
         ];
         if($request->element_code != $element->element_code){
             $rules['element_code'] = 'required|unique:element';

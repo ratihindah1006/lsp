@@ -16,13 +16,8 @@ class DashboardController extends Controller
      */
     public function index(AdminModel $admin)
     {
-<<<<<<< HEAD
-        $assessi = DB::table('assessi')->count();
-        $assessor = DB::table('assessor')->count();
-=======
         $assessi = DB::table('data_assessi')->count();
         $assessor = DB::table('data_assessor')->count();
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
         $event = DB::table('event')->count();
         $category = DB::table('category')->count();
         return view('admin.dashboard.dashboard', [

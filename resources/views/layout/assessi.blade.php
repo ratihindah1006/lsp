@@ -13,13 +13,9 @@
     <link href="/assets/vendor/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
     <link href="/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet">
     <link href="/assets/css/style.css" rel="stylesheet">
-<<<<<<< HEAD
     <link href="/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="/assets/vendor/summernote/summernote.css" rel="stylesheet">
 
-=======
-   
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
 </head>
 
 <body>
@@ -83,17 +79,12 @@
             Content body start
         ***********************************-->
         <div class="content-body content-bodyy">
-<<<<<<< HEAD
             @if (session()->has('success'))
                 <div class="alert alert-success" role="alert">
                     {{ session('success') }}
                 </div>
             @endif
             @yield('container')
-=======
-           
-             @yield('container')
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
             </div>
         </div>
         <!--**********************************
@@ -146,15 +137,10 @@
      <!-- Datatable -->
      <script src="/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
      <script src="/assets/js/plugins-init/datatables.init.js"></script>
-<<<<<<< HEAD
  
     <!-- Summernote -->
     <script src="/assets/vendor/summernote/js/summernote.min.js"></script>
     <script src="/assets/js/plugins-init/summernote-init.js"></script>
-=======
-
-   
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
 
 </body>
 

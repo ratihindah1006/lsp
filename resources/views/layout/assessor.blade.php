@@ -13,11 +13,7 @@
     <link href="/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet">
     <link href="/assets/css/style.css" rel="stylesheet">
     <link href="/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
-<<<<<<< HEAD
     <link href="/assets/vendor/summernote/summernote.css" rel="stylesheet">
-=======
-
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
 
 </head>
 
@@ -141,13 +137,9 @@
     <script src="/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="/assets/js/plugins-init/datatables.init.js"></script>
 
-<<<<<<< HEAD
     <!-- Summernote -->
     <script src="/assets/vendor/summernote/js/summernote.min.js"></script>
     <script src="/assets/js/plugins-init/summernote-init.js"></script>
-=======
-    <!-- Circle progress -->
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
 
 </body>
 

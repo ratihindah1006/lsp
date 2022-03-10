@@ -403,21 +403,13 @@
                                         </label>
                                         <div class="col-lg-6">
                                             <input type="text"
-<<<<<<< HEAD
-                                                class="form-control @error('postal_code') is-invalid @enderror"
-=======
                                                 class="form-control @error('postal_code') is-invalid @enderror" id="postal_code" name="postal_code"
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
                                                 @if ($apl01 != null){
                                             value= "{{ $apl01->postal_code }}"
                                             }else{
                                             value="{{ old('postal_code') }}"
                                             }
-<<<<<<< HEAD
-                                            @endif id="postal_code" name="postal_code">
-=======
                                             @endif >
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
                                             @error('postal_code')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -525,12 +517,9 @@
                     <div class="card-header">
                         <h4 class="font-weight-bold">Berkas Kelengkapan Pemohon </h4>
                     </div>
-<<<<<<< HEAD
-=======
                     <div class="card-header">
                         <h6>*Berkas diupload dengan format pdf dengan ukuran max 1 MB</h6>
                     </div>
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
                     <div class="card-body">
                         <div class="basic-form">
                             <div class="row">
@@ -540,12 +529,7 @@
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class=" input-group mb-3">
-<<<<<<< HEAD
-                                        <input class="form-control" type="file"
-                                            class="form-group @error('ijazah') is-invalid @enderror"
-=======
                                         <input class="form-control @error('ijazah') is-invalid @enderror" type="file"
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
                                             value="{{ old('ijazah') }}" id="ijazah" name="ijazah">
                                         @error('ijazah')
                                             <div class="invalid-feedback">
@@ -659,13 +643,9 @@
                                         </div>
                                         <label class="my-text txt ">TTD Assssi
                                             <span class="text-danger txt">*</span>
-<<<<<<< HEAD
-                                        </label>
-=======
                                             <p>(*format jpg) </p>
                                         </label>
                                        
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
                                     </div>
                                 </div>
                             </div>

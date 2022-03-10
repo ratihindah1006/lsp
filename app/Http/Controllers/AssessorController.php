@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
 use App\Models\AK01;
 use App\Models\Apl01;
 use App\Models\MUK01;
@@ -13,15 +12,6 @@ use Illuminate\Http\Request;
 use App\Models\AssessorModel;
 use App\Models\DataAssessorModel;
 use Illuminate\Support\Facades\Auth;
-=======
-use App\Models\APL02Model;
-use App\Models\AssessorModel;
-use App\Models\DataAssessorModel;
-use App\Models\AssessiModel;
-use App\Models\Apl01;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
 
 class AssessorController extends Controller
 {
@@ -117,7 +107,6 @@ class AssessorController extends Controller
         }
         return redirect('/list')->with('success', 'Status berhasil di Update!');
     }
-<<<<<<< HEAD
 
     public function ak01(AssessiModel $assessi)
     {
@@ -223,6 +212,4 @@ class AssessorController extends Controller
         }
         return redirect('/list')->with('success', 'Form MUK06 berhasil disimpan!');
     }
-=======
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
 }

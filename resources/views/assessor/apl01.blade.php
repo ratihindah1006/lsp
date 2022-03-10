@@ -177,11 +177,7 @@
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="form-group row">
-<<<<<<< HEAD
-                                    <label class="col-lg-4 col-form-label font-weight-bold text-success" for="sert_schema">Skema Sertifikasi
-=======
                                     <label class="col-lg-4 col-form-label font-weight-bold text-success" for="sert_schema">Kemasan Kompetensi
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
                                     </label>
                                     <div class="col-lg-6">
                                         <input name="sert_schema" type="text" class="form-control" id="sert_schema" value="{{ old('sert_schema', $apl01->sert_schema) }}" disabled>
@@ -265,10 +261,6 @@
                                 <label class="font-weight-bold text-success">3.&ensp; KTP/SIM/Paspor</label>
                             <div class="input-group mb-3">
                                 <iframe type="application/pdf" src="{{ asset('storage/'.$apl01->ktp) }}" width="600" height="400"></iframe>
-<<<<<<< HEAD
-                               
-=======
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
                             </div>
                             <label class="font-weight-bold text-success">4.&ensp; Transkip Nilai</label>
                             <div class="input-group mb-3">

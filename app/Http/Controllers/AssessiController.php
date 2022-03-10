@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
 use App\Models\Answer;
 use App\Models\AssessiModel;
 use App\Models\ElementModel;
@@ -11,12 +10,6 @@ use App\Models\DataAssessiModel;
 use App\Models\DataAssessorModel;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
-=======
-use App\Models\AssessiModel;
-use App\Models\DataAssessiModel;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
 
 class AssessiController extends Controller
 {
@@ -28,7 +21,6 @@ class AssessiController extends Controller
             'title' => 'assessi',
             'assessi' => $data_assessi,
             'assessis' => $data_assessi->assessis,
-<<<<<<< HEAD
         ]);       
     }
 
@@ -65,9 +57,5 @@ class AssessiController extends Controller
             }            
         }
         return redirect('/beranda')->with('success', 'jawaban berhasil ditambahkan');
-=======
-        ]);
-       
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
     }
 }

@@ -50,24 +50,15 @@
                                                         <td>
                                                             @if ($v->apl01 != null)
                                                                 <a href="/list/{{ $v->id }}"
-<<<<<<< HEAD
                                                                     class="btn btn-success btn-sm mb-2">
                                                                     <span>Apl 01</span></a>
                                                             @else
                                                             <a href="/list/{{ $v->id }}"
                                                                 class="btn btn-success btn-sm disabled mb-2">
-=======
-                                                                    class="btn btn-success btn-sm">
-                                                                    <span>Apl 01</span></a>
-                                                            @else
-                                                            <a href="/list/{{ $v->id }}"
-                                                                class="btn btn-success btn-sm disabled">
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
                                                                 <span>Apl 01</span></a>
                                                             @endif
                                                             @if ($v->apl02 != null)
                                                                 <a href="/list02/{{ $v->id }}"
-<<<<<<< HEAD
                                                                     class="btn btn-primary btn-sm mb-2">
                                                                     <span>Apl 02</span></a>
                                                                 <a href="/assessor/ak01/{{ $v->id }}" class="btn btn-secondary btn-sm mb-2"><span>FR.AK.01</span></a>
@@ -91,14 +82,6 @@
                                                                 class="btn btn-primary btn-sm disabled mb-2">
                                                                 <span>Apl 02</span></a>
                                                             <a href="" class="btn btn-secondary btn-sm disabled mb-2"><span>FR.AK.01</span></a>
-=======
-                                                                    class="btn btn-primary btn-sm">
-                                                                    <span>Apl 02</span></a>
-                                                            @else
-                                                            <a href="/list02/{{ $v->id }}"
-                                                                class="btn btn-primary btn-sm disabled">
-                                                                <span>Apl 02</span></a>
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
                                                             @endif
                                                         </td>
                                                     </tr>

@@ -38,37 +38,6 @@ class DataAssessorController extends Controller
       
     }
 
-<<<<<<< HEAD
-    // public function data_assessor(AdminModel $admin, SchemaClassModel $class)
-
-    // {
-    //     $data=$admin->where('id', Auth::user()->id)->get();
-    //     $class_id=$class->id;
-       
-    //     $count=AssessorModel::where('class_id',$class_id)->count();
-    //     return view('admin.dataAssessor.ListDataAssessor', [
-    //         'class'=>$class->id,
-    //         'assessor' => $class->assessors,
-    //         'title' => 'asesor',
-    //         'admin'=>$data,
-    //         'count'=>$count,
-    //     ]);
-      
-    // }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create($class)
-    {
-        
-        
-        return view('admin.assessor.CreateAssessor', [
-            'class'=> $class,
-            'assessor' => DataAssessorModel::all(),
-=======
 
     public function create(SchemaClassModel $class)
     {
@@ -79,23 +48,10 @@ class DataAssessorController extends Controller
         return view('admin.assessor.CreateAssessor', [
             'class'=> $class,
             'assessor' =>$assessor,
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
             'title' => 'Data assessor',
             'data' =>DB::table('category')->get(),
         ]);
     }
-<<<<<<< HEAD
-  
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-=======
-
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
     public function store(Request $request, SchemaClassModel $class)
     {
 
@@ -108,11 +64,7 @@ class DataAssessorController extends Controller
         ]);
         $assessors->save();
    
-<<<<<<< HEAD
-        return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesor')->with('success', 'Data Asesi berhasil di tambahkan!');
-=======
         return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesor')->with('success', 'Data Asesor berhasil di tambahkan!');
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
     }
 
     /**

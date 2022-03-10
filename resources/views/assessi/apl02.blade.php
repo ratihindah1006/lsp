@@ -2,10 +2,6 @@
 
 @section('container')
 <br>
-<<<<<<< HEAD
-=======
-
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
 <h2 align="center">APL-02 ASESMEN MANDIRI</h2>
 <br>
 <div class="cards"><br><br>
@@ -133,11 +129,7 @@
                 <th>
                     <div class="col-xl-4">
                             <div class="input-group mb-3">
-<<<<<<< HEAD
-                                <img class="txt" src="{{ asset('storage/'.$apl01->assessi_signature) }}"
-=======
                                 <img class="txt" src="{{ asset('storage/' . $apl01->assessi_signature) }}"
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
                                     width="100px" height="100px">
                             </div>
                         </div>
@@ -171,11 +163,7 @@
                     <th>
                         <div class="col-xl-4">
                             <div class="input-group mb-3">
-<<<<<<< HEAD
-                                <img class="txt" src="{{ asset('storage/'.$apl01->assessor_signature) }}"
-=======
                                 <img class="txt" src="{{ asset('storage/' . $apl01->assessor_signature) }}"
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
                                 width="100px" height="100px">
                             </div>
                         </div>

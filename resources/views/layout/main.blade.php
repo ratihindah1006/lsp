@@ -15,14 +15,9 @@
     <link href="/assets/css/style.css" rel="stylesheet">
     <link href="/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="/assets/vendor/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-<<<<<<< HEAD
     <link href="/assets/vendor/summernote/summernote.css" rel="stylesheet">
     <link href="/assets/vendor/select2/css/select2.min.css" rel="stylesheet">
 
-=======
-    <link href="/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="/assets/vendor/select2/css/select2.min.css" rel="stylesheet">
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
 </head>
 
 <body>
@@ -124,13 +119,9 @@
                                 class="nav-text">Kategori</span></a></li>
                     <li><a href="/KelasSkema" aria-expanded="false"><i class="icon icon-single-copy-06"></i><span
                                 class="nav-text">Kelas Skema</span></a></li>
-<<<<<<< HEAD
                     <li class="nav-label">Soal</li>
                     <li><a href="/soal" aria-expanded="false"><i class="icon icon-edit-72"></i><span
                         class="nav-text">Soal Esai</span></a></li>    
-=======
-                  
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
                         </ul>
                     </li>
                 </ul>
@@ -193,7 +184,6 @@
     <!-- Daterangepicker -->
     <script src="/assets/js/plugins-init/bs-daterange-picker-init.js"></script>
 
-<<<<<<< HEAD
     <script src="/assets/vendor/select2/js/select2.full.min.js"></script>
     <script src="/assets/js/plugins-init/select2-init.js"></script>
     <!-- Summernote -->
@@ -248,13 +238,6 @@
             }
         });
     </script>
-=======
-     <!-- select -->
-     <script src="/assets/vendor/select2/js/select2.full.min.js"></script>
-     <script src="/assets/js/plugins-init/select2-init.js"></script>
- 
- 
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
 
 </body>
 

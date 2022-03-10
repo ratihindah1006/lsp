@@ -13,11 +13,7 @@ class ElementModel extends Model
         'element_code',
         'element_title',
         'unit_id',
-<<<<<<< HEAD
         'benchmark',
-=======
-        
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
        ];
     use HasFactory;
     use SoftDeletes;
@@ -31,12 +27,9 @@ class ElementModel extends Model
     {
         return $this->hasMany(CriteriaModel::class, 'element_id', 'id'); 
     }
-<<<<<<< HEAD
 
     public function question()
     {
         return $this->hasOne(Question::class, 'element_id', 'id');
     }
-=======
->>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
 }
