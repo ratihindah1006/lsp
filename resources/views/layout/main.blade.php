@@ -15,6 +15,8 @@
     <link href="/assets/css/style.css" rel="stylesheet">
     <link href="/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="/assets/vendor/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="/assets/vendor/select2/css/select2.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -178,6 +180,12 @@
     <script src="/assets/vendor/clockpicker/js/bootstrap-clockpicker.min.js"></script>
     <!-- Daterangepicker -->
     <script src="/assets/js/plugins-init/bs-daterange-picker-init.js"></script>
+
+     <!-- select -->
+     <script src="/assets/vendor/select2/js/select2.full.min.js"></script>
+     <script src="/assets/js/plugins-init/select2-init.js"></script>
+ 
+ 
 
 </body>
 

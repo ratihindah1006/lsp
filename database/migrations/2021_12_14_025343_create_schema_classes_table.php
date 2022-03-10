@@ -22,6 +22,7 @@ class CreateSchemaClassesTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('tuk');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

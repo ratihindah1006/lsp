@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SchemaClassModel extends Model
 {
@@ -16,6 +17,7 @@ class SchemaClassModel extends Model
         'schema_id'
        ];
     use HasFactory;
+    use SoftDeletes;
 
     public function event()
     {

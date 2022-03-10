@@ -42,8 +42,6 @@ class DataAssessiController extends Controller
         $assessis = DataAssessiModel::whereDoesntHave('assessis', function ($query) use ($classId) {
             return $query->whereIn('class_id', $classId);
         })->get();
-
-
         return view('admin.assessi.CreateAssessi',[
             'class' => $class,
             'title'=>'Data Assessi',
@@ -52,12 +50,6 @@ class DataAssessiController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request, SchemaClassModel $class)
     {
         $request->validate([
@@ -83,6 +75,7 @@ class DataAssessiController extends Controller
      */
     public function edit(SchemaClassModel $class, AssessiModel $assessi)
     {
+        
         return view('admin.assessi.EditAssessi',[
             'title' => 'Data assessi',
             'class'=>$class,

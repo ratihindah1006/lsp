@@ -13,9 +13,7 @@
     <link href="/assets/vendor/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
     <link href="/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet">
     <link href="/assets/css/style.css" rel="stylesheet">
-    <link href="/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
-    
-
+   
 </head>
 
 <body>
@@ -133,8 +131,8 @@
      <!-- Datatable -->
      <script src="/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
      <script src="/assets/js/plugins-init/datatables.init.js"></script>
- 
-    <!-- Circle progress -->
+
+   
 
 </body>
 

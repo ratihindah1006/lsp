@@ -38,47 +38,21 @@ class DataAssessorController extends Controller
       
     }
 
-    // public function data_assessor(AdminModel $admin, SchemaClassModel $class)
 
-    // {
-    //     $data=$admin->where('id', Auth::user()->id)->get();
-    //     $class_id=$class->id;
-       
-    //     $count=AssessorModel::where('class_id',$class_id)->count();
-    //     return view('admin.dataAssessor.ListDataAssessor', [
-    //         'class'=>$class->id,
-    //         'assessor' => $class->assessors,
-    //         'title' => 'asesor',
-    //         'admin'=>$data,
-    //         'count'=>$count,
-    //     ]);
-      
-    // }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create($class)
+    public function create(SchemaClassModel $class)
     {
-        
-        
+        $classId = $class->event->schema_class->pluck("id");
+        $assessor = DataAssessorModel::whereDoesntHave('assessors', function ($query) use ($classId) {
+            return $query->whereIn('class_id', $classId);
+        })->get();
         return view('admin.assessor.CreateAssessor', [
             'class'=> $class,
-            'assessor' => DataAssessorModel::all(),
+            'assessor' =>$assessor,
             'title' => 'Data assessor',
             'data' =>DB::table('category')->get(),
         ]);
     }
-  
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request, SchemaClassModel $class)
     {
 
@@ -91,7 +65,7 @@ class DataAssessorController extends Controller
         ]);
         $assessors->save();
    
-        return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesor')->with('success', 'Data Asesi berhasil di tambahkan!');
+        return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesor')->with('success', 'Data Asesor berhasil di tambahkan!');
     }
 
     /**

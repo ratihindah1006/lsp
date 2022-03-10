@@ -1,8 +1,6 @@
 @extends('layout.main')
 
 @section('container')
-
-
     <div class="col-lg-8">
         <form method="post" action="/KelasSkema/{{ $class->id }}/dataAsesi">
             @csrf
@@ -19,8 +17,8 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                         <label>Nama Asesi</label>
-                                          <select style="width: 100%; height:40px;" name="data_assessi_id" id="data_assessi_id" class="form control select2">
-                                            <option value="">Pilih Asesi</option>
+                                          <select class="form-control maximum-search-length @error('data_assessi_id') is-invalid @enderror" style="width: 100%; height:40px;" name="data_assessi_id" id="data_assessi_id">
+                                            <option value=""></option>
                                             @foreach ($assessi as $assessi)
                                             <option value="{{ $assessi->id }}" {{ old("data_assessi_id") == $assessi->id ? 'selected' : null }}>{{ $assessi->name }}</option>
                                             @endforeach
@@ -32,13 +30,11 @@
                                             @enderror
                                         </div>
                                     </div>
-
-
                                     <div class="col-12">
                                         <div class="form-group">
                                         <label>Nama Asesor</label>
-                                          <select style="width: 100%; height:40px;" name="assessor_id" id="assessor_id" class="form control select2">
-                                            <option value="">Pilih Asesor</option>
+                                          <select style="width: 100%; height:40px;" name="assessor_id" id="assessor_id" class="form-control maximum-search-length @error('assessor_id') is-invalid @enderror">
+                                            <option value=""></option>
                                             @foreach ($assessor as $assessor)
                                             <option value="{{ $assessor->id }}" {{ old("assessor_id") == $assessor->id ? 'selected' : null }}>{{ $assessor->data_assessor->name }}</option>
                                             @endforeach
@@ -50,7 +46,6 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    
                                     <div class="col">
                                         <center><button type="submit" class="btn btn-success mt-4"
                                                 style="width: 170px">Submit</button></center>
@@ -62,7 +57,6 @@
                 </div>
             </div>
         </form>
-
     </div>
 
 

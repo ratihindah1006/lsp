@@ -17,8 +17,8 @@
                                 <div class="col-12">
                                         <div class="form-group">
                                         <label>Nama Asesor</label>
-                                          <select style="width: 100%; height:40px;" name="data_assessor_id" id="data_assessor_id" class="form control select2">
-                                            <option value="">Pilih Asesor</option>
+                                          <select style="width: 100%; height:40px;" name="data_assessor_id" id="data_assessor_id" class="form-control maximum-search-length @error('data_assessor_id') is-invalid @enderror">
+                                            <option value=""></option>
                                             @foreach ($data_assessor as $assessor)
                                             <option value="{{ $assessor->id }}" {{ old('data_assessor_id', $assessors->data_assessor_id) == $assessor->id ? 'selected' : null }}>{{ $assessor->name }}</option>
                                             @endforeach

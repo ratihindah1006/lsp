@@ -3,7 +3,7 @@
 @section('container')
 
     <div class="col-lg-8">
-        <form method="post" action="/KelasSkema/{{ $class }}/dataAsesor">
+        <form method="post" action="/KelasSkema/{{ $class->id }}/dataAsesor">
             @csrf
             <div class="card-center">
                 <div class="row mt-5">
@@ -17,8 +17,8 @@
                                 <div class="col-12">
                                         <div class="form-group">
                                         <label>Nama Asesor</label>
-                                          <select style="width: 100%; height:40px;" name="data_assessor_id" id="data_assessor_id" class="form control select2">
-                                            <option value="">Pilih Asesor</option>
+                                          <select style="width: 100%; height:40px;" name="data_assessor_id" id="data_assessor_id" class="form-control maximum-search-length @error('data_assessor_id') is-invalid @enderror">
+                                            <option value=""></option>
                                             @foreach ($assessor as $assessor)
                                             <option value="{{ $assessor->id }}" {{ old("assessor_id") == $assessor->id ? 'selected' : null }}>{{ $assessor->name }}</option>
                                             @endforeach

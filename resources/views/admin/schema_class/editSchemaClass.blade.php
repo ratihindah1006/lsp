@@ -28,6 +28,34 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
+                                            <label for="event_id" class="form-label">Nama Event</label>
+                                            <select style="width: 100%; height:40px;" name="event_id" id="event_id"  class="form-control maximum-search-length @error('event_id') is-invalid @enderror">
+                                                <option value="">Pilih Bidang</option>
+                                                @foreach ($event as $events)
+                                                <option value="{{ $events->id }}" {{ old('event_id', $class->event_id) == $events->id ? 'selected' : null }}>{{ $events->event_name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('event_id')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="schema_id" class="form-label">Judul Skema</label>
+                                            <select style="width: 100%; height:40px;" name="schema_id" id="schema_id"  class="form-control maximum-search-length @error('schema_id') is-invalid @enderror">
+                                                <option value="">Pilih Bidang</option>
+                                                @foreach ($schema as $schemas)
+                                                <option value="{{ $schemas->id }}" {{ old('schema_id', $class->schema_id) == $schemas->id ? 'selected' : null }}>{{ $schemas->schema_title }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('schema_id')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
                                             <label for="tuk" class="form-label">TUK</label>
                                             <input type="text" class="form-control @error('tuk') is-invalid @enderror"
                                                 id="tuk" name="tuk" value="{{ old('tuk', $class->tuk) }}">
@@ -47,34 +75,7 @@
                                                 </div>
                                             @enderror
                                         </div>
-                                        <div class="form-group">
-                                            <label for="event_id" class="form-label">Nama Event</label>
-                                            <select style="width: 100%; height:40px;" name="event_id" id="event_id" class="form control select2">
-                                                <option value="">Pilih Bidang</option>
-                                                @foreach ($event as $events)
-                                                <option value="{{ $events->id }}" {{ old('event_id', $class->event_id) == $events->id ? 'selected' : null }}>{{ $events->event_name }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('event_id')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="schema_id" class="form-label">Judul Skema</label>
-                                            <select style="width: 100%; height:40px;" name="schema_id" id="schema_id" class="form control select2">
-                                                <option value="">Pilih Bidang</option>
-                                                @foreach ($schema as $schemas)
-                                                <option value="{{ $schemas->id }}" {{ old('schema_id', $class->schema_id) == $schemas->id ? 'selected' : null }}>{{ $schemas->schema_title }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('schema_id')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                            @enderror
-                                        </div>
+                                        
                                         <div class="col">
                                             <center><button type="submit" class="btn btn-success mt-4"
                                                     style="width: 170px">Submit</button></center>
