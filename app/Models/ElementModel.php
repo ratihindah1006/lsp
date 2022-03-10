@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class ElementModel extends Model
+{   
+    protected $table = "element";
+    protected $fillable = [
+        'element_code',
+        'element_title',
+        'unit_id',
+        'benchmark',
+       ];
+    use HasFactory;
+    use SoftDeletes;
+
+    public function unit()
+    {
+        return $this->belongsTo(UnitModel::class,'unit_id','id');
+    }
+
+    public function criterias()
+    {
+        return $this->hasMany(CriteriaModel::class, 'element_id', 'id'); 
+    }
+
+    public function question()
+    {
+        return $this->hasOne(Question::class, 'element_id', 'id');
+    }
+}
