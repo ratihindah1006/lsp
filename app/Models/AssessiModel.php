@@ -61,6 +61,7 @@ class AssessiModel extends Authenticatable
         return $this->belongsTo(DataAssessiModel::class, 'data_assessi_id','id');
     }
 
+<<<<<<< HEAD
     public function answer()
     {
         return $this->hasMany(Answer::class, 'assessi_id', 'id');
@@ -75,4 +76,6 @@ class AssessiModel extends Authenticatable
     {
         return $this->hasOne(MUK01::class, 'assessi_id', 'id');
     }
+=======
+>>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
 }

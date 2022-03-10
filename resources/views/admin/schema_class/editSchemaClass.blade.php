@@ -28,6 +28,7 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
+<<<<<<< HEAD
                                             <label for="tuk" class="form-label">TUK</label>
                                             <input type="text" class="form-control @error('tuk') is-invalid @enderror"
                                                 id="tuk" name="tuk" value="{{ old('tuk', $class->tuk) }}">
@@ -50,6 +51,10 @@
                                         <div class="form-group">
                                             <label for="event_id" class="form-label">Nama Event</label>
                                             <select style="width: 100%; height:40px;" name="event_id" id="event_id" class="form control select2">
+=======
+                                            <label for="event_id" class="form-label">Nama Event</label>
+                                            <select style="width: 100%; height:40px;" name="event_id" id="event_id"  class="form-control maximum-search-length @error('event_id') is-invalid @enderror">
+>>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
                                                 <option value="">Pilih Bidang</option>
                                                 @foreach ($event as $events)
                                                 <option value="{{ $events->id }}" {{ old('event_id', $class->event_id) == $events->id ? 'selected' : null }}>{{ $events->event_name }}</option>
@@ -63,7 +68,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="schema_id" class="form-label">Judul Skema</label>
+<<<<<<< HEAD
                                             <select style="width: 100%; height:40px;" name="schema_id" id="schema_id" class="form control select2">
+=======
+                                            <select style="width: 100%; height:40px;" name="schema_id" id="schema_id"  class="form-control maximum-search-length @error('schema_id') is-invalid @enderror">
+>>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
                                                 <option value="">Pilih Bidang</option>
                                                 @foreach ($schema as $schemas)
                                                 <option value="{{ $schemas->id }}" {{ old('schema_id', $class->schema_id) == $schemas->id ? 'selected' : null }}>{{ $schemas->schema_title }}</option>
@@ -75,6 +84,30 @@
                                                     </div>
                                             @enderror
                                         </div>
+<<<<<<< HEAD
+=======
+                                        <div class="form-group">
+                                            <label for="tuk" class="form-label">TUK</label>
+                                            <input type="text" class="form-control @error('tuk') is-invalid @enderror"
+                                                id="tuk" name="tuk" value="{{ old('tuk', $class->tuk) }}">
+                                            @error('tuk')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description" class="form-label">Description</label>
+                                            <input type="text" class="form-control @error('description') is-invalid @enderror"
+                                                id="description" name="description" value="{{ old('description', $class->description) }}">
+                                            @error('description')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        
+>>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
                                         <div class="col">
                                             <center><button type="submit" class="btn btn-success mt-4"
                                                     style="width: 170px">Submit</button></center>

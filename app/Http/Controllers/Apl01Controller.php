@@ -6,8 +6,11 @@ use App\Models\DataAssessiModel;
 use App\Models\AssessiModel;
 use App\Models\Apl01;
 use App\Models\SchemaClassModel;
+<<<<<<< HEAD
 use App\Models\SchemaModel;
 use GuzzleHttp\Promise\Create;
+=======
+>>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
@@ -20,11 +23,16 @@ class Apl01Controller extends Controller
     {
         $data = DataAssessiModel::find(Auth::user()->id);
         $data3=$data->assessis->find($id);
+<<<<<<< HEAD
         $assessi = DataAssessiModel::find(Auth::user()->id);
         //$posts = Post::where('user_id', $user->id)->get();
         //dd($assessi->assessis->find($id)->schema_class->schema);
         //dd($data3);
        
+=======
+        $assessi = DataAssessiModel::find(Auth::user()->id);    
+
+>>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
         return view('assessi.apl01', [
             'title' => 'APL 01',
             'assessi'=>$data3,
@@ -41,7 +49,11 @@ class Apl01Controller extends Controller
       
 
         $validateData = $request->validate([
+<<<<<<< HEAD
             'nik' => 'required',
+=======
+            'nik' => 'required|min:16',
+>>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
             'name' => 'required',
             'domicile' => 'required',
             'place_of_birth' => 'required',
@@ -63,7 +75,11 @@ class Apl01Controller extends Controller
             'sert_schema' => 'required',
             'assessment_purpose' => 'required',
             'ijazah' => 'required|mimes:pdf|max:1024',
+<<<<<<< HEAD
             'photo' => 'required|image|file|max:1024',
+=======
+            'photo' => 'required|mimes:pdf|max:1024',
+>>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
             'ktp' => 'required|mimes:pdf|max:1024',
             'transcript' => 'required|mimes:pdf|max:1024',
             'assessi_signature' => 'required|image|file|max:1024',

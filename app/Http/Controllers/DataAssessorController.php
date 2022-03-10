@@ -38,6 +38,7 @@ class DataAssessorController extends Controller
       
     }
 
+<<<<<<< HEAD
     // public function data_assessor(AdminModel $admin, SchemaClassModel $class)
 
     // {
@@ -67,10 +68,23 @@ class DataAssessorController extends Controller
         return view('admin.assessor.CreateAssessor', [
             'class'=> $class,
             'assessor' => DataAssessorModel::all(),
+=======
+
+    public function create(SchemaClassModel $class)
+    {
+        $classId = $class->event->schema_class->pluck("id");
+        $assessor = DataAssessorModel::whereDoesntHave('assessors', function ($query) use ($classId) {
+            return $query->whereIn('class_id', $classId);
+        })->get();
+        return view('admin.assessor.CreateAssessor', [
+            'class'=> $class,
+            'assessor' =>$assessor,
+>>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
             'title' => 'Data assessor',
             'data' =>DB::table('category')->get(),
         ]);
     }
+<<<<<<< HEAD
   
 
     /**
@@ -79,6 +93,9 @@ class DataAssessorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+=======
+
+>>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
     public function store(Request $request, SchemaClassModel $class)
     {
 
@@ -91,7 +108,11 @@ class DataAssessorController extends Controller
         ]);
         $assessors->save();
    
+<<<<<<< HEAD
         return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesor')->with('success', 'Data Asesi berhasil di tambahkan!');
+=======
+        return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesor')->with('success', 'Data Asesor berhasil di tambahkan!');
+>>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
     }
 
     /**

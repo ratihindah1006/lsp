@@ -31,9 +31,12 @@ class UnitModel extends Model
     {
         return $this->hasMany(ElementModel::class, 'unit_id', 'id'); 
     }
+<<<<<<< HEAD
 
     public function answer()
     {
         return $this->hasMany(Answer::class, 'unit_id', 'id');
     }
+=======
+>>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
 }

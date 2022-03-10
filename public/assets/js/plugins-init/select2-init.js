@@ -4,7 +4,11 @@
   "use strict"
   
   // single select box
+<<<<<<< HEAD
   $(".single-select").select2();
+=======
+  $("#single-select").select2();
+>>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
 
   // multi select box
   $('.multi-select').select2();

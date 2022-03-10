@@ -18,8 +18,13 @@
                                 <div class="col-12">
                                         <div class="form-group">
                                         <label>Nama Asesor</label>
+<<<<<<< HEAD
                                           <select style="width: 100%; height:40px;" name="data_assessi_id" id="data_assessi_id" class="form control select2">
                                             <option value="">Pilih Asesor</option>
+=======
+                                          <select style="width: 100%; height:40px;" name="data_assessi_id" id="data_assessi_id" class="form-control maximum-search-length @error('data_assessi_id') is-invalid @enderror">
+                                            <option value=""></option>
+>>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
                                             @foreach ($data_assessi as $assessi)
                                             <option value="{{ $assessi->id }}" {{ old('data_assessi_id', $assessis->data_assessi_id) == $assessi->id ? 'selected' : null }}>{{ $assessi->name }}</option>
                                             @endforeach
@@ -33,8 +38,13 @@
                                     
                                         <div class="form-group">
                                             <label for="assessor_id" class="form-label">Nama Asesor</label>
+<<<<<<< HEAD
                                             <select style="width: 100%; height:40px;" name="assessor_id" id="assessor_id" class="form control select2">
                                                 <option value="">Pilih Asesor</option>
+=======
+                                            <select style="width: 100%; height:40px;" name="assessor_id" id="assessor_id" class="form-control maximum-search-length @error('assessor_id') is-invalid @enderror">
+                                                <option value=""></option>
+>>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
                                                 @foreach ($assessor as $assessor)
                                                 <option value="{{ $assessor->id }}" {{ old('assessor_id', $assessis->assessor_id) == $assessor->id ? 'selected' : null }}>{{ $assessor->data_assessor->name }}</option>
                                                 @endforeach

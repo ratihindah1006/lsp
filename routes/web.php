@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+<<<<<<< HEAD
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\Apl01Controller;
@@ -18,6 +19,23 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataAssessiController;
 use App\Http\Controllers\SchemaClassController;
 use App\Http\Controllers\DataAssessorController;
+=======
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\DataAssessiController;
+use App\Http\Controllers\DataAssessorController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SchemaController;
+use App\Http\Controllers\UnitController;
+use App\Http\Controllers\ElementController;
+use App\Http\Controllers\CriteriaController;
+use App\Http\Controllers\Apl01Controller;
+use App\Http\Controllers\Apl02Controller;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AssessiController;
+use App\Http\Controllers\AssessorController;
+use App\Http\Controllers\SchemaClassController;
+>>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
 
 /*
 |--------------------------------------------------------------------------
@@ -133,6 +151,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/category/{category:category_code}/schema/{schema:schema_code}/unit/{unit:unit_code}/element/{element:element_code}/criteria/{criteria:criteria_code}/edit', [CriteriaController::class, 'edit']);
     Route::put('/category/{category:category_code}/schema/{schema:schema_code}/unit/{unit:unit_code}/element/{element:element_code}/criteria/{criteria:criteria_code}', [CriteriaController::class, 'update']);
     Route::delete('/category/{category:category_code}/schema/{schema:schema_code}/unit/{unit:unit_code}/element/{element:element_code}/criteria/{criteria:criteria_code}', [CriteriaController::class, 'destroy']);    
+<<<<<<< HEAD
     
     Route::get('/soal', [QuestionController::class, 'index']);
     Route::get('/soal/create', [QuestionController::class, 'create']);
@@ -143,6 +162,9 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/getUnit',[QuestionController::class, 'getUnit'])->name('getUnit');
     Route::get('/getElement',[QuestionController::class, 'getElement'])->name('getElement');
 });
+=======
+    });
+>>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
 
 Route::group(['middleware' => 'auth:assessi'], function () {
     Route::get('/beranda', [AssessiController::class, 'index']);
@@ -151,8 +173,11 @@ Route::group(['middleware' => 'auth:assessi'], function () {
     Route::get('/apl01/{assessis:id}', [Apl01Controller::class, 'index']);
     Route::get('/apl02/{assessis:id}', [Apl02Controller::class, 'index']);
     Route::post('/apl02/store/{assessi:id}', [Apl02Controller::class, 'store']);
+<<<<<<< HEAD
     Route::post('/assessi/muk06/store', [AssessiController::class, 'saveMUK06']);
     Route::get('/assessi/muk06/{assessi:id}', [AssessiController::class, 'muk06']);
+=======
+>>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
 });
 
 Route::group(['middleware' => 'auth:assessor'], function () {
@@ -162,12 +187,16 @@ Route::group(['middleware' => 'auth:assessor'], function () {
     Route::get('/list02/{assessi:id}', [AssessorController::class, 'apl02']);
     Route::put('/list01/{assessi:id}', [AssessorController::class, 'status_apl01']);
     Route::put('/list/02/{assessi:id}', [AssessorController::class, 'status_apl02']);
+<<<<<<< HEAD
     Route::get('/assessor/ak01/{assessi:id}', [AssessorController::class, 'ak01']);
     Route::put('/assessor/ak01/edit/{assessi:id}', [AssessorController::class, 'updAK01']);
     Route::get('/assessor/muk01/{assessi:id}', [AssessorController::class, 'muk01']);
     Route::post('/assessor/muk01/update/{assessi:id}', [AssessorController::class, 'updMUK01']);
     Route::get('/assessor/muk06/{assessi:id}', [AssessorController::class, 'muk06']);
     Route::post('/assessor/muk06/update', [AssessorController::class, 'saveMUK06']);
+=======
+   
+>>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
 });
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');

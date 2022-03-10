@@ -39,6 +39,7 @@
                                     <a href="/apl02/{{ $p->id }}" class="btn btn-success btn-sm">
                                         <span>Apl 02</span>
                                     </a>
+<<<<<<< HEAD
                                     @if ($p->apl02 != null)
                                         @if ($p->apl02->status == '1')
                                             &emsp;
@@ -63,14 +64,22 @@
                                     </a>&emsp;
                                     <a href="/assessi/muk06/{{ $p->id }}" class="btn btn-success btn-sm disabled">
                                         <span>MUK06</span>
+=======
+                                @else
+                                    <a href="/apl02" class="btn btn-success btn-sm disabled">
+                                        <span>Apl 02</span>
+>>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
                                     </a>
                                 @endif
                             @else
                                 <a href="/apl02" class="btn btn-success btn-sm disabled">
                                     <span>Apl 02</span>
+<<<<<<< HEAD
                                 </a>&emsp;
                                 <a href="/assessi/muk06/{{ $p->id }}" class="btn btn-success btn-sm disabled">
                                     <span>MUK06</span>
+=======
+>>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
                                 </a>
                             @endif
                         @else
@@ -79,9 +88,12 @@
                             </a>&emsp;
                             <a href="/apl02" class="btn btn-success btn-sm disabled">
                                 <span>Apl 02</span>
+<<<<<<< HEAD
                             </a>&emsp;
                             <a href="/assessi/muk06/{{ $p->id }}" class="btn btn-success btn-sm disabled">
                                 <span>MUK06</span>
+=======
+>>>>>>> 830ef3a9e7ee9b9ab19d910440d9f398b42da94d
                             </a>
                         @endif
                     </div><br><br>
