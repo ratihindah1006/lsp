@@ -17,7 +17,7 @@ class SchemaClassModel extends Model
         'schema_id'
        ];
     use HasFactory;
-    // use SoftDeletes;
+    use SoftDeletes;
 
     public function event()
     {

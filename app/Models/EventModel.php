@@ -17,7 +17,7 @@ class EventModel extends Model
         'admin_id'
        ];
     use HasFactory;
-    // use SoftDeletes;
+    use SoftDeletes;
 
     public function schema_class()
     {
