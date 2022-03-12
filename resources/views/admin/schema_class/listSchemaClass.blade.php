@@ -39,7 +39,7 @@
                                                     <th>Tanggal</th>
                                                     <th>TUK</th>
                                                     <th>Deskripsi</th>
-                                                    <th>Action</th>
+                                                    <th width="200px">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

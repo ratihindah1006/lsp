@@ -22,44 +22,6 @@
         </div>
     </div>
 
-    <div class="col-lg-7">
-        <form method="post" action="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit }}/element/{{ $element }}/criteria">
-            @csrf
-            <div class="card-center">
-                <div class="row mt-5">
-                    <div class="col-md-14">
-                        <div class="card">
-                            <div style="width: 50rem; ">
-
-                            </div>
-                            <div class="card-body">
-                                <div class="row">&emsp;&emsp;
-                                    <div class="col-8">
-                                        <div class="form-group row">
-                                            <label for="criteria_title" class="form-label">Judul Kriteria</label>
-                                            <input type="text" class="form-control @error('criteria_title') is-invalid @enderror" id="criteria_title" name="criteria_title" value="{{ old('criteria_title') }}" cols="40" rows="5">
-                                            @error('criteria_title')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                    </div>&emsp;
-
-                                    <div class="col">
-                                        <div class="form-group row">
-                                            <button type="submit" class="btn btn-primary mt-4" style="width: 170px">Tambah</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-
     <div class="data-table-area">
         <div class="container">
             <div class="row">
@@ -70,6 +32,34 @@
                             {{ session('success') }}
                         </div>
                         @endif
+
+                        <form method="post" action="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit }}/element/{{ $element }}/criteria">
+                            @csrf
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-8 ml-5">
+                                            <div class="form-group row">
+                                                <label for="element_title" class="form-label my-text">Judul Kriteria</label>
+                                                <input type="text" class="form-control @error('criteria_title') is-invalid @enderror" id="criteria_title" name="criteria_title" value="{{ old('criteria_title') }}" cols="40" rows="5">
+                                                @error('criteria_title')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+                                        </div>&emsp;
+
+                                        <div class="col">
+                                            <div class="form-group row">
+                                                <button type="submit" class="btn btn-primary mt-4" style="width: 170px">Tambah</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive my-text">
