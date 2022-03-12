@@ -50,6 +50,7 @@ class SchemaClassController extends Controller
         $request->validate([
             'name' => 'required|unique:schema_class',
             'tuk' => 'required',
+            'date' => 'required',
             'description' => 'required',
             'event_id' => 'required',
             'schema_id' => 'required'
@@ -57,6 +58,7 @@ class SchemaClassController extends Controller
         $class = new SchemaClassModel([
             'name' => $request->name,
             'tuk' => $request->tuk,
+            'date' => $request->date,
             'description' => $request->description,
             'event_id' =>  $request->event_id,
             'schema_id' =>  $request->schema_id,
@@ -82,7 +84,8 @@ class SchemaClassController extends Controller
             'tuk' => 'required',
             'description' => 'required',
             'event_id' => 'required',
-            'schema_id' => 'required'
+            'schema_id' => 'required',
+            'date' => 'required',
         ];
         if($request->name != $class->name){
             $rules['name'] = 'required|unique:schema_class';

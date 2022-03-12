@@ -46,9 +46,7 @@
                                                     <td>{{ $value->data_assessi->name }}</td>
                                                     <td>{{ $value->assessor->data_assessor->name }}</td>
                                                     <td align="center">
-                                                        <a href="/KelasSkema/{{ $class }}/dataAsesi/{{ $value->id }}/edit"
-                                                            class="btn btn-warning btn-sm"><span
-                                                                class="ti-pencil"></span></a>
+                                                         
                                                         <form action="/KelasSkema/{{ $class }}/dataAsesi/{{ $value->id }}" method="POST"
                                                             class="d-inline">
                                                             @csrf

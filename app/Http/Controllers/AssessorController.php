@@ -36,12 +36,16 @@ class AssessorController extends Controller
 
     public function apl01(AssessiModel $assessi)
     {
-        $assessor = AssessorModel::find(Auth::user()->id);
+        //$assessor = DataAssessorModel::find(Auth::user()->id);
+        $data_assessor = DataAssessorModel::find(Auth::user()->id);
+        foreach ($data_assessor->assessors as $a) {
+            foreach ($a->assessis as $b) {
+                $assessi = $b;}}
         return view('assessor.apl01', [
             'apl01' => $assessi->apl01,
             'assessi' => $assessi,
             'title' => 'Skema',
-            'assessis' => $assessor->schema_class->schema,
+            'assessis' => $assessi->schema_class->schema,
 
         ]);
     }

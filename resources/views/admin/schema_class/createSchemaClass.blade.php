@@ -69,6 +69,18 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
+                                            <label for="date" class="form-label">Tanggal Pelaksanaan</label>
+                                            <input type="date" class="form-control @error('date') is-invalid @enderror"
+                                                id="date" name="date" value="{{ old('date') }}">
+                                            @error('date')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
                                             <label for="tuk" class="form-label">TUK</label>
                                             <input type="text" class="form-control @error('tuk') is-invalid @enderror"
                                                 id="tuk" name="tuk" value="{{ old('tuk') }}">

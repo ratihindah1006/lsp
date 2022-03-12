@@ -28,7 +28,6 @@
                     <div class="col-md-14">
                         <div class="card">
                             <div style="width: 50rem; ">
-
                             </div>
                                 <div class="card-body">
                                     <div class="row">&emsp;&emsp;
@@ -43,7 +42,6 @@
                                                 @enderror
                                             </div>
                                         </div>&emsp;
-
                                         <div class="col">
                                             <div class="form-group row">
                                                 <button type="submit" class="btn btn-primary mt-4" style="width: 170px">Tambah</button>

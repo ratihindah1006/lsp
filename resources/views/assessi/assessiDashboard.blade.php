@@ -36,40 +36,40 @@
                             </a>&emsp;
                             @if ($p->apl01 != null)
                                 @if ($p->apl01->status == '1')
-                                    <a href="/apl02/{{ $p->id }}" class="btn btn-success btn-sm">
+                                    <a href="/apl02/{{ $p->id }}" class="btn btn-primary btn-sm">
                                         <span>Apl 02</span>
                                     </a>
                                     @if ($p->apl02 != null)
                                         @if ($p->apl02->status == '1')
                                             &emsp;
-                                            <a href="/assessi/muk06/{{ $p->id }}" class="btn btn-success btn-sm">
+                                            <a href="/assessi/muk06/{{ $p->id }}" class="btn btn-secondary btn-sm">
                                                 <span>MUK06</span>
                                             </a>
                                         @else
                                             &emsp;
-                                            <a href="/" class="btn btn-success btn-sm disabled">
+                                            <a href="/" class="btn btn-secondary btn-sm disabled">
                                                 <span>MUK06</span>
                                             </a>
                                         @endif
                                     @else
                                         &emsp;
-                                        <a href="/" class="btn btn-success btn-sm disabled">
+                                        <a href="/" class="btn btn-secondary btn-sm disabled">
                                             <span>MUK06</span>
                                         </a>
                                     @endif
                                 @else
-                                    <a href="/apl02" class="btn btn-success btn-sm disabled">
+                                    <a href="/apl02" class="btn btn-primary btn-sm disabled">
                                         <span>Apl 02</span>
                                     </a>&emsp;
-                                    <a href="/assessi/muk06/{{ $p->id }}" class="btn btn-success btn-sm disabled">
+                                    <a href="/assessi/muk06/{{ $p->id }}" class="btn btn-secondary btn-sm disabled">
                                         <span>MUK06</span>
                                     </a>
                                 @endif
                             @else
-                                <a href="/apl02" class="btn btn-success btn-sm disabled">
+                                <a href="/apl02" class="btn btn-primary btn-sm disabled">
                                     <span>Apl 02</span>
                                 </a>&emsp;
-                                <a href="/assessi/muk06/{{ $p->id }}" class="btn btn-success btn-sm disabled">
+                                <a href="/assessi/muk06/{{ $p->id }}" class="btn btn-secondary btn-sm disabled">
                                     <span>MUK06</span>
                                 </a>
                             @endif
@@ -77,10 +77,10 @@
                             <a href="/apl01/{{ $p->id }}" class="btn btn-success btn-sm disabled">
                                 <span>Apl 01</span>
                             </a>&emsp;
-                            <a href="/apl02" class="btn btn-success btn-sm disabled">
+                            <a href="/apl02" class="btn btn-primary btn-sm disabled">
                                 <span>Apl 02</span>
                             </a>&emsp;
-                            <a href="/assessi/muk06/{{ $p->id }}" class="btn btn-success btn-sm disabled">
+                            <a href="/assessi/muk06/{{ $p->id }}" class="btn btn-secondary btn-sm disabled">
                                 <span>MUK06</span>
                             </a>
                         @endif
