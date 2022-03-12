@@ -52,7 +52,7 @@
                                                       </div>
                                                       <div id="header-bg_collapse{{ $loop->iteration }}" class="collapse accordion__body" data-parent="#accordion-seven">
                                                           <div class="accordion__body--text p-0">
-                                                            <table class="table-responsive" border="solid black">
+                                                            <table class="table" border="solid black">
                                                                 <thead class="text-center bg-warning">
                                                                     <tr>
                                                                         <th width="5px">No</th>
