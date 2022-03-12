@@ -17,7 +17,6 @@ class CreateSchemasTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('field_id')->unsigned();
             $table->foreign('field_id')->references('id')->on('category');
-            $table->string('schema_code');
             $table->string('schema_title');
             $table->string('no_skkni');
             $table->string('competency_package');
