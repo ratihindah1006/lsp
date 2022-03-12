@@ -21,19 +21,19 @@
                                 <div class="col-xl-6">
                                     <h4 class="font-weight-bold ">Data Pribadi</h4><br>
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label font-weight-bold text-success" for="name">Nama
+                                        <label class="col-lg-4 col-form-label font-weight-bold text-success">Nama
                                             Lengkap
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
-                                            <input type="text" class="form-control  @error('name') is-invalid @enderror"
+                                            <input type="text" class="form-control  @error('name') is-invalid @enderror" name="name"
                                                 @if ($apl01 != null){
                                             value= "{{ $apl01->name }}"
                                             }else{
                                             value="{{ old('name') }}"
                                             }
                                             @endif
-                                            id="name" name="name">
+                                            id="name">
                                             @error('name')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}

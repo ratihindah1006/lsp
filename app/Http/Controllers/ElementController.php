@@ -22,9 +22,9 @@ class ElementController extends Controller
     {
         $data=$admin->where('id', Auth::user()->id)->get();
         return view('admin.element.ListElement', [
-            'category'=>$category->category_code,
-            'schema' => $schema->schema_code,
-            'unit' => $unit->unit_code,
+            'category'=>$category->id,
+            'schema' => $schema->id,
+            'unit' => $unit->id,
             'element'=> $unit->elements,
             'admin'=> $data,
             'title'=>'Element'
@@ -36,15 +36,7 @@ class ElementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($category, $schema, $unit)
-    {
-        return view('admin.element.CreateElement', [
-            'category'=>$category,
-            'schema'=>$schema,
-            'unit'=>$unit,
-            'title'=>'Element'
-        ]);
-    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -55,14 +47,12 @@ class ElementController extends Controller
     public function store(Request $request, CategoryModel $category, SchemaModel $schema, UnitModel $unit)
     {
         $validateData = $request->validate([
-            'element_code' => 'required|unique:element',
             'element_title' => 'required',
-            'benchmark' => 'required',
         ]);
         $validateData['unit_id']=$unit->id;
         ElementModel::create($validateData);
 
-        return redirect('/category'.'/'.$category->category_code.'/schema'.'/'.$schema->schema_code.'/unit'.'/'.$unit->unit_code.'/element')
+        return redirect('/category'.'/'.$category->id.'/schema'.'/'.$schema->id.'/unit'.'/'.$unit->id.'/element')
         ->with('success', 'Unit berhasil di tambahkan!');
     }
 
@@ -105,16 +95,12 @@ class ElementController extends Controller
     {
         $rules=[
             'element_title' => 'required',
-            'benchmark' => 'required',
         ];
-        if($request->element_code != $element->element_code){
-            $rules['element_code'] = 'required|unique:element';
-        }
         $validateData['unit_id']=$unit->id;
         $validateData= $request->validate($rules);
         $element->update($validateData);
 
-        return redirect('/category'.'/'.$category->category_code.'/schema'.'/'.$schema->schema_code.'/unit'.'/'.$unit->unit_code.'/element')->with('success', 'Unit berhasil di Update!');
+        return redirect('/category'.'/'.$category->id.'/schema'.'/'.$schema->id.'/unit'.'/'.$unit->id.'/element')->with('success', 'Unit berhasil di Update!');
     }
 
     /**
@@ -126,6 +112,6 @@ class ElementController extends Controller
     public function destroy(CategoryModel $category, SchemaModel $schema, UnitModel $unit, ElementModel $element)
     {
         $element->delete();
-        return redirect('/category'.'/'.$category->category_code.'/schema'.'/'.$schema->schema_code.'/unit'.'/'.$unit->unit_code.'/element')->with('success', 'Element berhasil di hapus!');
+        return redirect('/category'.'/'.$category->id.'/schema'.'/'.$schema->id.'/unit'.'/'.$unit->id.'/element')->with('success', 'Element berhasil di hapus!');
     }
 }

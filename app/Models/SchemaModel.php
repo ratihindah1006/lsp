@@ -10,7 +10,6 @@ class SchemaModel extends Model
 {
     protected $table = "schema";
     protected $fillable = [
-        'schema_code',
         'schema_title',
         'no_skkni',
         'field_id',

@@ -22,7 +22,7 @@ class SchemaController extends Controller
     {
         $data=$admin->where('id', Auth::user()->id)->get();
         return view('admin.schema.ListSchema', [
-            'category'=>$category->category_code,
+            'category'=>$category->id,
             'schema' => $category->schemas,
             'title' => 'Skema',
             'admin'=>$data
@@ -37,7 +37,7 @@ class SchemaController extends Controller
     public function create($category)
     {
         return view('admin.schema.CreateSchema', [
-            'category_code'=>$category,
+            'category'=>$category,
             'title' => 'Skema'
         ]);
     }
@@ -51,9 +51,8 @@ class SchemaController extends Controller
     public function store(Request $request, CategoryModel $category)
     {
         $validateData = $request->validate([
-            'schema_code' => 'required|unique:schema',
             'schema_title' => 'required',
-            'no_skkni' => 'required',
+            'no_skkni' => 'required|unique:schema',
             'requirement' => 'required',
             'competency_package' => 'required',
             'cost' => 'required',
@@ -61,7 +60,7 @@ class SchemaController extends Controller
         $validateData['field_id']=$category->id;
         SchemaModel::create($validateData);
 
-        return redirect('/category'.'/'.$category->category_code.'/schema')->with('success', 'Category berhasil di tambahkan!');
+        return redirect('/category'.'/'.$category->id.'/schema')->with('success', 'Category berhasil di tambahkan!');
     }
 
     /**
@@ -108,19 +107,18 @@ class SchemaController extends Controller
     {
         $rules=[
             'schema_title' => 'required',
-            'no_skkni' => 'required',
             'requirement' => 'required',
             'competency_package' => 'required',
             'cost' => 'required',
         ];
-        if($request->schema_code != $schema->schema_code){
-            $rules['schema_code'] = 'required|unique:schema';
+        if($request->no_skkni != $schema->no_skkni){
+            $rules['no_skkni'] = 'required|unique:schema';
         }
         $validateData['field_id']=$category->id;
         $validateData= $request->validate($rules);
         $schema->update($validateData);
 
-        return redirect('/category'.'/'.$category->category_code.'/schema')->with('success', 'Schema berhasil di Update!');
+        return redirect('/category'.'/'.$category->id.'/schema')->with('success', 'Schema berhasil di Update!');
     }
 
     /**
@@ -132,6 +130,6 @@ class SchemaController extends Controller
     public function destroy(CategoryModel $category, SchemaModel $schema)
     {
         $schema->delete();
-        return redirect('/category'.'/'.$category->category_code.'/schema')->with('success', 'Category berhasil di hapus!');
+        return redirect('/category'.'/'.$category->id.'/schema')->with('success', 'Category berhasil di hapus!');
     }
 }

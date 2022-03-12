@@ -34,37 +34,35 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Kode Skema</th>
                                                 <th>Judul Skema</th>
                                                 <th>No. SKKNI</th>
                                                 <th>Kemasan Kompetensi</th>
                                                 <th>Persyaratan Dasar Permohonan</th>
                                                 <th>Biaya</th>
-                                                <th>Action</th>
+                                                <th width="150px">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach($schema as $value)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $value->schema_code }}</td>
                                                     <td>{{ $value->schema_title }}</td>
                                                     <td>{{ $value->no_skkni }}</td>
                                                     <td>{{ $value->competency_package }}</td>
                                                     <td>{{ $value->requirement }}</td>
                                                     <td>{{ $value->cost }}</td>
                                                     <td>
-                                                        <a href="/category/{{ $category }}/schema/{{ $value->schema_code }}/unit"
+                                                        <a href="/category/{{ $category }}/schema/{{ $value->id }}/unit"
                                                             class="btn btn-primary btn-sm"><span
                                                                 class="ti-info"></span></a>
-                                                        <a href="/category/{{ $category }}/schema/{{ $value->schema_code }}/show"
+                                                        <a href="/category/{{ $category }}/schema/{{ $value->id }}/show"
                                                             class="btn btn-primary btn-sm"><span
                                                                 class="ti-info"></span></a>
-                                                        <a href="/category/{{ $category }}/schema/{{ $value->schema_code }}/edit"
+                                                        <a href="/category/{{ $category }}/schema/{{ $value->id }}/edit"
                                                             class="btn btn-warning btn-sm"><span
                                                                 class="ti-pencil"></span></a>
                                                         <form
-                                                            action="/category/{{ $category }}/schema/{{ $value->schema_code }}"
+                                                            action="/category/{{ $category }}/schema/{{ $value->id }}"
                                                             method="POST" class="d-inline">
                                                             @csrf
                                                             @method('delete')

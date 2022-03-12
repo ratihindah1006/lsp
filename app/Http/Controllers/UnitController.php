@@ -20,8 +20,8 @@ class UnitController extends Controller
     {
         $data=$admin->where('id', Auth::user()->id)->get();
         return view('admin.unit.ListUnit', [
-            'category'=>$category->category_code,
-            'schema' => $schema->schema_code,
+            'category'=>$category->id,
+            'schema' => $schema->id,
             'unit' => $schema->units,
             'title' => 'Unit',
             'admin'=>$data
@@ -57,7 +57,7 @@ class UnitController extends Controller
         $validateData['schema_id']=$schema->id;
         UnitModel::create($validateData);
 
-        return redirect('/category'.'/'.$category->category_code.'/schema'.'/'.$schema->schema_code.'/unit')->with('success', 'Unit berhasil di tambahkan!');
+        return redirect('/category'.'/'.$category->id.'/schema'.'/'.$schema->id.'/unit')->with('success', 'Unit berhasil di tambahkan!');
     }
 
     /**
@@ -106,7 +106,7 @@ class UnitController extends Controller
         $validateData= $request->validate($rules);
         $unit->update($validateData);
 
-        return redirect('/category'.'/'.$category->category_code.'/schema'.'/'.$schema->schema_code.'/unit')->with('success', 'Unit berhasil di Update!');
+        return redirect('/category'.'/'.$category->id.'/schema'.'/'.$schema->id.'/unit')->with('success', 'Unit berhasil di Update!');
     }
 
     /**
@@ -118,6 +118,6 @@ class UnitController extends Controller
     public function destroy(CategoryModel $category, SchemaModel $schema, UnitModel $unit)
     {
         $unit->delete();
-        return redirect('/category'.'/'.$category->category_code.'/schema'.'/'.$schema->schema_code.'/unit')->with('success', 'Unit berhasil di hapus!');
+        return redirect('/category'.'/'.$category->id.'/schema'.'/'.$schema->id.'/unit')->with('success', 'Unit berhasil di hapus!');
     }
 }

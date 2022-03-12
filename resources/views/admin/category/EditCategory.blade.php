@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('container')
-    <form method="post" action="/category/{{ $category->category_code }}">
+    <form method="post" action="/category/{{ $category->id }}">
         @method('put')
         @csrf
         <div class="col-lg-8">
@@ -14,18 +14,7 @@
                             </div>
                             <div class="card-content-center">
                                 <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="category_code" class="form-label">Category Code</label>
-                                            <input name="category_code" type="text"
-                                                class="form-control @error('category_code') is-invalid @enderror"
-                                                id="category_code"
-                                                value="{{ old('category_code', $category->category_code) }}">
-                                            @error('category_code')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
+                                        
                                         <div class="form-group">
                                             <label for="category_title" class="form-label">Category Title</label>
                                             <input type="text"
@@ -38,18 +27,7 @@
                                                 </div>
                                             @enderror
                                         </div>
-                                        <div class="form-group">
-                                            <label for="field_code" class="form-label">Kode Bidang</label>
-                                            <input name="field_code" type="text"
-                                                class="form-control @error('field_code') is-invalid @enderror"
-                                                id="field_code"
-                                                value="{{ old('category_code', $category->field_code) }}">
-                                            @error('field_code')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
+                                        
                                         <div class="form-group">
                                             <label for="field_title" class="form-label">Judul Bidang</label>
                                             <input type="text"

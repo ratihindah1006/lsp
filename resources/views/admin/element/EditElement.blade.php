@@ -4,7 +4,7 @@
 
     <div class="col-lg-8">
         <form method="post"
-            action="/category/{{ $category->category_code }}/schema/{{ $schema->schema_code }}/unit/{{ $unit->unit_code }}/element/{{ $element->element_code }}">
+            action="/category/{{ $category->id }}/schema/{{ $schema->id }}/unit/{{ $unit->id }}/element/{{ $element->id }}">
             @method('put')
             @csrf
             <div class="card-center">
@@ -16,20 +16,7 @@
                             </div>
                             <div class="card-content-center">
                                 <div class="card-body">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="element_code" class="form-label"> Element Code</label>
-                                            <input name="element_code" type="text"
-                                                class="form-control @error('element_code') is-invalid @enderror"
-                                                id="element_code"
-                                                value="{{ old('element_code', $element->element_code) }}">
-                                            @error('element_code')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
+                                    
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="element_title" class="form-label">Element Title</label>
@@ -44,20 +31,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="benchmark" class="form-label">Benchmark</label>
-                                            <input type="text"
-                                                class="form-control @error('benchmark') is-invalid @enderror"
-                                                id="benchmark" name="benchmark"
-                                                value="{{ old('benchmark', $element->benchmark) }}">
-                                            @error('benchmark')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
+                                    
                                     <div class="col">
                                         <center><button type="submit" class="btn btn-success mt-4"
                                                 style="width: 170px">Submit</button></center>
