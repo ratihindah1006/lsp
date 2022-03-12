@@ -1,4 +1,4 @@
-@extends('layout.assessi')
+@extends('layout.assessor')
 
 @section('container')
     <br>
@@ -10,9 +10,9 @@
         <p class="my-text">Nomor &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : &emsp;
             {{ $skema->no_skkni }}</p>
         <p class="my-text">Tempat Uji Kompetensi&emsp;&ensp; : &emsp; {{ $class->tuk }}</p>
-        <p class="my-text">Nama Asesor &emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : &emsp; {{ $asesor->name }}</p>
-        <p class="my-text">Nama Asesi &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; : &emsp; {{ $assessi->name }} </p>
-        <p class="my-text">Tanggal &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; :</p><br>
+        <p class="my-text">Nama Asesor &emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : &emsp; {{ $asesor->data_assessor->name }}</p>
+        <p class="my-text">Nama Asesi &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; : &emsp; {{ $assessi->data_assessi->name }} </p>
+        <p class="my-text">Tanggal &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; :  &emsp; {{ $assessi->schema_class->event->event_time }}</p><br>
         <p class="my-text">Asesi diminta untuk :</p>
         <p class="my-text">1. Mempelajari Kriteria Unjuk Kerja (KUK), Batasan Variabel, Panduan Penilaian, dan Aspek
             Kritis seluruh Unit Kompetensi yang diminta
@@ -113,11 +113,11 @@
                     <th rowspan="2">
                         <p class="form-check-inline">&emsp;1. Assessment
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="status" id="status" value="1" @if ($apl02 != null){{ $apl02->status  == '1' ? 'checked' : '' }}@else{{ old('status') == '1' ? 'checked' : '' }}@endif>
+                            <input class="form-check-input" type="radio" name="status" id="status" value="1" @if ($apl02->status  == '1') checked @endif>
                             <label class="form-check-label" for="status">Dilanjutkan</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="status" id="status" value="0" @if ($apl02 != null){{ $apl02->status  == '0' ? 'checked' : '' }}@else{{ old('status') == '0' ? 'checked' : '' }}@endif>
+                            <input class="form-check-input" type="radio" name="status" id="status" value="0" @if ($apl02->status  == '0') checked @endif>
                             <label class="form-check-label" for="status">Tidak Dilanjutkan</label>
                         </div>
                         </p>
@@ -152,7 +152,7 @@
                     <th rowspan="3">&ensp;
                         <div class="col-xl-10">
                             <label class="my-text">&emsp;Catatan&emsp;:</label>
-                            <textarea class="form-control @error('note') is-invalid @enderror" id="note" name="note" rows="5" value="old ('note')" >{{ $apl02->note }}</textarea>
+                            <textarea class="form-control @error('note') is-invalid @enderror" id="note" name="note" rows="5" value=" {{ $apl02->note, old ('note') }}" ></textarea>
                             @error('note')
                                 <div class="invalid-feedback">
                                     {{ $message }}

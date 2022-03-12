@@ -51,7 +51,7 @@
                                                     <td>{{ $value->competency_package }}</td>
                                                     <td>{{ $value->requirement }}</td>
                                                     <td>{{ $value->cost }}</td>
-                                                    <td>
+                                                    <td align="center">
                                                         <a href="/category/{{ $category }}/schema/{{ $value->id }}/unit"
                                                             class="btn btn-primary btn-sm"><span
                                                                 class="ti-info"></span></a>

@@ -36,17 +36,17 @@ class AssessorController extends Controller
 
     public function apl01(AssessiModel $assessi)
     {
-        //$assessor = DataAssessorModel::find(Auth::user()->id);
         $data_assessor = DataAssessorModel::find(Auth::user()->id);
         foreach ($data_assessor->assessors as $a) {
             foreach ($a->assessis as $b) {
-                $assessi = $b;}}
+                $assessi = $b;
+            }
+        }
         return view('assessor.apl01', [
             'apl01' => $assessi->apl01,
             'assessi' => $assessi,
             'title' => 'Skema',
             'assessis' => $assessi->schema_class->schema,
-
         ]);
     }
 
@@ -120,8 +120,8 @@ class AssessorController extends Controller
             'event_start' => $assessi->schema_class->event->event_time,
             'tuk' => $assessi->schema_class->tuk,
             'assessor' => Auth::user()->name,
-            'assessi' => $assessi, 
-            'schema' => $assessi->schema_class->schema    
+            'assessi' => $assessi,
+            'schema' => $assessi->schema_class->schema
         ];
 
         return view('assessor.ak01', $data);
@@ -174,7 +174,7 @@ class AssessorController extends Controller
             ['assessi_id' => $request->assessiId],
             $data
         );
-        
+
         return redirect('/list')->with('success', 'Form MUK01 berhasil di Update!');
     }
 
@@ -197,22 +197,22 @@ class AssessorController extends Controller
         $rekomendasi = null;
         if (count($request->rekomendasi) > 0) {
             foreach ($request->rekomendasi as $key => $value) {
-                if($request->rekomendasi[$key] == "K" ){
+                if ($request->rekomendasi[$key] == "K") {
                     $rekomendasi = 1;
-                } else if ($request->rekomendasi[$key] == "BK"){
+                } else if ($request->rekomendasi[$key] == "BK") {
                     $rekomendasi = 0;
                 } else {
                     $rekomendasi = null;
                 }
-                $data=array(
+                $data = array(
                     'rekomendasi' => $rekomendasi
                 );
-                
+
                 Answer::updateOrCreate(
                     ['assessi_id' => $request->assessiId, 'unit_id' => $request->unitId[$key]],
                     $data
                 );
-            }            
+            }
         }
         return redirect('/list')->with('success', 'Form MUK06 berhasil disimpan!');
     }

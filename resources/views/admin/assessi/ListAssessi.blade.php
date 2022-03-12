@@ -46,7 +46,6 @@
                                                     <td>{{ $value->data_assessi->name }}</td>
                                                     <td>{{ $value->assessor->data_assessor->name }}</td>
                                                     <td align="center">
-                                                         
                                                         <form action="/KelasSkema/{{ $class }}/dataAsesi/{{ $value->id }}" method="POST"
                                                             class="d-inline">
                                                             @csrf
