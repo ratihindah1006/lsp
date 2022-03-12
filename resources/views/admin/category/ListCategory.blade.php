@@ -44,7 +44,7 @@
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $value->category_title }}</td>
                                                     <td>{{ $value->field_title }}</td>
-                                                    <td>
+                                                    <td align="center">
                                                         <a href="/category/{{ $value->id }}/schema"
                                                             class="btn btn-primary btn-sm"><span
                                                                 class="ti-info"></span></a>

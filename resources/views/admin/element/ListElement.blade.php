@@ -82,7 +82,7 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $value->element_title }}</td>
-                                                <td>
+                                                <td align="center">
                                                     <a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit }}/element/{{ $value->id }}/criteria" class="btn btn-primary btn-sm"><span class="ti-info"></span></a>
                                                     <a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit }}/element/{{ $value->id }}/edit" class="btn btn-warning btn-sm"><span class="ti-pencil"></span></a>
                                                     <form action="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit }}/element/{{ $value->id }}" method="POST" class="d-inline">

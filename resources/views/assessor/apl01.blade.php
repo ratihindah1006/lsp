@@ -252,9 +252,7 @@
                                 </div>
                                 <label class="font-weight-bold text-success">2.&ensp; Pas Foto Berwarna</label>
                                 <div class="input-group mb-3">
-                                    <div class="col">
-                                        <img src="{{ asset('storage/'.$apl01->photo) }}" width="250px" height="400px">
-                                    </div>
+                                        <iframe type="application/pdf" src="{{ asset('storage/'.$apl01->photo) }}" width="600" height="400"></iframe>
                                 </div>
                             </div>
                             <div class="col-xl-6">

@@ -57,7 +57,7 @@
                                                         <button type="submit" class="btn btn-success mt-4"
                                                             style="width: 100px">Tambah</button>
                                                     @else
-                                                        <a  class="btn btn-success mt-4 disabled"
+                                                        <a class="btn btn-success mt-4 disabled"
                                                             style="width: 100px">Tambah</a>
                                                     @endif
                                                 </div>
@@ -85,10 +85,7 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $value->data_assessor->name }}</td>
                                                         <td>{{ $value->data_assessor->email }}</td>
-                                                        <td>
-                                                            <a href="/KelasSkema/{{ $class }}/dataAsesor/{{ $value->id }}/edit"
-                                                                class="btn btn-warning btn-sm"><span
-                                                                    class="ti-pencil"></span></a>
+                                                        <td align="center">
                                                             <form
                                                                 action="/KelasSkema/{{ $class }}/dataAsesor/{{ $value->id }}"
                                                                 method="POST" class="d-inline">
