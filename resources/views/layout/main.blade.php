@@ -15,8 +15,9 @@
     <link href="/assets/css/style.css" rel="stylesheet">
     <link href="/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="/assets/vendor/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-    <link href="/assets/vendor/summernote/summernote.css" rel="stylesheet">
+    <link href="/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="/assets/vendor/select2/css/select2.min.css" rel="stylesheet">
+    <link href="/assets/vendor/summernote/summernote.css" rel="stylesheet">
 
 </head>
 
@@ -77,7 +78,7 @@
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
                                     <i class="mdi mdi-account"></i>
                                 </a>
-                                        <span class="user-avatar"> {{Auth::user()->name}}
+                                        <span class="user-avatar"> {{ Auth::user()->name }}
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="{{ url('logout') }}" class="dropdown-item">
                                         <i class="ti-power-off"></i>
@@ -184,13 +185,17 @@
     <!-- Daterangepicker -->
     <script src="/assets/js/plugins-init/bs-daterange-picker-init.js"></script>
 
+<<<<<<< HEAD
     <!-- search option -->
+=======
+    <!-- select -->
+>>>>>>> 6657bbe15a529b9424baf70808d3a0822cf731f6
     <script src="/assets/vendor/select2/js/select2.full.min.js"></script>
     <script src="/assets/js/plugins-init/select2-init.js"></script>
     <!-- Summernote -->
     <script src="/assets/vendor/summernote/js/summernote.min.js"></script>
     <script src="/assets/js/plugins-init/summernote-init.js"></script>
-
+    
     <script>
         $('#skema').change(function() {
             var idSkema = $(this).val();

@@ -58,6 +58,7 @@ class SchemaClassController extends Controller
         $class = new SchemaClassModel([
             'name' => $request->name,
             'tuk' => $request->tuk,
+            'date' => $request->date,
             'description' => $request->description,
             'event_id' =>  $request->event_id,
             'schema_id' =>  $request->schema_id,

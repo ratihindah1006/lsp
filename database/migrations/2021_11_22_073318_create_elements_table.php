@@ -17,7 +17,6 @@ class CreateElementsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('unit_id')->unsigned();
             $table->foreign('unit_id')->references('id')->on('unit');
-            $table->string('element_code');
             $table->string('element_title');
             $table->timestamps();
             $table->softDeletes();

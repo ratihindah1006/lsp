@@ -33,9 +33,7 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Kode Kategori</th>
                                                 <th>Judul Kategori</th>
-                                                <th>Kode Bidang</th>
                                                 <th>Judul Bidang</th>
                                                 <th>Action</th>
                                             </tr>
@@ -44,18 +42,16 @@
                                             @foreach($category as $value)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $value->category_code }}</td>
                                                     <td>{{ $value->category_title }}</td>
-                                                    <td>{{ $value->field_code }}</td>
                                                     <td>{{ $value->field_title }}</td>
                                                     <td>
-                                                        <a href="/category/{{ $value->category_code }}/schema"
+                                                        <a href="/category/{{ $value->id }}/schema"
                                                             class="btn btn-primary btn-sm"><span
                                                                 class="ti-info"></span></a>
-                                                        <a href="/category/{{ $value->category_code }}/edit"
+                                                        <a href="/category/{{ $value->id }}/edit"
                                                             class="btn btn-warning btn-sm"><span
                                                                 class="ti-pencil"></span></a>
-                                                        <form action="/category/{{ $value->category_code }}"
+                                                        <form action="/category/{{ $value->id }}"
                                                             method="POST" class="d-inline">
                                                             @csrf
                                                             @method('delete')

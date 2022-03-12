@@ -2,7 +2,7 @@
 
 @section('container')
     <form method="post"
-        action="/category/{{ $category->category_code }}/schema/{{ $schema->schema_code }}/unit/{{ $unit->unit_code }}">
+        action="/category/{{ $category->id }}/schema/{{ $schema->id }}/unit/{{ $unit->id }}">
         @method('put')
         @csrf
         <div class="col-lg-8">

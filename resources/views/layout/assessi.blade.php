@@ -56,7 +56,7 @@
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
                                     <i class="mdi mdi-account text-white"></i>
                                 </a>
-                                        <span class="user-avatar text-white">{{Auth::user()->name}}
+                                        <span class="user-avatar text-white">{{ Auth::user()->name }}
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="{{ url('logout') }}" class="dropdown-item">
                                         <i class="ti-power-off"></i>

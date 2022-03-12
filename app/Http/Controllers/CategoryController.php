@@ -32,9 +32,7 @@ class CategoryController extends Controller
     {
 
         $validateData = $request->validate([
-            'category_code' => 'required',
             'category_title' => 'required',
-            'field_code' => 'required|unique:category',
             'field_title' => 'required',
         ]);
 
@@ -60,12 +58,9 @@ class CategoryController extends Controller
     {
         $rules = [
             'category_title' => 'required',
-            'category_code' => 'required',
             'field_title' => 'required',
         ];
-        if ($request->field_code != $category->field_code) {
-            $rules['field_code'] = 'required|unique:category';
-        }
+        
         $validateData = $request->validate($rules);
         $category->update($validateData);
         return redirect('/category')->with('success', 'Category berhasil di Update!');

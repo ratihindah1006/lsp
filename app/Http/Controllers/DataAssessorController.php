@@ -26,11 +26,15 @@ class DataAssessorController extends Controller
     {
         $data=$admin->where('id', Auth::user()->id)->get();
         $class_id=$class->id;
-       
+        $classId = $class->event->schema_class->pluck("id");
+        $assessor = DataAssessorModel::whereDoesntHave('assessors', function ($query) use ($classId) {
+            return $query->whereIn('class_id', $classId);
+        })->get();
         $count=AssessorModel::where('class_id',$class_id)->count();
         return view('admin.assessor.listAssessor', [
             'class'=>$class->id,
-            'assessor' => $class->assessors,
+            'assessor' => $assessor,
+            'assessors' => $class->assessors,
             'title' => 'asesor',
             'admin'=>$data,
             'count'=>$count,
@@ -38,20 +42,6 @@ class DataAssessorController extends Controller
       
     }
 
-
-    public function create(SchemaClassModel $class)
-    {
-        $classId = $class->event->schema_class->pluck("id");
-        $assessor = DataAssessorModel::whereDoesntHave('assessors', function ($query) use ($classId) {
-            return $query->whereIn('class_id', $classId);
-        })->get();
-        return view('admin.assessor.CreateAssessor', [
-            'class'=> $class,
-            'assessor' =>$assessor,
-            'title' => 'Data assessor',
-            'data' =>DB::table('category')->get(),
-        ]);
-    }
     public function store(Request $request, SchemaClassModel $class)
     {
 

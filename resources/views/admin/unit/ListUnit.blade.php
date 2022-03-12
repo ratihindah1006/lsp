@@ -50,14 +50,14 @@
                                                         <td>{{ $value->unit_code }}</td>
                                                         <td>{{ $value->unit_title }}</td>
                                                         <td>
-                                                            <a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $value->unit_code }}/element"
+                                                            <a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $value->id }}/element"
                                                                 class="btn btn-primary btn-sm"><span
                                                                     class="ti-info"></span></a>
-                                                            <a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $value->unit_code }}/edit"
+                                                            <a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $value->id }}/edit"
                                                                 class="btn btn-warning btn-sm"><span
                                                                     class="ti-pencil"></span></a>
                                                             <form
-                                                                action="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $value->unit_code }}"
+                                                                action="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $value->id }}"
                                                                 method="POST" class="d-inline">
                                                                 @csrf
                                                                 @method('delete')

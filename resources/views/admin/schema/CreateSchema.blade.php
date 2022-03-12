@@ -3,7 +3,7 @@
 @section('container')
 
     <div class="col-lg-8">
-        <form method="post" action="/category/{{ $category_code }}/schema">
+        <form method="post" action="/category/{{ $category }}/schema">
             @csrf
             <div class="card-center">
                 <div class="row mt-5">
@@ -14,19 +14,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="schema_code" class="form-label">Kode Skema</label>
-                                            <input name="schema_code" type="text"
-                                                class="form-control @error('schema_code') is-invalid @enderror"
-                                                id="schema_code" value="{{ old('schema_code') }}">
-                                            @error('schema_code')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
+                                    
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="schema_title" class="form-label">Judul Skema</label>

@@ -15,10 +15,10 @@ class CriteriaController extends Controller
     public function index(CategoryModel $category, SchemaModel $schema, UnitModel $unit, ElementModel $element)
     {
         return view('admin.criteria.ListCriteria', [
-            'category' => $category->category_code,
-            'schema' => $schema->schema_code,
-            'unit' => $unit->unit_code,
-            'element' => $element->element_code,
+            'category' => $category->id,
+            'schema' => $schema->id,
+            'unit' => $unit->id,
+            'element' => $element->id,
             'criteria' => $element->criterias,
             'title' => 'Kriteria'
         ]);
@@ -38,15 +38,14 @@ class CriteriaController extends Controller
     public function store(Request $request, CategoryModel $category, SchemaModel $schema, UnitModel $unit, ElementModel $element)
     {
         $validateData = $request->validate([
-            'criteria_code' => 'required|unique:criteria',
             'criteria_title' => 'required',
         ]);
         $validateData['element_id'] = $element->id;
         CriteriaModel::create($validateData);
 
-        return redirect('/category' . '/' . $category->category_code . '/schema' . '/' . $schema->schema_code . '/unit' . '/'
-            . $unit->unit_code . '/element' . '/' . $element->element_code . '/criteria')
-            ->with('success', 'Unit berhasil di tambahkan!');
+        return redirect('/category' . '/' . $category->id . '/schema' . '/' . $schema->id . '/unit' . '/'
+            . $unit->id . '/element' . '/' . $element->id . '/criteria')
+            ->with('success', 'Kriteria berhasil di tambahkan!');
     }
 
 
@@ -78,23 +77,21 @@ class CriteriaController extends Controller
         $rules = [
             'criteria_title' => 'required'
         ];
-        if ($request->criteria_code != $criteria->criteria_code) {
-            $rules['criteria_code'] = 'required|unique:criteria';
-        }
+        
         $validateData['element_id'] = $element->id;
         $validateData = $request->validate($rules);
         $criteria->update($validateData);
 
-        return redirect('/category' . '/' . $category->category_code . '/schema' . '/' . $schema->schema_code . '/unit' . '/'
-            . $unit->unit_code . '/element' . '/' . $element->element_code . '/criteria')
-            ->with('success', 'Unit berhasil di Update!');
+        return redirect('/category' . '/' . $category->id . '/schema' . '/' . $schema->id . '/unit' . '/'
+            . $unit->id . '/element' . '/' . $element->id . '/criteria')
+            ->with('success', 'Kriteria berhasil di Update!');
     }
 
     public function destroy(CategoryModel $category, SchemaModel $schema, UnitModel $unit, ElementModel $element, CriteriaModel $criteria)
     {
         $criteria->delete();
-        return redirect('/category' . '/' . $category->category_code . '/schema' . '/' . $schema->schema_code . '/unit' . '/'
-            . $unit->unit_code . '/element' . '/' . $element->element_code . '/criteria')
-            ->with('success', 'Element berhasil di hapus!');
+        return redirect('/category' . '/' . $category->id . '/schema' . '/' . $schema->id . '/unit' . '/'
+            . $unit->id . '/element' . '/' . $element->id . '/criteria')
+            ->with('success', 'Kriteria berhasil di hapus!');
     }
 }
