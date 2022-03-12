@@ -36,6 +36,7 @@
                                                     <th>Nama Kelas</th>
                                                     <th>Nama Event</th>
                                                     <th>Judul Skema</th>
+                                                    <th>Tanggal</th>
                                                     <th>TUK</th>
                                                     <th>Deskripsi</th>
                                                     <th>Action</th>
@@ -48,6 +49,7 @@
                                                         <td>{{ $value->name }}</td>
                                                         <td>{{ $value->event->event_name }}</td>
                                                         <td>{{ $value->schema->schema_title }}</td>
+                                                        <td>{{ $value->date}}</td>
                                                         <td>{{ $value->tuk }}</td>
                                                         <td>{{ $value->description }}</td>
                                                         <td align="center">

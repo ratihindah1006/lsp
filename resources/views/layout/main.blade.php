@@ -77,7 +77,7 @@
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
                                     <i class="mdi mdi-account"></i>
                                 </a>
-                                        <span class="user-avatar"> Admin
+                                        <span class="user-avatar"> {{Auth::user()->name}}
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="{{ url('logout') }}" class="dropdown-item">
                                         <i class="ti-power-off"></i>
@@ -184,6 +184,7 @@
     <!-- Daterangepicker -->
     <script src="/assets/js/plugins-init/bs-daterange-picker-init.js"></script>
 
+    <!-- search option -->
     <script src="/assets/vendor/select2/js/select2.full.min.js"></script>
     <script src="/assets/js/plugins-init/select2-init.js"></script>
     <!-- Summernote -->

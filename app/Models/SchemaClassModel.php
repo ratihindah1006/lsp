@@ -14,7 +14,8 @@ class SchemaClassModel extends Model
         'description',
         'tuk',
         'event_id',
-        'schema_id'
+        'schema_id',
+        'date'
        ];
     use HasFactory;
     use SoftDeletes;
