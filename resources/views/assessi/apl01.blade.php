@@ -28,10 +28,11 @@
                                         <div class="col-lg-6">
                                             <input type="text" class="form-control  @error('name') is-invalid @enderror" name="name"
                                                 @if ($apl01 != null){
-                                            value= "{{ $apl01->name }}"
-                                            }else{
-                                            value="{{ old('name') }}"
-                                            }
+                                                    value= "{{ $apl01->name }}"
+                                                    }
+                                                @else{
+                                                    value="{{ old('name') }}"
+                                                }
                                             @endif
                                             id="name">
                                             @error('name')
@@ -49,7 +50,7 @@
                                             <input type="text" class="form-control @error('nik') is-invalid @enderror"
                                                 @if ($apl01 != null){
                                             value= "{{ $apl01->nik }}"
-                                            }else{
+                                            }@else{
                                             value="{{ old('nik') }}"
                                             }
                                             @endif id="nik" name="nik">
