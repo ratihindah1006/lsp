@@ -62,29 +62,31 @@
                                                     <a href="/list02/{{ $v->id }}" class="btn btn-primary btn-sm disabled mb-2">
                                                         <span>Apl 02</span></a>
                                                     @endif
-
-                                                    @if ($v->apl02['status'] )
-                                                        <a href="/assessor/ak01/{{ $v->id }}" class="btn btn-secondary btn-sm mb-2"><span>FR.AK.01</span></a>
-                                                        @if ($v->ak01['tl_verif_porto'])
-                                                            <a href="/assessor/" class="btn btn-secondary btn-sm mb-2"><span>Verif Porto</span></a>
+                                                    
+                                                    @if ($v->apl02 != null)
+                                                        @if ($v->apl02['status'])
+                                                            <a href="/assessor/ak01/{{ $v->id }}" class="btn btn-secondary btn-sm mb-2"><span>FR.AK.01</span></a>
+                                                            @if ($v->ak01['tl_verif_porto'])
+                                                                <a href="/assessor/" class="btn btn-secondary btn-sm mb-2"><span>Verif Porto</span></a>
+                                                            @endif
+                                                            @if ($v->ak01['l_obs_langsung'])
+                                                                <a href="/assessor/muk01/{{ $v->id }}" class="btn btn-secondary btn-sm mb-2"><span>FR.MUK.01</span></a>
+                                                            @endif
+                                                            @if ($v->ak01['t_p_tulis'])
+                                                                <a href="/assessor/muk06/{{ $v->id }}" class="btn btn-secondary btn-sm mb-2"><span>FR.MUK.06</span></a>
+                                                            @endif
+                                                            @if ($v->ak01['t_p_lisan'])
+                                                                <a href="/assessor/" class="btn btn-secondary btn-sm mb-2"><span>Pertanyaan Lisan</span></a>
+                                                            @endif
+                                                            @if ($v->ak01['t_p_wawancara'])
+                                                                <a href="/assessor/" class="btn btn-secondary btn-sm mb-2"><span>Pertanyaan Wawancara</span></a>
+                                                            @endif
+                                                        @else
+                                                            <a href="" class="btn btn-secondary btn-sm disabled mb-2"><span>FR.AK.01</span></a>
                                                         @endif
-                                                        @if ($v->ak01['l_obs_langsung'])
-                                                            <a href="/assessor/muk01/{{ $v->id }}" class="btn btn-secondary btn-sm mb-2"><span>FR.MUK.01</span></a>
-                                                        @endif
-                                                        @if ($v->ak01['t_p_tulis'])
-                                                            <a href="/assessor/muk06/{{ $v->id }}" class="btn btn-secondary btn-sm mb-2"><span>FR.MUK.06</span></a>
-                                                        @endif
-                                                        @if ($v->ak01['t_p_lisan'])
-                                                            <a href="/assessor/" class="btn btn-secondary btn-sm mb-2"><span>Pertanyaan Lisan</span></a>
-                                                        @endif
-                                                        @if ($v->ak01['t_p_wawancara'])
-                                                            <a href="/assessor/" class="btn btn-secondary btn-sm mb-2"><span>Pertanyaan Wawancara</span></a>
-                                                        @endif
-
                                                     @else
                                                         <a href="" class="btn btn-secondary btn-sm disabled mb-2"><span>FR.AK.01</span></a>
                                                     @endif
-
                                                 </td>
                                             </tr>
                                             @endforeach

@@ -6,7 +6,7 @@ jQuery(document).ready(function() {
             ['color', ['color']],
             ['para', ['ul', 'ol', 'paragraph']],
             ['table', ['table']],
-            // ['insert', ['link', 'picture', 'video']],
+            ['insert', ['link']],
             ['view', ['fullscreen', 'codeview', 'help']]
         ],
         // height: 190,
