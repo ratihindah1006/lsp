@@ -12,6 +12,7 @@ class ElementModel extends Model
     protected $fillable = [
         'element_title',
         'unit_id',
+        'benchmark'
        ];
     use HasFactory;
     use SoftDeletes;

@@ -24,7 +24,7 @@
                 <tr>
                   <td>Nomor</td>
                   <td>: &nbsp;</td>
-                  <td>{{ $schema->schema_code }}</td>
+                  <td>{{ $schema->no_skkni }}</td>
                 </tr>
                 <tr>
                   <td colspan="2">TUK</td>

@@ -185,11 +185,7 @@
     <!-- Daterangepicker -->
     <script src="/assets/js/plugins-init/bs-daterange-picker-init.js"></script>
 
-<<<<<<< HEAD
-    <!-- search option -->
-=======
     <!-- select -->
->>>>>>> 6657bbe15a529b9424baf70808d3a0822cf731f6
     <script src="/assets/vendor/select2/js/select2.full.min.js"></script>
     <script src="/assets/js/plugins-init/select2-init.js"></script>
     <!-- Summernote -->
