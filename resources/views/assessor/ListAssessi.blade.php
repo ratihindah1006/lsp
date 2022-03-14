@@ -66,20 +66,30 @@
                                                     @if ($v->apl02 != null)
                                                         @if ($v->apl02['status'])
                                                             <a href="/assessor/ak01/{{ $v->id }}" class="btn btn-secondary btn-sm mb-2"><span>FR.AK.01</span></a>
-                                                            @if ($v->ak01['tl_verif_porto'])
-                                                                <a href="/assessor/" class="btn btn-secondary btn-sm mb-2"><span>Verif Porto</span></a>
+                                                            @if (isset($v->ak01['tl_verif_porto']))
+                                                                @if ($v->ak01['tl_verif_porto'])
+                                                                    <a href="/assessor/" class="btn btn-secondary btn-sm mb-2"><span>Verif Porto</span></a>
+                                                                @endif
                                                             @endif
-                                                            @if ($v->ak01['l_obs_langsung'])
-                                                                <a href="/assessor/muk01/{{ $v->id }}" class="btn btn-secondary btn-sm mb-2"><span>FR.MUK.01</span></a>
+                                                            @if (isset($v->ak01['l_obs_langsung']))
+                                                                @if ($v->ak01['l_obs_langsung'])
+                                                                    <a href="/assessor/muk01/{{ $v->id }}" class="btn btn-secondary btn-sm mb-2"><span>FR.MUK.01</span></a>
+                                                                @endif
                                                             @endif
-                                                            @if ($v->ak01['t_p_tulis'])
-                                                                <a href="/assessor/muk06/{{ $v->id }}" class="btn btn-secondary btn-sm mb-2"><span>FR.MUK.06</span></a>
+                                                            @if (isset($v->ak01['t_p_tulis']))
+                                                                @if ($v->ak01['t_p_tulis'])
+                                                                    <a href="/assessor/muk06/{{ $v->id }}" class="btn btn-secondary btn-sm mb-2"><span>FR.MUK.06</span></a>
+                                                                @endif
                                                             @endif
-                                                            @if ($v->ak01['t_p_lisan'])
-                                                                <a href="/assessor/" class="btn btn-secondary btn-sm mb-2"><span>Pertanyaan Lisan</span></a>
+                                                            @if (isset($v->ak01['t_p_lisan']))
+                                                                @if ($v->ak01['t_p_lisan'])
+                                                                    <a href="/assessor/" class="btn btn-secondary btn-sm mb-2"><span>Pertanyaan Lisan</span></a>
+                                                                @endif
                                                             @endif
-                                                            @if ($v->ak01['t_p_wawancara'])
-                                                                <a href="/assessor/" class="btn btn-secondary btn-sm mb-2"><span>Pertanyaan Wawancara</span></a>
+                                                            @if (isset($v->ak01['t_p_wawancara']))
+                                                                @if ($v->ak01['t_p_wawancara'])
+                                                                    <a href="/assessor/" class="btn btn-secondary btn-sm mb-2"><span>Pertanyaan Wawancara</span></a>
+                                                                @endif
                                                             @endif
                                                         @else
                                                             <a href="" class="btn btn-secondary btn-sm disabled mb-2"><span>FR.AK.01</span></a>
