@@ -139,9 +139,9 @@
                 <tr>
                     <th rowspan="3">&ensp;
                         <div class="col-xl-10">
-                            <label class="my-text">&emsp;Catatan&emsp;:</label>
+                            <label class="my-text">Catatan&emsp;:</label>
                             <textarea class="form-control @error('note') is-invalid @enderror" value="{{ old('note') }}"
-                                id="note" name="note" rows="5" placeholder="Catatan"></textarea>
+                                id="note" name="note" rows="5" placeholder="catatan" disabled></textarea>
                             @error('note')
                                 <div class="invalid-feedback">
                                     {{ $message }}

@@ -118,7 +118,7 @@ class AssessorController extends Controller
             'ak01' => $assessi->ak01,
             'title' => 'AK01',
             'event_start' => $assessi->schema_class->event->event_time,
-            'tuk' => $assessi->schema_class->tuk,
+            'tuk' => $assessi->ak01['tuk'],
             'assessor' => Auth::user()->name,
             'assessi' => $assessi,
             'schema' => $assessi->schema_class->schema

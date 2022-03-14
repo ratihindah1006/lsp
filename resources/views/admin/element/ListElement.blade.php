@@ -20,22 +20,39 @@
         </div>
     </div>
 
-    <div class="col-lg-7">
-        <form method="post" action="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit }}/element">
-            @csrf
-            <div class="card-center">
-                <div class="row mt-5">
-                    <div class="col-md-14">
-                        <div class="card">
-                            <div style="width: 50rem; ">
-                            </div>
+    <div class="data-table-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="data-table-list">
+                        @if (session()->has('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('success') }}
+                        </div>
+                        @endif
+
+
+                        <form method="post" action="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit }}/element">
+                            @csrf
+                            <div class="card">
                                 <div class="card-body">
-                                    <div class="row">&emsp;&emsp;
-                                        <div class="col-8">
+                                    <div class="row">
+                                        <div class="col-4 ml-5">
                                             <div class="form-group row">
-                                                <label for="element_title" class="form-label">Judul Element</label>
+                                                <label for="element_title" class="form-label my-text">Judul Element</label>
                                                 <input type="text" class="form-control @error('element_title') is-invalid @enderror" id="element_title" name="element_title" value="{{ old('element_title') }}">
                                                 @error('element_title')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+                                        </div>&emsp;
+                                        <div class="col-4">
+                                            <div class="form-group row">
+                                                <label for="benchmark" class="form-label my-text">Benchmark</label>
+                                                <input type="text" class="form-control @error('benchmark') is-invalid @enderror" id="benchmark" name="benchmark" value="{{ old('benchmark') }}">
+                                                @error('benchmark')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>
@@ -49,23 +66,10 @@
                                         </div>
                                     </div>
                                 </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
+                            </div>
+                        </form>
 
-    <div class="data-table-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="data-table-list">
-                        @if (session()->has('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('success') }}
-                        </div>
-                        @endif
+
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive my-text">
@@ -74,6 +78,7 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>Element Title</th>
+                                                <th>Benchmark</th>
                                                 <th width="100px">Action</th>
                                             </tr>
                                         </thead>
@@ -82,6 +87,7 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $value->element_title }}</td>
+                                                <td>{{ $value->benchmark }}</td>
                                                 <td align="center">
                                                     <a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit }}/element/{{ $value->id }}/criteria" class="btn btn-primary btn-sm"><span class="ti-info"></span></a>
                                                     <a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit }}/element/{{ $value->id }}/edit" class="btn btn-warning btn-sm"><span class="ti-pencil"></span></a>

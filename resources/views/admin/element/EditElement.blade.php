@@ -31,6 +31,21 @@
                                             @enderror
                                         </div>
                                     </div>
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="benchmark" class="form-label">Benchmark</label>
+                                            <input type="text"
+                                                class="form-control @error('benchmark') is-invalid @enderror"
+                                                id="benchmark" name="benchmark"
+                                                value="{{ old('benchmark', $element->benchmark) }}">
+                                            @error('benchmark')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
                                     
                                     <div class="col">
                                         <center><button type="submit" class="btn btn-success mt-4"

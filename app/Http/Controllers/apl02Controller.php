@@ -48,14 +48,14 @@ class Apl02Controller extends Controller
         $dataAssessi = DataAssessiModel::find(Auth::user()->id);
         $assessi = $dataAssessi->assessis->find($id);
         $assessment = [];
-        $i = 1;
+        $i = 0;
         foreach ($request->all() as $data){
-            if($i==1 || $i==count($request->all())){
+            if($i==0 || $i==count($request->all())){
                 $i=$i+1; continue;}
             $assessment[]=$data;
         $i= $i+1;
         }
-        //dd($varriable);
+        //dd($assessment);
         // $validateData = $request->validate([
         //     'note' => 'required',
         // ]);

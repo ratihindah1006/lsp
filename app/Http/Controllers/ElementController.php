@@ -48,12 +48,13 @@ class ElementController extends Controller
     {
         $validateData = $request->validate([
             'element_title' => 'required',
+            'benchmark' => 'required',
         ]);
         $validateData['unit_id']=$unit->id;
         ElementModel::create($validateData);
 
         return redirect('/category'.'/'.$category->id.'/schema'.'/'.$schema->id.'/unit'.'/'.$unit->id.'/element')
-        ->with('success', 'Unit berhasil di tambahkan!');
+        ->with('success', 'Element berhasil di tambahkan!');
     }
 
     /**
@@ -95,12 +96,13 @@ class ElementController extends Controller
     {
         $rules=[
             'element_title' => 'required',
+            'benchmark' => 'required'
         ];
         $validateData['unit_id']=$unit->id;
         $validateData= $request->validate($rules);
         $element->update($validateData);
 
-        return redirect('/category'.'/'.$category->id.'/schema'.'/'.$schema->id.'/unit'.'/'.$unit->id.'/element')->with('success', 'Unit berhasil di Update!');
+        return redirect('/category'.'/'.$category->id.'/schema'.'/'.$schema->id.'/unit'.'/'.$unit->id.'/element')->with('success', 'Element berhasil di Update!');
     }
 
     /**
