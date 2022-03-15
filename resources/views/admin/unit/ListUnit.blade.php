@@ -49,7 +49,7 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $value->unit_code }}</td>
                                                         <td>{{ $value->unit_title }}</td>
-                                                        <<td align="center">
+                                                        <td align="center">
                                                             <a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $value->id }}/element"
                                                                 class="btn btn-primary btn-sm"><span
                                                                     class="ti-info"></span></a>
