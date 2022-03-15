@@ -320,9 +320,14 @@
                             <div class="col-xl-6">
                                 <div class="form-group row">
                                     <label class="my-text">Catatan&emsp;:</label>
-                                    <textarea class="form-control @error('note') is-invalid @enderror"
-                                        value="{{ old('note') }}" id="note" name="note" rows="5"
-                                        ></textarea>
+                                    <input class="form-control @error('note') is-invalid @enderror"
+                                        id="note" name="note" rows="5"
+                                        @if ($apl01 != null) {
+                                            value= "{{ $apl01->note }}"
+                                            }@else{
+                                            value="{{ old('note') }}"
+                                            } @endif
+                                        >
                                     @error('note')
                                         <div class="invalid-feedback">
                                             {{ $message }}

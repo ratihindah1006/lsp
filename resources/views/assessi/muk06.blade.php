@@ -76,7 +76,11 @@
                 <td class="p-2" bgcolor="lightgray" style="vertical-align:top; min-width: 50%;">
                   Pertanyaan: <br>
                   @foreach ($unit->elements as $e)
+                    @if (isset($e->question['question']))
                       {!! $loop->iteration.'. '.$e->question['question'] !!}<br>
+                    @else
+                      {!! $loop->iteration !!}<br>
+                    @endif
                   @endforeach 
                 </td>
                 <input type="hidden" id="assessiId" name="assessiId[]" value="{{ $assessi->id }}">
