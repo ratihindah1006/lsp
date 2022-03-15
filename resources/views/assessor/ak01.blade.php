@@ -34,18 +34,24 @@
                       <div class="form-group p-0 m-0" >
                         <label class="radio-inline">
                             <input type="radio" name="tuk" value="Sewaktu" required
-                            @if ($tuk == "Sewaktu")
-                              {{ 'checked' }}
+                            @if (isset($ak01['tuk']))
+                              @if ($ak01['tuk'] == "Sewaktu")
+                                {{ 'checked' }}
+                              @endif
                             @endif> Sewaktu/</label>
                         <label class="radio-inline">
                             <input type="radio" name="tuk" value="Tempat Kerja" required
-                            @if ($tuk == "Tempat Kerja")
-                              {{ 'checked' }}
+                            @if (isset($ak01['tuk']))
+                              @if ($ak01['tuk'] == "Tempat Kerja")
+                                {{ 'checked' }}
+                              @endif
                             @endif> Tempat Kerja</label>
                         <label class="radio-inline">
                             <input type="radio" name="tuk" value="Mandiri" required
-                            @if ($tuk == "Mandiri")
-                              {{ 'checked' }}
+                            @if (isset($ak01['tuk']))
+                              @if ($ak01['tuk'] == "Mandiri")
+                                {{ 'checked' }}
+                              @endif
                             @endif> /Mandiri</label>
                     </div>
                     </td>
@@ -64,8 +70,10 @@
                           <div class="form-group m-0">
                             <div class="form-check">
                               <input type="checkbox" name="tl_verif_porto" class="tl_verif_porto" id="tl_verif_porto"
-                              @if (old("tl_verif_porto",$assessi->ak01['tl_verif_porto']))
-                                {{ 'checked' }}                  
+                              @if (isset($ak01['tl_verif_porto']))
+                                @if($ak01['tl_verif_porto'])
+                                  {{ 'checked' }}          
+                                @endif        
                               @endif>
                               <label class="tl_verif_porto" for="tl_verif_porto">TL: Verifikasi Portofolio</label>
                             </div>
@@ -77,8 +85,10 @@
                           <div class="form-group m-0">
                             <div class="form-check">
                               <input type="checkbox" name="l_obs_langsung" class="l_obs_langsung" id="l_obs_langsung"  
-                              @if (old("l_obs_langsung", $assessi->ak01['l_obs_langsung']))
-                                {{ 'checked' }}                  
+                              @if (isset($ak01['l_obs_langsung']))
+                                @if($ak01['l_obs_langsung'])
+                                  {{ 'checked' }}          
+                                @endif                 
                               @endif>
                               <label class="l_obs_langsung" for="l_obs_langsung">L: Observasi Langsung  </label>
                             </div>
@@ -90,8 +100,10 @@
                           <div class="form-group m-0">
                             <div class="form-check">
                               <input type="checkbox" name="t_p_tulis" class="t_p_tulis" id="t_p_tulis" 
-                              @if (old("t_p_tulis", $assessi->ak01['t_p_tulis']))
-                                {{ 'checked' }}                  
+                              @if (isset($ak01['t_p_tulis']))
+                                @if($ak01['t_p_tulis'])
+                                  {{ 'checked' }}          
+                                @endif                  
                               @endif>
                               <label class="t_p_tulis" for="t_p_tulis">T: Daftar Pertanyaan Tulis</label>
                             </div>
@@ -103,8 +115,10 @@
                           <div class="form-group m-0">
                             <div class="form-check">
                               <input type="checkbox" name="t_p_lisan" class="t_p_lisan" id="t_p_lisan"
-                              @if (old("t_p_lisan", $assessi->ak01['t_p_lisan']))
-                                {{ 'checked' }}               
+                              @if (isset($ak01['t_p_lisan']))
+                                @if($ak01['t_p_lisan'])
+                                  {{ 'checked' }}          
+                                @endif      
                               @endif>
                               <label class="t_p_lisan" for="t_p_lisan">T: Daftar Pertanyaan Lisan</label>
                           </div>
@@ -116,8 +130,10 @@
                           <div class="form-group m-0">
                             <div class="form-check">
                               <input type="checkbox" name="t_p_wawancara" class="t_p_wawancara" id="t_p_wawancara" 
-                              @if (old("t_p_wawancara",$assessi->ak01['t_p_wawancara']))
-                                {{ 'checked' }}               
+                              @if (isset($ak01['t_p_wawancara']))
+                                @if($ak01['t_p_wawancara'])
+                                  {{ 'checked' }}          
+                                @endif             
                               @endif>
                               <label class="t_p_wawancara" for="t_p_wawancara">T: Daftar Pertanyaan Wawancara</label>
                           </div>
@@ -133,7 +149,7 @@
                     </tr>
                     <tr>
                       <td>TUK</td>
-                      <td> : {{ $tuk }}</td>
+                      <td> : {{ $assessi->schema_class->tuk }}</td>
                     </tr>
                     <tr>
                       <td colspan="3">
