@@ -24,7 +24,7 @@ class ElementController extends Controller
         return view('admin.element.ListElement', [
             'category'=>$category->id,
             'schema' => $schema->id,
-            'unit' => $unit->id,
+            'unit' => $unit,
             'element'=> $unit->elements,
             'admin'=> $data,
             'title'=>'Element'

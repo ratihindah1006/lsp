@@ -22,7 +22,7 @@ class SchemaController extends Controller
     {
         $data=$admin->where('id', Auth::user()->id)->get();
         return view('admin.schema.ListSchema', [
-            'category'=>$category->id,
+            'category'=>$category,
             'schema' => $category->schemas,
             'title' => 'Skema',
             'admin'=>$data

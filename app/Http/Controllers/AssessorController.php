@@ -34,42 +34,72 @@ class AssessorController extends Controller
         ]);
     }
 
-    public function apl01(AssessiModel $assessi)
+    public function apl01()
     {
         $data_assessor = DataAssessorModel::find(Auth::user()->id);
         foreach ($data_assessor->assessors as $a) {
             foreach ($a->assessis as $b) {
                 $assessi = $b;
+                return view('assessor.apl01', [
+                    'apl01' => $assessi->apl01,
+                    'assessi' => $assessi,
+                    'title' => 'Skema',
+                    'assessis' => $assessi->schema_class->schema,
+                ]);
             }
         }
-        return view('assessor.apl01', [
-            'apl01' => $assessi->apl01,
-            'assessi' => $assessi,
-            'title' => 'Skema',
-            'assessis' => $assessi->schema_class->schema,
-        ]);
+        
     }
 
-    public function apl02(AssessiModel $assessi)
-    {
-        $assessor = AssessorModel::find(Auth::user()->id);
-        if (isset($assessi->apl02->assessment)) {
-            $assessment = json_decode($assessi->apl02->assessment);
-        } else {
-            $assessment = [];
-        }
-        return view('assessor.apl02', [
-            'title' => 'APL02',
-            'assessi' => $assessi,
-            'skema' => $assessor->schema_class->schema,
-            'asesor' => $assessor,
-            'apl01' => $assessi->apl01,
-            'class' => $assessor->schema_class,
-            'units' => $assessor->schema_class->schema->units,
-            'apl02' => $assessi->apl02,
-            'assessment' => $assessment,
+    // public function apl02(AssessiModel $assessi)
+    // {
+    //     $assessor = AssessorModel::find(Auth::user()->id);
+    //     if (isset($assessi->apl02->assessment)) {
+    //         $assessment = json_decode($assessi->apl02->assessment);
+    //     } else {
+    //         $assessment = [];
+    //     }
+    //     return view('assessor.apl02', [
+    //         'title' => 'APL02',
+    //         'assessi' => $assessi,
+    //         'skema' => $assessor->schema_class->schema,
+    //         'asesor' => $assessor,
+    //         'apl01' => $assessi->apl01,
+    //         'class' => $assessor->schema_class,
+    //         'units' => $assessor->schema_class->schema->units,
+    //         'apl02' => $assessi->apl02,
+    //         'assessment' => $assessment,
 
-        ]);
+    //     ]);
+    // }
+    public function apl02()
+    {
+        // $assessor = AssessorModel::find(Auth::user()->id);
+        $data_assessor = DataAssessorModel::find(Auth::user()->id);
+        foreach ($data_assessor->assessors as $a) {
+            $assessor = $a;
+            foreach ($a->assessis as $b) {
+                $assessi = $b;
+                if (isset($assessi->apl02->assessment)) {
+                    $assessment = json_decode($assessi->apl02->assessment);
+                } else {
+                    $assessment = [];
+                }
+                // dd($ass->apl01);
+                return view('assessor.apl02', [
+                    'title' => 'APL02',
+                    'assessi' => $assessi,
+                    'skema' => $assessi->schema_class->schema,
+                    'asesor' => $assessor,
+                    'apl01' => $assessi->apl01,
+                    'class' => $assessi->schema_class,
+                    'units' => $assessi->schema_class->schema->units,
+                    'apl02' => $assessi->apl02,
+                    'assessment' => $assessment,
+
+                ]);
+            }
+        }
     }
 
     public function status_apl01(Request $request, Apl01 $apl01, $id)
