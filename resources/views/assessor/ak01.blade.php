@@ -37,9 +37,14 @@
                             @if (isset($ak01['tuk']))
                               @if ($ak01['tuk'] == "Sewaktu")
                                 {{ 'checked' }}
+<<<<<<< HEAD
                               @endif 
                             @endif> 
                             Sewaktu/</label>
+=======
+                              @endif
+                            @endif> Sewaktu/</label>
+>>>>>>> 3baf2a80b4c5323e767c6071e6719b11b8024354
                         <label class="radio-inline">
                             <input type="radio" name="tuk" value="Tempat Kerja" required
                             @if (isset($ak01['tuk']))
@@ -71,8 +76,15 @@
                           <div class="form-group m-0">
                             <div class="form-check">
                               <input type="checkbox" name="tl_verif_porto" class="tl_verif_porto" id="tl_verif_porto"
+<<<<<<< HEAD
                               @if (old("tl_verif_porto", (isset($ak01['tl_verif_porto']) == true) ? $ak01['tl_verif_porto']))
                                 {{ 'checked' }}                  
+=======
+                              @if (isset($ak01['tl_verif_porto']))
+                                @if($ak01['tl_verif_porto'])
+                                  {{ 'checked' }}          
+                                @endif        
+>>>>>>> 3baf2a80b4c5323e767c6071e6719b11b8024354
                               @endif>
                               <label class="tl_verif_porto" for="tl_verif_porto">TL: Verifikasi Portofolio</label>
                             </div>
@@ -84,8 +96,15 @@
                           <div class="form-group m-0">
                             <div class="form-check">
                               <input type="checkbox" name="l_obs_langsung" class="l_obs_langsung" id="l_obs_langsung"  
+<<<<<<< HEAD
                               @if (old("l_obs_langsung", ($ak01['l_obs_langsung'] ) ? true : $ak01['l_obs_langsung']))
                                 {{ 'checked' }}                  
+=======
+                              @if (isset($ak01['l_obs_langsung']))
+                                @if($ak01['l_obs_langsung'])
+                                  {{ 'checked' }}          
+                                @endif                 
+>>>>>>> 3baf2a80b4c5323e767c6071e6719b11b8024354
                               @endif>
                               <label class="l_obs_langsung" for="l_obs_langsung">L: Observasi Langsung  </label>
                             </div>
@@ -97,8 +116,15 @@
                           <div class="form-group m-0">
                             <div class="form-check">
                               <input type="checkbox" name="t_p_tulis" class="t_p_tulis" id="t_p_tulis" 
+<<<<<<< HEAD
                               @if (old("t_p_tulis", isset($ak01['t_p_tulis']) ?  true : $ak01->t_p_tulis))
                                 {{ 'checked' }}                  
+=======
+                              @if (isset($ak01['t_p_tulis']))
+                                @if($ak01['t_p_tulis'])
+                                  {{ 'checked' }}          
+                                @endif                  
+>>>>>>> 3baf2a80b4c5323e767c6071e6719b11b8024354
                               @endif>
                               <label class="t_p_tulis" for="t_p_tulis">T: Daftar Pertanyaan Tulis</label>
                             </div>
@@ -110,8 +136,15 @@
                           <div class="form-group m-0">
                             <div class="form-check">
                               <input type="checkbox" name="t_p_lisan" class="t_p_lisan" id="t_p_lisan"
+<<<<<<< HEAD
                               @if (old("t_p_lisan", isset($ak01['t_p_lisan']) ? true : $ak01->t_p_lisan))
                                 {{ 'checked' }}               
+=======
+                              @if (isset($ak01['t_p_lisan']))
+                                @if($ak01['t_p_lisan'])
+                                  {{ 'checked' }}          
+                                @endif      
+>>>>>>> 3baf2a80b4c5323e767c6071e6719b11b8024354
                               @endif>
                               <label class="t_p_lisan" for="t_p_lisan">T: Daftar Pertanyaan Lisan</label>
                           </div>
@@ -123,8 +156,15 @@
                           <div class="form-group m-0">
                             <div class="form-check">
                               <input type="checkbox" name="t_p_wawancara" class="t_p_wawancara" id="t_p_wawancara" 
+<<<<<<< HEAD
                               @if (old("t_p_wawancara", isset($ak01['t_p_wawancara']) ? true : $ak01->t_p_wawancara))
                                 {{ 'checked' }}               
+=======
+                              @if (isset($ak01['t_p_wawancara']))
+                                @if($ak01['t_p_wawancara'])
+                                  {{ 'checked' }}          
+                                @endif             
+>>>>>>> 3baf2a80b4c5323e767c6071e6719b11b8024354
                               @endif>
                               <label class="t_p_wawancara" for="t_p_wawancara">T: Daftar Pertanyaan Wawancara</label>
                           </div>
@@ -140,7 +180,7 @@
                     </tr>
                     <tr>
                       <td>TUK</td>
-                      <td> : {{ $tuk }}</td>
+                      <td> : {{ $assessi->schema_class->tuk }}</td>
                     </tr>
                     <tr>
                       <td colspan="3">
