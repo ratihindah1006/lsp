@@ -45,9 +45,9 @@
                                                     <td>{{ $value->name }}</td>
                                                     <td>{{ $value->email }}</td>
                                                     <td align="center">
-                                                        {{-- <a href="/dataAssessi/{{ $value->id }}/edit"
+                                                        <a href="/dataAssessi/{{ $value->id }}/edit"
                                                             class="btn btn-warning btn-sm"><span
-                                                                class="ti-pencil"></span></a> --}}
+                                                                class="ti-pencil"></span></a>
                                                         <form action="/dataAssessi/{{ $value->id }}" method="POST"
                                                             class="d-inline">
                                                             @csrf

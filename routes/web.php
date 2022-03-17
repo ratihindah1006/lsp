@@ -18,6 +18,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataAssessiController;
 use App\Http\Controllers\SchemaClassController;
 use App\Http\Controllers\DataAssessorController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +41,10 @@ Route::post('/postLogin', [AuthController::class, 'postLogin'])->name('postLogin
 
 
 
+
 Route::group(['middleware' => 'auth:admin'], function () {
+    Route::get('/edit_password_admin', [AdminController::class, 'edit_password'])->name('edit_password_admin');
+    Route::put('/edit_password_admin', [AdminController::class, 'update_password']);
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/dashboard/create', [DashboardController::class, 'create']);
     Route::post('/dashboard', [DashboardController::class, 'store']);
@@ -144,6 +148,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
 });
 
 Route::group(['middleware' => 'auth:assessi'], function () {
+    Route::get('/edit_password', [AssessiController::class, 'edit_password'])->name('edit_password');
+    Route::put('/edit_password', [AssessiController::class, 'update_password']);
     Route::get('/beranda', [AssessiController::class, 'index']);
     Route::get('/apl01', [Apl01Controller::class, 'index']);
     Route::post('/beranda/{assessi:id}', [Apl01Controller::class, 'store']);
@@ -157,6 +163,8 @@ Route::group(['middleware' => 'auth:assessi'], function () {
 Route::group(['middleware' => 'auth:assessor'], function () {
     Route::get('/assessor', [AssessorController::class, 'index']);
     Route::get('/assessi/{assessor:id}', [AssessorController::class, 'assessi']);
+    Route::get('/ubah_password', [AssessorController::class, 'edit_password'])->name('ubah_password');
+    Route::put('/ubah_password', [AssessorController::class, 'update_password']);
     Route::get('/list', [AssessorController::class, 'list']);
     Route::get('/list/{assessi:id}', [AssessorController::class, 'apl01']);
     Route::get('/list02/{assessi:id}', [AssessorController::class, 'apl02']);

@@ -1,12 +1,28 @@
 @extends('layout.main')
 
 @section('container')
+<div class="container-fluid">
+    <div class="row page-titles mx-0">
+        <div class="col-sm-6 p-md-0">
+            <div class="welcome-text">
+                <h4>Tambah Data Skema</h4>
+            </div>
+        </div>
+        <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/category">Kategori</a></li>
+                <li class="breadcrumb-item"><a href="/category/{{ $category }}/schema">Skema</a></li>
+                <li class="breadcrumb-item"><a href="">Tambah Data Skema</a></li>
+            </ol>
+        </div>
+    </div>
+</div>
 
 <div class="col-lg-8">
     <form method="post" action="/category/{{ $category }}/schema">
         @csrf
         <div class="card-center">
-            <div class="row mt-5">
+            <div class="row mt-1">
                 <div class="col-md-14">
                     <div class="card">
                         <div class="card-header" style="width: 50rem; ">

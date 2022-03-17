@@ -2,20 +2,29 @@
 
 @section('container')
 
-
+<div class="container-fluid">
+    <div class="row page-titles mx-0">
+        <div class="col-sm-6 p-md-0">
+            <div class="welcome-text">
+                <h4>Tambah Kelas Skema</h4>
+            </div>
+        </div>
+        <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/KelasSkema">Kelas Skema</a></li>
+                <li class="breadcrumb-item"><a href="">Tambah Kelas Skema</a></li>
+            </ol>
+        </div>
+    </div>
     <div class="col-lg-8">
         <form method="post" action="/KelasSkema">
             @csrf
             <div class="card-center-assessi">
-                <div class="row mt-5">
+                <div class="row mt-1">
                     <div class="col-md-14">
                         <div class="card">
-                            <div class="card-header" style="width: 50rem; ">
-                                <h4 class="card-title">Tambah Data Kelas Skema</h4>
-                            </div>
                             <div class="card-content-center">
-                                <div class="card-body">
-
+                                <div class="card-body"  style="width: 50rem; ">
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="name" class="form-label">Nama</label>
@@ -32,11 +41,11 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Judul Event</label>
-                                            <select style="width: 100%; height:40px;" name="event_id" id="event_id"
+                                            <select style="width: 100%; height:40px; " name="event_id" id="event_id"
                                                 class="form-control maximum-search-length @error('event_id') is-invalid @enderror">
                                                 <option value="">Pilih Event</option>
                                                 @foreach ($event as $events)
-                                                    <option value="{{ $events->id }}"
+                                                    <option value="{{ $events->id }}" 
                                                         {{ old('event_id') == $events->id ? 'selected' : null }}>
                                                         {{ $events->event_name }}</option>
                                                 @endforeach

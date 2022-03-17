@@ -19,29 +19,30 @@ class AuthController extends Controller
     }
     public function index()
     {
-        return view('auth.login',[
-            'title'=> 'Login',
+        return view('auth.login', [
+            'title' => 'Login',
         ]);
     }
-    
-    public function postLogin(Request $request){
+
+    public function postLogin(Request $request)
+    {
         //dd($request->all());
-        if(Auth::guard('admin')->attempt(['email'=> $request->email, 'password'=> $request->password])){
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->intended('dashboard');
+        } elseif (Auth::guard('assessi')->attempt(['email' => $request->email, 'password' => $request->password])) {
+            return redirect()->intended('beranda');
+        } elseif (Auth::guard('assessor')->attempt(['email' => $request->email, 'password' => $request->password])) {
+            return redirect()->intended('assessor');
         }
-        elseif (Auth::guard('assessi')->attempt(['email'=>$request->email, 'password'=> $request->password])){
-            return redirect()->intended('beranda'); 
-        }
-        elseif (Auth::guard('assessor')->attempt(['email'=>$request->email, 'password'=> $request->password])){
-            return redirect()->intended('assessor');  
-        }
-        return redirect('/login')->with('loginError','akun tidak valid');
+        return redirect('/login')->with('loginError', 'akun tidak valid');
     }
-  
-    public function logout(Request $request){
+
+    public function logout(Request $request)
+    {
         $request->session()->flush();
         Auth::logout();
         return redirect('login');
-       
-}
+    }
+
+   
 }

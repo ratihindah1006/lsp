@@ -48,7 +48,8 @@
         ***********************************-->
         <div class="nav-header">
             <a href=# class="brand-logo">
-       
+                <img class="logo-abbr" src="assets/images/unila.png" alt="">
+                <span>LSP Universitas lampung</span>
             </a>
 
             <div class="nav-control">
@@ -83,6 +84,10 @@
                                     <a href="{{ url('logout') }}" class="dropdown-item">
                                         <i class="ti-power-off"></i>
                                         <span class="ml-2">Logout </span>
+                                    </a>
+                                    <a href="{{ url('edit_password_admin') }}" class="dropdown-item">
+                                        <i class="ti-key"></i>
+                                        <span class="ml-2">Ubah Password </span>
                                     </a>
                                 </div>
                             </li>

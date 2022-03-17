@@ -2,12 +2,31 @@
 
 @section('container')
 
+<div class="container-fluid">
+    <div class="row page-titles mx-0">
+        <div class="col-sm-6 p-md-0">
+            <div class="welcome-text">
+                <h4>Edit Data Element</h4>
+            </div>
+        </div>
+        <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/category">Kategori</a></li>
+                <li class="breadcrumb-item"><a href="/category/{{ $category->id }}/schema">Skema</a></li>
+                <li class="breadcrumb-item active"><a href="/category/{{ $category->id }}/schema/{{ $schema->id }}/unit"> Unit</a></li>
+                <li class="breadcrumb-item active"><a href="/category/{{ $category->id }}/schema/{{ $schema->id }}/unit/{{ $unit->id }}/element">Element</a></li>
+                <li class="breadcrumb-item"><a href="">Edit Data Element</a></li>
+            </ol>
+        </div>
+    </div>
+</div>
+
 <div class="col-lg-8">
     <form method="post" action="/category/{{ $category->id }}/schema/{{ $schema->id }}/unit/{{ $unit->id }}/element/{{ $element->id }}">
         @method('put')
         @csrf
         <div class="card-center">
-            <div class="row mt-5">
+            <div class="row mt-1">
                 <div class="col-md-14">
                     <div class="card">
                         <div class="card-header" style="width: 50rem; ">

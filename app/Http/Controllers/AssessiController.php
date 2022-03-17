@@ -10,6 +10,8 @@ use App\Models\DataAssessiModel;
 use App\Models\DataAssessorModel;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException as ValidationException;
 
 class AssessiController extends Controller
 {
@@ -22,6 +24,31 @@ class AssessiController extends Controller
             'assessi' => $data_assessi,
             'assessis' => $data_assessi->assessis,
         ]);       
+    }
+
+    public function edit_password()
+    {
+        $data_assessi = DataAssessiModel::find(Auth::user()->id);
+        return view('assessi.edit_password',[
+            'title' => 'Ubah Password',
+            'data_assessi'=>$data_assessi,
+        ]);
+    }
+
+    public function update_password(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        if (Hash::check($request->current_password, auth()->user()->password)){
+            auth()->user()->update(['password' => bcrypt($request->password)]);
+            return redirect('/beranda')->with('success', 'password berhasil di ubah');
+        }
+        throw ValidationException::withMessages([
+            'current_password'=> 'Password yang ada masukkan salah'
+        ]);
     }
 
     public function muk06(AssessiModel $assessi)

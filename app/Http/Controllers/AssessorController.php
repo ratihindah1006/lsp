@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use App\Models\AssessorModel;
 use App\Models\DataAssessorModel;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException as ValidationException;
 
 class AssessorController extends Controller
 {
@@ -24,6 +26,14 @@ class AssessorController extends Controller
             'assessor' => $data_assessor,
         ]);
     }
+    public function edit_password()
+    {
+        $data_assessor = DataAssessorModel::find(Auth::user()->id);
+        return view('assessor.edit_password',[
+            'title' => 'Ubah Password',
+            'data_assessor'=>$data_assessor,
+        ]);
+    }
 
     public function assessi($id)
     {
@@ -34,6 +44,21 @@ class AssessorController extends Controller
         ]);
     }
 
+    public function update_password(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        if (Hash::check($request->current_password, auth()->user()->password)){
+            auth()->user()->update(['password' => bcrypt($request->password)]);
+            return redirect('/assessor')->with('success', 'password berhasil di ubah');
+        }
+        throw ValidationException::withMessages([
+            'current_password'=> 'Password yang ada masukkan salah'
+        ]);
+    }
     public function list()
     {
         $data_assessor = DataAssessorModel::find(Auth::user()->id);

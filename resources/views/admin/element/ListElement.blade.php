@@ -50,7 +50,7 @@
                                         <div class="col-4 ml-5">
                                             <div class="form-group row">
                                                 <label for="element_title" class="form-label my-text">Judul Element</label>
-                                                <input type="text" class="form-control @error('element_title') is-invalid @enderror" id="element_title" name="element_title" value="{{ old('element_title') }}">
+                                                <input style="width: 100%; height:40px;" type="text" class="form-control @error('element_title') is-invalid @enderror" id="element_title" name="element_title" value="{{ old('element_title') }}">
                                                 @error('element_title')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -61,7 +61,7 @@
                                         <div class="col-4">
                                             <div class="form-group row">
                                                 <label for="benchmark" class="form-label my-text">Benchmark</label>
-                                                <input type="text" class="form-control @error('benchmark') is-invalid @enderror" id="benchmark" name="benchmark" value="{{ old('benchmark') }}">
+                                                <input style="width: 100%; height:40px;" type="text" class="form-control @error('benchmark') is-invalid @enderror" id="benchmark" name="benchmark" value="{{ old('benchmark') }}">
                                                 @error('benchmark')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -69,9 +69,9 @@
                                                 @enderror
                                             </div>
                                         </div>&emsp;
-                                        <div class="col">
+                                        <div class="col ml-3 mtm-4">
                                             <div class="form-group row">
-                                                <button type="submit" class="btn btn-primary mt-4" style="width: 170px">Tambah</button>
+                                                <button type="submit" class="btn btn-primary" style="width: 70%; height:40px;">Tambah</button>
                                             </div>
                                         </div>
                                     </div>

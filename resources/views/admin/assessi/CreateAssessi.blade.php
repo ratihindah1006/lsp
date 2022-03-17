@@ -1,19 +1,30 @@
 @extends('layout.main')
 
 @section('container')
+<div class="container-fluid">
+    <div class="row page-titles mx-0">
+        <div class="col-sm-6 p-md-0">
+            <div class="welcome-text">
+                <h4>Daftar Asesi</h4>
+            </div>
+        </div>
+        <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/KelasSkema">Kelas Skema</a></li>
+                <li class="breadcrumb-item active"><a href="/KelasSkema/{{ $class }}/dataAsesi">Asesi</a></li>
+                <li class="breadcrumb-item active"><a href="/KelasSkema/{{ $class }}/dataAsesi/create">Tambah Asesi</a></li>
+            </ol>
+        </div>
+    </div>
     <div class="col-lg-8">
-        <form method="post" action="/KelasSkema/{{ $class->id }}/dataAsesi">
+        <form method="post" action="/KelasSkema/{{ $class }}/dataAsesi">
             @csrf
             <div class="card-center-assessi">
                 <div class="row mt-5">
                     <div class="col-md-14">
                         <div class="card">
-                            <div class="card-header" style="width: 50rem; ">
-                                <h4 class="card-title">Tambah Data Asesi</h4>
-                            </div>
                             <div class="card-content-center">
-                                <div class="card-body">
-
+                                <div class="card-body" style="width: 50rem; ">
                                     <div class="col-12">
                                         <div class="form-group">
                                         <label>Nama Asesi</label>

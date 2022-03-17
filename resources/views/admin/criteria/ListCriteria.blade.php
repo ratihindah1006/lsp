@@ -51,18 +51,18 @@
                                         <div class="col-8 ml-5">
                                             <div class="form-group row">
                                                 <label for="criteria_title" class="form-label my-text">Judul Kriteria</label>
-                                                <input type="text" class="form-control @error('criteria_title') is-invalid @enderror" id="criteria_title" name="criteria_title" value="{{ old('criteria_title') }}" cols="40" rows="5">
+                                                <textarea type="text" class="form-control @error('criteria_title') is-invalid @enderror" id="criteria_title" name="criteria_title"></textarea>
                                                 @error('criteria_title')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
                                             </div>
-                                        </div>&emsp;
+                                        </div>
 
-                                        <div class="col">
+                                        <div class="col ml-4">
                                             <div class="form-group row">
-                                                <button type="submit" class="btn btn-primary mt-4" style="width: 170px">Tambah</button>
+                                                <button type="submit" class="btn btn-primary mtm-4" style="width: 50%; height:40px;">Tambah</button>
                                             </div>
                                         </div>
                                     </div>

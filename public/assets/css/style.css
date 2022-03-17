@@ -84,6 +84,23 @@
   text-align: center;
   margin : auto;
 }
+
+input[type=text], input[type=date],input[type=email],input[type=password]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-left: 5px solid #0f8891;
+  border-bottom: 3px solid #002629;
+  border-top: 1px solid  #002629;
+  border-right: 1px solid #002629;
+  outline: none;
+}
+input[type=text]:focus {
+  background-color: rgb(157, 233, 201);
+}
+
+
 .text-white{
   color:#ffffff;
 }
@@ -1672,6 +1689,19 @@ pre {
   .form-control:disabled, .form-control[readonly] {
     background-color: #e9ecef;
     opacity: 1; }
+
+select.form-control{
+  border-left: 5px solid #00838f;
+  border-bottom: 3px solid #002629;
+  border-top: 1px solid  #002629;
+  border-right: 1px solid #002629;
+}
+select.form-control.maximum-search-length{
+  border-left: 5px solid #00838f;
+  border-bottom: 3px solid #002629;
+  border-top: 1px solid  #002629;
+  border-right: 1px solid #002629;
+}
 
 select.form-control:focus::-ms-value {
   color: #495057;
@@ -3576,6 +3606,8 @@ input[type="button"].btn-block {
   min-width: 0;
   word-wrap: break-word;
   background-color: #fff;
+  border-left: 7px solid #00838f;
+  
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem; }
@@ -3589,6 +3621,7 @@ input[type="button"].btn-block {
     border-bottom-right-radius: 0.25rem;
     border-bottom-left-radius: 0.25rem; }
     .cards {
+      border-left: 7px solid #00838f;
       position: relative;
       padding-left: 3rem;
       padding-right: 3rem;
@@ -3614,6 +3647,7 @@ input[type="button"].btn-block {
         border-bottom-left-radius: 0.25rem; }
 
 .card-body {
+  border-left: 7px solid #00838f;
   flex: 1 1 auto;
   padding: 1.25rem; }
 
@@ -3634,6 +3668,7 @@ input[type="button"].btn-block {
   margin-left: 1.25rem; }
 
 .card-header {
+  border-left: 7px solid #00838f;
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
   background-color: rgba(0, 0, 0, 0.03);
@@ -3644,6 +3679,7 @@ input[type="button"].btn-block {
     border-top: 0; }
 
 .card-footer {
+  border-left: 7px solid #00838f;
   padding: 0.75rem 1.25rem;
   background-color: rgba(0, 0, 0, 0.03);
   border-top: 1px solid rgba(0, 0, 0, 0.125); }
@@ -6042,6 +6078,10 @@ button.bg-dark:focus {
 .mt-4,
 .my-4 {
   margin-top: 1.5rem !important; }
+
+.mtm-4,
+.my-4 {
+  margin-top: 2.25rem !important; }
 
 .mr-4,
 .mx-4 {
