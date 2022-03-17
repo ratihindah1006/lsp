@@ -37,7 +37,7 @@ class Apl01Controller extends Controller
 
         $validateData = $request->validate([
             'nik' => 'required|min:16|numeric',
-            'name' => 'required|alpha',
+            'name' => 'required',
             'domicile' => 'required',
             'place_of_birth' => 'required',
             'date_of_birth' => 'required',
