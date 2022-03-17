@@ -47,9 +47,9 @@
                                                     <td>{{ $value->name }}</td>
                                                     <td>{{ $value->email }}</td>                                                 
                                                     <td align="center">
-                                                        {{-- <a href="/dataAssessor/{{ $value->id }}/edit"
+                                                        <a href="/dataAssessor/{{ $value->id }}/edit"
                                                             class="btn btn-warning btn-sm"><span
-                                                                class="ti-pencil"></span></a> --}}
+                                                                class="ti-pencil"></span></a>
                                                         <form action="/dataAssessor/{{ $value->id }}" method="POST"
                                                             class="d-inline">
                                                             @csrf

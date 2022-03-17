@@ -18,7 +18,7 @@ class CriteriaController extends Controller
             'category' => $category->id,
             'schema' => $schema->id,
             'unit' => $unit->id,
-            'element' => $element->id,
+            'element' => $element,
             'criteria' => $element->criterias,
             'title' => 'Kriteria'
         ]);

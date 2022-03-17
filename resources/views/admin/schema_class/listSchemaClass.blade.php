@@ -10,7 +10,7 @@
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/category">Event</a></li>
+                    <li class="breadcrumb-item"><a href="/KelasSkema">Kelas Skema</a></li>
                 </ol>
             </div>
         </div>
@@ -38,7 +38,6 @@
                                                     <th>Judul Skema</th>
                                                     <th>Tanggal</th>
                                                     <th>TUK</th>
-                                                    <th>Deskripsi</th>
                                                     <th width="200px">Action</th>
                                                 </tr>
                                             </thead>
@@ -51,7 +50,6 @@
                                                         <td>{{ $value->schema->schema_title }}</td>
                                                         <td>{{ $value->date}}</td>
                                                         <td>{{ $value->tuk }}</td>
-                                                        <td>{{ $value->description }}</td>
                                                         <td align="center">
                                                             <a href="/KelasSkema/{{ $value->id}}/dataAsesor" class="btn btn-primary btn-sm">Asesor<span
                                                                     ></span></a>

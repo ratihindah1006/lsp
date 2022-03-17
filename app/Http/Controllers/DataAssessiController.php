@@ -22,6 +22,7 @@ class DataAssessiController extends Controller
      */
     public function index(AdminModel $admin, SchemaClassModel $class)
     {
+        
         $data = $admin->where('id', Auth::user()->id)->get();
         return view('admin.assessi.listAssessi', [
             'class' => $class->id,
@@ -43,7 +44,7 @@ class DataAssessiController extends Controller
             return $query->whereIn('class_id', $classId);
         })->get();
         return view('admin.assessi.CreateAssessi',[
-            'class' => $class,
+            'class' => $class->id,
             'title'=>'Data Assessi',
             'assessor'=>  $class->assessors,
             'assessi'=>$assessis,
@@ -148,8 +149,8 @@ class DataAssessiController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
+            'email' => 'required|unique:data_assessi',
+            'password' => 'required|min:8',
         ]);
         $data_assessi = new DataAssessiModel([
             'name' => $request->name,

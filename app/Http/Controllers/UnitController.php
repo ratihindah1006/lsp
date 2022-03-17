@@ -21,7 +21,7 @@ class UnitController extends Controller
         $data=$admin->where('id', Auth::user()->id)->get();
         return view('admin.unit.ListUnit', [
             'category'=>$category->id,
-            'schema' => $schema->id,
+            'schema' => $schema,
             'unit' => $schema->units,
             'title' => 'Unit',
             'admin'=>$data

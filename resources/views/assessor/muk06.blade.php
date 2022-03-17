@@ -82,12 +82,20 @@
                   <td class="p-2" bgcolor="lightgray" style="vertical-align:top;">
                     <b><u>Pertanyaan: </u></b> <br>
                     @foreach ($unit->elements as $e)
-                      {{ $loop->iteration }}.{!! $e->question->question !!}<br>
+                      @if (isset($e->question->question))
+                        {{ $loop->iteration }}.{!! $e->question->question !!}<br>
+                      @else
+                        {{ $loop->iteration }}
+                      @endif
                     @endforeach 
                     <hr>
                     <b><u>Kunci Jawaban: </u></b><br>
                     @foreach ($unit->elements as $e)
+                    @if (isset($e->question->key_answer))
                       {!! $loop->iteration.'. '.$e->question->key_answer !!}
+                    @else
+                    {{ $loop->iteration }}
+                    @endif
                     @endforeach 
                   </td>
                   <input type="hidden" id="unitId" name="unitId[]" value="{{ $unit->id }}">

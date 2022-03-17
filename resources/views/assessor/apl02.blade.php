@@ -33,7 +33,11 @@
                     <form method="post" action="/list/02/{{ $assessi->id }}">
                         @method('put')
                         @csrf
+
                         @foreach ($units as $unit)
+                        @php
+                        $r = 1;
+                        @endphp
                         <br>
                         <table style="min-width: 100%" border="3" class="my-text">
 
@@ -51,7 +55,7 @@
                             <tr>
                                 <th rowspan="2">&ensp;Dapatkah Saya...?&ensp;</th>
                                 <th colspan="2" width="350px" style="text-align:center">&ensp;Penilaian&ensp;</th>
-                                <th rowspan="2" width="350px" >&ensp;Bukti-bukti Kompetensi&ensp;</th>
+                                <th rowspan="2" width="350px" style="text-align:center">&ensp;Bukti-bukti Kompetensi&ensp;</th>
                             </tr>
 
                             <tr align="center">
@@ -62,28 +66,33 @@
 
                             @foreach ($unit->elements as $element)
                             <tr>
-                                <th>Judul Element : {{ $element->element_title }}<br><br>
-                                    Kriteria Unjuk Kerja :
-                                    @foreach ($element->criterias as $criteria)
-                                    <br>
-                                    {{ $loop->iteration }}.&ensp;{{ $criteria->criteria_title }}
-                                    @endforeach
-                                </th>
+                                <td style="width: 50%">
+                                    <b>Element : {{ $element->element_title }}</b><br>
+                                    <b>Kriteria unjuk kerja: </b><br>
+                                    <ul>
+                                        @foreach ($element->criterias as $criteria)
+                                        <li>{{ $r.'.'.$loop->iteration.' '.$criteria->criteria_title }}</li>
+                                        @endforeach
+                                    </ul>
+                                    @php
+                                    $r++;
+                                    @endphp
+                                </td>
 
-                                <th>
+                                <th class="text-center">
                                     <br>
                                     <div class="form-check">
-                                        <input required class="form-check-input" type="radio" name="element_{{ $element->id }}" id="{{ $element->id }}" value="K" @if ($assessment && $assessment[$i]=='K' ) checked @endif disabled>
-                                        <label class="form-check-label" for="{{ $element->id }}">
+                                        <label class="radio-inline" for="{{ $element->id }}">
+                                            <input required class="form-check-input" type="radio" name="element_{{ $element->id }}" id="{{ $element->id }}" value="K" @if ($assessment && $assessment[$i]=='K' ) checked @endif disabled>
                                         </label>
                                     </div>
                                 </th>
 
-                                <th>
+                                <th class="text-center">
                                     <br>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="element_{{ $element->id }}" id="{{ $element->id }}" value="BK" @if ($assessment && $assessment[$i]=='BK' ) checked @endif disabled>
-                                        <label class="form-check-label" for="{{ $element->id }}">
+                                        <label class="radio-inline" for="{{ $element->id }}">
+                                            <input class="form-check-input" type="radio" name="element_{{ $element->id }}" id="{{ $element->id }}" value="BK" @if ($assessment && $assessment[$i]=='BK' ) checked @endif disabled>
                                         </label>
                                         <?php $i++; ?>
                                     </div>

@@ -48,7 +48,7 @@
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="navbar-nav header-left">
                             <li>
-                                <a href="/beranda" class="text-white " aria-expanded="false"><i
+                                <a href="/assessor" class="text-white " aria-expanded="false"><i
                                         class="icon icon-home text-white "></i>&nbsp; Beranda</a>&emsp;
                                 <a href="/list" class="text-white " aria-expanded="false"><i
                                         class=" ti-view-list-alt text-white "></i>&nbsp; Daftar Assessi</a>
@@ -66,6 +66,10 @@
                                             <i class="ti-power-off"></i>
                                             <span class="ml-2">Logout </span>
                                         </a>
+                                        <a href="{{ url('ubah_password') }}" class="dropdown-item">
+                                            <i class="ti-key"></i>
+                                            <span class="ml-2">Ubah Password </span>
+                                        </a>
                                     </div>
                             </li>
                         </ul>
@@ -82,7 +86,12 @@
             Content body start
         ***********************************-->
         <div class="content-body content-bodyy">
-
+            @if (session()->has('success'))
+                <div class="alert alert-info alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{ session('success') }}
+                  </div>
+            @endif
             @yield('container')
         </div>
     </div>

@@ -62,6 +62,10 @@
                                         <i class="ti-power-off"></i>
                                         <span class="ml-2">Logout </span>
                                     </a>
+                                    <a href="{{ url('edit_password') }}" class="dropdown-item">
+                                        <i class="ti-key"></i>
+                                        <span class="ml-2">Ubah Password </span>
+                                    </a>
                                 </div>
                             </li>
                         </ul>
@@ -79,9 +83,10 @@
         ***********************************-->
         <div class="content-body content-bodyy">
             @if (session()->has('success'))
-                <div class="alert alert-success" role="alert">
+                <div class="alert alert-info alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     {{ session('success') }}
-                </div>
+                  </div>
             @endif
             @yield('container')
             </div>

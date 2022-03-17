@@ -19,12 +19,12 @@ class DashboardController extends Controller
         $assessi = DB::table('data_assessi')->count();
         $assessor = DB::table('data_assessor')->count();
         $event = DB::table('event')->count();
-        $category = DB::table('category')->count();
+        $class = DB::table('schema_class')->count();
         return view('admin.dashboard.dashboard', [
             'assessor' => $assessor,
             'assessi'=> $assessi,
             'event'=>$event,
-            'category'=> $category,
+            'class'=> $class,
             'title'=> 'Dashboard',
          
         ]);

@@ -10,7 +10,7 @@
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/category">Event</a></li>
+                    <li class="breadcrumb-item"><a href="/event">Event</a></li>
                 </ol>
             </div>
         </div>
@@ -51,8 +51,6 @@
                                                         <td>{{ $value->type }}</td>
                                                         <td>{{ $value->status }}</td>
                                                         <td align="center">
-                                                            <a href="/event/{{ $value->event_code }}/KelasSkema" class="btn btn-primary btn-sm"><span
-                                                                    class="ti-info"></span></a>
                                                             <a href="/event/{{ $value->id }}/edit"
                                                                 class="btn btn-warning btn-sm"><span
                                                                     class="ti-pencil"></span></a>

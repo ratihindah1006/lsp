@@ -14,7 +14,6 @@
                 </ol>
             </div>
         </div>
-
         <div class="cards"><br><br>
                 <div class="col">
                     <p class="my-text">Nama &emsp; : &emsp; {{ $assessi->name }}</p><br>

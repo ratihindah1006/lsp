@@ -11,14 +11,14 @@
                         <div class="card-header">
                             <h2  class="font-weight-bold card-title">FR-APL-01 FORMULIR PERMOHONAN SERTIFIKASI KOMPETENSI</h2>
                         </div>
-                            <div class="card-header">
+                            {{-- <div class="card-header">
                                 <button type="submit" class="btn btn-whatsapp button-right">Simpan <span
                                         class="btn-icon-right"><i class="fa fa-check"></i></span>
                                 </button>&nbsp;
                                 <a href="/beranda" type="submit" class="btn btn-reddit ">Batal <span
                                         class="btn-icon-right"><i class="fa fa-close"></i></span>
                                 </a>
-                            </div>
+                            </div> --}}
                             <div class="card-body">
                                 <div class="form-validation">
                                     <div class="row">
@@ -340,7 +340,7 @@
                                                     for="comp_address">Alamat Kantor<span class="text-danger">*</span>
                                                 </label>
                                                 <div class="col-lg-6">
-                                                    <input
+                                                    <input type="text"
                                                         class="form-control @error('comp_address') is-invalid @enderror"
                                                         @if ($apl01 != null) {
                                             value= "{{ $apl01->comp_address }}"
@@ -510,8 +510,8 @@
                                 <div class="row">
                                     <div class="col-xl-6">
                                         <div class="form-group row">
-                                            <label class="col-lg-10 my-text " for="">Skema Sertifikasi
-                                                &emsp;&emsp;:&emsp;&emsp;
+                                            <label class="col-lg-10 my-text " for="">Judul
+                                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;:&emsp;&emsp;
                                                 {{ $assessis->schema_title }}
                                             </label>
                                         </div>
@@ -540,7 +540,7 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $value->unit_code }}</td>
                                                         <td>{{ $value->unit_title }}</td>
-                                                        <td></td>
+                                                        <td>{{$value->schema->competency_package}}</td>
                                                 @endforeach
                                             </tbody>
                                         </table>
@@ -696,11 +696,15 @@
                                                 <span class="text-danger txt">*</span>
                                                 <p>(*format jpg) </p>
                                             </label>
-
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary float-right mr-3">Save <span class="btn-icon-right"><i
+                                        class="fa fa-save"></i></span></button>
+                            <a href="/beranda" class="btn btn-outline-primary float-right mr-2">Cancel</a>
                         </div>
                     </div>
                 </div>

@@ -19,12 +19,12 @@ class UnitModel extends Model
 
     public function schema()
     {
-        return $this->belongTo(SchemaModel::class);
+        return $this->belongsTo(SchemaModel::class);
     }
 
     public function assessi()
     {
-        return $this->belongTo(AssessiModel::class);
+        return $this->belongsTo(AssessiModel::class);
     }
 
     public function elements()

@@ -5,7 +5,7 @@
     <div class="row page-titles mx-0">
         <div class="col-sm-6 p-md-0">
             <div class="welcome-text">
-                <h4>Daftar Elemen</h4>
+                <h4>Daftar Element</h4>
             </div>
         </div>
         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -14,9 +14,19 @@
                 <li class="breadcrumb-item"><a href="/category/{{ $category }}/schema">Skema</a></li>
                 <li class="breadcrumb-item"><a href="/category/{{ $category }}/schema/{{ $schema }}/unit">
                         Unit</a></li>
-                <li class="breadcrumb-item active"><a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit }}/element">
+                <li class="breadcrumb-item active"><a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit->id }}/element">
                         Elemen</a></li>
             </ol>
+        </div>
+    </div>
+
+    <div class="card text-white bg-dark">
+        <div class="col-sm-12 p-md-0">
+            <div class="card-header">
+                <div class="welcome-text">
+                    <p>Unit : {{ $unit->unit_title }}</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -32,7 +42,7 @@
                         @endif
 
 
-                        <form method="post" action="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit }}/element">
+                        <form method="post" action="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit->id }}/element">
                             @csrf
                             <div class="card">
                                 <div class="card-body">
@@ -89,9 +99,9 @@
                                                 <td>{{ $value->element_title }}</td>
                                                 <td>{{ $value->benchmark }}</td>
                                                 <td align="center">
-                                                    <a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit }}/element/{{ $value->id }}/criteria" class="btn btn-primary btn-sm"><span class="ti-info"></span></a>
-                                                    <a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit }}/element/{{ $value->id }}/edit" class="btn btn-warning btn-sm"><span class="ti-pencil"></span></a>
-                                                    <form action="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit }}/element/{{ $value->id }}" method="POST" class="d-inline">
+                                                    <a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit->id }}/element/{{ $value->id }}/criteria" class="btn btn-primary btn-sm"><span class="ti-info"></span></a>
+                                                    <a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit->id }}/element/{{ $value->id }}/edit" class="btn btn-warning btn-sm"><span class="ti-pencil"></span></a>
+                                                    <form action="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit->id }}/element/{{ $value->id }}" method="POST" class="d-inline">
                                                         @csrf
                                                         @method('delete')
                                                         <button class="btn btn-danger btn-sm border-0" onclick="return confirm('Yakin ingin menghapus data?')"><span class="ti-trash"></span>
