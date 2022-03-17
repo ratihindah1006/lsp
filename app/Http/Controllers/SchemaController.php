@@ -76,6 +76,7 @@ class SchemaController extends Controller
         return view('admin.schema.detailSchema', [
             'category'=>$category,
             'schema' => $schema,
+            'title' => 'File Skema',
             'unit' => $data,
             ]);
         

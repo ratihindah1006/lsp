@@ -63,7 +63,7 @@
                                                 <td>{{ $value->cost }}</td>
                                                 <td align="center">
                                                     <a href="/category/{{ $category->id }}/schema/{{ $value->id }}/unit" class="btn btn-primary btn-sm"><span class="ti-info"></span></a>
-                                                    <a href="/category/{{ $category->id }}/schema/{{ $value->id }}/show" class="btn btn-primary btn-sm"><span class="ti-info"></span></a>
+                                                    <a href="/category/{{ $category->id }}/schema/{{ $value->id }}/show" class="btn btn-success btn-sm"><span class="ti-file"></span></a>
                                                     <a href="/category/{{ $category->id }}/schema/{{ $value->id }}/edit" class="btn btn-warning btn-sm"><span class="ti-pencil"></span></a>
                                                     <form action="/category/{{ $category->id }}/schema/{{ $value->id }}" method="POST" class="d-inline">
                                                         @csrf
