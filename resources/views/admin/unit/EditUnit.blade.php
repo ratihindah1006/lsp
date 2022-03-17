@@ -16,9 +16,8 @@
                             <div class="card-content-center">
                                 <div class="card-body">
 
-                                    <div class="col-12">
                                         <div class="form-group">
-                                            <label for="unit_code" class="form-label">Unit Code</label>
+                                            <label for="unit_code" class="form-label">Kode Unit</label>
                                             <input name="unit_code" type="text"
                                                 class="form-control @error('unit_code') is-invalid @enderror" id="unit_code"
                                                 value="{{ old('unit_code', $unit->unit_code) }}">
@@ -29,7 +28,7 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="unit_title" class="form-label">Unit Title</label>
+                                            <label for="unit_title" class="form-label">Judul Unit</label>
                                             <input type="text"
                                                 class="form-control @error('unit_title') is-invalid @enderror"
                                                 id="unit_title" name="unit_title"
@@ -41,7 +40,7 @@
                                             @enderror
                                         </div>
                                         <div class="col">
-                                            <center><button type="submit" class="btn btn-success mt-4"
+                                            <center><button type="submit" class="btn btn-warning mt-4"
                                                     style="width: 170px">Submit</button></center>
                                         </div>
                                     </div>

@@ -1,25 +1,40 @@
-<table border="1">
+@extends('layout.main')
+
+@section('container')
+<div class="card-body">
     @foreach ($unit as $u)
-    <tr>
-        <td width="1500px">Kode Unit : {{ $u->unit_code }}</td>
-    </tr>
+    @php
+    $r = 1;
+    @endphp
+    <br>
+    <table style="min-width: 100%" border="3" class="my-text">
 
-    <tr>
-        <td>Judul Unit : {{ $u->unit_title }}</td>
-    </tr>
+        <tr>
+            <th width="1500px">Kode Unit : {{ $u->unit_code }}</th>
+        </tr>
 
-    <tr>
-        @foreach ($u->elements as $e)
-        <td>Elemen : {{ $e->element_title }}<br>
-            Kriteria Unjuk Kerja : <br>
-            @foreach ($e->criterias as $c)
-            <br>{{ $c->criteria_title }}
-            @endforeach
-        </td>
+        <tr>
+            <th>Judul Unit : {{ $u->unit_title }}</th>
+        </tr>
 
-    </tr>
+        <tr>
+            @foreach ($u->elements as $element)
+            <td>
+                <b>Element : {{ $element->element_title }}</b><br>
+                <b>Kriteria unjuk kerja: </b><br>
+                <ul>
+                    @foreach ($element->criterias as $criteria)
+                    <li>{{ $r.'.'.$loop->iteration.' '.$criteria->criteria_title }}</li>
+                    @endforeach
+                </ul>
+                @php
+                $r++;
+                @endphp
+            </td>
+
+        </tr>
+        @endforeach
+    </table>
     @endforeach
-
-
-    @endforeach
-</table>
+</div>
+@endsection

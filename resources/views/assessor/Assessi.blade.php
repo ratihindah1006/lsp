@@ -5,12 +5,13 @@
     <div class="row page-titles mx-0">
         <div class="col-sm-6 p-md-0">
             <div class="welcome-text">
-                <h4 class="text-info">Beranda</h4>
+                <h4 class="text-info">Daftar Assessi</h4>
             </div>
         </div>
         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/assessor">Beranda</a></li>
+                <li class="breadcrumb-item"><a href="">Daftar Assessi</a></li>
             </ol>
         </div>
     </div>
@@ -32,24 +33,16 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Event</th>
-                                                <th>Skema</th>
-                                                <th>Kelas Skema</th>
-                                                <th>Aksi</th>
+                                                <th>Nama</th>
+                                                <th>Email</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($assessor->assessors as $v)
+                                            @foreach ($assessor->assessis as $value)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $v->schema_class->event->event_name}}</td>
-                                                <td>{{ $v->schema_class->schema->schema_title }}</td>
-                                                <td>{{$v->schema_class->name}}</td>
-                                                <td>
-                                                    <a href="/assessi/{{ $v->id }}" class="btn btn-primary btn-sm mb-2">
-                                                        <span>Assessi</span></a>
-                                                </td>
-                                                
+                                                <td>{{ $value->data_assessi->name}}</td>
+                                                <td>{{ $value->data_assessi->email }}</td>
                                             </tr>
                                             @endforeach
                                         </tbody>

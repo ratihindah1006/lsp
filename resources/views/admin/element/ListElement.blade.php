@@ -15,7 +15,7 @@
                 <li class="breadcrumb-item"><a href="/category/{{ $category }}/schema/{{ $schema }}/unit">
                         Unit</a></li>
                 <li class="breadcrumb-item active"><a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit->id }}/element">
-                        Elemen</a></li>
+                        Element</a></li>
             </ol>
         </div>
     </div>
