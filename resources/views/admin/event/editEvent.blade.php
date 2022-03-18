@@ -22,11 +22,8 @@
                 <div class="row mt-1">
                     <div class="col-md-14">
                         <div class="card">
-                            <div class="card-header" style="width: 50rem; ">
-                                <h2 class="card-title">Edit Event</h2>
-                            </div>
                             <div class="card-content-center">
-                                <div class="card-body">
+                                <div class="card-body" style="width: 50rem;">
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label for="event_code" class="form-label">Kode Event</label>
@@ -86,9 +83,12 @@
                                                 </div>
                                             @enderror
                                         </div>
-                                        </div><br><br>
-
-                                        <center><button type="submit" class="btn btn-primary">Submit</button></center>
+                                        </div>
+                                        <div class="card-footer mb-3">
+                                            <button type="submit" class="btn btn-primary float-right mr-3">Simpan <span
+                                                    class="btn-icon-right"><i class="fa fa-save"></i></span></button>
+                                            <a href="/event" class="btn btn-outline-primary float-right mr-2">Batal</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

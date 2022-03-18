@@ -8,19 +8,15 @@
                 <div class="col-lg-1"></div>
                 <div class="col-lg-12">
                     <div class="card text-dark">
-                        <div class="card-header">
+                        <div class="card-footer">
                             <h2 class="font-weight-bold card-title">FR-APL-01 FORMULIR PERMOHONAN SERTIFIKASI KOMPETENSI</h2>
                             <button type="submit" class="btn btn-whatsapp float-right mr-3">Cetak<span
-                                class="btn-icon-right"><i class="ti ti-printer"></i></span></button>
+                                    class="btn-icon-right"><i class="ti ti-printer"></i></span></button>
+                            <button type="submit" class="btn btn-primary float-right mr-1">Simpan <span
+                                    class="btn-icon-right"><i class="fa fa-save"></i></span></button>
+                            <a href="/beranda" class="btn btn-danger float-right mr-1">Batal <span class="btn-icon-right"><i
+                                        class="fa fa-close"></i></span></a>
                         </div>
-                        {{-- <div class="card-header">
-                                <button type="submit" class="btn btn-whatsapp button-right">Simpan <span
-                                        class="btn-icon-right"><i class="fa fa-check"></i></span>
-                                </button>&nbsp;
-                                <a href="/beranda" type="submit" class="btn btn-reddit ">Batal <span
-                                        class="btn-icon-right"><i class="fa fa-close"></i></span>
-                                </a>
-                            </div> --}}
                         <div class="card-body">
                             <div class="form-validation">
                                 <div class="row">
@@ -49,8 +45,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold  "
-                                                for="nik">NIK
+                                            <label class="col-lg-4 col-form-label font-weight-bold  " for="nik">NIK
                                                 <span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
@@ -69,8 +64,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold  "
-                                                for="gender">Jenis Kelamin
+                                            <label class="col-lg-4 col-form-label font-weight-bold  " for="gender">Jenis
+                                                Kelamin
                                                 <span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
@@ -132,8 +127,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold  "
-                                                for="domicile">Kota Domisili
+                                            <label class="col-lg-4 col-form-label font-weight-bold  " for="domicile">Kota
+                                                Domisili
                                                 <span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
@@ -153,8 +148,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold  "
-                                                for="address">Alamat
+                                            <label class="col-lg-4 col-form-label font-weight-bold  " for="address">Alamat
                                                 <span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
@@ -174,8 +168,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold  "
-                                                for="no_hp">Nomor Ponsel
+                                            <label class="col-lg-4 col-form-label font-weight-bold  " for="no_hp">Nomor
+                                                Ponsel
                                                 <span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
@@ -194,8 +188,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold  "
-                                                for="email">Email
+                                            <label class="col-lg-4 col-form-label font-weight-bold  " for="email">Email
                                                 <span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
@@ -271,8 +264,8 @@
                                     <div class="col-xl-6">
                                         <h4 class="font-weight-bold">Data Pekerjaan</h4><br>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold  "
-                                                for="comp_name">Nama Perusahaan
+                                            <label class="col-lg-4 col-form-label font-weight-bold  " for="comp_name">Nama
+                                                Perusahaan
                                                 <span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
@@ -397,8 +390,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold  "
-                                                for="comp_fax">Fax Kantor
+                                            <label class="col-lg-4 col-form-label font-weight-bold  " for="comp_fax">Fax
+                                                Kantor
                                                 <span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
@@ -517,7 +510,7 @@
                                     <div class="col-xl-6">
                                         <div class="form-group row">
                                             <label class="col-lg-10  my-text " for="">Nomor
-                                                Skema&emsp;&emsp;:&emsp;&emsp;
+                                                Skema&emsp;&emsp;&emsp;&emsp;:&emsp;&emsp;
                                                 {{ $assessis->no_skkni }}
                                             </label>
                                         </div>
@@ -656,58 +649,74 @@
                                                 Diterima / Ditolak
                                             </p>
                                         </div>
-                                    </div>
-                                    <div class="col-xl-6">
                                         <div class="form-group row">
-                                            <label class="my-text">Catatan&emsp;:</label>
-                                            <textarea class="form-control @error('note') is-invalid @enderror" value="{{ old('note') }}" id="note" name="note"
-                                                rows="5" placeholder="catatan" disabled></textarea>
-                                            @error('note')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xl-6">
-                                        <div class="form-group row">
-                                            <div class="input-group mb-3">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <div class="form-group row">
-                                            <div class="input-group mb-3">
-                                                <input type="file"
-                                                    class="form-control @error('assessi_signature') is-invalid @enderror"
-                                                    value="{{ old('assessi_signature') }}" id="assessi_signature"
-                                                    name="assessi_signature">
-                                                @error('assessi_signature')
+                                            <label class=" font-weight-bold text-success" for="status">Status
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <select class="form-control @error('status') is-invalid @enderror"
+                                                    id="status" name="status" disabled>
+                                                    <option value=>- - Pilih - -</option>
+                                                    <option value='0' {{ $apl01->status == '0' ? 'selected' : '' }}>
+                                                        Ditolak</option>
+                                                    <option value='1' {{ $apl01->status == '1' ? 'selected' : '' }}>
+                                                        Diterima</option>
+                                                </select>
+                                                @error('status')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
                                                     </div>
                                                 @enderror
                                             </div>
-                                            <label class="my-text txt ">TTD Assssi
-                                                <span class="text-danger txt">*</span>
-                                                <p>(*format jpg) </p>
-                                            </label>
+                                        </div>
+                                    </div>
+                                            <div class="col-xl-6">
+                                                <div class="form-group row">
+                                                    <label class="my-text">Catatan&emsp;:</label>
+                                                    <input class="form-control @error('note') is-invalid @enderror"
+                                                        value="{{ old('note', $apl01->note) }}" id="note" name="note"
+                                                        rows="5" placeholder="catatan" disabled>
+                                                    @error('note')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="form-group row">
+                                                    <div class="input-group mb-3">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <div class="form-group row">
+                                                    <div class="input-group mb-3">
+                                                        <input type="file"
+                                                            class="form-control @error('assessi_signature') is-invalid @enderror"
+                                                            value="{{ old('assessi_signature') }}" id="assessi_signature"
+                                                            name="assessi_signature">
+                                                        @error('assessi_signature')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
+                                                    </div>
+                                                    <label class="my-text txt ">TTD Assssi
+                                                        <span class="text-danger txt">*</span>
+                                                        <p>(*format jpg) </p>
+                                                    </label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary float-right mr-3">Save <span
-                                    class="btn-icon-right"><i class="fa fa-save"></i></span></button>
-                            <a href="/beranda" class="btn btn-outline-primary float-right mr-2">Cancel</a>
-                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        </div>
     </form>
 @endsection

@@ -49,9 +49,9 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary float-right mr-3">Save <span class="btn-icon-right"><i
+                            <button type="submit" class="btn btn-primary float-right mr-3">Simpan <span class="btn-icon-right"><i
                                         class="fa fa-save"></i></span></button>
-                            <a href="/beranda" class="btn btn-outline-primary float-right mr-2">Cancel</a>
+                            <a href="/beranda" class="btn btn-outline-primary float-right mr-2">Batal</a>
                         </div>
                     </div>
                 </div>

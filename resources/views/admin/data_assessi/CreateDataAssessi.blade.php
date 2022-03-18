@@ -1,29 +1,29 @@
  @extends('layout.main')
 
- @section('container')
-     <div class="container-fluid">
-         <div class="row page-titles mx-0">
-             <div class="col-sm-6 p-md-0">
-                 <div class="welcome-text">
-                     <h4>Tambah Data Asesi</h4>
-                 </div>
-             </div>
-             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
-                 <ol class="breadcrumb">
-                     <li class="breadcrumb-item"><a href="/dataAssessi">Asesi</a></li>
-                     <li class="breadcrumb-item"><a href="">Tambah Asesit</a></li>
-                 </ol>
-             </div>
-         </div>
-         <div class="col-lg-8">
-             <form method="post" action="/dataAssessi">
+@section('container')
+    <div class="container-fluid">
+        <div class="row page-titles mx-0">
+        <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4>Tambah Data Asesi</h4>
+                </div>
+            </div>
+            <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/dataAssessi">Asesi</a></li>
+                    <li class="breadcrumb-item"><a href="">Tambah Asesi</a></li>
+                </ol>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <form method="post" action="/dataAssessi">
                  @csrf
                  <div class="card-center-assessi">
                      <div class="row mt-1">
                          <div class="col-md-14">
                              <div class="card">
                                  <div class="card-content-center">
-                                     <div class="card-body"  style="width: 50rem; ">
+                                     <div class="card-body" style="width: 50rem; ">
                                          <div class="col-12">
                                              <div class="form-group">
                                                  <label for="name" class="form-label">Nama</label>
@@ -63,10 +63,10 @@
                                                  @enderror
                                              </div>
                                          </div>
-
-                                         <div class="col">
-                                             <center><button type="submit" class="btn btn-success mt-4"
-                                                     style="width: 170px">Submit</button></center>
+                                         <div class="card-footer mb-3">
+                                             <button type="submit" class="btn btn-primary float-right mr-3">Simpan <span
+                                                     class="btn-icon-right"><i class="fa fa-save"></i></span></button>
+                                             <a href="/dataAssessi" class="btn btn-outline-primary float-right mr-2">Batal</a>
                                          </div>
                                      </div>
                                  </div>
