@@ -138,7 +138,7 @@ class DataAssessorController extends Controller
   
         $request->validate([
             'name' => 'required',
-            'email' => 'required|unique:data_assessor ',
+            'email' => 'required|unique:data_assessor',
             'password' => 'required|min:8',
           
         ]);

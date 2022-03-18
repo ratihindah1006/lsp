@@ -110,22 +110,22 @@
                     <!-- <li><a href="index.html"><i class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
                     </li> -->
                     
-                    <li><a href="/dashboard" aria-expanded="false"><i class="icon icon-home"></i><span
+                    <li class="{{ request()->is('dashboard/*') ? "mm-active" : "" }}"><a href="/dashboard" aria-expanded="false"><i class="icon icon-home"></i><span
                         class="nav-text">Dashboard</span></a></li>
-                    <li><a href="/event" aria-expanded="false"><i class="icon icon-time"></i><span
+                    <li class="{{ request()->is('event/*') ? "mm-active" : "" }}"><a href="/event" aria-expanded="false"><i class="icon icon-time"></i><span
                         class="nav-text">Event</span></a></li>
                     <li class="nav-label">Data Pengguna</li>
-                    <li><a href="/dataAssessi" aria-expanded="false"><i class="icon icon-single-04"></i><span
+                    <li class="{{ request()->is('dataAssessi/*') ? "mm-active" : "" }}"><a href="/dataAssessi" aria-expanded="false"><i class="icon icon-single-04"></i><span
                         class="nav-text">Asesi</span></a></li>
-                    <li><a href="/dataAssessor" aria-expanded="false"><i class="icon icon-single-04"></i><span
+                    <li class="{{ request()->is('dataAssessor/*') ? "mm-active" : "" }}"><a href="/dataAssessor" aria-expanded="false"><i class="icon icon-single-04"></i><span
                         class="nav-text">Asesor</span></a></li>
                     <li class="nav-label">Data Skema</li>
-                    <li><a href="/category" aria-expanded="false"><i class="icon icon-single-copy-06"></i><span
+                    <li class="{{ request()->is('category/*') ? "mm-active" : "" }}"><a href="/category" aria-expanded="false"><i class="icon icon-single-copy-06"></i><span
                                 class="nav-text">Kategori</span></a></li>
-                    <li><a href="/KelasSkema" aria-expanded="false"><i class="ti ti-layout-grid2"></i><span
+                    <li class="{{ request()->is('KelasSkema/*') ? "mm-active" : "" }}"><a href="/KelasSkema" aria-expanded="false"><i class="ti ti-layout-grid2"></i><span
                                 class="nav-text">Kelas Skema</span></a></li>
                     <li class="nav-label">Soal</li>
-                    <li><a href="/soal" aria-expanded="false"><i class="icon icon-edit-72"></i><span
+                    <li class="{{ request()->is('soal/*') ? "mm-active" : "" }}"><a href="/soal" aria-expanded="false"><i class="icon icon-edit-72"></i><span
                         class="nav-text">Soal Esai</span></a></li>    
                         </ul>
                     </li>
