@@ -45,9 +45,9 @@
                                     </div>
                                     @enderror
                                 </div>
-
-                                <div class="col">
-                                    <center><button type="submit" class="btn btn-warning mt-4" style="width: 170px">Submit</button></center>
+                                <div class="card-footer mb-3">
+                                    <button type="submit" class="btn btn-warning float-right mr-3">Simpan <span class="btn-icon-right"><i class="fa fa-save"></i></span></button>
+                                    <a href="/category/{{ $category->id }}/schema/{{ $schema->id }}/unit/{{ $unit->id }}/element/{{ $element->id }}/criteria" class="btn btn-outline-primary float-right mr-2">Batal</a>
                                 </div>
                             </div>
                         </div>
