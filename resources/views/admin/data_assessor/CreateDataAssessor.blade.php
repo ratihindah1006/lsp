@@ -62,10 +62,10 @@
                                                 @enderror
                                             </div>
                                         </div>
-
-                                        <div class="col">
-                                            <center><button type="submit" class="btn btn-success mt-4"
-                                                    style="width: 100px">Submit</button></center>
+                                        <div class="card-footer mb-3">
+                                            <button type="submit" class="btn btn-primary float-right mr-3">Simpan <span
+                                                    class="btn-icon-right"><i class="fa fa-save"></i></span></button>
+                                            <a href="/dataAssessor" class="btn btn-outline-primary float-right mr-2">Batal</a>
                                         </div>
                                     </div>
                                 </div>

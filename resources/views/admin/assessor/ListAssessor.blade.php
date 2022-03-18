@@ -54,10 +54,10 @@
                                             <div class="col ml-5">
                                                 <div class="form-group row">
                                                     @if ($count < 2)
-                                                        <button type="submit" class="btn btn-success mt-4"
+                                                        <button type="submit" class="btn btn-primary mt-4"
                                                             style="width: 100px">Tambah</button>
                                                     @else
-                                                        <a class="btn btn-success mt-4 disabled"
+                                                        <a class="btn btn-primary mt-4 disabled"
                                                             style="width: 100px">Tambah</a>
                                                     @endif
                                                 </div>

@@ -1,6 +1,22 @@
 @extends('layout.main')
 
 @section('container')
+<div class="container-fluid">
+    <div class="row page-titles mx-0">
+        <div class="col-sm-6 p-md-0">
+            <div class="welcome-text">
+                <h4>Ubah Password</h4>
+            </div>
+        </div>
+        <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+                <li class="breadcrumb-item active"><a href="">Ubah Password</a>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class=
     <form action="/edit_password_admin" method="post" enctype="multipart/form-data">
         @method('put')
         @csrf
@@ -49,13 +65,16 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary float-right mr-3">Save <span class="btn-icon-right"><i
+                            <button type="submit" class="btn btn-primary float-right mr-3">Simpan <span class="btn-icon-right"><i
                                         class="fa fa-save"></i></span></button>
-                            <a href="/beranda" class="btn btn-outline-primary float-right mr-2">Cancel</a>
+                            <a href="/dashboard" class="btn btn-outline-primary float-right mr-2">Batal</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </form>
+    </div>
+</div>
+
 @endsection

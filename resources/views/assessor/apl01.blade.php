@@ -8,15 +8,16 @@
             <div class="row">
                 <div class="col-lg-1"></div>
                 <div class="col-lg-12">
-                    <div class="card text-dark">
-                        <div class="card-header">
+                    < <div class="card text-dark">
+                        <div class="card-footer">
                             <h2 class="font-weight-bold card-title">FR-APL-01 FORMULIR PERMOHONAN SERTIFIKASI KOMPETENSI</h2>
+                            <button type="submit" class="btn btn-whatsapp float-right mr-3">Cetak<span
+                                    class="btn-icon-right"><i class="ti ti-printer"></i></span></button>
+                            <button type="submit" class="btn btn-primary float-right mr-1">Simpan <span
+                                    class="btn-icon-right"><i class="fa fa-save"></i></span></button>
+                            <a href="/assessor" class="btn btn-danger float-right mr-1">Batal <span
+                                    class="btn-icon-right"><i class="fa fa-close"></i></span></a>
                         </div>
-                        {{-- <button type="submit" class="btn btn-whatsapp button-right">Simpan <span class="btn-icon-right"><i class="fa fa-check"></i></span>
-                    </button>&nbsp;
-                    <a href="/list" type="submit" class="btn btn-reddit ">Batal <span class="btn-icon-right"><i class="fa fa-close"></i></span>
-                    </a> --}}
-                        {{-- </div> --}}
                         <div class="card-body">
                             <div class="form-validation">
                                 <div class="row">
@@ -260,7 +261,7 @@
                                 <div class="row">
                                     <div class="col-xl-6">
                                         <div class="form-group row">
-                                            <label class="col-lg-10 my-text " for="">Juduls
+                                            <label class="col-lg-10 my-text " for="">Judul
                                                 &emsp;&emsp;:&emsp;&emsp;
                                                 {{ $assessis->schema_title }}
                                             </label>
@@ -270,7 +271,7 @@
                                         <div class="form-group row">
                                             <label class="col-lg-10  my-text " for="">Nomor
                                                 Skema&emsp;&emsp;:&emsp;&emsp;
-                                                {{ $assessis->reference_number }}
+                                                {{ $assessis->no_skkni }}
                                             </label>
                                         </div>
                                     </div>
@@ -401,13 +402,13 @@
                                     <div class="col-xl-6">
                                         <div class="form-group row">
                                             <label class="my-text">Catatan&emsp;:</label>
-                                            <input class="form-control @error('note') is-invalid @enderror" id="note"
+                                            <textarea class="form-control @error('note') is-invalid @enderror" id="note"
                                                 name="note" rows="5"
                                                 @if ($apl01 != null) {
                                             value= "{{ $apl01->note }}"
                                             }@else{
                                             value="{{ old('note') }}"
-                                            } @endif>
+                                            } @endif></textarea>
                                             @error('note')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -446,11 +447,6 @@
                                             </label>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary float-right mr-3">Save <span class="btn-icon-right"><i
-                                                class="fa fa-save"></i></span></button>
-                                    <a href="/list" class="btn btn-outline-primary float-right mr-2">Cancel</a>
                                 </div>
                             </div>
                         </div>
