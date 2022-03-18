@@ -85,6 +85,7 @@
   margin : auto;
 }
 
+
 input[type=text], input[type=date],input[type=email],input[type=password]{
   width: 100%;
   padding: 12px 20px;
@@ -8209,6 +8210,8 @@ a {
         justify-content: center; } }
   .nav-header .brand-title {
     margin-left: 15px;
+    font-size: medium;
+    white-space: nowrap;
     max-width: 75px; }
     [data-theme-version="dark"] .nav-header .brand-title {
       background-position: 0 120%; }

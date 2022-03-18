@@ -34,8 +34,6 @@
                                                 <tr>
                                                     <th>No</th>
                                                     <th>Nama Kelas</th>
-                                                    <th>Nama Event</th>
-                                                    <th>Judul Skema</th>
                                                     <th>Tanggal</th>
                                                     <th>TUK</th>
                                                     <th width="200px">Action</th>
@@ -46,15 +44,16 @@
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $value->name }}</td>
-                                                        <td>{{ $value->event->event_name }}</td>
-                                                        <td>{{ $value->schema->schema_title }}</td>
                                                         <td>{{ $value->date}}</td>
                                                         <td>{{ $value->tuk }}</td>
-                                                        <td align="center">
-                                                            <a href="/KelasSkema/{{ $value->id}}/dataAsesor" class="btn btn-primary btn-sm">Asesor<span
+                                                        <td align="center" style="width: 18rem">
+                                                            <a href="/KelasSkema/{{ $value->id}}/dataAsesor" class="btn btn-whatsapp btn-sm">Asesor<span
                                                                     ></span></a>
-                                                            <a href="/KelasSkema/{{ $value->id}}/dataAsesi" class="btn btn-primary btn-sm">Asesi<span
+                                                            <a href="/KelasSkema/{{ $value->id}}/dataAsesi" class="btn btn-whatsapp btn-sm">Asesi<span
                                                                     ></span></a>
+                                                                    <a href="/KelasSkema/{{ $value->id }}"
+                                                                        class="btn btn-primary btn-sm"><span
+                                                                            class="ti-info"></span></a>
                                                             <a href="/KelasSkema/{{ $value->id }}/edit"
                                                                 class="btn btn-warning btn-sm"><span
                                                                     class="ti-pencil"></span></a>

@@ -96,6 +96,15 @@ class SchemaClassController extends Controller
         
     }
 
+    public function detail(SchemaClassModel $class){
+        return view('admin.schema_class.detailSchemaClass',[
+            'event' => EventModel::all(),
+            'schema' => SchemaModel::all(),
+            'title'=> 'Data Kelas Skema',
+            'class'=> $class,
+        ]);
+    }
+
     public function destroy(SchemaClassModel $class)
     {
         SchemaClassModel::destroy($class->id);

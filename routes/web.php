@@ -64,6 +64,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::post('/KelasSkema', [SchemaClassController::class, 'store']);
     Route::get('/KelasSkema/{class:id}/edit', [SchemaClassController::class, 'edit']);
     Route::put('/KelasSkema/{class:id}', [SchemaClassController::class, 'update']);
+    Route::get('/KelasSkema/{class:id}', [SchemaClassController::class, 'detail']);
     Route::delete('/KelasSkema/{class:id}', [SchemaClassController::class, 'destroy']);
     Route::put('schema/{id}', [SchemaClassController::class, 'schema']);
     Route::delete('event/{id}', [SchemaClassController::class, 'event']);

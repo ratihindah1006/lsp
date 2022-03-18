@@ -48,8 +48,8 @@
         ***********************************-->
         <div class="nav-header">
             <a href=# class="brand-logo">
-                <img class="logo-abbr" src="assets/images/unila.png" alt="">
-                <span>LSP Universitas lampung</span>
+                <img class="logo-abbr" src="/assets/images/unila.png" alt="">
+                <div class="brand-title">LSP Universitas Lampung</div>
             </a>
 
             <div class="nav-control">
