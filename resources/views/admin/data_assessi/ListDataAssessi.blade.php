@@ -52,8 +52,8 @@
                                                             class="d-inline">
                                                             @csrf
                                                             @method('delete')
-                                                            <button class="btn btn-danger btn-sm border-0"
-                                                                onclick="return confirm('Yakin ingin menghapus data?')"><span
+                                                            <button class="btn btn-danger btn-sm border-0 delete-confirm" data-name="{{$value->name}}" 
+                                                                ><span
                                                                     class="ti-trash"></span>
                                                             </button>
                                                         </form>

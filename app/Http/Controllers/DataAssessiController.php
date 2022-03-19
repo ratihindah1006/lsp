@@ -190,5 +190,6 @@ class DataAssessiController extends Controller
     {
         DataAssessiModel::destroy($data_assessi->id);
         return redirect('/dataAssessi')->with('success', 'Data Assessi berhasil di hapus!');
+       
     }
 }
