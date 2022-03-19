@@ -16,7 +16,7 @@ class DataAssessorModel extends Authenticatable
     protected $table = "data_assessor";
     protected $primaryKey = "id";
     protected $fillable = [
-        'name', 'email', 'password', 
+        'name', 'email', 'password', 'no_met'
     ];
     public $timestamps = false;
 

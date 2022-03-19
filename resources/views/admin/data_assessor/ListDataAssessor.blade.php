@@ -36,6 +36,7 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>Nama</th>
+                                                <th>No.MET</th>
                                                 <th>Email</th>
                                                 <th>Aksi</th>
                                             </tr>
@@ -45,6 +46,7 @@
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $value->name }}</td>
+                                                    <td>{{$value->no_met}}</td>
                                                     <td>{{ $value->email }}</td>                                                 
                                                     <td align="center">
                                                         <a href="/dataAssessor/{{ $value->id }}/edit"

@@ -46,7 +46,6 @@ class EventController extends Controller
     {
         
         $validateData = $request->validate([
-            'event_code' => 'required|unique:event',
             'event_name' => 'required',
             'event_time' => 'required',
             'type' => 'required',
@@ -99,9 +98,6 @@ class EventController extends Controller
             'type' => 'required',
             'status' => 'required',
         ];
-        if($request->event_code != $event->event_code){
-            $rules['event_code'] = 'required|unique:event';
-        }
         $validateData= $request->validate($rules);
         $event->update($validateData);
 

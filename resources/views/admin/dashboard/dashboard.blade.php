@@ -11,7 +11,7 @@
     @endif
         <div class="row">
             <div class="col-lg-3 col-sm-6">
-                <div class="card">
+                <div class="card" >
                     <div class="stat-widget-one card-body">
                         <div class="stat-icon d-inline-block">
                             <i class="ti-user text-success border-success"></i>

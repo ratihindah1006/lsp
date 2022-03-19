@@ -16,6 +16,7 @@ class CreateDataAssessorsTable extends Migration
         Schema::create('data_assessor', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('no_met');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

@@ -140,6 +140,7 @@ class DataAssessorController extends Controller
             'name' => 'required',
             'email' => 'required|unique:data_assessor',
             'password' => 'required|min:8',
+            'no_met' => 'required'
           
         ]);
         
@@ -169,6 +170,7 @@ class DataAssessorController extends Controller
         $rules = [
             'name' => 'required',
             'password' => 'required',
+            'no_met' => 'required'
         ];
         if ($request->email != $data_assessor->email) {
             $rules['email'] = 'required';

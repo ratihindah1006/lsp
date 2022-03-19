@@ -38,6 +38,17 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
+                                            <label for="no_met" class="form-label">No MET</label>
+                                            <input name="no_met" type="text"
+                                                class="form-control @error('no_met') is-invalid @enderror" id="no_met"
+                                                value="{{ old('no_met', $data_assessor->no_met) }}">
+                                            @error('no_met')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
                                             <label for="email" class="form-label">Email</label>
                                             <input type="text" class="form-control @error('email') is-invalid @enderror"
                                                 id="email" name="email" value="{{ old('email', $data_assessor->email) }}">

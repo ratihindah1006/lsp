@@ -26,17 +26,6 @@
                                     <div class="card-body" style="width: 50rem; ">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="event_code" class="form-label">Kode Event </label>
-                                                <input name="event_code" type="text"
-                                                    class="form-control @error('event_code') is-invalid @enderror"
-                                                    id="event_code" value="{{ old('event_code') }}">
-                                                @error('event_code')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
-                                            </div>
-                                            <div class="form-group">
                                                 <label for="event_name" class="form-label">Nama Event </label>
                                                 <input name="event_name" type="text"
                                                     class="form-control @error('event_name') is-invalid @enderror"

@@ -33,7 +33,6 @@
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>Kode Event</th>
                                                     <th>Nama Event</th>
                                                     <th>Waktu Event</th>
                                                     <th>Tipe</th>
@@ -45,7 +44,6 @@
                                                 @foreach ($event as $value)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $value->event_code }}</td>
                                                         <td>{{ $value->event_name }}</td>
                                                         <td>{{ $value->event_time }}</td>
                                                         <td>{{ $value->type }}</td>
