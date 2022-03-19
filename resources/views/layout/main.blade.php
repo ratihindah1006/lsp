@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -54,7 +53,8 @@
 
             <div class="nav-control">
                 <div class="hamburger">
-                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                    <span class="line"></span><span class="line"></span><span
+                        class="line"></span>
                 </div>
             </div>
         </div>
@@ -70,26 +70,26 @@
                 <nav class="navbar navbar-expand">
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="header-left">
-                            
+
                         </div>
 
                         <ul class="navbar-nav header-right">
-                            
+
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
                                     <i class="mdi mdi-account"></i>
                                 </a>
-                                        <span class="user-avatar"> {{ Auth::user()->name }}
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="{{ url('logout') }}" class="dropdown-item">
-                                        <i class="ti-power-off"></i>
-                                        <span class="ml-2">Logout </span>
-                                    </a>
-                                    <a href="{{ url('edit_password_admin') }}" class="dropdown-item">
-                                        <i class="ti-key"></i>
-                                        <span class="ml-2">Ubah Password </span>
-                                    </a>
-                                </div>
+                                <span class="user-avatar"> {{ Auth::user()->name }}
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="{{ url('logout') }}" class="dropdown-item">
+                                            <i class="ti-power-off"></i>
+                                            <span class="ml-2">Logout </span>
+                                        </a>
+                                        <a href="{{ url('edit_password_admin') }}" class="dropdown-item">
+                                            <i class="ti-key"></i>
+                                            <span class="ml-2">Ubah Password </span>
+                                        </a>
+                                    </div>
                             </li>
                         </ul>
                     </div>
@@ -109,26 +109,33 @@
                     <li class="nav-label first">Main Menu</li>
                     <!-- <li><a href="index.html"><i class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
                     </li> -->
-                    
-                    <li class="{{ request()->is('dashboard/*') ? "mm-active" : "" }}"><a href="/dashboard" aria-expanded="false"><i class="icon icon-home"></i><span
-                        class="nav-text">Dashboard</span></a></li>
-                    <li class="{{ request()->is('event/*') ? "mm-active" : "" }}"><a href="/event" aria-expanded="false"><i class="icon icon-time"></i><span
-                        class="nav-text">Event</span></a></li>
+
+                    <li class="{{ request()->is('dashboard/*') ? 'mm-active' : '' }}"><a href="/dashboard"
+                            aria-expanded="false"><i class="icon icon-home"></i><span
+                                class="nav-text">Dashboard</span></a></li>
+                    <li class="{{ request()->is('event/*') ? 'mm-active' : '' }}"><a href="/event"
+                            aria-expanded="false"><i class="icon icon-time"></i><span
+                                class="nav-text">Event</span></a></li>
                     <li class="nav-label">Data Pengguna</li>
-                    <li class="{{ request()->is('dataAssessi/*') ? "mm-active" : "" }}"><a href="/dataAssessi" aria-expanded="false"><i class="icon icon-single-04"></i><span
-                        class="nav-text">Asesi</span></a></li>
-                    <li class="{{ request()->is('dataAssessor/*') ? "mm-active" : "" }}"><a href="/dataAssessor" aria-expanded="false"><i class="icon icon-single-04"></i><span
-                        class="nav-text">Asesor</span></a></li>
+                    <li class="{{ request()->is('dataAssessi/*') ? 'mm-active' : '' }}"><a href="/dataAssessi"
+                            aria-expanded="false"><i class="icon icon-single-04"></i><span
+                                class="nav-text">Asesi</span></a></li>
+                    <li class="{{ request()->is('dataAssessor/*') ? 'mm-active' : '' }}"><a href="/dataAssessor"
+                            aria-expanded="false"><i class="icon icon-single-04"></i><span
+                                class="nav-text">Asesor</span></a></li>
                     <li class="nav-label">Data Skema</li>
-                    <li class="{{ request()->is('category/*') ? "mm-active" : "" }}"><a href="/category" aria-expanded="false"><i class="icon icon-single-copy-06"></i><span
+                    <li class="{{ request()->is('category/*') ? 'mm-active' : '' }}"><a href="/category"
+                            aria-expanded="false"><i class="icon icon-single-copy-06"></i><span
                                 class="nav-text">Kategori</span></a></li>
-                    <li class="{{ request()->is('KelasSkema/*') ? "mm-active" : "" }}"><a href="/KelasSkema" aria-expanded="false"><i class="ti ti-layout-grid2"></i><span
-                                class="nav-text">Kelas Skema</span></a></li>
+                    <li class="{{ request()->is('KelasSkema/*') ? 'mm-active' : '' }}"><a href="/KelasSkema"
+                            aria-expanded="false"><i class="ti ti-layout-grid2"></i><span class="nav-text">Kelas
+                                Skema</span></a></li>
                     <li class="nav-label">Soal</li>
-                    <li class="{{ request()->is('soal/*') ? "mm-active" : "" }}"><a href="/soal" aria-expanded="false"><i class="icon icon-edit-72"></i><span
-                        class="nav-text">Soal Esai</span></a></li>    
-                        </ul>
-                    </li>
+                    <li class="{{ request()->is('soal/*') ? 'mm-active' : '' }}"><a href="/soal"
+                            aria-expanded="false"><i class="icon icon-edit-72"></i><span class="nav-text">Soal
+                                Esai</span></a></li>
+                </ul>
+                </li>
                 </ul>
             </div>
         </div>
@@ -140,23 +147,23 @@
             Content body start
         ***********************************-->
         <div class="content-body">
-           
-             @yield('container')
-            </div>
+            @include('sweetalert::alert')
+            @yield('container')
         </div>
-        <!--**********************************
+    </div>
+    <!--**********************************
             Content body end
         ***********************************-->
 
 
-        <!--**********************************
+    <!--**********************************
             Footer start
         ***********************************-->
-        <div class="footer">
-            <div class="copyright">
-                <p><a href="#" target="_blank"></a> 2022</p>
-            </div>
+    <div class="footer">
+        <div class="copyright">
+            <p><a href="#" target="_blank"></a> 2022</p>
         </div>
+    </div>
     </div>
     <!--**********************************
         Main wrapper end
@@ -178,10 +185,10 @@
 
     <script src="/assets/js/dashboard/dashboard-2.js"></script>
 
-     <!-- Datatable -->
-     <script src="/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
-     <script src="/assets/js/plugins-init/datatables.init.js"></script>
- 
+    <!-- Datatable -->
+    <script src="/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/assets/js/plugins-init/datatables.init.js"></script>
+
     <!-- Date Picker -->
     <script src="/assets/vendor/bootstrap-daterangepicker/daterangepicker.js"></script>
     <!-- clockpicker -->
@@ -210,7 +217,8 @@
                             $('#unit').find('option').not(':first').remove();
                             $('#element').find('option').not(':first').remove();
                             $.each(res, function(key, value) {
-                                $("#unit").append('<option value="' + key + '">' + value + '</option>');
+                                $("#unit").append('<option value="' + key + '">' + value +
+                                    '</option>');
                             });
                         } else {
                             $('#unit').find('option').not(':first').remove();
@@ -247,28 +255,28 @@
         });
     </script>
 
-{{-- javascript alert hapus data --}}
+    {{-- javascript alert hapus data --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script>
-    $('.delete-confirm').click(function(event) {
-   
-      var form =  $(this).closest("form");
-    var name = $(this).data("name");
-      event.preventDefault();
-      swal({
-          title: `Apakah kamu yakin ?`,
-          text: `kamu akan menghapus data ${name} `,
-          icon: "warning",
-          buttons: true,
-          dangerMode: true,
-      })
-      .then((willDelete) => {
-        if (willDelete) {
-          form.submit();
-        }
-      });
-  });
-</script>
+        $('.delete-confirm').click(function(event) {
+
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            swal({
+                    title: `Apakah kamu yakin ?`,
+                    text: `kamu akan menghapus data ${name}`,
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        form.submit();
+                    }
+                });
+        });
+    </script>
 
 </body>
 

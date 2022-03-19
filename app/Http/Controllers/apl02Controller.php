@@ -72,7 +72,7 @@ class Apl02Controller extends Controller
         }
 
         
-        return redirect('/beranda')->with('success', 'assessment berhasil di tambahkan!');
+        return redirect('/beranda')->with('toast_success', 'assessment berhasil di tambahkan!');
     }
     
 }

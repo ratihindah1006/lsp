@@ -60,7 +60,7 @@ class SchemaController extends Controller
         $validateData['field_id']=$category->id;
         SchemaModel::create($validateData);
 
-        return redirect('/category'.'/'.$category->id.'/schema')->with('success', 'Category berhasil di tambahkan!');
+        return redirect('/category'.'/'.$category->id.'/schema')->with('toast_success', 'Category berhasil di tambahkan!');
     }
 
     /**
@@ -119,7 +119,7 @@ class SchemaController extends Controller
         $validateData= $request->validate($rules);
         $schema->update($validateData);
 
-        return redirect('/category'.'/'.$category->id.'/schema')->with('success', 'Schema berhasil di Update!');
+        return redirect('/category'.'/'.$category->id.'/schema')->with('toast_success', 'Schema berhasil di Update!');
     }
 
     /**
@@ -131,6 +131,6 @@ class SchemaController extends Controller
     public function destroy(CategoryModel $category, SchemaModel $schema)
     {
         $schema->delete();
-        return redirect('/category'.'/'.$category->id.'/schema')->with('success', 'Category berhasil di hapus!');
+        return redirect('/category'.'/'.$category->id.'/schema')->with('toast_success', 'Category berhasil di hapus!');
     }
 }

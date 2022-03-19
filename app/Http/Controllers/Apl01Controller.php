@@ -81,6 +81,6 @@ class Apl01Controller extends Controller
                 ->update($validateData);
         }
 
-        return redirect('/beranda')->with('success', 'Apl01 Berhasil diinput');
+        return redirect('/beranda')->with('toast_success', 'Apl01 Berhasil diinput');
     }
 }

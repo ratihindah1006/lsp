@@ -54,7 +54,7 @@ class DataAssessorController extends Controller
         ]);
         $assessors->save();
    
-        return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesor')->with('success', 'Data Asesor berhasil di tambahkan!');
+        return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesor')->with('toast_success', 'Data Asesor berhasil di tambahkan!');
     }
 
     /**
@@ -95,7 +95,7 @@ class DataAssessorController extends Controller
         $validateData= $request->validate($rules);
         $assessor->update($validateData);
 
-        return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesor')->with('success', 'Data assessor berhasil di Update!');
+        return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesor')->with('toast_success', 'Data assessor berhasil di Update!');
     }
 
     /**
@@ -107,7 +107,7 @@ class DataAssessorController extends Controller
     public function destroy(SchemaClassModel $class, AssessorModel $assessor)
     {
         AssessorModel::destroy($assessor->id);
-        return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesor')->with('success', 'Data Assessor berhasil di hapus!');
+        return redirect('/KelasSkema'.'/'.$class->id.'/dataAsesor')->with('toast_success', 'Data Assessor berhasil di hapus!');
     }
     //.
     //.
@@ -151,7 +151,7 @@ class DataAssessorController extends Controller
            
         ]);
         $assessis->save();
-        return redirect('/dataAssessor')->with('success', 'Data Asesi berhasil di tambahkan!');
+        return redirect('/dataAssessor')->with('toast_success', 'Data Asesi berhasil di tambahkan!');
     }
 
     //edit
@@ -178,12 +178,12 @@ class DataAssessorController extends Controller
         $validateData = $request->validate($rules);
         $data_assessor->update($validateData);
 
-        return redirect('/dataAssessor')->with('success', 'Data assessor berhasil di Update!');
+        return redirect('/dataAssessor')->with('toast_success', 'Data assessor berhasil di Update!');
     }
     //destroy
     public function destroy_data_assessor(DataAssessorModel $data_assessor)
     {
         DataAssessorModel::destroy($data_assessor->id);
-        return redirect('/dataAssessor')->with('success', 'Data Assessor berhasil di hapus!');
+        return redirect('/dataAssessor')->with('toast_success', 'Data Assessor berhasil di hapus!');
     }
 }

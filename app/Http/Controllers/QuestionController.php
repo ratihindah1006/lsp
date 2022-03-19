@@ -73,7 +73,7 @@ class QuestionController extends Controller
        
         $data->save();
 
-        return redirect('soal')->with('success', 'Pertanyaan berhasil di tambahkan!');
+        return redirect('soal')->with('toast_success', 'Pertanyaan berhasil di tambahkan!');
     }
 
     /**
@@ -121,7 +121,7 @@ class QuestionController extends Controller
 
         $question->update($validateData);
 
-        return redirect('soal')->with('success', 'Pertanyaan berhasil diupdate!');
+        return redirect('soal')->with('toast_success', 'Pertanyaan berhasil diupdate!');
     }
 
     /**
@@ -134,6 +134,6 @@ class QuestionController extends Controller
     {
         $question->delete();
 
-        return redirect('soal')->with('success', 'Pertanyaan berhasil dihapus!');
+        return redirect('soal')->with('toast_success', 'Pertanyaan berhasil dihapus!');
     }
 }

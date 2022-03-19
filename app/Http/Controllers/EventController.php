@@ -54,7 +54,7 @@ class EventController extends Controller
         $validateData['admin_id']=Auth::user()->id;
         EventModel::create($validateData);
 
-        return redirect('/event')->with('success', 'Event berhasil di tambahkan!');
+        return redirect('/event')->with('toast_success', 'Event berhasil di tambahkan!');
     }
 
     /**
@@ -101,7 +101,7 @@ class EventController extends Controller
         $validateData= $request->validate($rules);
         $event->update($validateData);
 
-        return redirect('/event')->with('success', 'Event berhasil di Update!');
+        return redirect('/event')->with('toast_success', 'Event berhasil di Update!');
     }
 
     /**
@@ -113,6 +113,6 @@ class EventController extends Controller
     public function destroy(EventModel $event)
     {
         EventModel::destroy($event->id);
-        return redirect('/event')->with('success', 'Event berhasil di hapus!');
+        return redirect('/event')->with('toast_success', 'Event berhasil di hapus!');
     }
 }

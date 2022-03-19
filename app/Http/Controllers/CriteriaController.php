@@ -45,7 +45,7 @@ class CriteriaController extends Controller
 
         return redirect('/category' . '/' . $category->id . '/schema' . '/' . $schema->id . '/unit' . '/'
             . $unit->id . '/element' . '/' . $element->id . '/criteria')
-            ->with('success', 'Kriteria berhasil di tambahkan!');
+            ->with('toast_success', 'Kriteria berhasil di tambahkan!');
     }
 
 
@@ -84,7 +84,7 @@ class CriteriaController extends Controller
 
         return redirect('/category' . '/' . $category->id . '/schema' . '/' . $schema->id . '/unit' . '/'
             . $unit->id . '/element' . '/' . $element->id . '/criteria')
-            ->with('success', 'Kriteria berhasil di Update!');
+            ->with('toast_success', 'Kriteria berhasil di Update!');
     }
 
     public function destroy(CategoryModel $category, SchemaModel $schema, UnitModel $unit, ElementModel $element, CriteriaModel $criteria)
@@ -92,6 +92,6 @@ class CriteriaController extends Controller
         $criteria->delete();
         return redirect('/category' . '/' . $category->id . '/schema' . '/' . $schema->id . '/unit' . '/'
             . $unit->id . '/element' . '/' . $element->id . '/criteria')
-            ->with('success', 'Kriteria berhasil di hapus!');
+            ->with('toast_success', 'Kriteria berhasil di hapus!');
     }
 }

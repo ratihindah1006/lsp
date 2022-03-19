@@ -44,7 +44,7 @@ class AssessiController extends Controller
 
         if (Hash::check($request->current_password, auth()->user()->password)){
             auth()->user()->update(['password' => bcrypt($request->password)]);
-            return redirect('/beranda')->with('success', 'password berhasil di ubah');
+            return redirect('/beranda')->with('toast_success', 'password berhasil di ubah');
         }
         throw ValidationException::withMessages([
             'current_password'=> 'Password yang ada masukkan salah'
@@ -83,6 +83,6 @@ class AssessiController extends Controller
                 );
             }            
         }
-        return redirect('/beranda')->with('success', 'jawaban berhasil ditambahkan');
+        return redirect('/beranda')->with('toast_success', 'jawaban berhasil ditambahkan');
     }
 }

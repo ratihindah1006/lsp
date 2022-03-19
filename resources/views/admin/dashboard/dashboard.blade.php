@@ -3,12 +3,6 @@
 @section('container')
 
     <div class="container-fluid">
-        @if (session()->has('success'))
-        <div class="alert alert-primary alert-dismissible fade show">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            {{ session('success') }}
-          </div>
-    @endif
         <div class="row">
             <div class="col-lg-3 col-sm-6">
                 <div class="card" >

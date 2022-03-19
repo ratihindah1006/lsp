@@ -65,7 +65,7 @@ class SchemaClassController extends Controller
         ]);
        
         $class->save();
-        return redirect('/KelasSkema')->with('success', 'Data kelas Skema berhasil di tambahkan!');
+        return redirect('/KelasSkema')->with('toast_success', 'Data kelas Skema berhasil di tambahkan!');
     }
 
     public function edit(SchemaClassModel $class)
@@ -92,7 +92,7 @@ class SchemaClassController extends Controller
         }
         $validateData= $request->validate($rules);
         $class->update($validateData);
-        return redirect('/KelasSkema')->with('success', 'Data Kelas Skema berhasil di Update!');
+        return redirect('/KelasSkema')->with('toast_success', 'Data Kelas Skema berhasil di Update!');
         
     }
 
@@ -108,6 +108,6 @@ class SchemaClassController extends Controller
     public function destroy(SchemaClassModel $class)
     {
         SchemaClassModel::destroy($class->id);
-        return redirect('/KelasSkema')->with('success', 'Data Kelas Skema berhasil di hapus!');
+        return redirect('/KelasSkema')->with('toast_success', 'Data Kelas Skema berhasil di hapus!');
     }
 }

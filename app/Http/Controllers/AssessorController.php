@@ -53,7 +53,7 @@ class AssessorController extends Controller
 
         if (Hash::check($request->current_password, auth()->user()->password)){
             auth()->user()->update(['password' => bcrypt($request->password)]);
-            return redirect('/assessor')->with('success', 'password berhasil di ubah');
+            return redirect('/assessor')->with('toast_success', 'password berhasil di ubah');
         }
         throw ValidationException::withMessages([
             'current_password'=> 'Password yang ada masukkan salah'
@@ -131,7 +131,7 @@ class AssessorController extends Controller
                 }
             }
         }
-        return redirect('/list')->with('success', 'Status berhasil di Update!');
+        return redirect('/list')->with('toast_success', 'Status berhasil di Update!');
     }
 
     public function status_apl02(Request $request, $id)
@@ -151,7 +151,7 @@ class AssessorController extends Controller
                 }
             }
         }
-        return redirect('/list')->with('success', 'Status berhasil di Update!');
+        return redirect('/list')->with('toast_success', 'Status berhasil di Update!');
     }
 
     public function ak01(AssessiModel $assessi)
@@ -190,7 +190,7 @@ class AssessorController extends Controller
             $data
         );
 
-        return redirect('/list')->with('success', 'Form AK01 berhasil di Update!');
+        return redirect('/list')->with('toast_success', 'Form AK01 berhasil di Update!');
     }
 
     public function muk01(AssessiModel $assessi)
@@ -217,7 +217,7 @@ class AssessorController extends Controller
             $data
         );
 
-        return redirect('/list')->with('success', 'Form MUK01 berhasil di Update!');
+        return redirect('/list')->with('toast_success', 'Form MUK01 berhasil di Update!');
     }
 
     public function muk06(AssessiModel $assessi)
@@ -256,6 +256,6 @@ class AssessorController extends Controller
                 );
             }
         }
-        return redirect('/list')->with('success', 'Form MUK06 berhasil disimpan!');
+        return redirect('/list')->with('toast_success', 'Form MUK06 berhasil disimpan!');
     }
 }

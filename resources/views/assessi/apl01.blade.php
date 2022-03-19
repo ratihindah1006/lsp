@@ -649,7 +649,7 @@
                                                 Diterima / Ditolak
                                             </p>
                                         </div>
-                                        <div class="form-group row">
+                                        {{-- <div class="form-group row">
                                             <label class=" font-weight-bold text-success" for="status">Status
                                                 <span class="text-danger">*</span>
                                             </label>
@@ -668,9 +668,9 @@
                                                     </div>
                                                 @enderror
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
-                                            <div class="col-xl-6">
+                                            {{-- <div class="col-xl-6">
                                                 <div class="form-group row">
                                                     <label class="my-text">Catatan&emsp;:</label>
                                                     <input class="form-control @error('note') is-invalid @enderror"
@@ -682,7 +682,7 @@
                                                         </div>
                                                     @enderror
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <div class="row">
                                             <div class="col-xl-6">

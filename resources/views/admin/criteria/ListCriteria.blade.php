@@ -38,11 +38,6 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="data-table-list">
-                        @if (session()->has('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('success') }}
-                        </div>
-                        @endif
 
                         <form method="post" action="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit }}/element/{{ $element->id }}/criteria">
                             @csrf

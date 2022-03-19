@@ -38,7 +38,7 @@ class CategoryController extends Controller
 
         CategoryModel::create($validateData);
 
-        return redirect('/category')->with('success', 'Category berhasil di tambahkan!');
+        return redirect('/category')->with('toast_success', 'Category berhasil di tambahkan!');
     }
 
     public function show(CategoryModel $categoryModel)
@@ -63,12 +63,12 @@ class CategoryController extends Controller
         
         $validateData = $request->validate($rules);
         $category->update($validateData);
-        return redirect('/category')->with('success', 'Category berhasil di Update!');
+        return redirect('/category')->with('toast_success', 'Category berhasil di Update!');
     }
 
     public function destroy(CategoryModel $category)
     {
         $category->delete();
-        return redirect('/category')->with('success', 'Category berhasil di hapus!');
+        return redirect('/category')->with('toast_success', 'Category berhasil di hapus!');
     }
 }

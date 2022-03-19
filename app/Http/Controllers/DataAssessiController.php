@@ -65,7 +65,7 @@ class DataAssessiController extends Controller
        
         $assessis->save();
 
-        return redirect('/KelasSkema' . '/' . $class->id . '/dataAsesi')->with('success', 'Data Asesi berhasil di tambahkan!');
+        return redirect('/KelasSkema' . '/' . $class->id . '/dataAsesi')->with('toast_success', 'Data Asesi berhasil di tambahkan!');
     }
 
     /**
@@ -106,7 +106,7 @@ class DataAssessiController extends Controller
         $validateData= $request->validate($rules);
         $assessi->update($validateData);
 
-        return redirect('/KelasSkema' . '/' . $class->id . '/dataAsesi')->with('success', 'Data assessi berhasil di Update!');
+        return redirect('/KelasSkema' . '/' . $class->id . '/dataAsesi')->with('toast_success', 'Data assessi berhasil di Update!');
     }
 
     /**
@@ -118,7 +118,7 @@ class DataAssessiController extends Controller
     public function destroy(SchemaClassModel $class, AssessiModel $assessi)
     {
         AssessiModel::destroy($assessi->id);
-        return redirect('/KelasSkema' . '/' . $class->id . '/dataAsesi')->with('success', 'Data Assessi berhasil di hapus!');
+        return redirect('/KelasSkema' . '/' . $class->id . '/dataAsesi')->with('toast_success', 'Data Assessi berhasil di hapus!');
     }
 
     // .
@@ -159,7 +159,7 @@ class DataAssessiController extends Controller
         ]);
         $data_assessi->save();
 
-        return redirect('/dataAssessi')->with('success', 'Data Asesi berhasil di tambahkan!');
+        return redirect('/dataAssessi')->with('toast_success', 'Data Asesi berhasil di tambahkan!');
     }
     //edit
     public function edit_data_assessi(DataAssessiModel $data_assessi)
@@ -183,13 +183,13 @@ class DataAssessiController extends Controller
         $validateData = $request->validate($rules);
         $data_assessi->update($validateData);
 
-        return redirect('/dataAssessi')->with('success', 'Data assessi berhasil di Update!');
+        return redirect('/dataAssessi')->with('toast_success', 'Data assessi berhasil di Update!');
     }
     //destroy
     public function destroy_data_assessi(DataAssessiModel $data_assessi)
     {
         DataAssessiModel::destroy($data_assessi->id);
-        return redirect('/dataAssessi')->with('success', 'Data Assessi berhasil di hapus!');
+        return redirect('/dataAssessi')->with('toast_success', 'Data Assessi berhasil di hapus!');
        
     }
 }

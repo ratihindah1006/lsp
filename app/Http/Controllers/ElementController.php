@@ -54,7 +54,7 @@ class ElementController extends Controller
         ElementModel::create($validateData);
 
         return redirect('/category'.'/'.$category->id.'/schema'.'/'.$schema->id.'/unit'.'/'.$unit->id.'/element')
-        ->with('success', 'Element berhasil di tambahkan!');
+        ->with('toast_success', 'Element berhasil di tambahkan!');
     }
 
     /**
@@ -102,7 +102,7 @@ class ElementController extends Controller
         $validateData= $request->validate($rules);
         $element->update($validateData);
 
-        return redirect('/category'.'/'.$category->id.'/schema'.'/'.$schema->id.'/unit'.'/'.$unit->id.'/element')->with('success', 'Element berhasil di Update!');
+        return redirect('/category'.'/'.$category->id.'/schema'.'/'.$schema->id.'/unit'.'/'.$unit->id.'/element')->with('toast_success', 'Element berhasil di Update!');
     }
 
     /**
@@ -114,6 +114,6 @@ class ElementController extends Controller
     public function destroy(CategoryModel $category, SchemaModel $schema, UnitModel $unit, ElementModel $element)
     {
         $element->delete();
-        return redirect('/category'.'/'.$category->id.'/schema'.'/'.$schema->id.'/unit'.'/'.$unit->id.'/element')->with('success', 'Element berhasil di hapus!');
+        return redirect('/category'.'/'.$category->id.'/schema'.'/'.$schema->id.'/unit'.'/'.$unit->id.'/element')->with('toast_success', 'Element berhasil di hapus!');
     }
 }

@@ -29,7 +29,7 @@ class AdminController extends Controller
 
         if (Hash::check($request->current_password, auth()->user()->password)){
             auth()->user()->update(['password' => bcrypt($request->password)]);
-            return redirect('/dashboard')->with('success', 'password berhasil di ubah');
+            return redirect('/dashboard')->with('toast_success', 'password berhasil di ubah');
         }
         throw ValidationException::withMessages([
             'current_password'=> 'Password yang ada masukkan salah'
