@@ -65,7 +65,12 @@
                                                     <a href="/category/{{ $category->id }}/schema/{{ $value->id }}/unit" class="btn btn-primary btn-sm"><span class="ti-info"></span></a>
                                                     <a href="/category/{{ $category->id }}/schema/{{ $value->id }}/show" class="btn btn-success btn-sm"><span class="ti-file"></span></a>
                                                     <a href="/category/{{ $category->id }}/schema/{{ $value->id }}/edit" class="btn btn-warning btn-sm"><span class="ti-pencil"></span></a>
-                                                    <a href="#" class="btn btn-danger btn-sm delete" schema-id="{{ $value->id }}" category-id="{{ $category->id }}" schema-title="{{ $value->schema_title }}"><span class="ti-trash"></span></a>
+                                                    <form action="/category/{{ $category->id }}/schema/{{ $value->id }}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="btn btn-danger btn-sm border-0 delete-confirm" data-name="{{$value->schema_title}}"><span class="ti-trash"></span>
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -79,30 +84,6 @@
             </div>
         </div>
     </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-    <script>
-        $('.delete').click(function() {
-            var category_id = $(this).attr('category-id');
-            var schema_id = $(this).attr('schema-id');
-            var schema_title = $(this).attr('schema-title');
-            swal({
-                    title: "Apakah Kamu Yakin?",
-                    text: "Kamu akan menghapus data skema dengan judul : "+schema_title+"",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        window.location = "/category/"+category_id+"/schema/"+schema_id+""
-                        swal("Data berhasil dihapus", {
-                            icon: "success",
-                        });
-                    } else {
-                        swal("Data batal dihapus");
-                    }
-                });
-        });
-    </script>
-    @endsection
+@endsection
