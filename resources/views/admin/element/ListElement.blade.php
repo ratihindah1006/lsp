@@ -94,7 +94,12 @@
                                                 <td align="center">
                                                     <a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit->id }}/element/{{ $value->id }}/criteria" class="btn btn-primary btn-sm"><span class="ti-info"></span></a>
                                                     <a href="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit->id }}/element/{{ $value->id }}/edit" class="btn btn-warning btn-sm"><span class="ti-pencil"></span></a>
-                                                    <a href="#" class="btn btn-danger btn-sm delete" schema-id="{{ $schema }}" category-id="{{ $category }}" unit-id="{{ $unit->id }}" element-id="{{ $value->id }}" element-title="{{ $value->element_title }}"><span class="ti-trash"></span></a>
+                                                    <form action="/category/{{ $category }}/schema/{{ $schema }}/unit/{{ $unit->id }}/element/{{ $value->id }}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="btn btn-danger btn-sm border-0 delete-confirm" data-name="{{$value->element_title}}"><span class="ti-trash"></span>
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -108,33 +113,6 @@
             </div>
         </div>
     </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-    <script>
-        $('.delete').click(function() {
-            var category_id = $(this).attr('category-id');
-            var schema_id = $(this).attr('schema-id');
-            var unit_id = $(this).attr('unit-id');
-            var element_id = $(this).attr('element-id');
-            var element_title = $(this).attr('element-title');
-            swal({
-                    title: "Apakah Kamu Yakin?",
-                    text: "Kamu akan menghapus data element dengan judul : "+element_title+"",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        window.location = "/category/"+category_id+"/schema/"+schema_id+"/unit/"+unit_id+"/element/"+element_id+""
-                        swal("Data berhasil dihapus", {
-                            icon: "success",
-                        });
-                    } else {
-                        swal("Data batal dihapus");
-                    }
-                });
-        });
-    </script>
-
-    @endsection
+@endsection

@@ -27,7 +27,7 @@
         @method('put')
         @csrf
         <div class="card-center">
-            <div class="row mt-5">
+            <div class="row mt-1">
                 <div class="col-md-14">
                     <div class="card">
                         <div class="card-header" style="width: 50rem; ">

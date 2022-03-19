@@ -41,7 +41,12 @@
                                                 <td align="center">
                                                     <a href="/category/{{ $value->id }}/schema" class="btn btn-primary btn-sm"><span class="ti-info"></span></a>
                                                     <a href="/category/{{ $value->id }}/edit" class="btn btn-warning btn-sm"><span class="ti-pencil"></span></a>
-                                                    <a href="#" class="btn btn-danger btn-sm delete" data-id="{{ $value->id }}" data-title="{{ $value->category_title }}"><span class="ti-trash"></span></a>
+                                                    <form action="/category/{{ $value->id }}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="btn btn-danger btn-sm border-0 delete-confirm" data-name="{{$value->category_title}}"><span class="ti-trash"></span>
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -55,30 +60,8 @@
             </div>
         </div>
     </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-    <script>
-        $('.delete').click(function() {
-            var category_id = $(this).attr('data-id');
-            var category_title = $(this).attr('data-title');
-            swal({
-                    title: "Apakah Kamu Yakin?",
-                    text: "Kamu akan menghapus data kategori dengan judul : "+category_title+"",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        window.location = "/delete_category/"+category_id+""
-                        swal("Data berhasil terhapus", {
-                            icon: "success",
-                        });
-                    } else {
-                        swal("Data tidak jadi terhapus");
-                    }
-                });
-        });
-    </script>
+
 
     @endsection
