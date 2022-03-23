@@ -156,6 +156,7 @@ Route::group(['middleware' => 'auth:assessi'], function () {
     Route::post('/beranda/{assessi:id}', [Apl01Controller::class, 'store']);
     Route::get('/apl01/{assessis:id}', [Apl01Controller::class, 'index']);
     Route::get('/apl02/{assessis:id}', [Apl02Controller::class, 'index']);
+    Route::get('/exportapl02/{assessis:id}', [Apl02Controller::class, 'export']);
     Route::post('/apl02/store/{assessi:id}', [Apl02Controller::class, 'store']);
     Route::post('/assessi/muk06/store', [AssessiController::class, 'saveMUK06']);
     Route::get('/assessi/muk06/{assessi:id}', [AssessiController::class, 'muk06']);
