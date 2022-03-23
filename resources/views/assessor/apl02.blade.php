@@ -11,7 +11,7 @@
                 <div class="card text-dark">
                     <div class="card-footer">
                         <h2 class="font-weight-bold card-title">FR-APL-02 ASSESMEN MANDIRI</h2>
-                        <button type="submit" class="btn btn-whatsapp float-right mr-3">Cetak<span class="btn-icon-right"><i class="ti ti-printer"></i></span></button>
+                        <a href="/exportapl02" class="btn btn-whatsapp float-right mr-3">Cetak<span class="btn-icon-right"><i class="ti ti-printer"></i></span></a>
                         <button type="submit" class="btn btn-primary float-right mr-1">Simpan <span class="btn-icon-right"><i class="fa fa-save"></i></span></button>
                         <a href="/list" class="btn btn-danger float-right mr-1">Batal <span class="btn-icon-right"><i class="fa fa-close"></i></span></a>
                     </div>
@@ -145,7 +145,7 @@
                                 <th rowspan="2">
                                     <p class="form-check-inline">&emsp;1. Assessment
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="status" id="status" value="1" @if ($apl02->status == '1') checked @endif>
+                                        <input required class="form-check-input" type="radio" name="status" id="status" value="1" @if ($apl02->status == '1') checked @endif>
                                         <label class="form-check-label" for="status">Dilanjutkan</label>
                                     </div>
                                     <div class="form-check form-check-inline">
@@ -155,7 +155,7 @@
                                     </p>
                                     <p class="form-check-inline">&emsp;2. Proses Assessment dilanjutkan Melalui
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="lane" id="lane" value="Uji Kompetensi" @if ($apl02->lane == 'Uji Kompetensi') checked @endif>
+                                        <input required class="form-check-input" type="radio" name="lane" id="lane" value="Uji Kompetensi" @if ($apl02->lane == 'Uji Kompetensi') checked @endif>
                                         <label class="form-check-label" for="lane">Uji Kompetensi</label>
                                     </div>
                                     <div class="form-check form-check-inline">
