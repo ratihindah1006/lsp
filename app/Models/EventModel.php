@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+
 class EventModel extends Model
 {
     protected $table = "event";
@@ -16,7 +16,7 @@ class EventModel extends Model
         'admin_id'
        ];
     use HasFactory;
-    use SoftDeletes;
+ 
 
     public function schema_class()
     {

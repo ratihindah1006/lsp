@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CriteriaModel extends Model
 { 
@@ -15,7 +14,7 @@ class CriteriaModel extends Model
     'element_id'
    ];
 use HasFactory;
-use SoftDeletes;
+
 
 public function element()
 {

@@ -16,14 +16,14 @@ class CreateAssessisTable extends Migration
         Schema::create('assessi', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('class_id')->unsigned();
-            $table->foreign('class_id')->references('id')->on('schema_class');
+            $table->foreign('class_id')->references('id')->on('schema_class')->onDelete("cascade");
             $table->bigInteger('assessor_id')->unsigned();
-            $table->foreign('assessor_id')->references('id')->on('assessor');
+            $table->foreign('assessor_id')->references('id')->on('assessor')->onDelete("cascade");
             $table->bigInteger('data_assessi_id')->unsigned();
-            $table->foreign('data_assessi_id')->references('id')->on('data_assessi');
+            $table->foreign('data_assessi_id')->references('id')->on('data_assessi')->onDelete("cascade");
             $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes();
+           
         });
     }
 

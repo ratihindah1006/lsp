@@ -18,6 +18,7 @@
     <link href="/assets/vendor/select2/css/select2.min.css" rel="stylesheet">
     <link href="/assets/vendor/summernote/summernote.css" rel="stylesheet">
 
+   
 </head>
 
 <body>

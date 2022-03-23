@@ -24,7 +24,7 @@
                                     <div class="col-xl-6">
                                         <h4 class="card-title">Data Pribadi</h4><br>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
+                                            <label class="col-lg-4 col-form-label font-weight-bold "
                                                 for="name">Nama
                                                 Lengkap
                                             </label>
@@ -40,7 +40,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
+                                            <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="nik">NIK
                                             </label>
                                             <div class="col-lg-6">
@@ -49,7 +49,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
+                                            <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="gender">Jenis Kelamin
                                             </label>
                                             <div class="col-lg-6">
@@ -58,7 +58,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
+                                            <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="place_of_birth">Tempat Lahir
                                             </label>
                                             <div class="col-lg-6">
@@ -68,7 +68,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
+                                            <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="date_of_birth">Tanggal Lahir
                                             </label>
                                             <div class="col-lg-6">
@@ -78,7 +78,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
+                                            <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="domicile">Domisili
                                             </label>
                                             <div class="col-lg-6">
@@ -87,7 +87,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
+                                            <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="address">Alamat
                                             </label>
                                             <div class="col-lg-6">
@@ -96,7 +96,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
+                                            <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="no_hp">Nomor Hp
                                             </label>
                                             <div class="col-lg-6">
@@ -105,7 +105,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
+                                            <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="email">Email
                                             </label>
                                             <div class="col-lg-6">
@@ -114,7 +114,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
+                                            <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="last_education">Pendidikan terakhir
                                             </label>
                                             <div class="col-lg-6">
@@ -124,7 +124,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
+                                            <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="nationality">Email
                                             </label>
                                             <div class="col-lg-6">
@@ -137,7 +137,7 @@
                                     <div class="col-xl-6">
                                         <h4 class="card-title">Data Pekerjaan</h4><br>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
+                                            <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="comp_name">Nama Perusahaan
                                             </label>
                                             <div class="col-lg-6">
@@ -146,7 +146,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
+                                            <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="job_title">Nama Pekerjaan
                                             </label>
                                             <div class="col-lg-6">
@@ -155,7 +155,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
+                                            <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="position">Jabatan
                                             </label>
                                             <div class="col-lg-6">
@@ -164,7 +164,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
+                                            <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="comp_address">Alamat Perusahaan
                                             </label>
                                             <div class="col-lg-6">
@@ -174,7 +174,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
+                                            <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="comp_telp">Telepon Perusahaan
                                             </label>
                                             <div class="col-lg-6">
@@ -183,7 +183,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
+                                            <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="comp_email">Email Perusahaan
                                             </label>
                                             <div class="col-lg-6">
@@ -192,7 +192,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
+                                            <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="comp_fax">Fax Perusahaan
                                             </label>
                                             <div class="col-lg-6">
@@ -201,7 +201,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
+                                            <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="postal_code">Kode Pos
                                             </label>
                                             <div class="col-lg-6">
@@ -234,7 +234,7 @@
                                 <div class="row">
                                     <div class="col-xl-6">
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
+                                            <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="sert_schema">Kemasan Kompetensi
                                             </label>
                                             <div class="col-lg-6">
@@ -246,7 +246,7 @@
                                     </div>
                                     <div class="col-xl-6">
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold text-success"
+                                            <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="assessment_purpose">Tujuan Sertifikasi
                                             </label>
                                             <div class="col-lg-6">
@@ -315,25 +315,25 @@
                             <div class="basic-form">
                                 <div class="row">
                                     <div class="col-xl-6">
-                                        <label class="font-weight-bold text-success">1.&ensp; Ijazah Pendidikan Terakhir (
+                                        <label class="font-weight-bold  ">1.&ensp; Ijazah Pendidikan Terakhir (
                                             Minimal SMA)</label>
                                         <div class="input-group mb-3">
                                             <iframe type="application/pdf" src="{{ asset('storage/' . $apl01->ijazah) }}"
                                                 width="600" height="400"></iframe>
                                         </div>
-                                        <label class="font-weight-bold text-success">2.&ensp; Pas Foto Berwarna</label>
+                                        <label class="font-weight-bold  ">2.&ensp; Pas Foto Berwarna</label>
                                         <div class="input-group mb-3">
                                             <iframe type="application/pdf" src="{{ asset('storage/' . $apl01->photo) }}"
                                                 width="600" height="400"></iframe>
                                         </div>
                                     </div>
                                     <div class="col-xl-6">
-                                        <label class="font-weight-bold text-success">3.&ensp; KTP/SIM/Paspor</label>
+                                        <label class="font-weight-bold  ">3.&ensp; KTP/SIM/Paspor</label>
                                         <div class="input-group mb-3">
                                             <iframe type="application/pdf" src="{{ asset('storage/' . $apl01->ktp) }}"
                                                 width="600" height="400"></iframe>
                                         </div>
-                                        <label class="font-weight-bold text-success">4.&ensp; Transkip Nilai</label>
+                                        <label class="font-weight-bold  ">4.&ensp; Transkip Nilai</label>
                                         <div class="input-group mb-3">
                                             <iframe type="application/pdf"
                                                 src="{{ asset('storage/' . $apl01->transcript) }}" width="600"
@@ -341,7 +341,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xl-12">
-                                        <label class="font-weight-bold text-success">5.&ensp; Surat Keterangan Pengalaman
+                                        <label class="font-weight-bold  ">5.&ensp; Surat Keterangan Pengalaman
                                             Kerja Minimal 1</label>
                                         <div class="input-group mb-3">
                                             <div class="custom-file">
@@ -379,7 +379,7 @@
                                             </p>
                                         </div>
                                         <div class="form-group row">
-                                            <label class=" font-weight-bold text-success" for="status">Status
+                                            <label class=" font-weight-bold  " for="status">Status
                                                 <span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
@@ -403,12 +403,10 @@
                                         <div class="form-group row">
                                             <label class="my-text">Catatan&emsp;:</label>
                                             <textarea class="form-control @error('note') is-invalid @enderror" id="note"
-                                                name="note" rows="5"
-                                                @if ($apl01 != null) {
-                                            value= "{{ $apl01->note }}"
-                                            }@else{
-                                            value="{{ old('note') }}"
-                                            } @endif></textarea>
+                                                name="note" rows="5">
+                                                @if ($apl01 != null) {{$apl01->note }}
+                                                @else {{ Request::old('note') }}
+                                                @endif</textarea>
                                             @error('note')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -449,6 +447,9 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col">
+                                <center><a href="#" class="btn btn-dark">Ke Atas <span class="btn-icon-right"><i class="fa fa-arrow-up"></i></span></a></center>
+                            </div> <br><br>
                         </div>
                     </div>
                 </div>

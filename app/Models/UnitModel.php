@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class UnitModel extends Model
 {
@@ -15,7 +15,7 @@ class UnitModel extends Model
         'schema_id'
        ];
     use HasFactory;
-    use SoftDeletes;
+    
 
     public function schema()
     {

@@ -17,7 +17,7 @@
 
                                 <div class="col-12">
                                         <div class="form-group">
-                                        <label>Nama Asesor</label>
+                                        <label>Nama Asesi</label>
                                           <select style="width: 100%; height:40px;" name="data_assessi_id" id="data_assessi_id" class="form-control maximum-search-length @error('data_assessi_id') is-invalid @enderror">
                                             <option value=""></option>
                                             @foreach ($data_assessi as $assessi)

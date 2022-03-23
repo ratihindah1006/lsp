@@ -26,16 +26,6 @@
                                 <div class="card-body" style="width: 50rem;">
                                     <div class="col-12">
                                         <div class="mb-3">
-                                            <label for="event_time" class="form-label">Waktu Event</label>
-                                            <input class="form-control input-daterange-datepicker @error('event_time') is-invalid @enderror"
-                                             type="text" name="event_time" id="event_time"  value="{{ old('event_time', $event->event_time) }}">
-                                             @error('event_time')
-                                             <div class="invalid-feedback">
-                                                 {{ $message }}
-                                             </div>
-                                         @enderror
-                                        </div>
-                                        <div class="mb-3">
                                             <label for="event_name" class="form-label">Nama Event</label>
                                             <input type="text" class="form-control @error('event_name') is-invalid @enderror"
                                                 id="event_name" name="event_name" value="{{ old('event_name', $event->event_name) }}">
@@ -45,6 +35,17 @@
                                                 </div>
                                             @enderror
                                         </div>
+                                        <div class="mb-3">
+                                            <label for="event_time" class="form-label">Waktu Event</label>
+                                            <input class="form-control input-daterange-datepicker @error('event_time') is-invalid @enderror"
+                                             type="text" name="event_time" id="event_time"  value="{{ old('event_time', $event->event_time) }}">
+                                             @error('event_time')
+                                             <div class="invalid-feedback">
+                                                 {{ $message }}
+                                             </div>
+                                         @enderror
+                                        </div>
+                                        
                                         <div class="mb-3">
                                             <label for="type" class="form-label">Tipe Event</label>
                                             <select class="form-control @error('type') is-invalid @enderror" id="type"

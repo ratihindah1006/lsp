@@ -16,11 +16,11 @@ class CreateUnitsTable extends Migration
         Schema::create('unit', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('schema_id')->unsigned();
-            $table->foreign('schema_id')->references('id')->on('schema');
+            $table->foreign('schema_id')->references('id')->on('schema')->onDelete("cascade");
             $table->string('unit_code');
             $table->string('unit_title');
             $table->timestamps();
-            $table->softDeletes();
+           
         });
     }
 

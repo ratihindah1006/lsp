@@ -16,10 +16,10 @@ class CreateElementsTable extends Migration
         Schema::create('element', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('unit_id')->unsigned();
-            $table->foreign('unit_id')->references('id')->on('unit');
+            $table->foreign('unit_id')->references('id')->on('unit')->onDelete("cascade");
             $table->string('element_title');
             $table->timestamps();
-            $table->softDeletes();
+            
         });
             
         

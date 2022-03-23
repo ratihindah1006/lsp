@@ -16,14 +16,14 @@ class CreateSchemasTable extends Migration
         Schema::create('schema', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('field_id')->unsigned();
-            $table->foreign('field_id')->references('id')->on('category');
+            $table->foreign('field_id')->references('id')->on('category')->onDelete("cascade");
             $table->string('schema_title');
             $table->string('no_skkni');
             $table->string('competency_package');
             $table->string('requirement');
             $table->string('cost');
             $table->timestamps();
-            $table->softDeletes();
+          
         });
     }
 

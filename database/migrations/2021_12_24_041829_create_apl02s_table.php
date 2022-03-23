@@ -15,7 +15,7 @@ class CreateApl02sTable extends Migration
     {
         Schema::create('apl02', function (Blueprint $table) {
             $table->id();
-            $table->foreign('assessi_id')->references('id')->on('assessi');
+            $table->foreign('assessi_id')->references('id')->on('assessi')->onDelete("cascade");
             $table->bigInteger('assessi_id')->unsigned();
             $table->string('assessment');
             $table->string('status')->nullable();

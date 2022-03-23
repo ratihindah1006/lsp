@@ -649,18 +649,22 @@
                                                 Diterima / Ditolak
                                             </p>
                                         </div>
-                                        {{-- <div class="form-group row">
-                                            <label class=" font-weight-bold text-success" for="status">Status
-                                                <span class="text-danger">*</span>
+                                       
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label font-weight-bold  "
+                                                for="status">Status
                                             </label>
                                             <div class="col-lg-6">
                                                 <select class="form-control @error('status') is-invalid @enderror"
                                                     id="status" name="status" disabled>
-                                                    <option value=>- - Pilih - -</option>
-                                                    <option value='0' {{ $apl01->status == '0' ? 'selected' : '' }}>
+                                                    <option value=""></option>
+                                                    <option value="0"
+                                                        @if ($apl01 != null) {{ $apl01->status === '0' ? 'selected' : '' }}@else{{ old('status') == '0' ? 'selected' : '' }} @endif>
                                                         Ditolak</option>
-                                                    <option value='1' {{ $apl01->status == '1' ? 'selected' : '' }}>
-                                                        Diterima</option>
+                                                    <option value="1"
+                                                        @if ($apl01 != null) {{ $apl01->status === '1' ? 'selected' : '' }}@else{{ old('status') == '1' ? 'selected' : '' }} @endif>
+                                                        Diterima
+                                                    </option>
                                                 </select>
                                                 @error('status')
                                                     <div class="invalid-feedback">
@@ -668,21 +672,24 @@
                                                     </div>
                                                 @enderror
                                             </div>
-                                        </div> --}}
+                                        </div>
                                     </div>
-                                            {{-- <div class="col-xl-6">
+                                            <div class="col-xl-6">
                                                 <div class="form-group row">
                                                     <label class="my-text">Catatan&emsp;:</label>
-                                                    <input class="form-control @error('note') is-invalid @enderror"
-                                                        value="{{ old('note', $apl01->note) }}" id="note" name="note"
-                                                        rows="5" placeholder="catatan" disabled>
+                                                    <textarea class="form-control @error('note') is-invalid @enderror"
+                                                    id="note" name="note"
+                                                        rows="5" placeholder="catatan" disabled> 
+                                                            @if ($apl01 != null) {{$apl01->note }}
+                                                            @else {{ Request::old('note') }}
+                                                            @endif</textarea>
                                                     @error('note')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
                                                         </div>
                                                     @enderror
                                                 </div>
-                                            </div> --}}
+                                            </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-xl-6">
@@ -712,6 +719,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col">
+                                        <center><a href="#" class="btn btn-dark">Ke Atas <span class="btn-icon-right"><i class="fa fa-arrow-up"></i></span></a></center>
+                                    </div> <br><br>
                                 </div>
                             </div>
                         </div>

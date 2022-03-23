@@ -16,7 +16,7 @@ class CreateApl01sTable extends Migration
         Schema::create('apl01', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('assessi_id')->unsigned();
-            $table->foreign('assessi_id')->references('id')->on('assessi');
+            $table->foreign('assessi_id')->references('id')->on('assessi')->onDelete("cascade");
             $table->string('nik');
             $table->string('name');
             $table->string('domicile');

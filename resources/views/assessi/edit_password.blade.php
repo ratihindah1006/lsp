@@ -16,6 +16,7 @@
                             <div class=" col-lg-8">
                                 <input type="password" class="form-control  @error('current_password') is-invalid @enderror"
                                     name="current_password" id="current_password">
+                                    
                                 @error('current_password')
                                     <div class="invalid-feedback">
                                         {{ $message }}

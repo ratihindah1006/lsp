@@ -16,10 +16,10 @@ class CreateCriteriasTable extends Migration
         Schema::create('criteria', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('element_id')->unsigned();
-            $table->foreign('element_id')->references('id')->on('element');
+            $table->foreign('element_id')->references('id')->on('element')->onDelete("cascade");
             $table->string('criteria_title');
             $table->timestamps();
-            $table->softDeletes();
+            
         });
     }
 

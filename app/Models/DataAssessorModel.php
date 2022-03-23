@@ -5,13 +5,13 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 
 class DataAssessorModel extends Authenticatable
 {
     use Notifiable;
-    use SoftDeletes;
+ 
     
     protected $table = "data_assessor";
     protected $primaryKey = "id";

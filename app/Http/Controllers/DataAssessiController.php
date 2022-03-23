@@ -76,13 +76,17 @@ class DataAssessiController extends Controller
      */
     public function edit(SchemaClassModel $class, AssessiModel $assessi)
     {
-        
+        $classId = $class->event->schema_class->pluck("id");
+        $data_assessi = DataAssessiModel::whereDoesntHave('assessis', function ($query) use ($classId) {
+            return $query->whereIn('class_id', $classId);
+        })->get();
+        $data_assessi->push($assessi->data_assessi);
         return view('admin.assessi.EditAssessi',[
             'title' => 'Data assessi',
             'class'=>$class,
             'assessis'=>$assessi,
             'assessor'=>$class->assessors,
-            'data_assessi'=> DataAssessiModel::all(),
+            'data_assessi'=> $data_assessi,
         ]);
     }
 

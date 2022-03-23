@@ -16,7 +16,6 @@
             </ol>
         </div>
     </div>
-    <div class=
     <form action="/edit_password_admin" method="post" enctype="multipart/form-data">
         @method('put')
         @csrf
@@ -67,7 +66,7 @@
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary float-right mr-3">Simpan <span class="btn-icon-right"><i
                                         class="fa fa-save"></i></span></button>
-                            <a href="/dashboard" class="btn btn-outline-primary float-right mr-2">Batal</a>
+                            <a href="/beranda" class="btn btn-outline-primary float-right mr-2">Batal</a>
                         </div>
                     </div>
                 </div>

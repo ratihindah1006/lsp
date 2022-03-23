@@ -51,7 +51,7 @@
                                                                 class="d-inline">
                                                                 @csrf
                                                                 @method('delete')
-                                                                <button class="btn btn-danger btn-sm border-0 delete-confirm" data-name="{{$value->name}}"><span
+                                                                <button class="btn btn-danger btn-sm border-0 delete-confirm" data-name="{{$value->event_name}}"><span
                                                                         class="ti-trash"></span>
                                                                 </button>
                                                             </form>

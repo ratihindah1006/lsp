@@ -52,6 +52,15 @@ class EventController extends Controller
             'status' => 'required',
         ]);
         $validateData['admin_id']=Auth::user()->id;
+        $tmp = explode(" - ", $validateData['event_time']);
+        $date1 = $tmp[0];
+        $date2 = $tmp[1];
+        if(!$this->isValidDate($date1)){
+            return back()->with('toast_error', 'Tanggal tidak valid!')->withInput($request->all());
+        }
+        if(!$this->isValidDate($date2)){
+            return back()->with('toast_error', 'Tanggal tidak valid!')->withInput($request->all());
+        }
         EventModel::create($validateData);
 
         return redirect('/event')->with('toast_success', 'Event berhasil di tambahkan!');
@@ -114,5 +123,12 @@ class EventController extends Controller
     {
         EventModel::destroy($event->id);
         return redirect('/event')->with('toast_success', 'Event berhasil di hapus!');
+    }
+
+    private function isValidDate($date)
+    {   
+        $date = strtotime($date);
+        $dateNow = time();
+        return $date >= $dateNow;
     }
 }

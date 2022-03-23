@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
+
 use Illuminate\Database\Eloquent\Model;
 
 class SchemaModel extends Model
@@ -18,7 +18,7 @@ class SchemaModel extends Model
         'competency_package'
        ];
     use HasFactory;
-    use SoftDeletes;
+   
 
     public function category()
     {

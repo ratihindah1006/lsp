@@ -15,7 +15,7 @@ class CreateAssessmentsTable extends Migration
     {
         Schema::create('assessment', function (Blueprint $table) {
             $table->id();
-            $table->foreign('assessment_id')->references('id')->on('apl02');
+            $table->foreign('assessment_id')->references('id')->on('apl02')->onDelete("cascade");
             $table->bigInteger('assessment_id')->unsigned();
             $table->string('value');
             $table->timestamps();

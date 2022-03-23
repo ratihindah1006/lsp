@@ -16,14 +16,13 @@ class CreateSchemaClassesTable extends Migration
         Schema::create('schema_class', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('event_id')->unsigned();
-            $table->foreign('event_id')->references('id')->on('event');
+            $table->foreign('event_id')->references('id')->on('event')->onDelete("cascade");
             $table->bigInteger('schema_id')->unsigned();
-            $table->foreign('schema_id')->references('id')->on('schema');
+            $table->foreign('schema_id')->references('id')->on('schema')->onDelete("cascade");
             $table->string('name');
             $table->string('description');
             $table->string('tuk');
             $table->string('date');
-            $table->softDeletes();
             $table->timestamps();
         });
     }

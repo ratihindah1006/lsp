@@ -16,12 +16,12 @@ class CreateAssessorsTable extends Migration
         Schema::create('assessor', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('class_id')->unsigned();
-            $table->foreign('class_id')->references('id')->on('schema_class');
+            $table->foreign('class_id')->references('id')->on('schema_class')->onDelete("cascade");
             $table->bigInteger('data_assessor_id')->unsigned();
-            $table->foreign('data_assessor_id')->references('id')->on('data_assessor');
+            $table->foreign('data_assessor_id')->references('id')->on('data_assessor')->onDelete("cascade");
             $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes();
+        
         });
     }
 
