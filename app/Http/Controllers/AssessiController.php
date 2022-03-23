@@ -12,6 +12,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException as ValidationException;
+use PDF;
 
 class AssessiController extends Controller
 {
@@ -34,6 +35,8 @@ class AssessiController extends Controller
             'data_assessi'=>$data_assessi,
         ]);
     }
+
+    
 
     public function update_password(Request $request)
     {

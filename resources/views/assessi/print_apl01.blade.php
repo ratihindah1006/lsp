@@ -1,8 +1,4 @@
-@extends('layout.assessi')
 
-@section('container')
-    <form action="/beranda/{{ $assessi->id }}" method="post" enctype="multipart/form-data">
-        @csrf
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-1"></div>
@@ -10,8 +6,8 @@
                     <div class="card text-dark">
                         <div class="card-footer">
                             <h2 class="font-weight-bold card-title">FR-APL-01 FORMULIR PERMOHONAN SERTIFIKASI KOMPETENSI</h2>
-                            <a href="/exportlaporan/{{$assessi->id}}" class="btn btn-whatsapp float-right mr-3">Cetak<span
-                                    class="btn-icon-right"><i class="ti ti-printer"></i></span></a>
+                            <button type="submit" class="btn btn-whatsapp float-right mr-3">Cetak<span
+                                    class="btn-icon-right"><i class="ti ti-printer"></i></span></button>
                             <button type="submit" class="btn btn-primary float-right mr-1">Simpan <span
                                     class="btn-icon-right"><i class="fa fa-save"></i></span></button>
                             <a href="/beranda" class="btn btn-danger float-right mr-1">Batal <span class="btn-icon-right"><i
@@ -728,5 +724,4 @@
                     </div>
                 </div>
             </div>
-    </form>
-@endsection
+   

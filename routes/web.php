@@ -159,6 +159,7 @@ Route::group(['middleware' => 'auth:assessi'], function () {
     Route::post('/apl02/store/{assessi:id}', [Apl02Controller::class, 'store']);
     Route::post('/assessi/muk06/store', [AssessiController::class, 'saveMUK06']);
     Route::get('/assessi/muk06/{assessi:id}', [AssessiController::class, 'muk06']);
+    Route::get('/exportlaporan/{assessi:id}',  [Apl01Controller::class, 'export'] );
 });
 
 Route::group(['middleware' => 'auth:assessor'], function () {

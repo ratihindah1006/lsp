@@ -7,7 +7,7 @@ use App\Models\AssessiModel;
 use App\Models\Apl01;
 use App\Models\SchemaClassModel;
 use Illuminate\Support\Facades\Auth;
-
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 use phpDocumentor\Reflection\Types\Null_;
@@ -82,5 +82,27 @@ class Apl01Controller extends Controller
         }
 
         return redirect('/beranda')->with('toast_success', 'Apl01 Berhasil diinput');
+    }
+
+    public function export( $id){
+        $data = DataAssessiModel::find(Auth::user()->id);
+        $data3=$data->assessis->find($id);
+        $assessi = DataAssessiModel::find(Auth::user()->id);    
+       
+        $print = PDF::loadview('assessi.print_apl01', 
+        //Sdd($assessi->assessis->find($id)->apl01);
+         [
+            'title' => 'APL 01',
+            'assessi'=>$data3,
+            'assessis' => $assessi->assessis->find($id)->schema_class->schema,
+            'apl01' => $assessi->assessis->find($id)->apl01,
+            
+        ]);
+        //mengambil data dan tampilan dari halaman laporan_pdf
+        //data di bawah ini bisa kalian ganti nantinya dengan data dari database
+        
+        //mendownload laporan.pdf
+        return $print->download('assessi.print_apl01');
+    	
     }
 }
