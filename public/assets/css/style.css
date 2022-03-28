@@ -1697,16 +1697,13 @@ select.form-control{
   border-top: 1px solid  #002629;
   border-right: 1px solid #002629;
 }
-select.form-control.maximum-search-length{
-  border-left: 5px solid #00838f;
-  border-bottom: 3px solid #002629;
-  border-top: 1px solid  #002629;
-  border-right: 1px solid #002629;
-}
+
 
 select.form-control:focus::-ms-value {
   color: #495057;
   background-color: #fff; }
+
+
 
 .form-control-file,
 .form-control-range {

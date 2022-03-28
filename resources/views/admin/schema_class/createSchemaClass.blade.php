@@ -42,7 +42,7 @@
                                         <div class="form-group">
                                             <label>Judul Event</label>
                                             <select style="width: 100%; height:40px; " name="event_id" id="event_id"
-                                                class="form-control maximum-search-length @error('event_id') is-invalid @enderror">
+                                                class="form-control  select2-search--dropdown @error('event_id') is-invalid @enderror">
                                                 <option value="">Pilih Event</option>
                                                 @foreach ($event as $events)
                                                     <option value="{{ $events->id }}" 
@@ -59,9 +59,9 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label>Judul Skema</label>
-                                            <select style="width: 100%; height:40px;" name="schema_id" id="schema_id"
-                                                class="form-control maximum-search-length @error('schema_id') is-invalid @enderror">
+                                            <label for="schema_id" class="form-label">Judul Skema</label>
+                                            <select  name="schema_id" id="schema_id"
+                                                class="form-control  @error('schema_id') is-invalid @enderror">
                                                 <option value="">Pilih Skema</option>
                                                 @foreach ($schema as $schemas)
                                                     <option value="{{ $schemas->id }}"
