@@ -156,7 +156,7 @@ Route::group(['middleware' => 'auth:assessi'], function () {
     Route::post('/beranda/{assessi:id}', [Apl01Controller::class, 'store']);
     Route::get('/apl01/{assessis:id}', [Apl01Controller::class, 'index']);
     Route::get('/apl02/{assessis:id}', [Apl02Controller::class, 'index']);
-    Route::get('/exportapl02/{assessis:id}', [Apl02Controller::class, 'export']);
+    Route::get('/exportapl02/{assessi:id}', [Apl02Controller::class, 'export']);
     Route::post('/apl02/store/{assessi:id}', [Apl02Controller::class, 'store']);
     Route::post('/assessi/muk06/store', [AssessiController::class, 'saveMUK06']);
     Route::get('/assessi/muk06/{assessi:id}', [AssessiController::class, 'muk06']);
@@ -173,6 +173,7 @@ Route::group(['middleware' => 'auth:assessor'], function () {
     Route::get('/list02/{assessi:id}', [AssessorController::class, 'apl02']);
     Route::put('/list01/{assessi:id}', [AssessorController::class, 'status_apl01']);
     Route::put('/list/02/{assessi:id}', [AssessorController::class, 'status_apl02']);
+    Route::get('/exportlaporanapl02/{assessi:id}',  [AssessorController::class, 'export'] );
     Route::get('/assessor/ak01/{assessi:id}', [AssessorController::class, 'ak01']);
     Route::put('/assessor/ak01/edit/{assessi:id}', [AssessorController::class, 'updAK01']);
     Route::get('/assessor/muk01/{assessi:id}', [AssessorController::class, 'muk01']);
