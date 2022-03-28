@@ -10,9 +10,15 @@
                 <div class="card text-dark">
                     <div class="card-footer">
                         <h2 class="font-weight-bold card-title">FR-APL-02 ASSESMEN MANDIRI</h2>
+                        @if ($apl02 != null)
                         <a href="/exportapl02/{{ $asesi->id }}" class="btn btn-whatsapp float-right mr-3">Cetak<span class="btn-icon-right"><i class="ti ti-printer"></i></span></a>
-                            <button type="submit" class="btn btn-primary float-right mr-1">Simpan <span class="btn-icon-right"><i class="fa fa-save"></i></span></button>
-                            <a href="/beranda" class="btn btn-danger float-right mr-1">Batal <span class="btn-icon-right"><i class="fa fa-close"></i></span></a>
+                        @else
+                        <a href="/exportapl02/{{ $asesi->id }}" class="btn btn-whatsapp float-right mr-3 disabled">Cetak<span class="btn-icon-right"><i class="ti ti-printer"></i></span></a>
+
+                        @endif
+
+                        <button type="submit" class="btn btn-primary float-right mr-1">Simpan <span class="btn-icon-right"><i class="fa fa-save"></i></span></button>
+                        <a href="/beranda" class="btn btn-danger float-right mr-1">Batal <span class="btn-icon-right"><i class="fa fa-close"></i></span></a>
                     </div>
 
                     <div class="card-body">
@@ -25,12 +31,14 @@
                         <p class="my-text">&emsp; Nama Asesi &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; : &emsp; {{$asesi->data_assessi->name}}</p>
                         <p class="my-text">&emsp; Tanggal &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; : &emsp; {{$asesi->schema_class->event->event_time}}</p><br>
                         <p class="my-text">&emsp; Asesi diminta untuk :</p>
-                        <p class="my-text">&emsp; 1. Mempelajari Kriteria Unjuk Kerja (KUK), Batasan Variabel, Panduan Penilaian, dan Aspek Kritis seluruh Unit Kompetensi yang diminta
-                            untuk di Ases.</p>
-                        <p class="my-text">&emsp; 2. Melaksanakan Penilaian Mandiri secara obyektif atas sejumlah pertanyaan yang diajukan, bilamana Anda menilai diri sudah kompeten atas
-                            pertanyaan tersebut, tuliskan tanda ? pada kolom (K), dan bilamana Anda menilai diri belum kompeten tuliskan tanda ? pada kolom (BK).</p>
-                        <p class="my-text">&emsp; 3. Mengisi bukti-bukti kompetensi yang relevan atas sejumlah pertanyaan yang dinyatakan Kompeten (bila ada).</p>
-                        <p class="my-text">&emsp; 4. Menandatangani form Asesmen Mandiri.</p>
+
+                        <li class="my-text">&emsp; , Batasan Variabel, Panduan Penilaian, dan Aspek Kritis seluruh Unit Kompetensi yang diminta
+                            untuk di Ases.</li>
+                        <li class="my-text">&emsp; Melaksanakan Penilaian Mandiri secara obyektif atas sejumlah pertanyaan yang diajukan, bilamana Anda menilai diri sudah kompeten atas
+                            pertanyaan tersebut, tuliskan tanda ? pada kolom (K), dan bilamana Anda menilai diri belum kompeten tuliskan tanda ? pada kolom (BK).</li>
+                        <li class="my-text">&emsp; Mengisi bukti-bukti kompetensi yang relevan atas sejumlah pertanyaan yang dinyatakan Kompeten (bila ada).</li>
+                        <li class="my-text">&emsp; Menandatangani form Asesmen Mandiri.</li>
+
                     </div>
                 </div>
             </div>

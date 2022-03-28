@@ -14,6 +14,7 @@ use App\Models\DataAssessorModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException as ValidationException;
+use PDF; //library pdf
 
 class AssessorController extends Controller
 {
@@ -109,6 +110,38 @@ class AssessorController extends Controller
                     'assessment' => $assessment,
 
                 ]);
+            }
+        }
+    }
+
+    public function export( $id){
+        $data_assessor = DataAssessorModel::find(Auth::user()->id);
+        foreach ($data_assessor->assessors as $a) {
+            $assessor = $a;
+            foreach ($a->assessis as $b) {
+                $assessi = $b;
+                if (isset($assessi->apl02->assessment)) {
+                    $assessment = json_decode($assessi->apl02->assessment);
+                } else {
+                    $assessment = [];
+                }
+                $print = PDF::loadview('assessor.print_apl02', [
+                    'title' => 'APL02',
+                    'assessi' => $assessi,
+                    'skema' => $assessi->schema_class->schema,
+                    'asesor' => $assessor,
+                    'apl01' => $assessi->apl01,
+                    'class' => $assessi->schema_class,
+                    'units' => $assessi->schema_class->schema->units,
+                    'apl02' => $assessi->apl02,
+                    'assessment' => $assessment,
+        
+                ]);
+                //mengambil data dan tampilan dari halaman laporan_pdf
+                //data di bawah ini bisa kalian ganti nantinya dengan data dari database
+                
+                //mendownload laporan.pdf
+                return $print->download('assessor.print_apl02');
             }
         }
     }
