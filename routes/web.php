@@ -174,6 +174,7 @@ Route::group(['middleware' => 'auth:assessor'], function () {
     Route::put('/list01/{assessi:id}', [AssessorController::class, 'status_apl01']);
     Route::put('/list/02/{assessi:id}', [AssessorController::class, 'status_apl02']);
     Route::get('/exportlaporanapl02/{assessi:id}',  [AssessorController::class, 'export'] );
+    Route::get('/exportlaporan_apl01/{assessi:id}',  [AssessorController::class, 'export_apl01'] );
     Route::get('/assessor/ak01/{assessi:id}', [AssessorController::class, 'ak01']);
     Route::put('/assessor/ak01/edit/{assessi:id}', [AssessorController::class, 'updAK01']);
     Route::get('/assessor/muk01/{assessi:id}', [AssessorController::class, 'muk01']);

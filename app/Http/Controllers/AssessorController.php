@@ -113,7 +113,23 @@ class AssessorController extends Controller
             }
         }
     }
-
+    public function export_apl01( $id){    
+        $data_assessor = DataAssessorModel::find(Auth::user()->id);
+        foreach ($data_assessor->assessors as $a) {
+            foreach ($a->assessis as $b) {
+                $assessi = $b;
+        $print = PDF::loadview('assessi.print_apl01', 
+         [
+            'apl01' => $assessi->apl01,
+            'assessi' => $assessi,
+            'title' => 'Skema',
+            'assessis' => $assessi->schema_class->schema,
+            
+        ]);
+        return $print->download('assessor.print_apl01');
+    }
+}
+    }
     public function export( $id){
         $data_assessor = DataAssessorModel::find(Auth::user()->id);
         foreach ($data_assessor->assessors as $a) {
