@@ -114,7 +114,7 @@ class AssessorController extends Controller
         }
     }
 
-    public function export( $id){
+    public function export(){
         $data_assessor = DataAssessorModel::find(Auth::user()->id);
         foreach ($data_assessor->assessors as $a) {
             $assessor = $a;

@@ -10,7 +10,7 @@
                 <div class="card text-dark">
                     <div class="card-footer">
                         <h2 class="font-weight-bold card-title">FR-APL-02 ASSESMEN MANDIRI</h2>
-                        @if ($apl02 != null)
+                        @if ($apl02->status != null)
                         <a href="/exportapl02/{{ $asesi->id }}" class="btn btn-whatsapp float-right mr-3">Cetak<span class="btn-icon-right"><i class="ti ti-printer"></i></span></a>
                         @else
                         <a href="/exportapl02/{{ $asesi->id }}" class="btn btn-whatsapp float-right mr-3 disabled">Cetak<span class="btn-icon-right"><i class="ti ti-printer"></i></span></a>
