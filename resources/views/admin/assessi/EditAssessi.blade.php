@@ -25,7 +25,7 @@
                                                 @foreach ($data_assessi as $assessi)
                                                     <option value="{{ $assessi->id }}"
                                                         {{ old('data_assessi_id', $assessis->data_assessi_id) == $assessi->id ? 'selected' : null }}>
-                                                        {{ $assessi->name }}</option>
+                                                        {{ $assessi->email }}</option>
                                                 @endforeach
                                             </select>
                                             @error('data_assessor_id')
@@ -43,7 +43,7 @@
                                                 @foreach ($assessor as $assessor)
                                                     <option value="{{ $assessor->id }}"
                                                         {{ old('assessor_id', $assessis->assessor_id) == $assessor->id ? 'selected' : null }}>
-                                                        {{ $assessor->data_assessor->name }}</option>
+                                                        {{ $assessor->data_assessor->email }}</option>
                                                 @endforeach
                                             </select>
                                             @error('assessor_id')

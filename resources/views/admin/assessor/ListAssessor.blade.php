@@ -36,7 +36,7 @@
                                                         @foreach ($assessor as $assessor)
                                                             <option value="{{ $assessor->id }}"
                                                                 {{ old('assessor_id') == $assessor->id ? 'selected' : null }}>
-                                                                {{ $assessor->name }}</option>
+                                                                {{ $assessor->email }}</option>
                                                         @endforeach
                                                     </select>
                                                     @error('assessor_id')

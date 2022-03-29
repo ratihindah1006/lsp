@@ -184,7 +184,7 @@
 
                             </tr>
                             <tr>
-                                <th>&ensp;TTD&ensp;</th>
+                                <td>&ensp;TTD&ensp;</td>
                                 <th>
                                     <div class="col-xl-4">
                                         <div class="input-group mb-3">
