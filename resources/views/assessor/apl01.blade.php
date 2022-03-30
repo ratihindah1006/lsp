@@ -11,8 +11,8 @@
                     < <div class="card text-dark">
                         <div class="card-footer">
                             <h2 class="font-weight-bold card-title">FR-APL-01 FORMULIR PERMOHONAN SERTIFIKASI KOMPETENSI</h2>
-                            <button type="submit" class="btn btn-whatsapp float-right mr-3">Cetak<span
-                                    class="btn-icon-right"><i class="ti ti-printer"></i></span></button>
+                            <a href="/exportlaporan_apl01/{{$assessi->id}}" class="btn btn-whatsapp float-right mr-3">Cetak<span
+                                class="btn-icon-right"><i class="ti ti-printer"></i></span></a>
                             <button type="submit" class="btn btn-primary float-right mr-1">Simpan <span
                                     class="btn-icon-right"><i class="fa fa-save"></i></span></button>
                             <a href="/assessor" class="btn btn-danger float-right mr-1">Batal <span

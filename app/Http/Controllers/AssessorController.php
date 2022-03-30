@@ -14,6 +14,7 @@ use App\Models\DataAssessorModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException as ValidationException;
+use PDF; //library pdf
 
 class AssessorController extends Controller
 {
@@ -112,6 +113,54 @@ class AssessorController extends Controller
             }
         }
     }
+    public function export_apl01( $id){    
+        $data_assessor = DataAssessorModel::find(Auth::user()->id);
+        foreach ($data_assessor->assessors as $a) {
+            foreach ($a->assessis as $b) {
+                $assessi = $b;
+        $print = PDF::loadview('assessi.print_apl01', 
+         [
+            'apl01' => $assessi->apl01,
+            'assessi' => $assessi,
+            'title' => 'Skema',
+            'assessis' => $assessi->schema_class->schema,
+            
+        ]);
+        return $print->download('assessor.print_apl01');
+    }
+}
+    }
+    public function export( $id){
+        $data_assessor = DataAssessorModel::find(Auth::user()->id);
+        foreach ($data_assessor->assessors as $a) {
+            $assessor = $a;
+            foreach ($a->assessis as $b) {
+                $assessi = $b;
+                if (isset($assessi->apl02->assessment)) {
+                    $assessment = json_decode($assessi->apl02->assessment);
+                } else {
+                    $assessment = [];
+                }
+                $print = PDF::loadview('assessor.print_apl02', [
+                    'title' => 'APL02',
+                    'assessi' => $assessi,
+                    'skema' => $assessi->schema_class->schema,
+                    'asesor' => $assessor,
+                    'apl01' => $assessi->apl01,
+                    'class' => $assessi->schema_class,
+                    'units' => $assessi->schema_class->schema->units,
+                    'apl02' => $assessi->apl02,
+                    'assessment' => $assessment,
+        
+                ]);
+                //mengambil data dan tampilan dari halaman laporan_pdf
+                //data di bawah ini bisa kalian ganti nantinya dengan data dari database
+                
+                //mendownload laporan.pdf
+                return $print->download('assessor.print_apl02');
+            }
+        }
+    }
 
     public function status_apl01(Request $request, Apl01 $apl01, $id)
     {
@@ -123,7 +172,7 @@ class AssessorController extends Controller
                     $validateData = $request->validate([
                         'assessor_signature' => 'required|image|file|max:1024',
                         'status' => 'required',
-                        'note' => 'required'
+                        
                     ]);
                     $validateData['assessi_id'] = $assessi->id;
                     $validateData['assessor_signature'] = $request->file('assessor_signature')->store('assessor_signature');

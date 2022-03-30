@@ -77,6 +77,8 @@ class Apl01Controller extends Controller
         if ($cek == Null) {
             Apl01::create($validateData);
         } else {
+            $validateData['status'] = Null;
+            $validateData['note'] = Null;
             Apl01::where('assessi_id', $asesi->id)
                 ->update($validateData);
         }

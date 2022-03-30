@@ -83,7 +83,7 @@ class DataAssessiController extends Controller
         $data_assessi->push($assessi->data_assessi);
         return view('admin.assessi.EditAssessi',[
             'title' => 'Data assessi',
-            'class'=>$class,
+            'class'=>$class->id,
             'assessis'=>$assessi,
             'assessor'=>$class->assessors,
             'data_assessi'=> $data_assessi,

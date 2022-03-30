@@ -10,8 +10,19 @@
                     <div class="card text-dark">
                         <div class="card-footer">
                             <h2 class="font-weight-bold card-title">FR-APL-01 FORMULIR PERMOHONAN SERTIFIKASI KOMPETENSI</h2>
+                            @if($apl01 != null)
+                            @if ($apl01->status == '1') 
                             <a href="/exportlaporan/{{$assessi->id}}" class="btn btn-whatsapp float-right mr-3">Cetak<span
                                     class="btn-icon-right"><i class="ti ti-printer"></i></span></a>
+                            @else
+                                <a href="/exportlaporan/{{$assessi->id}}" class="btn btn-whatsapp float-right mr-3  disabled">Cetak<span
+                                    class="btn-icon-right"><i class="ti ti-printer"></i></span></a>
+                            
+                            @endif
+                            @else
+                            <a href="/exportlaporan/{{$assessi->id}}" class="btn btn-whatsapp float-right mr-3  disabled">Cetak<span
+                                class="btn-icon-right"><i class="ti ti-printer"></i></span></a>
+                            @endif
                             <button type="submit" class="btn btn-primary float-right mr-1">Simpan <span
                                     class="btn-icon-right"><i class="fa fa-save"></i></span></button>
                             <a href="/beranda" class="btn btn-danger float-right mr-1">Batal <span class="btn-icon-right"><i
