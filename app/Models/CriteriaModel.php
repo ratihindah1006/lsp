@@ -9,7 +9,7 @@ class CriteriaModel extends Model
 { 
     protected $table = "criteria";
     protected $fillable = [
-    'criteria_code',
+    'no_criteria',
     'criteria_title',
     'element_id'
    ];

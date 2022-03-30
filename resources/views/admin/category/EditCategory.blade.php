@@ -29,6 +29,17 @@
                         </div>
                         <div class="card-content-center">
                             <div class="card-body">
+
+                                <div class="form-group">
+                                    <label for="no_skkni" class="form-label">Judul Bidang</label>
+                                    <input type="text" class="form-control @error('no_skkni') is-invalid @enderror" id="no_skkni" name="no_skkni" value="{{ old('no_skkni', $category->no_skkni) }}">
+                                    @error('no_skkni')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                                
                                 <div class="form-group">
                                     <label for="category_title" class="form-label">Judul Kategori</label>
                                     <input type="text" class="form-control @error('category_title') is-invalid @enderror" id="category_title" name="category_title" value="{{ old('category_title', $category->category_title) }}">
@@ -39,15 +50,7 @@
                                     @enderror
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="field_title" class="form-label">Judul Bidang</label>
-                                    <input type="text" class="form-control @error('field_title') is-invalid @enderror" id="field_title" name="field_title" value="{{ old('field_title', $category->field_title) }}">
-                                    @error('field_title')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
+                                
                                 <div class="card-footer mb-3">
                                     <button type="submit" class="btn btn-warning float-right mr-3">Simpan <span class="btn-icon-right"><i class="fa fa-save"></i></span></button>
                                     <a href="/category" class="btn btn-outline-primary float-right mr-2">Batal</a>

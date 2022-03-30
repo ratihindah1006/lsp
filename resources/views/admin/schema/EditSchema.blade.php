@@ -10,15 +10,14 @@
         </div>
         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/category">Kategori</a></li>
-                <li class="breadcrumb-item"><a href="/category/{{ $category->id }}/schema">Skema</a></li>
+                <li class="breadcrumb-item"><a href="/skema">Skema</a></li>
                 <li class="breadcrumb-item"><a href="">Edit Data Skema</a></li>
             </ol>
         </div>
     </div>
 </div>
 
-<form method="post" action="/category/{{ $category->id }}/schema/{{ $schema->id }}">
+<form method="post" action="/skema/{{ $schema->id }}">
     @method('put')
     @csrf
     <div class="col-lg-8">
@@ -31,11 +30,17 @@
                         </div>
                         <div class="card-content-center">
                             <div class="card-body">
-
                                 <div class="form-group">
-                                    <label for="schema_title" class="form-label">Judul Skema</label>
-                                    <input type="text" class="form-control @error('schema_title') is-invalid @enderror" id="schema_title" name="schema_title" value="{{ old('schema_title', $schema->schema_title) }}">
-                                    @error('schema_title')
+                                    <label>Judul Kategori</label>
+                                    <select style="width: 100%; height:40px;" name="category_id" id="category_id" class="form-control maximum-search-length @error('category_id') is-invalid @enderror">
+                                        <option value=""></option>
+                                        @foreach ($category as $categorys)
+                                        <option value="{{ $categorys->id }}" {{ old('category_id', $schema->category_id) == $categorys->id ? 'selected' : null }}>
+                                            {{ $categorys->category_title }}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                    @error('category_id')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -43,9 +48,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="no_skkni" class="form-label">No. Skkni</label>
-                                    <input type="text" class="form-control @error('no_skkni') is-invalid @enderror" id="no_skkni" name="no_skkni" value="{{ old('no_skkni', $schema->no_skkni) }}">
-                                    @error('no_skkni')
+                                    <label for="schema_title" class="form-label">Judul Skema</label>
+                                    <input type="text" class="form-control @error('schema_title') is-invalid @enderror" id="schema_title" name="schema_title" value="{{ old('schema_title', $schema->schema_title) }}">
+                                    @error('schema_title')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -92,7 +97,7 @@
 
                                 <div class="card-footer mb-3">
                                     <button type="submit" class="btn btn-warning float-right mr-3">Simpan <span class="btn-icon-right"><i class="fa fa-save"></i></span></button>
-                                    <a href="/category/{{ $category->id }}/schema" class="btn btn-outline-primary float-right mr-2">Batal</a>
+                                    <a href="/skema" class="btn btn-outline-primary float-right mr-2">Batal</a>
                                 </div>
 
                             </div>

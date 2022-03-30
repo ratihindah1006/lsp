@@ -117,6 +117,9 @@
                     <li class="{{ request()->is('event/*') ? 'mm-active' : '' }}"><a href="/event"
                             aria-expanded="false"><i class="icon icon-time"></i><span
                                 class="nav-text">Event</span></a></li>
+                    <li class="{{ request()->is('KelasSkema/*') ? 'mm-active' : '' }}"><a href="/KelasSkema"
+                            aria-expanded="false"><i class="ti ti-layout-grid2"></i><span
+                                class="nav-text">Kelas Skema</span></a></li>
                     <li class="nav-label">Data Pengguna</li>
                     <li class="{{ request()->is('dataAssessi/*') ? 'mm-active' : '' }}"><a href="/dataAssessi"
                             aria-expanded="false"><i class="icon icon-single-04"></i><span
@@ -128,9 +131,9 @@
                     <li class="{{ request()->is('category/*') ? 'mm-active' : '' }}"><a href="/category"
                             aria-expanded="false"><i class="icon icon-single-copy-06"></i><span
                                 class="nav-text">Kategori</span></a></li>
-                    <li class="{{ request()->is('KelasSkema/*') ? 'mm-active' : '' }}"><a href="/KelasSkema"
-                            aria-expanded="false"><i class="ti ti-layout-grid2"></i><span class="nav-text">Kelas
-                                Skema</span></a></li>
+                    <li class="{{ request()->is('skema/*') ? 'mm-active' : '' }}"><a href="/skema"
+                            aria-expanded="false"><i class="icon icon-single-copy-06"></i><span
+                                class="nav-text">Skema</span></a></li>
                     <li class="nav-label">Soal</li>
                     <li class="{{ request()->is('soal/*') ? 'mm-active' : '' }}"><a href="/soal"
                             aria-expanded="false"><i class="icon icon-edit-72"></i><span class="nav-text">Soal

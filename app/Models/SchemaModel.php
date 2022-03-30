@@ -12,7 +12,7 @@ class SchemaModel extends Model
     protected $fillable = [
         'schema_title',
         'no_skkni',
-        'field_id',
+        'category_id',
         'cost',
         'requirement',
         'competency_package'
@@ -22,7 +22,7 @@ class SchemaModel extends Model
 
     public function category()
     {
-        return $this->belongsTo(CategoryModel::class, 'field_id', 'id');
+        return $this->belongsTo(CategoryModel::class, 'category_id', 'id');
     }
     public function units()
     {
@@ -43,6 +43,10 @@ class SchemaModel extends Model
     public function codes()
     {
         return $this->hasMany(CodeQuestion::class, 'schema_id', 'id'); 
+    }
+    public function unit_schemas()
+    {
+        return $this->hasMany(UnitSchemaModel::class, 'schema_id', 'id'); 
     }
 
 }

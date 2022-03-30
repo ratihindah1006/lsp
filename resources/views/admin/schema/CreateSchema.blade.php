@@ -10,8 +10,7 @@
         </div>
         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/category">Kategori</a></li>
-                <li class="breadcrumb-item"><a href="/category/{{ $category }}/schema">Skema</a></li>
+                <li class="breadcrumb-item"><a href="/schema">Skema</a></li>
                 <li class="breadcrumb-item"><a href="">Tambah Data Skema</a></li>
             </ol>
         </div>
@@ -19,7 +18,7 @@
 </div>
 
 <div class="col-lg-8">
-    <form method="post" action="/category/{{ $category }}/schema">
+    <form method="post" action="/skema">
         @csrf
         <div class="card-center">
             <div class="row mt-1">
@@ -29,21 +28,26 @@
                             <h3 class="card-title">Tambah Skema</h3>
                         </div>
                         <div class="card-body">
-
+                        <div class="col-12">
+                                        <div class="form-group">
+                                        <label>Judul Kategori</label>
+                                          <select class="form-control maximum-search-length @error('category_id') is-invalid @enderror" style="width: 100%; height:40px;" name="category_id" id="category_id">
+                                            <option value=""></option>
+                                            @foreach ($category as $category)
+                                            <option value="{{ $category->id }}" {{ old("category_id") == $category->id ? 'selected' : null }}>{{ $category->category_title }}</option>
+                                            @endforeach
+                                          </select>
+                                          @error('category_id')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
                             <div class="form-group">
                                 <label for="schema_title" class="form-label">Judul Skema</label>
                                 <input type="text" class="form-control @error('schema_title') is-invalid @enderror" id="schema_title" name="schema_title" value="{{ old('schema_title') }}">
                                 @error('schema_title')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="no_skkni" class="form-label">No. Skkni</label>
-                                <input type="text" class="form-control @error('no_skkni') is-invalid @enderror" id="no_skkni" name="no_skkni" value="{{ old('no_skkni') }}">
-                                @error('no_skkni')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>

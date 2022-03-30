@@ -27,8 +27,8 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
+                                                <th>Nomor SKKNI </th>
                                                 <th>Judul Kategori</th>
-                                                <th>Judul Bidang</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -36,10 +36,10 @@
                                             @foreach($category as $value)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $value->no_skkni }}</td>
                                                 <td>{{ $value->category_title }}</td>
-                                                <td>{{ $value->field_title }}</td>
                                                 <td align="center">
-                                                    <a href="/category/{{ $value->id }}/schema" class="btn btn-primary btn-sm"><span class="ti-info"></span></a>
+                                                    <a href="/category/{{ $value->id }}/unit" class="btn btn-primary btn-sm"><span class="ti-info"></span></a>
                                                     <a href="/category/{{ $value->id }}/edit" class="btn btn-warning btn-sm"><span class="ti-pencil"></span></a>
                                                     <form action="/category/{{ $value->id }}" method="POST" class="d-inline">
                                                         @csrf

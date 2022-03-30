@@ -12,11 +12,10 @@ use Illuminate\Http\Request;
 
 class CriteriaController extends Controller
 {
-    public function index(CategoryModel $category, SchemaModel $schema, UnitModel $unit, ElementModel $element)
+    public function index(CategoryModel $category, UnitModel $unit, ElementModel $element)
     {
         return view('admin.criteria.ListCriteria', [
             'category' => $category->id,
-            'schema' => $schema->id,
             'unit' => $unit->id,
             'element' => $element,
             'criteria' => $element->criterias,
@@ -24,26 +23,26 @@ class CriteriaController extends Controller
         ]);
     }
 
-    public function create($category, $schema, $unit, $element)
+    public function create($category, $unit, $element)
     {
         return view('admin.criteria.CreateCriteria', [
             'category' => $category,
-            'schema' => $schema,
             'unit' => $unit,
             'element' => $element,
             'title' => 'Kriteria'
         ]);
     }
 
-    public function store(Request $request, CategoryModel $category, SchemaModel $schema, UnitModel $unit, ElementModel $element)
+    public function store(Request $request, CategoryModel $category, UnitModel $unit, ElementModel $element)
     {
         $validateData = $request->validate([
             'criteria_title' => 'required',
+            'no_criteria' => 'required'
         ]);
         $validateData['element_id'] = $element->id;
         CriteriaModel::create($validateData);
 
-        return redirect('/category' . '/' . $category->id . '/schema' . '/' . $schema->id . '/unit' . '/'
+        return redirect('/category' . '/' . $category->id .  '/unit' . '/'
             . $unit->id . '/element' . '/' . $element->id . '/criteria')
             ->with('toast_success', 'Kriteria berhasil di tambahkan!');
     }
@@ -60,11 +59,10 @@ class CriteriaController extends Controller
         //
     }
 
-    public function edit(CategoryModel $category, SchemaModel $schema, UnitModel $unit, ElementModel $element, CriteriaModel $criteria)
+    public function edit(CategoryModel $category, UnitModel $unit, ElementModel $element, CriteriaModel $criteria)
     {
         return view('admin.criteria.EditCriteria', [
             'category' => $category,
-            'schema' => $schema,
             'unit' => $unit,
             'element' => $element,
             'criteria' => $criteria,
@@ -72,25 +70,26 @@ class CriteriaController extends Controller
         ]);
     }
 
-    public function update(Request $request, CategoryModel $category, SchemaModel $schema, UnitModel $unit, ElementModel $element, CriteriaModel $criteria)
+    public function update(Request $request, CategoryModel $category, UnitModel $unit, ElementModel $element, CriteriaModel $criteria)
     {
         $rules = [
-            'criteria_title' => 'required'
+            'criteria_title' => 'required',
+            'no_criteria' => 'required'
         ];
         
         $validateData['element_id'] = $element->id;
         $validateData = $request->validate($rules);
         $criteria->update($validateData);
 
-        return redirect('/category' . '/' . $category->id . '/schema' . '/' . $schema->id . '/unit' . '/'
+        return redirect('/category' . '/' . $category->id . '/unit' . '/'
             . $unit->id . '/element' . '/' . $element->id . '/criteria')
             ->with('toast_success', 'Kriteria berhasil di Update!');
     }
 
-    public function destroy(CategoryModel $category, SchemaModel $schema, UnitModel $unit, ElementModel $element, CriteriaModel $criteria)
+    public function destroy(CategoryModel $category, UnitModel $unit, ElementModel $element, CriteriaModel $criteria)
     {
         $criteria->delete();
-        return redirect('/category' . '/' . $category->id . '/schema' . '/' . $schema->id . '/unit' . '/'
+        return redirect('/category' . '/' . $category->id . '/unit' . '/'
             . $unit->id . '/element' . '/' . $element->id . '/criteria')
             ->with('toast_success', 'Kriteria berhasil di hapus!');
     }

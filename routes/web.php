@@ -18,6 +18,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataAssessiController;
 use App\Http\Controllers\SchemaClassController;
 use App\Http\Controllers\DataAssessorController;
+use App\Http\Controllers\UnitSchemaController;
 use App\Http\Controllers\AdminController;
 
 /*
@@ -118,26 +119,40 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::delete('/category/{category:id}/schema/{schema:id}', [SchemaController::class, 'destroy']);
 
     
-    Route::get('/category/{category:id}/schema/{schema:id}/unit', [UnitController::class, 'index']);
-    Route::get('/category/{category:id}/schema/{schema:id}/unit/create', [UnitController::class, 'create']);
-    Route::post('/category/{category:id}/schema/{schema:id}/unit', [UnitController::class, 'store']);
-    Route::get('/category/{category:id}/schema/{schema:id}/unit/{unit:id}/edit', [UnitController::class, 'edit']);
-    Route::put('/category/{category:id}/schema/{schema:id}/unit/{unit:id}', [UnitController::class, 'update']);
-    Route::delete('/category/{category:id}/schema/{schema:id}/unit/{unit:id}', [UnitController::class, 'destroy']);
+    Route::get('/category/{category:id}/unit', [UnitController::class, 'index']);
+    Route::get('/category/{category:id}/unit/create', [UnitController::class, 'create']);
+    Route::post('/category/{category:id}/unit', [UnitController::class, 'store']);
+    Route::get('/category/{category:id}/unit/{unit:id}/edit', [UnitController::class, 'edit']);
+    Route::put('/category/{category:id}/unit/{unit:id}', [UnitController::class, 'update']);
+    Route::delete('/category/{category:id}/unit/{unit:id}', [UnitController::class, 'destroy']);
 
-    Route::get('/category/{category:id}/schema/{schema:id}/unit/{unit:id}/element', [ElementController::class, 'index']);
-    Route::post('/category/{category:id}/schema/{schema:id}/unit/{unit:id}/element', [ElementController::class, 'store']);
-    Route::get('/category/{category:id}/schema/{schema:id}/unit/{unit:id}/element/{element:id}/edit', [ElementController::class, 'edit']);
-    Route::put('/category/{category:id}/schema/{schema:id}/unit/{unit:id}/element/{element:id}', [ElementController::class, 'update']);
-    Route::delete('/category/{category:id}/schema/{schema:id}/unit/{unit:id}/element/{element:id}', [ElementController::class, 'destroy']);
+    Route::get('/category/{category:id}/unit/{unit:id}/element', [ElementController::class, 'index']);
+    Route::post('/category/{category:id}/unit/{unit:id}/element', [ElementController::class, 'store']);
+    Route::get('/category/{category:id}/unit/{unit:id}/element/{element:id}/edit', [ElementController::class, 'edit']);
+    Route::put('/category/{category:id}/unit/{unit:id}/element/{element:id}', [ElementController::class, 'update']);
+    Route::delete('/category/{category:id}/unit/{unit:id}/element/{element:id}', [ElementController::class, 'destroy']);
 
-    Route::get('/category/{category:id}/schema/{schema:id}/unit/{unit:id}/element/{element:id}/criteria', [CriteriaController::class, 'index']);
-    Route::get('/category/{category:id}/schema/{schema:id}/unit/{unit:id}/element/{element:id}/criteria/create', [CriteriaController::class, 'create']);
-    Route::post('/category/{category:id}/schema/{schema:id}/unit/{unit:id}/element/{element:id}/criteria', [CriteriaController::class, 'store']);
-    Route::get('/category/{category:id}/schema/{schema:id}/unit/{unit:id}/element/{element:id}/criteria/{criteria:id}/edit', [CriteriaController::class, 'edit']);
-    Route::put('/category/{category:id}/schema/{schema:id}/unit/{unit:id}/element/{element:id}/criteria/{criteria:id}', [CriteriaController::class, 'update']);
-    Route::delete('/category/{category:id}/schema/{schema:id}/unit/{unit:id}/element/{element:id}/criteria/{criteria:id}', [CriteriaController::class, 'destroy']);    
+    Route::get('/category/{category:id}/unit/{unit:id}/element/{element:id}/criteria', [CriteriaController::class, 'index']);
+    Route::get('/category/{category:id}/unit/{unit:id}/element/{element:id}/criteria/create', [CriteriaController::class, 'create']);
+    Route::post('/category/{category:id}/unit/{unit:id}/element/{element:id}/criteria', [CriteriaController::class, 'store']);
+    Route::get('/category/{category:id}/unit/{unit:id}/element/{element:id}/criteria/{criteria:id}/edit', [CriteriaController::class, 'edit']);
+    Route::put('/category/{category:id}/unit/{unit:id}/element/{element:id}/criteria/{criteria:id}', [CriteriaController::class, 'update']);
+    Route::delete('/category/{category:id}/unit/{unit:id}/element/{element:id}/criteria/{criteria:id}', [CriteriaController::class, 'destroy']); 
     
+    Route::get('/skema', [SchemaController::class, 'index']);
+    Route::get('/skema/create', [SchemaController::class, 'create']);
+    Route::post('/skema', [SchemaController::class, 'store']);
+    Route::get('/skema/{schema:id}/edit', [SchemaController::class, 'edit']);
+    Route::put('/skema/{schema:id}', [SchemaController::class, 'update']);
+    Route::delete('/skema/{schema:id}', [SchemaController::class, 'destroy']);
+
+    Route::get('/skema/{schema:id}/unit', [UnitSchemaController::class, 'index']);
+    Route::get('/skema/{schema:id}/unit/create', [UnitSchemaController::class, 'create']);
+    Route::post('/skema/{schema:id}/unit', [UnitSchemaController::class, 'store']);
+    Route::get('/skema/{schema:id}/unit/{unit:id}/edit', [UnitSchemaController::class, 'edit']);
+    Route::put('/skema/{schema:id}/unit/{unit:id}', [UnitSchemaController::class, 'update']);
+    Route::delete('/skema/{schema:id}/unit/{unit:id}', [UnitSchemaController::class, 'destroy']);
+
     Route::get('/soal', [QuestionController::class, 'index']);
     Route::get('/soal/create', [QuestionController::class, 'create']);
     Route::post('/soal', [QuestionController::class, 'store']);

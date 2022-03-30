@@ -12,14 +12,14 @@ class UnitModel extends Model
     protected $fillable = [
         'unit_code',
         'unit_title',
-        'schema_id'
+        'category_id'
        ];
     use HasFactory;
     
 
-    public function schema()
+    public function category()
     {
-        return $this->belongsTo(SchemaModel::class);
+        return $this->belongsTo(CategoryModel::class);
     }
 
     public function assessi()
@@ -31,7 +31,10 @@ class UnitModel extends Model
     {
         return $this->hasMany(ElementModel::class, 'unit_id', 'id'); 
     }
-
+    public function unit_schemas()
+    {
+        return $this->hasMany(UnitSchemaModel::class, 'unit_id', 'id'); 
+    }
     public function answer()
     {
         return $this->hasMany(Answer::class, 'unit_id', 'id');

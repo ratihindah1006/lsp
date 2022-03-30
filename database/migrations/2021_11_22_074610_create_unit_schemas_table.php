@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateElementsTable extends Migration
+class CreateUnitSchemasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateElementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('element', function (Blueprint $table) {
+        Schema::create('unit_schema', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('schema_id')->unsigned();
+            $table->foreign('schema_id')->references('id')->on('schema')->onDelete("cascade");
             $table->bigInteger('unit_id')->unsigned();
             $table->foreign('unit_id')->references('id')->on('unit')->onDelete("cascade");
-            $table->string('no_element');
-            $table->string('element_title');
+            
             $table->timestamps();
-            
+          
         });
-            
-        
     }
 
     /**
@@ -33,6 +32,6 @@ class CreateElementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('element');
+        //
     }
 }

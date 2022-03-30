@@ -16,13 +16,12 @@ class UnitController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(CategoryModel $category, SchemaModel $schema,AdminModel $admin)
+    public function index(CategoryModel $category, AdminModel $admin)
     {
         $data=$admin->where('id', Auth::user()->id)->get();
         return view('admin.unit.ListUnit', [
-            'category'=>$category->id,
-            'schema' => $schema,
-            'unit' => $schema->units,
+            'category'=>$category,
+            'unit' => $category->units,
             'title' => 'Unit',
             'admin'=>$data
         ]);
@@ -33,11 +32,10 @@ class UnitController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($category, $schema)
+    public function create($category)
     {
         return view('admin.unit.CreateUnit', [
             'category'=>$category,
-            'schema'=>$schema,
             'title' => 'Unit'
         ]);
     }
@@ -48,16 +46,16 @@ class UnitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, CategoryModel $category, SchemaModel $schema)
+    public function store(Request $request, CategoryModel $category)
     {
         $validateData = $request->validate([
             'unit_code' => 'required|unique:unit',
             'unit_title' => 'required',
         ]);
-        $validateData['schema_id']=$schema->id;
+        $validateData['category_id']=$category->id;
         UnitModel::create($validateData);
 
-        return redirect('/category'.'/'.$category->id.'/schema'.'/'.$schema->id.'/unit')->with('toast_success', 'Unit berhasil di tambahkan!');
+        return redirect('/category'.'/'.$category->id.'/unit')->with('toast_success', 'Unit berhasil di tambahkan!');
     }
 
     /**
@@ -77,11 +75,10 @@ class UnitController extends Controller
      * @param  \App\Models\UnitModel  $unitModel
      * @return \Illuminate\Http\Response
      */
-    public function edit(CategoryModel $category, SchemaModel $schema, UnitModel $unit)
+    public function edit(CategoryModel $category, UnitModel $unit)
     {
         return view('admin.unit.EditUnit', [
             'category'=>$category,
-            'schema' => $schema,
             'unit' => $unit,
             'title' => 'Unit'
         ]);
@@ -94,7 +91,7 @@ class UnitController extends Controller
      * @param  \App\Models\UnitModel  $unitModel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CategoryModel $category, SchemaModel $schema, UnitModel $unit)
+    public function update(Request $request, CategoryModel $category, UnitModel $unit)
     {
         $rules = [
             'unit_title' => 'required'
@@ -102,11 +99,11 @@ class UnitController extends Controller
         if($request->unit_code != $unit->unit_code){
             $rules['unit_code'] = 'required|unique:unit';
         }
-        $validateData['schema_id']=$schema->id;
+        $validateData['category_id']=$category->id;
         $validateData= $request->validate($rules);
         $unit->update($validateData);
 
-        return redirect('/category'.'/'.$category->id.'/schema'.'/'.$schema->id.'/unit')->with('toast_success', 'Unit berhasil di Update!');
+        return redirect('/category'.'/'.$category->id.'/unit')->with('toast_success', 'Unit berhasil di Update!');
     }
 
     /**
@@ -115,9 +112,9 @@ class UnitController extends Controller
      * @param  \App\Models\UnitModel  $unitModel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CategoryModel $category, SchemaModel $schema, UnitModel $unit)
+    public function destroy(CategoryModel $category, UnitModel $unit)
     {
         $unit->delete();
-        return redirect('/category'.'/'.$category->id.'/schema'.'/'.$schema->id.'/unit')->with('toast_success', 'Unit berhasil di hapus!');
+        return redirect('/category'.'/'.$category->id.'/unit')->with('toast_success', 'Unit berhasil di hapus!');
     }
 }

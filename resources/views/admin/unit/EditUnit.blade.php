@@ -11,15 +11,14 @@
         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/category">Kategori</a></li>
-                <li class="breadcrumb-item"><a href="/category/{{ $category->id }}/schema">Skema</a></li>
-                <li class="breadcrumb-item active"><a href="/category/{{ $category->id }}/schema/{{ $schema->id }}/unit"> Unit</a></li>
+                <li class="breadcrumb-item active"><a href="/category/{{ $category->id }}/unit"> Unit</a></li>
                 <li class="breadcrumb-item"><a href="">Edit Data Unit</a></li>
             </ol>
         </div>
     </div>
 </div>
 
-<form method="post" action="/category/{{ $category->id }}/schema/{{ $schema->id }}/unit/{{ $unit->id }}">
+<form method="post" action="/category/{{ $category->id }}/unit/{{ $unit->id }}">
     @method('put')
     @csrf
     <div class="col-lg-8">
@@ -53,7 +52,7 @@
                                 </div>
                                 <div class="card-footer mb-3">
                                     <button type="submit" class="btn btn-warning float-right mr-3">Simpan <span class="btn-icon-right"><i class="fa fa-save"></i></span></button>
-                                    <a href="/category/{{ $category->id }}/schema/{{ $schema->id }}/unit" class="btn btn-outline-primary float-right mr-2">Batal</a>
+                                    <a href="/category/{{ $category->id }}/unit" class="btn btn-outline-primary float-right mr-2">Batal</a>
                                 </div>
                             </div>
                         </div>

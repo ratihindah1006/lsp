@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AdminModel;
 use App\Models\CategoryModel;
-use App\Models\SchemaModel;
+use App\Models\UnitModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +15,7 @@ class CategoryController extends Controller
         $data = $admin->where('id', Auth::user()->id)->get();
         return view('admin.category.ListCategory', [
             'category' => CategoryModel::all(),
-            'schema' => SchemaModel::all(),
+            'unit' => UnitModel::all(),
             'title' => 'Category',
             'admin' => $data
         ]);
@@ -33,7 +33,7 @@ class CategoryController extends Controller
 
         $validateData = $request->validate([
             'category_title' => 'required',
-            'field_title' => 'required',
+            'no_skkni' => 'required',
         ]);
 
         CategoryModel::create($validateData);
@@ -58,7 +58,7 @@ class CategoryController extends Controller
     {
         $rules = [
             'category_title' => 'required',
-            'field_title' => 'required',
+            'no_skkni' => 'required',
         ];
         
         $validateData = $request->validate($rules);

@@ -18,12 +18,11 @@ class SchemaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(CategoryModel $category, AdminModel $admin)
+    public function index(AdminModel $admin)
     {
         $data=$admin->where('id', Auth::user()->id)->get();
         return view('admin.schema.ListSchema', [
-            'category'=>$category,
-            'schema' => $category->schemas,
+            'schema' => SchemaModel::all(),
             'title' => 'Skema',
             'admin'=>$data
         ]);
@@ -34,10 +33,10 @@ class SchemaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($category)
+    public function create()
     {
         return view('admin.schema.CreateSchema', [
-            'category'=>$category,
+            'category'=>CategoryModel::all(),
             'title' => 'Skema'
         ]);
     }
@@ -48,19 +47,18 @@ class SchemaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, CategoryModel $category)
+    public function store(Request $request)
     {
         $validateData = $request->validate([
+            'category_id' => 'required',
             'schema_title' => 'required',
-            'no_skkni' => 'required|unique:schema',
             'requirement' => 'required',
             'competency_package' => 'required',
             'cost' => 'required',
         ]);
-        $validateData['field_id']=$category->id;
         SchemaModel::create($validateData);
 
-        return redirect('/category'.'/'.$category->id.'/schema')->with('toast_success', 'Skema berhasil di tambahkan!');
+        return redirect('/skema')->with('toast_success', 'Skema berhasil di tambahkan!');
     }
 
     /**
@@ -88,10 +86,9 @@ class SchemaController extends Controller
      * @param  \App\Models\SchemaModel  $schemaModel
      * @return \Illuminate\Http\Response
      */
-    public function edit(CategoryModel $category, SchemaModel $schema)
-    {
+    public function edit( SchemaModel $schema)    {
         return view('admin.schema.EditSchema', [
-            'category'=>$category,
+            'category'=>CategoryModel::all(),
             'schema' => $schema,
             'title' => 'Skema'
         ]);
@@ -107,19 +104,18 @@ class SchemaController extends Controller
     public function update(Request $request, CategoryModel $category, SchemaModel $schema)
     {
         $rules=[
+            'category_id' => 'required',
             'schema_title' => 'required',
             'requirement' => 'required',
             'competency_package' => 'required',
             'cost' => 'required',
         ];
-        if($request->no_skkni != $schema->no_skkni){
-            $rules['no_skkni'] = 'required|unique:schema';
-        }
-        $validateData['field_id']=$category->id;
+        
+      
         $validateData= $request->validate($rules);
         $schema->update($validateData);
 
-        return redirect('/category'.'/'.$category->id.'/schema')->with('toast_success', 'Skema berhasil di Update!');
+        return redirect('/skema')->with('toast_success', 'Skema berhasil di Update!');
     }
 
     /**
@@ -131,6 +127,6 @@ class SchemaController extends Controller
     public function destroy(CategoryModel $category, SchemaModel $schema)
     {
         $schema->delete();
-        return redirect('/category'.'/'.$category->id.'/schema')->with('toast_success', 'Skema berhasil di hapus!');
+        return redirect('/skema')->with('toast_success', 'Skema berhasil di hapus!');
     }
 }

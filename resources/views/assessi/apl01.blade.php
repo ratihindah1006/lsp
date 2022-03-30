@@ -522,7 +522,7 @@
                                         <div class="form-group row">
                                             <label class="col-lg-10  my-text " for="">Nomor
                                                 Skema&emsp;&emsp;&emsp;&emsp;:&emsp;&emsp;
-                                                {{ $assessis->no_skkni }}
+                                                {{ $category->no_skkni }}
                                             </label>
                                         </div>
                                     </div>
@@ -537,13 +537,15 @@
                                                 </tr>
                                             </thead>
                                             <tbody class="my-text">
-                                                @foreach ($assessis->units as $value)
+                                            @foreach ($assessis->unit_schemas as $value)
+                                                
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $value->unit_code }}</td>
-                                                        <td>{{ $value->unit_title }}</td>
+                                                        <td>{{ $value->unit->unit_code }}</td>
+                                                        <td>{{ $value->unit->unit_title }}</td>
                                                         <td>{{ $value->schema->competency_package }}</td>
                                                 @endforeach
+                                                
                                             </tbody>
                                         </table>
                                     </div>

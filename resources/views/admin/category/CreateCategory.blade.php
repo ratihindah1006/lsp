@@ -29,10 +29,11 @@
                         </div>
                         <div class="card-content-center">
                             <div class="card-body">
+
                                 <div class="form-group">
-                                    <label for="category_title" class="form-label">Judul Kategori</label>
-                                    <input type="text" class="form-control @error('category_title') is-invalid @enderror" id="category_title" name="category_title" value="{{ old('category_title') }}">
-                                    @error('category_title')
+                                    <label for="no_skkni" class="form-label">Nomor SKKNI</label>
+                                    <input type="text" class="form-control @error('field_title') is-invalid @enderror" id="no_skkni" name="no_skkni" value="{{ old('no_skkni') }}">
+                                    @error('no_skkni')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -40,9 +41,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="field_title" class="form-label">Judul Bidang</label>
-                                    <input type="text" class="form-control @error('field_title') is-invalid @enderror" id="field_title" name="field_title" value="{{ old('field_title') }}">
-                                    @error('field_title')
+                                    <label for="category_title" class="form-label">Judul Kategori</label>
+                                    <input type="text" class="form-control @error('category_title') is-invalid @enderror" id="category_title" name="category_title" value="{{ old('category_title') }}">
+                                    @error('category_title')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\AdminModel;
 use Illuminate\Http\Request;
 use App\Models\CategoryModel;
-use App\Models\SchemaModel;
 use App\Models\UnitModel;
 use App\Models\ElementModel;
 use Illuminate\Support\Facades\Auth;
@@ -18,12 +17,11 @@ class ElementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(CategoryModel $category, SchemaModel $schema, UnitModel $unit, AdminModel $admin)
+    public function index(CategoryModel $category, UnitModel $unit, AdminModel $admin)
     {
         $data=$admin->where('id', Auth::user()->id)->get();
         return view('admin.element.ListElement', [
             'category'=>$category->id,
-            'schema' => $schema->id,
             'unit' => $unit,
             'element'=> $unit->elements,
             'admin'=> $data,
@@ -44,16 +42,17 @@ class ElementController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, CategoryModel $category, SchemaModel $schema, UnitModel $unit)
+    public function store(Request $request, CategoryModel $category, UnitModel $unit)
     {
         $validateData = $request->validate([
+            'no_element'=>'required',
             'element_title' => 'required',
             'benchmark' => 'required',
         ]);
         $validateData['unit_id']=$unit->id;
         ElementModel::create($validateData);
 
-        return redirect('/category'.'/'.$category->id.'/schema'.'/'.$schema->id.'/unit'.'/'.$unit->id.'/element')
+        return redirect('/category'.'/'.$category->id.'/unit'.'/'.$unit->id.'/element')
         ->with('toast_success', 'Element berhasil di tambahkan!');
     }
 
@@ -74,11 +73,10 @@ class ElementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(CategoryModel $category, SchemaModel $schema, UnitModel $unit, ElementModel $element)
+    public function edit(CategoryModel $category,UnitModel $unit, ElementModel $element)
     {
         return view('admin.element.EditElement', [
             'category'=>$category,
-            'schema' => $schema,
             'unit' => $unit,
             'element'=>$element,
             'title'=>'Element'
@@ -92,9 +90,10 @@ class ElementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CategoryModel $category, SchemaModel $schema, UnitModel $unit, ElementModel $element)
+    public function update(Request $request, CategoryModel $category, UnitModel $unit, ElementModel $element)
     {
         $rules=[
+            'no_element' => 'required',
             'element_title' => 'required',
             'benchmark' => 'required'
         ];
@@ -102,7 +101,7 @@ class ElementController extends Controller
         $validateData= $request->validate($rules);
         $element->update($validateData);
 
-        return redirect('/category'.'/'.$category->id.'/schema'.'/'.$schema->id.'/unit'.'/'.$unit->id.'/element')->with('toast_success', 'Element berhasil di Update!');
+        return redirect('/category'.'/'.$category->id.'/unit'.'/'.$unit->id.'/element')->with('toast_success', 'Element berhasil di Update!');
     }
 
     /**
@@ -111,9 +110,9 @@ class ElementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CategoryModel $category, SchemaModel $schema, UnitModel $unit, ElementModel $element)
+    public function destroy(CategoryModel $category, UnitModel $unit, ElementModel $element)
     {
         $element->delete();
-        return redirect('/category'.'/'.$category->id.'/schema'.'/'.$schema->id.'/unit'.'/'.$unit->id.'/element')->with('toast_success', 'Element berhasil di hapus!');
+        return redirect('/category'.'/'.$category->id.'/unit'.'/'.$unit->id.'/element')->with('toast_success', 'Element berhasil di hapus!');
     }
 }

@@ -10,6 +10,7 @@ class ElementModel extends Model
     protected $table = "element";
     protected $fillable = [
         'element_title',
+        'no_element',
         'unit_id',
         'benchmark'
        ];

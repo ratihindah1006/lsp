@@ -64,12 +64,12 @@
 
                             <tr>
                                 <th width="500px">Kode Unit : </th>
-                                <th colspan="3" width="500px">{{ $unit->unit_code }}</th>
+                                <th colspan="3" width="500px">{{ $unit->unit->unit_code }}</th>
                             </tr>
 
                             <tr>
                                 <th>Judul Unit :</th>
-                                <th colspan="3">{{ $unit->unit_title }}</th>
+                                <th colspan="3">{{ $unit->unit->unit_title }}</th>
                             </tr>
 
                             <tr>
@@ -84,7 +84,7 @@
                             </tr>
 
 
-                            @foreach ($unit->elements as $element)
+                            @foreach ($unit->unit->elements as $element)
                             <tr>
                                 <td style="width: 50%">
                                     <b>Element : {{ $element->element_title }}</b><br>

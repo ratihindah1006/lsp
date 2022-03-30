@@ -79,6 +79,7 @@ class AssessorController extends Controller
                     'apl01' => $assessi->apl01,
                     'assessi' => $assessi,
                     'title' => 'Skema',
+                    'category' => $assessi->schema_class->schema->category,
                     'assessis' => $assessi->schema_class->schema,
                 ]);
             }
@@ -105,7 +106,7 @@ class AssessorController extends Controller
                     'asesor' => $assessor,
                     'apl01' => $assessi->apl01,
                     'class' => $assessi->schema_class,
-                    'units' => $assessi->schema_class->schema->units,
+                    'units' => $assessi->schema_class->schema->unit_schemas,
                     'apl02' => $assessi->apl02,
                     'assessment' => $assessment,
 
