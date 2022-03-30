@@ -16,9 +16,9 @@ class CreateAnswersTable extends Migration
         Schema::create('answer', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('assessi_id')->unsigned();
-            $table->foreign('assessi_id')->references('id')->on('assessi');
+            $table->foreign('assessi_id')->references('id')->on('assessi')->onDelete("cascade");
             $table->bigInteger('unit_id')->unsigned();
-            $table->foreign('unit_id')->references('id')->on('unit');
+            $table->foreign('unit_id')->references('id')->on('unit')->onDelete("cascade");
             $table->text('answer')->nullable();
             $table->boolean('status')->default(false);
             $table->boolean('rekomendasi')->nullable();

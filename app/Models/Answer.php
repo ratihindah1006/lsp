@@ -14,6 +14,7 @@ class Answer extends Model
     protected $fillable = [
         'assessi_id',
         'unit_id',
+        'code_id',
         'answer',
         'rekomendasi',
         'status',
@@ -27,5 +28,10 @@ class Answer extends Model
     public function unit()
     {
         return $this->belongsTo(UnitModel::class,'unit_id','id');
+    }
+
+    public function code()
+    {
+        return $this->belongsTo(CodeQuestion::class,'code_id','id');
     }
 }

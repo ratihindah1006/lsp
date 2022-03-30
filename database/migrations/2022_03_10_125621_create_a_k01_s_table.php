@@ -16,7 +16,7 @@ class CreateAK01STable extends Migration
         Schema::create('ak01', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('assessi_id')->unsigned();
-            $table->foreign('assessi_id')->references('id')->on('assessi');
+            $table->foreign('assessi_id')->references('id')->on('assessi')->onDelete("cascade");
             $table->boolean('tl_verif_porto')->default(false);
             $table->boolean('t_p_tulis')->default(false);
             $table->boolean('t_p_lisan')->default(false);

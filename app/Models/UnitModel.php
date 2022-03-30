@@ -36,4 +36,9 @@ class UnitModel extends Model
     {
         return $this->hasMany(Answer::class, 'unit_id', 'id');
     }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class, 'unit_id', 'id');
+    }
 }

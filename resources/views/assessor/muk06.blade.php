@@ -80,22 +80,24 @@
                 </tr>
                 <tr>
                   <td class="p-2" bgcolor="lightgray" style="vertical-align:top;">
-                    <b><u>Pertanyaan: </u></b> <br>
-                    @foreach ($unit->elements as $e)
-                      @if (isset($e->question->question))
-                        {{ $loop->iteration }}.{!! $e->question->question !!}<br>
+                    <b><u>Pertanyaan: </u></b> <br><br>
+                    @foreach ($unit->questions as $q)
+                      @if (isset($q))
+                        <span class="text-light bg-info">{{ $q->no_soal }}</span> <br><br>
+                        {!! $q->question !!} <br>
                       @else
-                        {{ $loop->iteration }}
+
                       @endif
                     @endforeach 
                     <hr>
-                    <b><u>Kunci Jawaban: </u></b><br>
-                    @foreach ($unit->elements as $e)
-                    @if (isset($e->question->key_answer))
-                      {!! $loop->iteration.'. '.$e->question->key_answer !!}
-                    @else
-                    {{ $loop->iteration }}
-                    @endif
+                    <b><u>Kunci Jawaban: </u></b><br><br>
+                    @foreach ($unit->questions as $q)
+                      @if (isset($q))
+                        <span class="text-light bg-info">{{ $q->no_soal }}</span> <br><br>
+                        {!! $q->key_answer !!} <br>
+                      @else
+                
+                      @endif
                     @endforeach 
                   </td>
                   <input type="hidden" id="unitId" name="unitId[]" value="{{ $unit->id }}">

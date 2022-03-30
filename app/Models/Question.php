@@ -12,13 +12,20 @@ class Question extends Model
     protected $table = "question";
 
     protected $fillable = [
-        'element_id',
+        'unit_id',
+        'code_id',
+        'no_soal',
         'question',
         'key_answer'
     ];
 
-    public function element()
+    public function unit()
     {
-        return $this->belongsTo(ElementModel::class,'element_id','id');
+        return $this->belongsTo(UnitModel::class,'unit_id','id');
+    }
+
+    public function code()
+    {
+        return $this->belongsTo(CodeQuestion::class,'code_id','id');
     }
 }

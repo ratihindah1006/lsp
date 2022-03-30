@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMUK01STable extends Migration
+class CreateCodeQuestionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateMUK01STable extends Migration
      */
     public function up()
     {
-        Schema::create('muk01', function (Blueprint $table) {
+        Schema::create('code_question', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('assessi_id')->unsigned();
-            $table->foreign('assessi_id')->references('id')->on('assessi')->onDelete("cascade");
-            $table->json('rekomendasi');
-            $table->boolean('status')->default(false);
+            $table->bigInteger('schema_id')->unsigned();
+            $table->foreign('schema_id')->references('id')->on('schema')->onDelete("cascade");
+            $table->string('code_name');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateMUK01STable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('muk01');
+        Schema::dropIfExists('code_question');
     }
 }

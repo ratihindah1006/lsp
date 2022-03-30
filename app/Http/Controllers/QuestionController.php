@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Question;
 use App\Models\SchemaModel;
-use Illuminate\Support\Facades\DB;
+use App\Models\CodeQuestion;
 use App\Models\ElementModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreQuestionRequest;
 use App\Http\Requests\UpdateQuestionRequest;
 
@@ -60,13 +61,17 @@ class QuestionController extends Controller
     public function store(StoreQuestionRequest $request)
     {
         $validateData = $request->validate([
-            'element' => 'unique:question,element_id|required',
+            'unit' => 'required',
+            'kode_soal' => 'required',
+            'no_soal' => 'required',
             'question' => 'required',
-            'key_answer' => 'required'
+            'key_answer' => 'required',
         ]);
 
         $data = new Question([
-            'element_id' => $request->element,
+            'unit_id' => $request->unit,
+            'code_id' => $request->kode_soal,
+            'no_soal' => $request->no_soal,
             'question' => $request->question,
             'key_answer' => $request->key_answer,
         ]);
@@ -135,5 +140,32 @@ class QuestionController extends Controller
         $question->delete();
 
         return redirect('soal')->with('toast_success', 'Pertanyaan berhasil dihapus!');
+    }
+
+    public function kodeSoal(Request $request)
+    {
+        $validateData = $request->validate([
+            'schema' => 'required',
+            'kode_soal' => 'required|unique:code_question,code_name'
+        ]);
+
+        $data = new CodeQuestion([
+            'schema_id' => $request->schema,
+            'code_name' => $request->kode_soal,
+        ]);      
+
+        $data->save();
+
+        return redirect('soal')->with('toast_success', 'Kode soal berhasil ditambah!');
+    }
+
+    public function listSoal(CodeQuestion $codeQuestion)
+    {
+        $data = [
+            'title' => 'List Soal Esai',
+            'questions' => Question::where('code_id', $codeQuestion->id)->get(),
+        ];
+        
+        return view('admin.question.listQuestionCode', $data);
     }
 }

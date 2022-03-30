@@ -17,7 +17,7 @@
     <link href="/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="/assets/vendor/select2/css/select2.min.css" rel="stylesheet">
     <link href="/assets/vendor/summernote/summernote.css" rel="stylesheet">
-
+    @stack('styles')
    
 </head>
 
@@ -206,7 +206,7 @@
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <script>
+    {{-- <script>
         $('#skema').change(function() {
             var idSkema = $(this).val();
             if (idSkema) {
@@ -254,7 +254,7 @@
                 $('#element').find('option').not(':first').remove();
             }
         });
-    </script>
+    </script> --}}
 
     {{-- javascript alert hapus data --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
@@ -278,7 +278,7 @@
                 });
         });
     </script>
-
+    @stack('scripts')
 </body>
 
 </html>

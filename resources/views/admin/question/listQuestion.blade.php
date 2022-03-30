@@ -24,8 +24,19 @@
                                     {{ session('success') }}
                                 </div>
                             @endif
-                            <a href="/soal/create" class="btn btn-primary btn-sm"><i
-                                    class="ti-plus">&nbsp;&nbsp;&nbsp;</i>Add</a><br><br>
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            <a href="/soal/create" class="btn btn-primary btn-sm mr-2"><i
+                                class="ti-plus">&nbsp;&nbsp;&nbsp;</i>Add Question</a>
+                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalTambahKodeSoal"><i
+                                    class="ti-plus">&nbsp;&nbsp;&nbsp;</i>Add Code</button><br><br>
                             <div class="card">
                                 <div class="card-body">
                                     <div class="table-responsive my-text">
@@ -34,7 +45,7 @@
                                             <tr>
                                                 <th width="5px">No</th>
                                                 <th width="20%">Skema</th>
-                                                <th>Unit</th>
+                                                <th>Kode Soal</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -47,65 +58,28 @@
                                                   <div class="accordion__item">
                                                       <div class="accordion__header collapsed accordion__header--primary" data-toggle="collapse" data-target="#header-bg_collapse{{ $loop->iteration }}">
                                                           <span class="accordion__header--icon"></span>
-                                                          <span class="accordion__header--text">Unit</span>
+                                                          <span class="accordion__header--text">Daftar Kode Soal</span>
                                                           <span class="accordion__header--indicator"></span>
                                                       </div>
                                                       <div id="header-bg_collapse{{ $loop->iteration }}" class="collapse accordion__body" data-parent="#accordion-seven">
                                                           <div class="accordion__body--text p-0">
-                                                            <table class="table" border="solid black">
+                                                            <table class="table text-dark" border="solid black">
                                                                 <thead class="text-center bg-warning">
                                                                     <tr>
                                                                         <th width="5px">No</th>
-                                                                        <th>Judul Unit</th>
-                                                                        <th>Judul Element</th>
+                                                                        <th>Kode Soal</th>
                                                                         <th>Aksi</th>
                                                                     </tr>
                                                                 </thead>
-                                                                @foreach ($schema->units as $unit)
+                                                                @forelse ($schema->codes as $code)
                                                                 <tr style="vertical-align:top">
                                                                     <td>{{ $loop->iteration }}</td>
-                                                                    <td>{{ $unit->unit_title }}</td>
-                                                                    <td>
-                                                                    @foreach ($unit->elements as $item)
-                                                                        {{ $loop->iteration }}. {{ $item->element_title }} <hr>
-                                                                    @endforeach
-                                                                    </td>
-                                                                    <td class="text-center">
-                                                                        @foreach ($unit->elements as $item)
-                                                                            @if ($item->question != null)
-                                                                                <a href="/soal/{{ $item->id }}/edit" class="btn-sm btn-primary d-inline-flex"><i class="ti-pencil"></i></a>
-                                                                                <button type="button" class="btn-sm btn-danger box-shadow-none d-inline-flex border-0" data-toggle="modal" data-target="#modalDeleteSoal{{ $item->id }}"><i class="ti-trash"></i></button>
-                                                                                <!-- Modal -->
-                                                                                <form method="post" action="/soal/{{ $item->question->id }}">
-                                                                                @csrf
-                                                                                @method('delete')
-                                                                                <div class="modal fade" id="modalDeleteSoal{{ $item->id }}">
-                                                                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                                                                        <div class="modal-content">
-                                                                                            <div class="modal-header bg-danger">
-                                                                                                <h5 class="modal-title text-white">Konfirmasi Hapus</h5>
-                                                                                                <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                                                                                                </button>
-                                                                                            </div>
-                                                                                            <div class="modal-body">
-                                                                                                <p>Yakin ingin menghapus data soal dari elemen <b>{{ $item->element_title }}</b> ? </p>
-                                                                                            </div>
-                                                                                            <div class="modal-footer">
-                                                                                                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-                                                                                                <button type="submit" class="btn btn-primary">Delete</button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                </form> 
-                                                                            @else
-                                                                                <a href="/soal/create" class="btn-sm btn-secondary d-inline-flex"><i class="ti-plus"></i></a> 
-                                                                            @endif         
-                                                                            <hr>
-                                                                        @endforeach    
-                                                                    </td>
+                                                                    <td>{{ $code->code_name }}</td>
+                                                                    <td class="text-center"><a href="/soal/kodesoal/{{ $code->id }}" class="btn btn-sm btn-primary"><span><i class="ti-search"></i></span></a></td>
                                                                 </tr>
-                                                                @endforeach
+                                                                @empty
+                                                                    <td class="text-center" colspan="3">Belum Ada Kode Soal</td>
+                                                                @endforelse
                                                             </table>
                                                           </div>
                                                       </div>
@@ -124,4 +98,39 @@
                 </div>
             </div>
         </div>
+        <!-- Modal -->
+        <form method="post" action="/soal/kodeSoal">
+            @csrf
+            <div class="modal fade" id="modalTambahKodeSoal">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary">
+                            <h5 class="modal-title text-white">Tambah Kode Soal</h5>
+                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="schema">Schema<label class="text-danger">&nbsp;*</label></label>
+                                <select name="schema" class="form-control single-select" id="schema" required>
+                                    <option value="">--Pilih Schema--</option>
+                                        @foreach ($schemas as $schema)
+                                            <option value="{{ $schema->id }}">{{ $schema->schema_title }}</option>                                        
+                                        @endforeach
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="kode_soal">Kode Soal<label class="text-danger">&nbsp;*</label></label>
+                                <input name="kode_soal" class="form-control" placeholder="Masukkan Kode Soal" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Tambah</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form> 
 @endsection

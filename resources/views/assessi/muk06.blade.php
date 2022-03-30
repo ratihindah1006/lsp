@@ -74,17 +74,19 @@
               </tr>
               <tr>
                 <td class="p-2" bgcolor="lightgray" style="vertical-align:top; min-width: 50%;">
-                  Pertanyaan: <br>
-                  @foreach ($unit->elements as $e)
-                    @if (isset($e->question['question']))
-                      {!! $loop->iteration.'. '.$e->question['question'] !!}<br>
+                  <b><u>Pertanyaan: </u></b> <br><br>
+                  @foreach ($unit->questions->where('code_id', $schema_class->code_id) as $q)
+                    @if (isset($q))
+                      <span class="text-light bg-info">{{ $q->no_soal }}</span> <br><br>
+                      {!! $q->question !!} <br>
                     @else
-                      {!! $loop->iteration !!}<br>
+
                     @endif
                   @endforeach 
                 </td>
                 <input type="hidden" id="assessiId" name="assessiId[]" value="{{ $assessi->id }}">
                 <input type="hidden" id="unitId" name="unitId[]" value="{{ $unit->id }}">
+                <input type="hidden" id="codeId" name="codeId[]" value="{{ $schema_class->code_id }}">
                 <td style="min-width: 50%; vertical-align:top;" class="p-0">
                   <div class="form-group">
                     <textarea class="summernote form-control @error('answer') is-invalid @enderror" name="answer[]" value="{{ old('answer') }}">

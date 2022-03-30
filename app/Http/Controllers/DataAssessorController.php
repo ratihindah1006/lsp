@@ -148,6 +148,7 @@ class DataAssessorController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
+            'no_met' => $request->no_met,
            
         ]);
         $assessis->save();

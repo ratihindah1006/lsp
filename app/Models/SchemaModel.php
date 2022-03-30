@@ -40,4 +40,9 @@ class SchemaModel extends Model
     {
         return $this->hasMany(SchemaClassModel::class, 'schema_id', 'id'); 
     }
+    public function codes()
+    {
+        return $this->hasMany(CodeQuestion::class, 'schema_id', 'id'); 
+    }
+
 }

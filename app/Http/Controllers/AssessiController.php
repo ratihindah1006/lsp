@@ -78,6 +78,7 @@ class AssessiController extends Controller
                     'assessi_id' => $request->assessiId[$key],
                     'unit_id' => $request->unitId[$key],
                     'answer' => $request->answer[$key], 
+                    'code_id' => $request->codeId[$key],
                 );
                 
                 Answer::updateOrCreate(
