@@ -101,7 +101,7 @@
                                 <th class="text-center">
                                     <br>
                                     <div class="form-check">
-                                        <input required class="form-check-input" type="radio" name="element_{{ $element->id }}" id="{{ $element->id }}" value="K" @if($assessment && $assessment[$i]=='K' ) checked @endif>
+                                        <input required class="form-check-input" type="radio" name="element_{{ $element->id }}" id="{{ $element->id }}" value="K" @if(isset($assessment[$i])) @if($assessment && $assessment[$i]=='K' ) checked @endif @endif>
                                         <label class="form-check-label" for="{{ $element->id }}">
                                         </label>
                                     </div>
@@ -110,7 +110,7 @@
                                 <th class="text-center">
                                     <br>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="element_{{ $element->id }}" id="{{ $element->id }}" value="BK" @if($assessment && $assessment[$i]=='BK' ) checked @endif>
+                                        <input class="form-check-input" type="radio" name="element_{{ $element->id }}" id="{{ $element->id }}" value="BK" @if(isset($assessment[$i])) @if($assessment && $assessment[$i]=='BK' ) checked @endif @endif>
                                         <label class="form-check-label" for="{{ $element->id }}">
                                         </label>
                                         <?php $i++; ?>

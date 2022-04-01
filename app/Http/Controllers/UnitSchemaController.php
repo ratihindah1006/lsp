@@ -26,34 +26,28 @@ class UnitSchemaController extends Controller
     public function create(SchemaModel $schema)
 
     {
-        //dd($schema->unit_schemas);
-
         //dd($schema->category->units);
         return view('admin.unit_schema.CreateUnit', [
             'schema' => $schema->id,
             'units' => $schema->category->units,
-            'un' => $schema->unit_schemas,
-            'title' => 'Unit'
+            'un' => $schema->unit_schemas->pluck("unit_id"),
+            'title' => 'Unit',
         ]);
     }
 
     public function store(Request $request, SchemaModel $schema)
     {
-
-        $unit = $_POST['unit'];
+        $unit = $request->unit;
+        if($unit)
         $jml_dipilih = count($unit);
+        else
+        $jml_dipilih = 0;
+        UnitSchemaModel::whereSchemaId($schema->id)->delete();
         for ($x = 0; $x < $jml_dipilih; $x++) {
             $validateData['schema_id'] = $schema->id;
             $validateData['unit_id'] = $unit[$x];
             $cek = $schema->unit_schemas;
-
-           // if ($cek == Null) {
                 UnitSchemaModel::create($validateData);
-        //     } else {
-
-        //         UnitSchemaModel::where('schema_id', $schema->id)
-        //             ->update($validateData);
-        //     }
         }
 
         return redirect('/skema' . '/' . $schema->id . '/unit')->with('toast_success', 'unit berhasil di tambahkan!');

@@ -30,12 +30,14 @@
                                 @foreach ($units as $unit)
                                 <div class="form-group m-0">
                                     <div class="form-check">
-                                        <input type="checkbox" name="unit[]" class="unit[]" id="unit[]" @if ($unit != null) {
-                                                    value= "{{ $unit->id }}"
-                                                    }
-                                                @else{
-                                                    value="{{ old('$unit->id') }}"
-                                                } @endif>
+                                        <input 
+                                            type="checkbox" 
+                                            name="unit[]" 
+                                            class="unit[]" 
+                                            id="unit[]"  
+                                            @if ($unit != null) value= "{{ $unit->id }}" @else value="{{ old('$unit->id') }}" @endif
+                                            @foreach($un as $id) @if($id == $unit->id) checked @endif @endforeach
+                                        >
                                         <label for="unit[]">{{ $unit->unit_code }} - {{ $unit->unit_title   }}</label>
                                     </div>
                                 </div>
