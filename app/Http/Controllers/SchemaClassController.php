@@ -55,6 +55,10 @@ class SchemaClassController extends Controller
             'event_id' => 'required',
             'schema_id' => 'required'
         ]);
+        $eventTime = EventModel::find($request->event_id);
+        if(!$this->isValidDate($request->date, $eventTime->event_time)){
+            return back()->with('toast_error', 'Tanggal tidak valid!')->withInput($request->all());
+        }
         $class = new SchemaClassModel([
             'name' => $request->name,
             'tuk' => $request->tuk,
@@ -87,6 +91,10 @@ class SchemaClassController extends Controller
             'schema_id' => 'required',
             'date' => 'required',
         ];
+        $eventTime = EventModel::find($request->event_id);
+        if(!$this->isValidDate($request->date, $eventTime->event_time)){
+            return back()->with('toast_error', 'Tanggal tidak valid!')->withInput($request->all());
+        }
         if($request->name != $class->name){
             $rules['name'] = 'required|unique:schema_class';
         }
@@ -109,5 +117,15 @@ class SchemaClassController extends Controller
     {
         SchemaClassModel::destroy($class->id);
         return redirect('/KelasSkema')->with('toast_success', 'Data Kelas Skema berhasil di hapus!');
+    }
+
+    private function isValidDate($date, $validDate)
+    {   
+
+        $date = strtotime($date);
+        $validDate1 = strtotime(explode(" - ", $validDate)[0]);
+        $validDate2 = strtotime(explode(" - ", $validDate)[1]);
+        
+        return $date <= $validDate2 && $date >= $validDate1;
     }
 }
