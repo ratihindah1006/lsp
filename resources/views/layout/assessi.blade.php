@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -48,26 +47,29 @@
                 <nav class="navbar navbar-expand">
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="navbar-nav header-left">
-                            <h4>
-                        <a href="/beranda" class="text-white " aria-expanded="false" ><i class="icon icon-home text-white font-weight-bold"></i>&nbsp; Beranda</a></h4>
+                            <h5>
+                                <a href="/beranda" class="text-white " aria-expanded="false"><i class="icon icon-home text-white font-weight-bold">&nbsp; Beranda</i></a></h5>
                         </div>
                         <ul class="navbar-nav header-right">
+                        <h5>
                             <li class="nav-item dropdown header-profile">
+                                
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <i class="mdi mdi-account text-white"></i>
+                                    <i class="mdi mdi-account text-white "></i>
                                 </a>
-                                        <span class="user-avatar text-white">{{ Auth::user()->name }}
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="{{ url('logout') }}" class="dropdown-item">
-                                        <i class="ti-power-off"></i>
-                                        <span class="ml-2">Logout </span>
-                                    </a>
-                                    <a href="{{ url('edit_password') }}" class="dropdown-item">
-                                        <i class="ti-key"></i>
-                                        <span class="ml-2">Ubah Password </span>
-                                    </a>
-                                </div>
+                                <span class="icon-avatar text-white font-weight-bold">{{ Auth::user()->name }}
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="{{ url('logout') }}" class="dropdown-item">
+                                            <i class="ti-power-off"></i>
+                                            <span class="ml-2">Logout </span>
+                                        </a>
+                                        <a href="{{ url('edit_password') }}" class="dropdown-item">
+                                            <i class="ti-key"></i>
+                                            <span class="ml-2">Ubah Password </span>
+                                        </a>
+                                    </div>
                             </li>
+                        </h5>
                         </ul>
                     </div>
                 </nav>
@@ -84,30 +86,30 @@
         <div class="content-body content-bodyy">
             @include('sweetalert::alert')
             @yield('container')
-            </div>
         </div>
-        <!--**********************************
+    </div>
+    <!--**********************************
             Content body end
         ***********************************-->
 
 
-        <!--**********************************
+    <!--**********************************
             Footer start
         ***********************************-->
-        <div class="footer">
-            <div class="copyright">
-                <p><a href="#" target="_blank"></a> 2022</p>
-            </div>
+    <div class="footer">
+        <div class="copyright">
+            <p><a href="#" target="_blank"></a> 2022</p>
         </div>
-        <!--**********************************
+    </div>
+    <!--**********************************
             Footer end
         ***********************************-->
 
-        <!--**********************************
+    <!--**********************************
            Support ticket button start
         ***********************************-->
 
-        <!--**********************************
+    <!--**********************************
            Support ticket button end
         ***********************************-->
 
@@ -133,10 +135,10 @@
 
     <script src="/assets/js/dashboard/dashboard-2.js"></script>
 
-     <!-- Datatable -->
-     <script src="/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
-     <script src="/assets/js/plugins-init/datatables.init.js"></script>
- 
+    <!-- Datatable -->
+    <script src="/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/assets/js/plugins-init/datatables.init.js"></script>
+
     <!-- Summernote -->
     <script src="/assets/vendor/summernote/js/summernote.min.js"></script>
     <script src="/assets/js/plugins-init/summernote-init.js"></script>

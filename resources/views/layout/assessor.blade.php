@@ -47,19 +47,22 @@
                 <nav class="navbar navbar-expand">
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="navbar-nav header-left">
+                            <h5>
                             <li>
-                                <a href="/assessor" class="text-white " aria-expanded="false"><i
-                                        class="icon icon-home text-white "></i>&nbsp; Beranda</a>&emsp;
-                                <a href="/list" class="text-white " aria-expanded="false"><i
-                                        class=" ti-view-list-alt text-white "></i>&nbsp; Daftar Assessi</a>
+                                <a href="/assessor" class="text-white {{ request()->is('assessor/*') ? 'mm-active' : '' }}" aria-expanded="false"><i
+                                        class="icon icon-home text-white font-weight-bold"> Beranda</i></a>&emsp;
+                                <a href="/list" class="text-white {{ request()->is('list/*') ? 'mm-active' : '' }} " aria-expanded="false"><i
+                                        class=" ti-view-list-alt text-white font-weight-bold"> Daftar Assessi</i></a>
                             </li>
+                            </h5>
                         </div>
                         <ul class="navbar-nav header-right">
+                            <h5>
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <i class="mdi mdi-account"></i>
+                                    <i class="mdi mdi-account text-white"></i>
                                 </a>
-                                <span class="user-avatar">{{ Auth::user()->name }}
+                                <span class="icon-avatar text-white font-weight-bold">{{ Auth::user()->name }}
                                     {{-- @foreach ($assessi as $value) {{ $value->name }} @endforeach --}}
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <a href="{{ url('logout') }}" class="dropdown-item">
@@ -72,6 +75,7 @@
                                         </a>
                                     </div>
                             </li>
+                            </h5>
                         </ul>
                     </div>
                 </nav>

@@ -123,13 +123,15 @@
             </tr>
         </thead>
         <tbody class="my-text">
-            @foreach ($assessis->units as $value)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $value->unit_code }}</td>
-                    <td>{{ $value->unit_title }}</td>
-                    <td>{{ $value->schema->competency_package }}</td>
-            @endforeach
+          @foreach ($assessis->unit_schemas as $value)
+                                                
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                 <td>{{ $value->unit->unit_code }}</td>
+                <td>{{ $value->unit->unit_title }}</td>
+                <td>{{ $value->schema->competency_package }}</td>
+            </tr>
+        @endforeach
         </tbody>
     </table>
 </div>
