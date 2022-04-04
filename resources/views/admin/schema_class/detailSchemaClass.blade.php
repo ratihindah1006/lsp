@@ -36,6 +36,10 @@
                                 <th width="1000px"> {{ $class->schema->schema_title}}</th>
                             </tr>
                             <tr>
+                                <th width="400px">Kode Soal </th>
+                                <th width="1000px"> {{ $class->code->code_name}}</th>
+                            </tr>
+                            <tr>
                                 <th width="400px">Tanggal</th>
                                 <th width="1000px"> {{ $class->date}}</th>
                             </tr>

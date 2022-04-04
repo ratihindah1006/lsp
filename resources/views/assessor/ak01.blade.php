@@ -26,7 +26,7 @@
                   </tr>
                   <tr>
                     <td>Nomor</td>
-                    <td> : {{ $schema->no_skkni }}</td>
+                    <td> : {{ $schema->category->no_skkni }}</td>
                   </tr>
                   <tr>
                     <td colspan="2">TUK</td>

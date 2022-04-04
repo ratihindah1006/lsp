@@ -161,8 +161,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::delete('/soal/{question}', [QuestionController::class, 'destroy']);
     Route::post('/soal/kodeSoal', [QuestionController::class, 'kodeSoal']);
     Route::get('/soal/kodesoal/{code_question:id}', [QuestionController::class, 'listSoal']);
-    Route::get('/getUnit',[QuestionController::class, 'getUnit'])->name('getUnit');
-    Route::get('/getElement',[QuestionController::class, 'getElement'])->name('getElement');
+    Route::get('/getKode',[SchemaClassController::class, 'getKode'])->name('getKode');
+    // Route::get('/getElement',[QuestionController::class, 'getElement'])->name('getElement');
 });
 
 Route::group(['middleware' => 'auth:assessi'], function () {

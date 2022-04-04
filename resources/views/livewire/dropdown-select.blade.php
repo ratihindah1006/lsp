@@ -37,7 +37,7 @@
                 <option value="">--Pilih Unit--</option>
                 @if ($units)
                     @foreach($units as $unit)
-                        <option value="{{ $unit->id }}">{{ $unit->unit_title }}</option>
+                        <option value="{{ $unit->id }}">{{ $unit->unit->unit_title }}</option>
                     @endforeach
                 @endif
             </select>
@@ -69,8 +69,8 @@
                   @foreach ($criterias as $criteria)
                     <div class="form-group m-0">
                         <div class="form-check">
-                        <input wire:model="no_soal" type="checkbox" name="kuk.{{ $criteria->id }}" class="kuk.{{ $criteria->id }}" id="kuk.{{ $criteria->id }}" value="KUK {{ $loop->iteration.'.'.$criteria->id }}">
-                        <label class="kuk.{{ $criteria->id }}" for="kuk.{{ $criteria->id }}">{{ $loop->iteration.'. '.$criteria->criteria_title  }}</label>
+                        <input wire:model="no_soal" type="checkbox" name="kuk.{{ $criteria->id }}" class="kuk.{{ $criteria->id }}" id="kuk.{{ $criteria->id }}" value=" KUK {{ $criteria->element->no_element.'.'.$criteria->no_criteria }}">
+                        <label class="kuk.{{ $criteria->id }}" for="kuk.{{ $criteria->id }}">{{ $criteria->element->no_element.'.'.$criteria->no_criteria.' '.$criteria->criteria_title  }}</label>
                         </div>
                     </div>
                     @endforeach
