@@ -6,7 +6,7 @@
   <div class="row page-titles mx-0">
       <div class="col-sm-6 p-md-0">
           <div class="welcome-text">
-              <h4>Daftar {{ $title }}</h4>
+              <h4>Daftar {{ $title }} Skema <div class="text-danger d-inline"> {{ $codeQuestion->schema->schema_title }} </div> Kode <div class="text-danger d-inline">{{ $codeQuestion->code_name }}</div></h4>
           </div>
       </div>
       <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -42,7 +42,6 @@
                                 <table class="display p-0" id="example">
                                   <thead>
                                       <tr>
-                                          <th width="5px">No</th>
                                           <th>No Soal</th>
                                           <th>Pertanyaan</th>
                                           <th>Jawaban</th>
@@ -52,12 +51,34 @@
                                   <tbody>
                                     @foreach ($questions as $question)
                                       <tr style="vertical-align:top">
-                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $question->no_soal }}</td>
                                         <td>{!! $question->question !!}</td>
                                         <td>{!! $question->key_answer !!}</td>
-                                        <td><a href="/" class="btn btn-sm btn-primary"><i class="ti-pencil"></i></a>
-                                            <a href="/" class="btn btn-sm btn-danger"><i class="ti-trash"></i></a>
+                                        <td><a href="/soal/{{ $question->id }}/edit" class="btn btn-sm btn-primary"><i class="ti-pencil"></i></a>
+                                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modalDeleteSoal{{ $question->id }}"><i class="ti-trash"></i></button>
+                                            <!-- Modal -->
+                                            <form method="post" action="/soal/{{ $question->id }}">
+                                                @csrf
+                                                @method('delete')
+                                                    <div class="modal fade" id="modalDeleteSoal{{ $question->id }}">
+                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header bg-danger">
+                                                                    <h5 class="modal-title text-white">Konfirmasi Hapus</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>Yakin ingin menghapus data soal <b>{{ $question->no_soal }}</b> ? </p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            </form> 
                                         </td>
                                       </tr>
                                     @endforeach

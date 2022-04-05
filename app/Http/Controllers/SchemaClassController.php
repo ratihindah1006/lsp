@@ -72,7 +72,7 @@ class SchemaClassController extends Controller
             'description' => $request->description,
             'event_id' =>  $request->event_id,
             'schema_id' =>  $request->schema_id,
-            'code_id' => $request->code,
+            'code_id' => $request->code_id,
         ]);
        
         $class->save();

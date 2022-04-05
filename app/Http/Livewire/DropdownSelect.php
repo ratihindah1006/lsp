@@ -59,9 +59,11 @@ class DropdownSelect extends Component
     {
         if (!is_null($unit)) {
             $aunit = UnitSchemaModel::where('id', $unit)->first();
-            $this->elements = ElementModel::where('unit_id', $aunit['unit_id'])->get();
+            if (!is_null($aunit)) {
+                $this->elements = ElementModel::where('unit_id', $aunit['unit_id'])->get();
+            }
         }
-        $this->selectedElement = NULL;
+        $this->selectedElement = "";
         $this->criterias = NULL;
         $this->no_soal = [];
     }

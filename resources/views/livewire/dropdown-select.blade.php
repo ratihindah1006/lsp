@@ -34,7 +34,7 @@
             <label for="unit" class="form-label">Unit</label>
             <select wire:model="selectedUnit" class="form-control"
                 name="unit" id="unit" required>
-                <option value="">--Pilih Unit--</option>
+                <option value="" selected>--Pilih Unit--</option>
                 @if ($units)
                     @foreach($units as $unit)
                         <option value="{{ $unit->id }}">{{ $unit->unit->unit_title }}</option>
@@ -49,7 +49,7 @@
             <label for="element" class="form-label">Element</label>
             <select wire:model="selectedElement" class="form-control"
                 name="element" id="element" required>
-                <option value="">--Pilih Element--</option>
+                <option value="" selected>--Pilih Element--</option>
                 @if ($elements)
                     @foreach($elements as $element)
                         <option value="{{ $element->id }}">{{ $element->element_title }}</option>

@@ -38,7 +38,7 @@
               <tr>
                 <td colspan="2">Nama Peserta</td>
                 <td>: &nbsp;</td>
-                <td>{{ $assessi->name }}</td>
+                <td>{{ $assessi->data_assessi->name }}</td>
               </tr>
               <tr>
                 <td colspan="2">Tanggal</td>
@@ -53,17 +53,17 @@
               <li>- Menjawab pada kolom jawaban secara singkat dan jelas</li>
             </ul>
 
-            @foreach ($schema->units as $unit)
+            @foreach ($schema->unit_schemas as $unit)
             <table style="min-width: 100%" class="p-0" border="3">
               <tr>
                 <td rowspan="2">{{ $loop->iteration }} </td>
                 <td rowspan="2" style="width: 30%">Kode Unit</td>
                 <td  style="width: 20%">Unit Kompetensi</td>
-                <td>{{ $unit->unit_code }}</td>
+                <td>{{ $unit->unit->unit_code }}</td>
               </tr>
               <tr>
                 <td>Judul Unit</td>
-                <td>{{ $unit->unit_title }}</td>
+                <td>{{ $unit->unit->unit_title }}</td>
               </tr>
             </table>
 

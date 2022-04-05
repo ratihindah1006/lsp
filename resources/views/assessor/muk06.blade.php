@@ -54,17 +54,17 @@
                 <li>- Menjawab pada kolom jawaban secara singkat dan jelas</li>
               </ul>
   
-              @foreach ($schema->units as $unit)
+              @foreach ($schema->unit_schemas as $unit)
               <table style="min-width: 100%" class="p-0" border="3">
                 <tr>
                   <td rowspan="2" style="width: 2%">{{ $loop->iteration }} </td>
                   <td rowspan="2" style="width: 30%">Kode Unit</td>
                   <td  style="width: 20%">Unit Kompetensi</td>
-                  <td>{{ $unit->unit_code }}</td>
+                  <td>{{ $unit->unit->unit_code }}</td>
                 </tr>
                 <tr>
                   <td>Judul Unit</td>
-                  <td>{{ $unit->unit_title }}</td>
+                  <td>{{ $unit->unit->unit_title }}</td>
                 </tr>
               </table>
   
@@ -81,7 +81,7 @@
                 <tr>
                   <td class="p-2" bgcolor="lightgray" style="vertical-align:top;">
                     <b><u>Pertanyaan: </u></b> <br><br>
-                    @foreach ($unit->questions as $q)
+                    @foreach ($unit->questions->where('code_id', $schema_class->code_id) as $q)
                       @if (isset($q))
                         <span class="text-light bg-info">{{ $q->no_soal }}</span> <br><br>
                         {!! $q->question !!} <br>
@@ -91,7 +91,7 @@
                     @endforeach 
                     <hr>
                     <b><u>Kunci Jawaban: </u></b><br><br>
-                    @foreach ($unit->questions as $q)
+                    @foreach ($unit->questions->where('code_id', $schema_class->code_id) as $q)
                       @if (isset($q))
                         <span class="text-light bg-info">{{ $q->no_soal }}</span> <br><br>
                         {!! $q->key_answer !!} <br>
@@ -140,7 +140,7 @@
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary float-right mr-3">Save <span
                   class="btn-icon-right"><i class="fa fa-save"></i></span></button>
-                <a href="/beranda" class="btn btn-outline-primary float-right mr-2">Cancel</a>
+                <a href="/list" class="btn btn-outline-primary float-right mr-2">Cancel</a>
             </div>
           </div>
         </div>

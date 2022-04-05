@@ -60,7 +60,7 @@ class AssessiController extends Controller
         $answer = Answer::all()->where('assessi_id', $assessi->id);
         $data = [
             'title' => 'assessi',
-            'assessi' => $assessi->data_assessi,
+            'assessi' => $assessi,
             'assessor' => $assessor,
             'schema_class' => $assessi->schema_class,
             'schema' => $assessi->schema_class->schema,
