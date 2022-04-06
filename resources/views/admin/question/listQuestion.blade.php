@@ -54,7 +54,7 @@
                                               <td>{{ $loop->iteration }}</td>
                                               <td>{{ $schema->schema_title }}</td>
                                               <td>
-                                                <div id="accordion-seven" class="accordion accordion-header-bg accordion-bordered">
+                                                <div id="accordion-seven" class="accordion-rounded-stylish  accordion-no-gutter accordion accordion-header-bg">
                                                   <div class="accordion__item">
                                                       <div class="accordion__header collapsed accordion__header--primary" data-toggle="collapse" data-target="#header-bg_collapse{{ $loop->iteration }}">
                                                           <span class="accordion__header--icon"></span>

@@ -15,13 +15,13 @@
         </div>
     </div>
 
-    
+
     <div class="row">
-    @foreach ($assessis as $p)
+        @foreach ($assessis as $p)
         <div class="col-lg-6 col-sm-6">
             <div class="card">
                 <div class="card-body">
-                <h4 class="font-weight-bold card-title">{{ $p->schema_class->schema->schema_title }}</h4></br>                    
+                    <h4 class="font-weight-bold card-title">{{ $p->schema_class->schema->schema_title }}</h4></br>
                     <table class="my-text">
                         <tbody>
                             <tr>
@@ -104,5 +104,6 @@
         </div>
         @endforeach
     </div>
- 
+</div>
+
     @endsection

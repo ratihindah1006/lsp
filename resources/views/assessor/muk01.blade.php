@@ -24,7 +24,7 @@
                 <tr>
                   <td>Nomor</td>
                   <td>: &nbsp;</td>
-                  <td>{{ $schema->no_skkni }}</td>
+                  <td>{{ $schema->category->no_skkni }}</td>
                 </tr>
                 <tr>
                   <td colspan="2">TUK</td>
@@ -44,7 +44,7 @@
                 <tr>
                   <td colspan="2">Tanggal</td>
                   <td>: &nbsp;</td>
-                  <td>{{ $schema_class->event->event_time }}</td>
+                  <td>{{ $schema_class->date }}</td>
                 </tr>
               </table>
               <h5 class="mt-5">PANDUAN BAGI ASESOR</h5>
@@ -55,18 +55,18 @@
                 <li>- Penilaian Lanjut diisi bila hasil belum dapat disimpulkan, untuk itu gunakan metode lain sehingga keputusan dapat dibuat.</li>
               </ul>
 
-              @foreach ($schema->units as $unit)
+              @foreach ($schema->unit_schemas as $unit)
               @php 
                 $i = 1; 
               @endphp
               <table class="mb-3" style="min-width: 100%" border="3">
                 <tr>
                   <td>Kode Unit</td>
-                  <td colspan="4">: {{ $unit->unit_code }}</td>
+                  <td colspan="4">: {{ $unit->unit->unit_code }}</td>
                 </tr>
                 <tr>
                   <td>Judul Unit</td>
-                  <td colspan="4">: {{ $unit->unit_title }}</td>
+                  <td colspan="4">: {{ $unit->unit->unit_title }}</td>
                 </tr>
                 <tr class="text-center">
                   <td rowspan="2"></td>
@@ -79,7 +79,7 @@
                   <td><span class="badge badge-danger">BK</span></td>
                   <td><span class="badge badge-primary">PL</span></td>
                 </tr>
-                @foreach ($unit->elements as $e)
+                @foreach ($unit->unit->elements as $e)
                 <tr>
                   <td style="width: 50%">
                       <b>Element : {{ $e->element_title }}</b><br>

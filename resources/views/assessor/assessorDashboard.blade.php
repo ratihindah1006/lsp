@@ -14,48 +14,45 @@
             </ol>
         </div>
     </div>
-    <div class="data-table-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="data-table-list">
-                        @if (session()->has('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('success') }}
-                        </div>
-                        @endif
 
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="table-responsive my-text">
-                                    <table class="display" id="example">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Event</th>
-                                                <th>Skema</th>
-                                                <th>Kelas Skema</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($assessor->assessors as $v)
-                                            <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $v->schema_class->event->event_name}}</td>
-                                                <td>{{ $v->schema_class->schema->schema_title }}</td>
-                                                <td>{{$v->schema_class->name}}</td>
-                                                <td>
-                                                    <a href="/assessi/{{ $v->id }}" class="btn btn-primary btn-sm mb-2">
-                                                        <span>Assessi</span></a>
-                                                </td>
-                                                
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="data-table-list">
+                @if (session()->has('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                </div>
+                @endif
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive my-text">
+                            <table class="display" id="example">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Event</th>
+                                        <th>Skema</th>
+                                        <th>Kelas Skema</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($assessor->assessors as $v)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $v->schema_class->event->event_name}}</td>
+                                        <td>{{ $v->schema_class->schema->schema_title }}</td>
+                                        <td>{{$v->schema_class->name}}</td>
+                                        <td>
+                                            <a href="/assessi/{{ $v->id }}" class="btn btn-primary btn-sm mb-2">
+                                                <span>Assessi</span></a>
+                                        </td>
+
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

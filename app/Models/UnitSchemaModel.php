@@ -27,5 +27,9 @@ class UnitSchemaModel extends Model
     {
         return $this->belongsTo(UnitModel::class);
     }
-
+    
+    public function questions()
+    {
+        return $this->hasMany(Question::class, 'unit_id', 'id');
+    }
 }

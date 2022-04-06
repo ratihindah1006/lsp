@@ -207,56 +207,7 @@
     <script src="/assets/js/plugins-init/summernote-init.js"></script>
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-    {{-- <script>
-        $('#skema').change(function() {
-            var idSkema = $(this).val();
-            if (idSkema) {
-                $.ajax({
-                    type: "GET",
-                    url: "{{ url('getUnit') }}?schema_id=" + idSkema,
-                    success: function(res) {
-                        if (res) {
-                            $('#unit').find('option').not(':first').remove();
-                            $('#element').find('option').not(':first').remove();
-                            $.each(res, function(key, value) {
-                                $("#unit").append('<option value="' + key + '">' + value +
-                                    '</option>');
-                            });
-                        } else {
-                            $('#unit').find('option').not(':first').remove();
-                        }
-                    }
-                });
-            } else {
-                $('#unit').find('option').not(':first').remove();
-                $('#element').find('option').not(':first').remove();
-            }
-        });
-
-        $('#unit').on('change', function() {
-            var idUnit = $(this).val();
-            if (idUnit) {
-                $.ajax({
-                    type: "GET",
-                    url: "{{ url('getElement') }}?unit_id=" + idUnit,
-                    success: function(res) {
-                        if (res) {
-                            $('#element').find('option').not(':first').remove();
-                            $.each(res, function(key, value) {
-                                $("#element").append('<option value="' + key + '">' + value +
-                                    '</option>');
-                            });
-                        } else {
-                            $('#element').find('option').not(':first').remove();
-                        }
-                    }
-                });
-            } else {
-                $('#element').find('option').not(':first').remove();
-            }
-        });
-    </script> --}}
+    <script src="/assets/js/dependantdd.js"></script>
 
     {{-- javascript alert hapus data --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>

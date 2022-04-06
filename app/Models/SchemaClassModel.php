@@ -15,6 +15,7 @@ class SchemaClassModel extends Model
         'tuk',
         'event_id',
         'schema_id',
+        'code_id',
         'date'
        ];
     use HasFactory;
@@ -38,5 +39,9 @@ class SchemaClassModel extends Model
     public function assessis()
     {
         return $this->hasMany(AssessiModel::class, 'class_id', 'id'); 
+    }
+    public function code()
+    {
+        return $this->belongsTo(CodeQuestion::class, 'code_id','id');
     }
 }

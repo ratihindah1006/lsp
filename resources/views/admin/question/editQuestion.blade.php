@@ -6,7 +6,7 @@
   <div class="row page-titles mx-0">
       <div class="col-sm-6 p-md-0">
           <div class="welcome-text">
-              <h4>Edit {{ $title }}</h4>
+              <h4>Edit {{ $title }} Skema <div class="text-danger d-inline"> {{ $schema->schema_title }} </div> Kode <div class="text-danger d-inline">{{ $question->code->code_name }}</div></h4>
           </div>
       </div>
       <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -26,34 +26,19 @@
         </div>
     @endif
   
-    <form method="post" action="/soal/{{ $element->question->id }}">
+    <form method="post" action="/soal/{{ $question->id }}">
         @method('put')
         @csrf
         <div class="row">
             <div class="col-xl-12 col-xxl-12">
                 <div class="card">
                   <div class="card-header">
-                      <h4 class="card-title">ELEMEN</h4>
+                      <h4 class="card-title">KUK</h4>
                   </div>
                   <div class="card-body">
-                    {{ $element->element_title }}
+                    {{ $question->no_soal }}
                   </div>
               </div>
-            </div>
-
-            <div class="col-xl-12 col-xxl-12">
-              <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">KUK</h4>
-                </div>
-                <div class="card-body">
-                    <ol>
-                        @foreach ($element->criterias as $c)
-                            <li>{{ $loop->iteration.'. '.$c->criteria_title  }}</li>
-                        @endforeach
-                    </ol>
-                </div>
-            </div>
             </div>
 
             <div class="col-xl-12 col-xxl-12">
@@ -63,7 +48,7 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <textarea class="summernote form-control @error('question') is-invalid @enderror" name="question" required>{{ old('question', $element->question->question) }}</textarea>
+                            <textarea class="summernote form-control @error('question') is-invalid @enderror" name="question" required>{{ old('question', $question->question) }}</textarea>
                             @error('question')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -81,7 +66,7 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <textarea class="summernote form-control @error('key_answer') is-invalid @enderror" name="key_answer" required>{{ old('key_answer', $element->question->key_answer) }}</textarea>
+                            <textarea class="summernote form-control @error('key_answer') is-invalid @enderror" name="key_answer" required>{{ old('key_answer', $question->key_answer) }}</textarea>
                             @error('key_answer')
                             <div class="invalid-feedback">
                                 {{ $message }}

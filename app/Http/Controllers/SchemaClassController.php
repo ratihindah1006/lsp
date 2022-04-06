@@ -36,7 +36,12 @@ class SchemaClassController extends Controller
     }
 
 
-    public function store(Request $request, EventModel $event)
+    public function getKode(Request $request){
+        $code = DB::table("code_question")->where("schema_id", $request->schema_id)->pluck("code_name", "id");
+        return response()->json($code);
+    }
+
+    public function store(Request $request)
     {
 
         $request->validate([
@@ -45,7 +50,8 @@ class SchemaClassController extends Controller
             'date' => 'required',
             'description' => 'required',
             'event_id' => 'required',
-            'schema_id' => 'required'
+            'schema_id' => 'required',
+            'code_id' => 'required'
         ]);
       
         $eventTime = EventModel::find($request->event_id);
@@ -60,6 +66,7 @@ class SchemaClassController extends Controller
             'description' => $request->description,
             'event_id' =>  $request->event_id,
             'schema_id' =>  $request->schema_id,
+            'code_id' => $request->code_id,
         ]);
         $class->save();
         return redirect('/KelasSkema')->with('toast_success', 'Data kelas Skema berhasil di tambahkan!');
@@ -83,6 +90,7 @@ class SchemaClassController extends Controller
             'event_id' => 'required',
             'schema_id' => 'required',
             'date' => 'required',
+            'code_id' => 'required'
         ];
         $eventTime = EventModel::find($request->event_id);
         if(!$this->isValidDate($request->date, $eventTime->event_time)){

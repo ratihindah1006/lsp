@@ -30,4 +30,9 @@ class CodeQuestion extends Model
     {
         return $this->hasMany(Answer::class, 'code_id', 'id');
     }
+
+    public function schema_class()
+    {
+        return $this->hasMany(SchemaClassModel::class, 'code_id', 'id'); 
+    }
 }

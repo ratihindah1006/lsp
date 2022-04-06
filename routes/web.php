@@ -156,13 +156,12 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/soal', [QuestionController::class, 'index']);
     Route::get('/soal/create', [QuestionController::class, 'create']);
     Route::post('/soal', [QuestionController::class, 'store']);
-    Route::get('/soal/{element:id}/edit', [QuestionController::class, 'edit']);
+    Route::get('/soal/{question}/edit', [QuestionController::class, 'edit']);
     Route::put('/soal/{question}', [QuestionController::class, 'update']);
     Route::delete('/soal/{question}', [QuestionController::class, 'destroy']);
     Route::post('/soal/kodeSoal', [QuestionController::class, 'kodeSoal']);
     Route::get('/soal/kodesoal/{code_question:id}', [QuestionController::class, 'listSoal']);
-    Route::get('/getUnit',[QuestionController::class, 'getUnit'])->name('getUnit');
-    Route::get('/getElement',[QuestionController::class, 'getElement'])->name('getElement');
+    Route::get('/getKode',[SchemaClassController::class, 'getKode'])->name('getKode');
 });
 
 Route::group(['middleware' => 'auth:assessi'], function () {

@@ -98,14 +98,12 @@ class QuestionController extends Controller
      * @param  \App\Models\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function edit(ElementModel $element)
+    public function edit(Question $question)
     {
-        if ($element->question == null) {
-            return redirect('soal/create');
-        }
         $data = [
             'title' => 'Soal Esai',
-            'element' => $element,
+            'question' => $question,
+            'schema' => $question->unit->schema,
         ];
         return view('admin.question.editQuestion', $data);
     }
@@ -164,6 +162,7 @@ class QuestionController extends Controller
         $data = [
             'title' => 'List Soal Esai',
             'questions' => Question::where('code_id', $codeQuestion->id)->get(),
+            'codeQuestion' => $codeQuestion,
         ];
         
         return view('admin.question.listQuestionCode', $data);

@@ -103,7 +103,7 @@
                                     <br>
                                     <div class="form-check">
                                         <label class="radio-inline" for="{{ $element->id }}">
-                                            <input required class="form-check-input" type="radio" name="element_{{ $element->id }}" id="{{ $element->id }}" value="K" @if ($assessment && $assessment[$i]=='K' ) checked @endif disabled>
+                                            <input required class="form-check-input" type="radio" name="element_{{ $element->id }}" id="{{ $element->id }}" value="K" @if(isset($assessment[$i]))  @if ($assessment && $assessment[$i]=='K' ) checked @endif @endif disabled>
                                         </label>
                                     </div>
                                 </th>
@@ -112,7 +112,7 @@
                                     <br>
                                     <div class="form-check">
                                         <label class="radio-inline" for="{{ $element->id }}">
-                                            <input class="form-check-input" type="radio" name="element_{{ $element->id }}" id="{{ $element->id }}" value="BK" @if ($assessment && $assessment[$i]=='BK' ) checked @endif disabled>
+                                            <input class="form-check-input" type="radio" name="element_{{ $element->id }}" id="{{ $element->id }}" value="BK" @if(isset($assessment[$i])) @if ($assessment && $assessment[$i]=='BK' ) checked @endif @endif disabled>
                                         </label>
                                         <?php $i++; ?>
                                     </div>

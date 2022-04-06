@@ -9,6 +9,7 @@ use App\Models\CodeQuestion;
 use App\Models\ElementModel;
 use Illuminate\Http\Request;
 use App\Models\CriteriaModel;
+use App\Models\UnitSchemaModel;
 
 class DropdownSelect extends Component
 {
@@ -18,6 +19,7 @@ class DropdownSelect extends Component
     public $criterias;
     public $no_soal = [];
     public $codes;
+    public $aunit;
 
     public $selectedSchema = null;
     public $selectedUnit = null;
@@ -31,6 +33,7 @@ class DropdownSelect extends Component
         $this->elements = collect();
         $this->criterias = collect();
         $this->codes = collect();
+        $this->unitss = collect();
         $this->selectedElement = $selectedElement;
 
     }
@@ -42,7 +45,7 @@ class DropdownSelect extends Component
 
     public function updatedSelectedSchema($skema)
     {
-        $this->units = UnitModel::where('schema_id', $skema)->get();
+        $this->units = UnitSchemaModel::where('schema_id', $skema)->get();
         $this->codes = CodeQuestion::where('schema_id', $skema)->get();
         $this->selectedUnit = NULL;
         $this->selectedElement = NULL;
@@ -55,9 +58,12 @@ class DropdownSelect extends Component
     public function updatedSelectedUnit($unit)
     {
         if (!is_null($unit)) {
-            $this->elements = ElementModel::where('unit_id', $unit)->get();
+            $aunit = UnitSchemaModel::where('id', $unit)->first();
+            if (!is_null($aunit)) {
+                $this->elements = ElementModel::where('unit_id', $aunit['unit_id'])->get();
+            }
         }
-        $this->selectedElement = NULL;
+        $this->selectedElement = "";
         $this->criterias = NULL;
         $this->no_soal = [];
     }

@@ -21,7 +21,7 @@ class Question extends Model
 
     public function unit()
     {
-        return $this->belongsTo(UnitModel::class,'unit_id','id');
+        return $this->belongsTo(UnitSchemaModel::class,'unit_id','id');
     }
 
     public function code()
