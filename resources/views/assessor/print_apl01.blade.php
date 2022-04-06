@@ -108,7 +108,7 @@
             <td width="150">{{ $assessis->schema_title }}</td>
             <td width="100">Nomor Skema</td>
             <td width="10">:</td>
-            <td width="150">{{ $assessis->no_skkni }}</td>
+            <td width="150">{{ $category->category_title }}</td>
         </tr>
     </tbody>
 </table><br>

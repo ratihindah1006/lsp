@@ -47,17 +47,7 @@
                                                 </div>
                                             @enderror
                                         </div>
-                                        <div class="form-group">
-                                            <label for="password" class="form-label">Password</label>
-                                            <input name="password" type="text"
-                                                class="form-control @error('password') is-invalid @enderror" id="password"
-                                                value="{{ old('password', $data_assessi->password) }}">
-                                            @error('password')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
+                                      
                                         <div class="card-footer mb-3">
                                             <button type="submit" class="btn btn-primary float-right mr-3">Simpan <span
                                                     class="btn-icon-right"><i class="fa fa-save"></i></span></button>

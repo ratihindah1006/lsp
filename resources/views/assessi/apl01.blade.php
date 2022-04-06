@@ -8,7 +8,7 @@
                 <div class="col-lg-1"></div>
                 <div class="col-lg-12">
                     <div class="card text-dark">
-                        <div class="card-footer">
+                        <div class="card-footer" style=" border-bottom: 7px solid  #191970;">
                             <h2 class="font-weight-bold card-title">FR-APL-01 FORMULIR PERMOHONAN SERTIFIKASI KOMPETENSI</h2>
                             @if($apl01 != null)
                             @if ($apl01->status == '1') 
@@ -28,7 +28,7 @@
                             <a href="/beranda" class="btn btn-danger float-right mr-1">Batal <span class="btn-icon-right"><i
                                         class="fa fa-close"></i></span></a>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="border: none">
                             <div class="form-validation">
                                 <div class="row">
                                     <div class="col-xl-6">
@@ -456,10 +456,10 @@
                 <div class="col-lg-1"></div>
                 <div class="col-lg-12">
                     <div class="card text-dark">
-                        <div class="card-header">
+                        <div class="card-header" style="border-top: 7px solid  #191970;">
                             <h4 class="font-weight-bold">Data Sertifikasi</h4>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="border-left: none; ">
                             <div class="basic-form">
                                 <div class="row">
                                     <div class="col-xl-6">
@@ -561,13 +561,10 @@
                 <div class="col-lg-1"></div>
                 <div class="col-lg-12">
                     <div class="card text-dark">
-                        <div class="card-header">
-                            <h4 class="font-weight-bold">Berkas Kelengkapan Pemohon </h4>
+                        <div class="card-header" style="border-top: 7px solid  #191970;">
+                            <h4 class="font-weight-bold">Berkas Kelengkapan Pemohon <span><h6>*Berkas diupload dengan format pdf dengan ukuran max 1 MB</h6></span></h4>
                         </div>
-                        <div class="card-header">
-                            <h6>*Berkas diupload dengan format pdf dengan ukuran max 1 MB</h6>
-                        </div>
-                        <div class="card-body">
+                        <div class="card-body" style="border: none">
                             <div class="basic-form">
                                 <div class="row">
                                     <div class="col-xl-6">
@@ -648,10 +645,10 @@
                 <div class="col-lg-1"></div>
                 <div class="col-lg-12">
                     <div class="card text-dark">
-                        <div class="card-header">
+                        <div class="card-header" style="border-top: 7px solid  #191970;">
                             <h4 class="font-weight-bold ">Halaman Persetujuan</h4>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="border: none">
                             <div class="basic-form">
                                 <div class="row">
                                     <div class="col-xl-6">
@@ -692,7 +689,7 @@
                                                     <label class="my-text">Catatan&emsp;:</label>
                                                     <textarea class="form-control @error('note') is-invalid @enderror"
                                                     id="note" name="note"
-                                                        rows="5" placeholder="catatan" disabled> 
+                                                        rows="3" placeholder="catatan" disabled> 
                                                             @if ($apl01 != null) {{$apl01->note }}
                                                             @else {{ Request::old('note') }}
                                                             @endif</textarea>

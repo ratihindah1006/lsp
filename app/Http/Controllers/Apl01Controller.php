@@ -102,6 +102,7 @@ class Apl01Controller extends Controller
             'assessi'=>$data3,
             'assessis' => $assessi->assessis->find($id)->schema_class->schema,
             'apl01' => $assessi->assessis->find($id)->apl01,
+            'category' => $assessi->assessis->find($id)->schema_class->schema->category,
             
         ]);
         //mengambil data dan tampilan dari halaman laporan_pdf

@@ -179,7 +179,7 @@ class DataAssessiController extends Controller
     {
         $rules = [
             'name' => 'required',
-            'password' => 'required',
+            
         ];
         if ($request->email != $data_assessi->email) {
             $rules['email'] = 'required';

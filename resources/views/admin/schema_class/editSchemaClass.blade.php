@@ -42,7 +42,7 @@
                                             <select style="width: 100%; height:40px;" name="event_id" id="event_id"  class="form-control maximum-search-length @error('event_id') is-invalid @enderror">
                                                 <option value="">Pilih Bidang</option>
                                                 @foreach ($event as $events)
-                                                <option value="{{ $events->id }}" {{ old('event_id', $class->event_id) == $events->id ? 'selected' : null }}>{{ $events->event_name }}</option>
+                                                <option value="{{ $events->id }}" {{ old('event_id', $class->event_id) == $events->id ? 'selected' : null }} data-time="{{ $events->event_time }}">{{ $events->event_name }}</option>
                                                 @endforeach
                                             </select>
                                             @error('event_id')
@@ -66,7 +66,8 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="date" class="form-label">Tanggal Pelaksanaan</label>
+                                            <label for="date" class="form-label">Tanggal Pelaksanaan &emsp;<input
+                                                id="date" disabled style="border: none"></label>
                                             <input type="date" class="form-control @error('date') is-invalid @enderror"
                                                 id="date" name="date" value="{{ old('date', $class->date) }}">
                                             @error('date')
@@ -110,6 +111,19 @@
         </div>
     </form>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+        <script>
+            $(document).ready(function() {
+                $('#event_id').on('change', function() {
+                    const selected = $(this).find('option:selected');
+                    const eventTime = selected.data('time');
+
+                    $("#date").val(eventTime);
+                });
+            });
+        </script>
 
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">

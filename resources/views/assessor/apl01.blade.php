@@ -386,10 +386,12 @@
                                                 <select class="form-control @error('status') is-invalid @enderror"
                                                     id="status" name="status">
                                                     <option value=>- - Pilih - -</option>
-                                                    <option value='0' {{ $apl01->status == '0' ? 'selected' : '' }}>
-                                                        Ditolak</option>
-                                                    <option value='1' {{ $apl01->status == '1' ? 'selected' : '' }}>
-                                                        Diterima</option>
+                                                    <option value="0"
+                                                    @if ($apl01 != null) {{ $apl01->status === '0' ? 'selected' : '' }}@else{{ old('status') == '0' ? 'selected' : '' }} @endif>
+                                                   Ditolak</option>
+                                                    <option value="1"
+                                                    @if ($apl01 != null) {{ $apl01->status === '1' ? 'selected' : '' }} @else {{ old('status') == '1' ? 'selected' : '' }} @endif>
+                                                    Diterima</option>
                                                 </select>
                                                 @error('status')
                                                     <div class="invalid-feedback">
@@ -403,7 +405,7 @@
                                         <div class="form-group row">
                                             <label class="my-text">Catatan&emsp;:</label>
                                             <textarea class="form-control @error('note') is-invalid @enderror" id="note"
-                                                name="note" rows="5">
+                                                name="note" rows="3">
                                                 @if ($apl01 != null) {{$apl01->note }}
                                                 @else {{ Request::old('note') }}
                                                 @endif</textarea>

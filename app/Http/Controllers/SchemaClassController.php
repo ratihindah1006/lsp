@@ -26,7 +26,7 @@ class SchemaClassController extends Controller
             'title' => 'Kelas Skema',      ]);
     }
 
-    public function create()
+    public function create(EventModel $event)
     {
         return view('admin.schema_class.createSchemaClass', [
             'event' => DB::table('event')->get(),
@@ -35,16 +35,8 @@ class SchemaClassController extends Controller
         ]);
     }
 
-    public function event($id){
-        $event=(DB::table('event')->where('event_id', $id)->get());
-        return response()->json($event);
-    }
-    public function schema($id){
-        $schema=(DB::table('schema')->where('schema_id', $id)->get());
-        return response()->json($schema);
-    }
 
-    public function store(Request $request)
+    public function store(Request $request, EventModel $event)
     {
 
         $request->validate([
@@ -55,10 +47,12 @@ class SchemaClassController extends Controller
             'event_id' => 'required',
             'schema_id' => 'required'
         ]);
+      
         $eventTime = EventModel::find($request->event_id);
         if(!$this->isValidDate($request->date, $eventTime->event_time)){
             return back()->with('toast_error', 'Tanggal tidak valid!')->withInput($request->all());
         }
+      
         $class = new SchemaClassModel([
             'name' => $request->name,
             'tuk' => $request->tuk,
@@ -67,7 +61,6 @@ class SchemaClassController extends Controller
             'event_id' =>  $request->event_id,
             'schema_id' =>  $request->schema_id,
         ]);
-       
         $class->save();
         return redirect('/KelasSkema')->with('toast_success', 'Data kelas Skema berhasil di tambahkan!');
     }
