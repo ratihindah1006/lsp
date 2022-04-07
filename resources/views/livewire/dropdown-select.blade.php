@@ -85,7 +85,7 @@
               <h4 class="card-title">No Soal</h4>
           </div>
           <div class="card-body">
-            <input wire:model="no_soal" type="text" name="no_soal" id="no_soal" 
+            <input wire:model="no_soal" type="text" name="no_soal" id="no_soal" class = "form-control"
             value="
             @if (is_array($no_soal) || is_object($no_soal)) 
                 @foreach ($no_soal as $no) 

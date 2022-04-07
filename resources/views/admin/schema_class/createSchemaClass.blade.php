@@ -64,12 +64,25 @@
                                                     class="form-control  @error('schema_id') is-invalid @enderror">
                                                     <option value="">Pilih Skema</option>
                                                     @foreach ($schema as $schemas)
-                                                        <option value="{{ $schemas->id }}"
-                                                            {{ old('schema_id') == $schemas->id ? 'selected' : null }}>
-                                                            {{ $schemas->schema_title }}</option>
+                                                        <option value="{{ $schemas->id }}">{{ $schemas->schema_title }}</option>
                                                     @endforeach
                                                 </select>
                                                 @error('schema_id')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="code_id" class="form-label">Kode Soal</label>
+                                                <select name="code_id" id="code_id"
+                                                    class="form-control @error('code_id') is-invalid @enderror" required>
+                                                    <option value="">Pilih Kode Soal</option>
+                                                </select>
+                                                @error('code_id')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
                                                     </div>

@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
 use App\Models\AdminModel;
-use App\Models\AssessorModel;
 use App\Models\EventModel;
-use App\Models\SchemaClassModel;
 use App\Models\SchemaModel;
-use Illuminate\Support\Facades\DB;
-
+use App\Models\CodeQuestion;
 use Illuminate\Http\Request;
+use App\Models\AssessorModel;
+use App\Models\SchemaClassModel;
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Testing\Fakes\EventFake;
 
 
@@ -77,6 +78,7 @@ class SchemaClassController extends Controller
         return view('admin.schema_class.editSchemaClass',[
             'event' => EventModel::all(),
             'schema' => SchemaModel::all(),
+            'codes' => CodeQuestion::all(),
             'title'=> 'Data Kelas Skema',
             'class'=> $class,
         ]);
