@@ -129,7 +129,7 @@
                     <li class="nav-label">Data Skema</li>
                     <li class="{{ request()->is('category/*') ? 'mm-active' : '' }}"><a href="/category"
                             aria-expanded="false"><i class="icon icon-single-copy-06"></i><span
-                                class="nav-text">Kategori</span></a></li>
+                                class="nav-text">Kategori/Bidang/Sektor</span></a></li>
                     <li class="{{ request()->is('skema/*') ? 'mm-active' : '' }}"><a href="/skema"
                             aria-expanded="false"><i class="icon icon-single-copy-06"></i><span
                                 class="nav-text">Skema</span></a></li>

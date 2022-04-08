@@ -112,7 +112,7 @@
         </tr>
     </tbody>
 </table><br>
-<div>
+
     <table border="1" style="border-style: solid;">
         <thead class="my-text font-weight-bold">
             <tr>

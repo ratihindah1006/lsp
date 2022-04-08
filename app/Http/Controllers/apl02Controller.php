@@ -93,7 +93,7 @@ class Apl02Controller extends Controller
                 'apl01' => $assessi->apl01,
                 'asesor' => $assessi->assessor,
                 'class' => $assessi->schema_class,
-                'units' => $assessi->schema_class->schema->units,
+                'units' => $assessi->schema_class->schema->unit_schemas,
                 'apl02' => $assessi->apl02,
                 'assessment' => $assessment,
             

@@ -36,10 +36,12 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($assessi->assessors as $value)
+                                    @foreach($value->assessis as $v)
                                     <tr>
+                                       
                                         <td>{{ $loop->iteration }}</td>
 
-                                        @foreach($value->assessis as $v)
+                                        
 
                                         <td>{{ $v->data_assessi->name}}</td>
                                         <td>{{ $v->data_assessi->email }}</td>

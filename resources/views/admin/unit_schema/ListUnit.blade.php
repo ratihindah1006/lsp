@@ -32,7 +32,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="data-table-list">
                         <a href="/skema/{{ $schema->id }}/unit/create" class="btn btn-primary btn-sm">
-                            <i<i class="ti-plus ">&nbsp;&nbsp;&nbsp;</i>Add
+                            <i class="ti-plus ">&nbsp;</i>Tambah / Edit
                         </a><br><br>
                         <div class="card">
                             <div class="card-body">
@@ -43,7 +43,6 @@
                                                 <th>No</th>
                                                 <th>Unit Code</th>
                                                 <th>Unit Title</th>
-                                                <th width="100px">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -52,15 +51,7 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $value->unit->unit_code }}</td>
                                                 <td>{{ $value->unit->unit_title }}</td>
-                                                <td align="center">
-                                                    <a href="/skema/{{ $schema->id }}/unit/{{ $value->id }}/edit" class="btn btn-warning btn-sm"><span class="ti-pencil"></span></a>
-                                                    <form action="/skema/{{ $schema->id }}/unit/{{ $value->id }}" method="POST" class="d-inline">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button class="btn btn-danger btn-sm border-0 delete-confirm" data-name="{{$value->unit_title}}"><span class="ti-trash"></span>
-                                                        </button>
-                                                    </form>
-                                                </td>
+                                                
                                             </tr>
                                             @endforeach
                                         </tbody>
