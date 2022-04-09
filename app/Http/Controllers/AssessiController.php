@@ -56,6 +56,16 @@ class AssessiController extends Controller
 
     public function muk06(AssessiModel $assessi)
     {
+        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
+        if ($tanggal_berakhir > date("m/d/Y")) {
+            return redirect('/')->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
+        }
+
+        $cekAssessi = $assessi->where('data_assessi_id', Auth::user()->id)->exists();
+        if (!$cekAssessi) {
+            return redirect('/');
+        }
+
         $assessor = DataAssessorModel::find($assessi->assessor->data_assessor_id);
         $answer = Answer::all()->where('assessi_id', $assessi->id);
         $data = [

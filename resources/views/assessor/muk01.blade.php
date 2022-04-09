@@ -56,9 +56,9 @@
               </ul>
 
               @foreach ($schema->unit_schemas as $unit)
-              @php 
+              {{-- @php 
                 $i = 1; 
-              @endphp
+              @endphp --}}
               <table class="mb-3" style="min-width: 100%" border="3">
                 <tr>
                   <td>Kode Unit</td>
@@ -86,12 +86,12 @@
                       <b>Kriteria unjuk kerja: </b><br>
                       <ul>
                       @foreach ($e->criterias as $criteria)
-                        <li>{{ $i.'.'.$loop->iteration.' '.$criteria->criteria_title }}</li>
+                        <li>{{ $criteria->element->no_element.'.'.$criteria->no_criteria.' '.$criteria->criteria_title }}</li>
                       @endforeach
                       </ul>
-                      @php
+                      {{-- @php
                         $i++;
-                      @endphp  
+                      @endphp   --}}
                   </td>
                   <td style="vertical-align: top">
                     Benchmark <br>

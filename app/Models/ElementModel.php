@@ -24,7 +24,7 @@ class ElementModel extends Model
 
     public function criterias()
     {
-        return $this->hasMany(CriteriaModel::class, 'element_id', 'id'); 
+        return $this->hasMany(CriteriaModel::class, 'element_id', 'id')->orderBy('no_criteria'); 
     }
 
     public function question()
