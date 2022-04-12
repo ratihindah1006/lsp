@@ -10,7 +10,7 @@
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/{{ $title }}">{{ $title }}</a></li>
+                    <li class="breadcrumb-item"><a href="/soal">{{ $title }}</a></li>
                 </ol>
             </div>
         </div>
@@ -34,9 +34,9 @@
                                 </div>
                             @endif
                             <a href="/soal/create" class="btn btn-primary btn-sm mr-2"><i
-                                class="ti-plus">&nbsp;&nbsp;&nbsp;</i>Add Question</a>
+                                class="ti-plus">&nbsp;&nbsp;&nbsp;</i>Tambah Soal</a>
                             <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalTambahKodeSoal"><i
-                                    class="ti-plus">&nbsp;&nbsp;&nbsp;</i>Add Code</button><br><br>
+                                    class="ti-plus">&nbsp;&nbsp;&nbsp;</i>Tambah Kode</button><br><br>
                             <div class="card">
                                 <div class="card-body">
                                     <div class="table-responsive my-text">

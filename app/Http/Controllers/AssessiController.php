@@ -56,8 +56,12 @@ class AssessiController extends Controller
 
     public function muk06(AssessiModel $assessi)
     {
+        if(isset($assessi->ak01) && ($assessi->ak01->t_p_tulis != 1)){
+            return redirect('/')->with('toast_error', 'Form MUK06 belum disetujui oleh asesor');
+        }
+
         $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
-        if ($tanggal_berakhir > date("m/d/Y")) {
+        if (date("m/d/Y") > $tanggal_berakhir) {
             return redirect('/')->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
         }
 
