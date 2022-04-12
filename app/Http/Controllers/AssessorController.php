@@ -6,6 +6,7 @@ use App\Models\AK01;
 use App\Models\Apl01;
 use App\Models\MUK01;
 use App\Models\Answer;
+use PDF; //library pdf
 use App\Models\APL02Model;
 use App\Models\AssessiModel;
 use Illuminate\Http\Request;
@@ -15,7 +16,6 @@ use App\Models\SchemaModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException as ValidationException;
-use PDF; //library pdf
 
 class AssessorController extends Controller
 {
@@ -208,6 +208,18 @@ class AssessorController extends Controller
 
     public function ak01(AssessiModel $assessi)
     {
+        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
+        if ($tanggal_berakhir > date("m/d/Y")) {
+            return redirect('/')->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
+        }
+
+        $data_assessor = AssessorModel::where('data_assessor_id', Auth::user()->id)->where('class_id', $assessi->schema_class->id)->first();
+        if (!$data_assessor) {
+            return redirect('/');
+        }else if ($assessi->assessor_id != $data_assessor->id) {
+            return redirect('/');
+        }
+
         $data = [
             'ak01' => $assessi->ak01,
             'title' => 'AK01',
@@ -246,6 +258,18 @@ class AssessorController extends Controller
 
     public function muk01(AssessiModel $assessi)
     {
+        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
+        if ($tanggal_berakhir > date("m/d/Y")) {
+            return redirect('/')->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
+        }
+
+        $data_assessor = AssessorModel::where('data_assessor_id', Auth::user()->id)->where('class_id', $assessi->schema_class->id)->first();
+        if (!$data_assessor) {
+            return redirect('/');
+        }else if ($assessi->assessor_id != $data_assessor->id) {
+            return redirect('/');
+        }
+
         $data = [
             'title' => 'MUK01',
             'assessi' => $assessi,
@@ -273,6 +297,18 @@ class AssessorController extends Controller
 
     public function muk06(AssessiModel $assessi)
     {
+        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
+        if ($tanggal_berakhir > date("m/d/Y")) {
+            return redirect('/')->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
+        }
+        
+        $data_assessor = AssessorModel::where('data_assessor_id', Auth::user()->id)->where('class_id', $assessi->schema_class->id)->first();
+        if (!$data_assessor) {
+            return redirect('/');
+        }else if ($assessi->assessor_id != $data_assessor->id) {
+            return redirect('/');
+        }
+     
         $answer = Answer::all()->where('assessi_id', $assessi->id);
         $data = [
             'title' => 'assessi',
