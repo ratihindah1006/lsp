@@ -28,22 +28,21 @@
                             <h3 class="card-title">Tambah Skema</h3>
                         </div>
                         <div class="card-body">
-                        <div class="col-12">
-                                        <div class="form-group">
-                                        <label>Judul Kategori</label>
-                                          <select class="form-control maximum-search-length @error('category_id') is-invalid @enderror" style="width: 100%; height:40px;" name="category_id" id="category_id">
-                                            <option value=""></option>
-                                            @foreach ($category as $category)
-                                            <option value="{{ $category->id }}" {{ old("category_id") == $category->id ? 'selected' : null }}>{{ $category->category_title }}</option>
-                                            @endforeach
-                                          </select>
-                                          @error('category_id')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
+                            <div class="form-group">
+                                <label>Judul Kategori</label>
+                                <select class="form-control maximum-search-length @error('category_id') is-invalid @enderror" style="width: 100%; height:40px;" name="category_id" id="category_id">
+                                    <option value=""></option>
+                                    @foreach ($category as $category)
+                                    <option value="{{ $category->id }}" {{ old("category_id") == $category->id ? 'selected' : null }}>{{ $category->category_title }}</option>
+                                    @endforeach
+                                </select>
+                                @error('category_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            
                             <div class="form-group">
                                 <label for="schema_title" class="form-label">Judul Skema</label>
                                 <input type="text" class="form-control @error('schema_title') is-invalid @enderror" id="schema_title" name="schema_title" value="{{ old('schema_title') }}">

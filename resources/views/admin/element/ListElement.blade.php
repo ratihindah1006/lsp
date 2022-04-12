@@ -42,7 +42,7 @@
                                     <div class="col-1 ml-5">
                                             <div class="form-group row">
                                                 <label for="no_element" class="form-label my-text">No Element</label>
-                                                <input style="width: 100%; height:40px;" type="text" class="form-control @error('no_element') is-invalid @enderror" id="no_element" name="no_element" value="{{ old('element_title') }}">
+                                                <input type="text" class="form-control @error('no_element') is-invalid @enderror" id="no_element" name="no_element" value="{{ old('element_title') }}">
                                                 @error('no_element')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -53,7 +53,7 @@
                                         <div class="col-4">
                                             <div class="form-group row">
                                                 <label for="element_title" class="form-label my-text">Judul Element</label>
-                                                <input style="width: 100%; height:40px;" type="text" class="form-control @error('element_title') is-invalid @enderror" id="element_title" name="element_title" value="{{ old('element_title') }}">
+                                                <input type="text" class="form-control @error('element_title') is-invalid @enderror" id="element_title" name="element_title" value="{{ old('element_title') }}">
                                                 @error('element_title')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -64,7 +64,7 @@
                                         <div class="col-3">
                                             <div class="form-group row">
                                                 <label for="benchmark" class="form-label my-text">Benchmark</label>
-                                                <input style="width: 100%; height:40px;" type="text" class="form-control @error('benchmark') is-invalid @enderror" id="benchmark" name="benchmark" value="{{ old('benchmark') }}">
+                                                <input type="text" class="form-control @error('benchmark') is-invalid @enderror" id="benchmark" name="benchmark" value="{{ old('benchmark') }}">
                                                 @error('benchmark')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}

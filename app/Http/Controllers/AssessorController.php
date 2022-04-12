@@ -11,6 +11,7 @@ use App\Models\AssessiModel;
 use Illuminate\Http\Request;
 use App\Models\AssessorModel;
 use App\Models\DataAssessorModel;
+use App\Models\SchemaModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException as ValidationException;
@@ -36,13 +37,14 @@ class AssessorController extends Controller
         ]);
     }
 
-    public function assessi($id)
+    public function unit($id)
     {
-        $data_assessor = DataAssessorModel::find(Auth::user()->id);
-        return view('assessor.assessi', [
+        $schema = SchemaModel::find($id);
+        return view('assessor.Unit', [
             'title' => 'Assessi',
-            'assessor' => $data_assessor->assessors->find($id),
+            'unit' => $schema->unit_schemas,
         ]);
+
     }
 
     public function update_password(Request $request)
