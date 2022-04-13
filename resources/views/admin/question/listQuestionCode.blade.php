@@ -36,57 +36,62 @@
                       @endif
                       <a href="/soal/create/{{ $codeQuestion->id }}" class="btn btn-primary btn-sm mr-2"><i
                           class="ti-plus">&nbsp;&nbsp;&nbsp;</i>Tambah Soal</a><br><br>
-                      <div class="card">
-                          <div class="card-body">
-                              <div class="table-responsive my-text">
-                                <table class="display p-0" id="example">
-                                  <thead>
-                                      <tr>
-                                          <th>No Soal</th>
-                                          <th>Pertanyaan</th>
-                                          <th>Jawaban</th>
-                                          <th>Aksi</th>
-                                      </tr>
-                                  </thead>
-                                  <tbody>
-                                    @foreach ($questions as $question)
-                                      <tr style="vertical-align:top">
-                                        <td>{{ $question->no_soal }}</td>
-                                        <td>{!! $question->question !!}</td>
-                                        <td>{!! $question->key_answer !!}</td>
-                                        <td><a href="/soal/{{ $question->id }}/edit" class="btn btn-sm btn-primary"><i class="ti-pencil"></i></a>
-                                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modalDeleteSoal{{ $question->id }}"><i class="ti-trash"></i></button>
-                                            <!-- Modal -->
-                                            <form method="post" action="/soal/{{ $question->id }}">
-                                                @csrf
-                                                @method('delete')
-                                                    <div class="modal fade" id="modalDeleteSoal{{ $question->id }}">
-                                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header bg-danger">
-                                                                    <h5 class="modal-title text-white">Konfirmasi Hapus</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <p>Yakin ingin menghapus data soal <b>{{ $question->no_soal }}</b> ? </p>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-                                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                        @foreach ($codeQuestion->schema->unit_schemas as $units)
+                            <div class="card mb-5">
+                                <div class="card-header bg-secondary solid">
+                                    <h5 class="card-title text-light">{{ $units->unit->unit_code.' - '.$units->unit->unit_title }}</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive my-text">
+                                        <table class="example display p-0">
+                                        <thead>
+                                            <tr>
+                                                <th>No Soal</th>
+                                                <th>Pertanyaan</th>
+                                                <th>Jawaban</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($questions->where('unit_id', $units->id) as $question)
+                                            <tr style="vertical-align:top">
+                                                <td>{{ $question->no_soal }}</td>
+                                                <td>{!! Str::limit($question->question, 75, $end='...') !!}</td>
+                                                <td>{!! Str::limit($question->key_answer, 75, $end='...') !!}</td>
+                                                <td><a href="/soal/{{ $question->id }}/edit" class="btn btn-sm btn-primary"><i class="ti-pencil"></i></a>
+                                                    <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modalDeleteSoal{{ $question->id }}"><i class="ti-trash"></i></button>
+                                                    <!-- Modal -->
+                                                    <form method="post" action="/soal/{{ $question->id }}">
+                                                        @csrf
+                                                        @method('delete')
+                                                            <div class="modal fade" id="modalDeleteSoal{{ $question->id }}">
+                                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header bg-danger">
+                                                                            <h5 class="modal-title text-white">Konfirmasi Hapus</h5>
+                                                                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <p>Yakin ingin menghapus data soal <b>{{ $question->no_soal }}</b> ? </p>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                            </form> 
-                                        </td>
-                                      </tr>
-                                    @endforeach
-                                  </tbody>
-                              </table>
-                              </div>
-                          </div>
-                      </div>
+                                                    </form> 
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                   </div>
               </div>
           </div>
