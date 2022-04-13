@@ -17,6 +17,7 @@
     <link href="/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="/assets/vendor/select2/css/select2.min.css" rel="stylesheet">
     <link href="/assets/vendor/summernote/summernote.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     @stack('styles')
    
 </head>
