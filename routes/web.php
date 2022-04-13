@@ -155,6 +155,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
     Route::get('/soal', [QuestionController::class, 'index']);
     Route::get('/soal/create', [QuestionController::class, 'create']);
+    Route::get('/soal/create/{code_question}', [QuestionController::class, 'createByCode']);
     Route::post('/soal', [QuestionController::class, 'store']);
     Route::get('/soal/{question}/edit', [QuestionController::class, 'edit']);
     Route::put('/soal/{question}', [QuestionController::class, 'update']);
@@ -181,7 +182,7 @@ Route::group(['middleware' => 'auth:assessi'], function () {
 
 Route::group(['middleware' => 'auth:assessor'], function () {
     Route::get('/assessor', [AssessorController::class, 'index']);
-    Route::get('/assessi/{assessor:id}', [AssessorController::class, 'assessi']);
+    Route::get('/unit/{unit:id}', [AssessorController::class, 'unit']);
     Route::get('/ubah_password', [AssessorController::class, 'edit_password'])->name('ubah_password');
     Route::put('/ubah_password', [AssessorController::class, 'update_password']);
     Route::get('/list', [AssessorController::class, 'list']);

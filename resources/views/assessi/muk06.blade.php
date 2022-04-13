@@ -23,7 +23,7 @@
               <tr>
                 <td>Nomor</td>
                 <td>: &nbsp;</td>
-                <td>{{ $schema->no_skkni }}</td>
+                <td>{{ $schema->category->no_skkni }}</td>
               </tr>
               <tr>
                 <td colspan="2">TUK</td>
@@ -109,9 +109,9 @@
             @endforeach
           </div>
             <div class="card-footer">
-              <button type="submit" class="btn btn-primary float-right mr-3">Save <span
+              <button type="submit" class="btn btn-primary float-right mr-3">Simpan <span
                 class="btn-icon-right"><i class="fa fa-save"></i></span></button>
-              <a href="/beranda" class="btn btn-outline-primary float-right mr-2">Cancel</a>
+              <a href="/beranda" class="btn btn-outline-primary float-right mr-2">Kembali</a>
           </div>
         </div>
       </div>

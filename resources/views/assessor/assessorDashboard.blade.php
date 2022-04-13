@@ -32,8 +32,11 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Event</th>
+                                        <th>Tipe Event</th>
+                                        <th>Status Event</th>
                                         <th>Skema</th>
                                         <th>Kelas Skema</th>
+                                        <th>Tanggal Pelaksanaan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -42,11 +45,14 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $v->schema_class->event->event_name}}</td>
+                                        <td>{{ $v->schema_class->event->type}}</td>
+                                        <td>{{ $v->schema_class->event->status}}</td>
                                         <td>{{ $v->schema_class->schema->schema_title }}</td>
                                         <td>{{$v->schema_class->name}}</td>
+                                        <td>{{$v->schema_class->date}}</td>
                                         <td>
-                                            <a href="/assessi/{{ $v->id }}" class="btn btn-primary btn-sm mb-2">
-                                                <span>Assessi</span></a>
+                                            <a href="/unit/{{ $v->schema_class->schema->id }}" class="btn btn-primary btn-sm mb-2">
+                                                <span>Unit</span></a>
                                         </td>
 
                                     </tr>

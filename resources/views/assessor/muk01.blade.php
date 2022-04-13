@@ -56,9 +56,6 @@
               </ul>
 
               @foreach ($schema->unit_schemas as $unit)
-              @php 
-                $i = 1; 
-              @endphp
               <table class="mb-3" style="min-width: 100%" border="3">
                 <tr>
                   <td>Kode Unit</td>
@@ -86,12 +83,9 @@
                       <b>Kriteria unjuk kerja: </b><br>
                       <ul>
                       @foreach ($e->criterias as $criteria)
-                        <li>{{ $i.'.'.$loop->iteration.' '.$criteria->criteria_title }}</li>
+                        <li>{{ $criteria->element->no_element.'.'.$criteria->no_criteria.' '.$criteria->criteria_title }}</li>
                       @endforeach
                       </ul>
-                      @php
-                        $i++;
-                      @endphp  
                   </td>
                   <td style="vertical-align: top">
                     Benchmark <br>
@@ -129,9 +123,9 @@
               @endforeach             
             </div>
             <div class="card-footer">
-              <button type="submit" class="btn btn-primary float-right mr-3">Save <span
+              <button type="submit" class="btn btn-primary float-right mr-3">Simpan <span
                 class="btn-icon-right"><i class="fa fa-save"></i></span></button>
-              <a href="/list" class="btn btn-outline-primary float-right mr-2">Cancel</a>
+              <a href="/list" class="btn btn-outline-primary float-right mr-2">Kembali</a>
             </div>
           </div>
         </div>

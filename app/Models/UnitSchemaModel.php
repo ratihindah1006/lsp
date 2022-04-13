@@ -30,6 +30,6 @@ class UnitSchemaModel extends Model
     
     public function questions()
     {
-        return $this->hasMany(Question::class, 'unit_id', 'id');
+        return $this->hasMany(Question::class, 'unit_id', 'id')->orderBy('no_soal');
     }
 }

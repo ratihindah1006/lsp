@@ -3,16 +3,16 @@
 namespace App\Models;
 
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
 
 class DataAssessiModel extends Authenticatable
 {
     use Notifiable;
-
-
+    use HasFactory;
     
     protected $table = "data_assessi";
     protected $primaryKey = "id";
