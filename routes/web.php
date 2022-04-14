@@ -183,6 +183,7 @@ Route::group(['middleware' => 'auth:assessi'], function () {
 Route::group(['middleware' => 'auth:assessor'], function () {
     Route::get('/assessor', [AssessorController::class, 'index']);
     Route::get('/unit/{unit:id}', [AssessorController::class, 'unit']);
+    Route::get('/assessi/{assessi:id}', [AssessorController::class, 'assessi']);
     Route::get('/ubah_password', [AssessorController::class, 'edit_password'])->name('ubah_password');
     Route::put('/ubah_password', [AssessorController::class, 'update_password']);
     Route::get('/list', [AssessorController::class, 'list']);
