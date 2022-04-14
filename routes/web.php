@@ -155,6 +155,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
     Route::get('/soal', [QuestionController::class, 'index']);
     Route::get('/soal/create', [QuestionController::class, 'create']);
+    Route::get('/soal/create/{code_question}', [QuestionController::class, 'createByCode']);
     Route::post('/soal', [QuestionController::class, 'store']);
     Route::get('/soal/{question}/edit', [QuestionController::class, 'edit']);
     Route::put('/soal/{question}', [QuestionController::class, 'update']);

@@ -226,6 +226,18 @@ class AssessorController extends Controller
 
     public function ak01(AssessiModel $assessi)
     {
+        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
+        if (date("m/d/Y") > $tanggal_berakhir) {
+            return redirect('/list')->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
+        }
+
+        $data_assessor = AssessorModel::where('data_assessor_id', Auth::user()->id)->where('class_id', $assessi->schema_class->id)->first();
+        if (!$data_assessor) {
+            return redirect('/');
+        }else if ($assessi->assessor_id != $data_assessor->id) {
+            return redirect('/');
+        }
+
         $data = [
             'ak01' => $assessi->ak01,
             'title' => 'AK01',
@@ -264,6 +276,22 @@ class AssessorController extends Controller
 
     public function muk01(AssessiModel $assessi)
     {
+        if(isset($assessi->ak01) && ($assessi->ak01->l_obs_langsung != 1)){
+            return redirect('/list');
+        }
+
+        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
+        if (date("m/d/Y") > $tanggal_berakhir) {
+            return redirect('/list')->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
+        }
+
+        $data_assessor = AssessorModel::where('data_assessor_id', Auth::user()->id)->where('class_id', $assessi->schema_class->id)->first();
+        if (!$data_assessor) {
+            return redirect('/');
+        }else if ($assessi->assessor_id != $data_assessor->id) {
+            return redirect('/');
+        }
+
         $data = [
             'title' => 'MUK01',
             'assessi' => $assessi,
@@ -291,6 +319,22 @@ class AssessorController extends Controller
 
     public function muk06(AssessiModel $assessi)
     {
+        if(isset($assessi->ak01) && ($assessi->ak01->t_p_tulis != 1)){
+            return redirect('/list');
+        }
+
+        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
+        if (date("m/d/Y") > $tanggal_berakhir) {
+            return redirect('/list')->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
+        }
+        
+        $data_assessor = AssessorModel::where('data_assessor_id', Auth::user()->id)->where('class_id', $assessi->schema_class->id)->first();
+        if (!$data_assessor) {
+            return redirect('/');
+        }else if ($assessi->assessor_id != $data_assessor->id) {
+            return redirect('/');
+        }
+     
         $answer = Answer::all()->where('assessi_id', $assessi->id);
         $data = [
             'title' => 'assessi',

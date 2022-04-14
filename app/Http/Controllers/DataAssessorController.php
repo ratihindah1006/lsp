@@ -139,7 +139,7 @@ class DataAssessorController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|unique:data_assessor',
-            'password' => 'required|min:8',
+           
             'no_met' => 'required'
           
         ]);
@@ -147,7 +147,7 @@ class DataAssessorController extends Controller
         $assessis = new DataAssessorModel([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password),
+           
             'no_met' => $request->no_met,
            
         ]);

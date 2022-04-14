@@ -52,6 +52,16 @@ class QuestionController extends Controller
         return view('admin.question.createQuestion', $data);
     }
 
+    public function createByCode(CodeQuestion $codeQuestion)
+    {
+        $data = [
+            'title' => 'Soal Esai',
+            'codeQuestion' => $codeQuestion,
+        ];
+        
+        return view('admin.question.createQuestionByCode', $data);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -78,7 +88,7 @@ class QuestionController extends Controller
        
         $data->save();
 
-        return redirect('soal')->with('toast_success', 'Pertanyaan berhasil di tambahkan!');
+        return redirect('soal/kodesoal/'.$request->kode_soal)->with('toast_success', 'Pertanyaan berhasil di tambahkan!');
     }
 
     /**
@@ -124,7 +134,7 @@ class QuestionController extends Controller
 
         $question->update($validateData);
 
-        return redirect('soal')->with('toast_success', 'Pertanyaan berhasil diupdate!');
+        return redirect('soal/kodesoal/'.$question->code->id)->with('toast_success', 'Pertanyaan berhasil diupdate!');
     }
 
     /**
@@ -137,15 +147,19 @@ class QuestionController extends Controller
     {
         $question->delete();
 
-        return redirect('soal')->with('toast_success', 'Pertanyaan berhasil dihapus!');
+        return redirect('soal/kodesoal/'.$question->code->id)->with('toast_success', 'Pertanyaan berhasil dihapus!');
     }
 
     public function kodeSoal(Request $request)
     {
         $validateData = $request->validate([
             'schema' => 'required',
-            'kode_soal' => 'required|unique:code_question,code_name'
+            'kode_soal' => 'required',
         ]);
+
+        if (CodeQuestion::where('schema_id', $request->schema)->where('code_name', $request->kode_soal)->exists()) {
+            return redirect('soal')->with('toast_error', 'Kode soal tidak boleh sama');
+        }
 
         $data = new CodeQuestion([
             'schema_id' => $request->schema,
