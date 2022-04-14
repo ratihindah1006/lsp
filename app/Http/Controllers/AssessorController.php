@@ -6,16 +6,17 @@ use App\Models\AK01;
 use App\Models\Apl01;
 use App\Models\MUK01;
 use App\Models\Answer;
-use PDF; //library pdf
 use App\Models\APL02Model;
 use App\Models\AssessiModel;
 use Illuminate\Http\Request;
 use App\Models\AssessorModel;
 use App\Models\DataAssessorModel;
+use App\Models\EventModel;
 use App\Models\SchemaModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException as ValidationException;
+use PDF; //library pdf
 
 class AssessorController extends Controller
 {
@@ -31,9 +32,9 @@ class AssessorController extends Controller
     public function edit_password()
     {
         $data_assessor = DataAssessorModel::find(Auth::user()->id);
-        return view('assessor.edit_password',[
+        return view('assessor.edit_password', [
             'title' => 'Ubah Password',
-            'data_assessor'=>$data_assessor,
+            'data_assessor' => $data_assessor,
         ]);
     }
 
@@ -41,10 +42,23 @@ class AssessorController extends Controller
     {
         $schema = SchemaModel::find($id);
         return view('assessor.Unit', [
-            'title' => 'Assessi',
+            'title' => 'Unit',
             'unit' => $schema->unit_schemas,
         ]);
+    }
 
+    public function assessi($id)
+    {
+        $event = EventModel::find($id);
+        foreach ($event->schema_class as $schema_class) {
+            foreach ($schema_class->assessors as $assessor) {
+
+                return view('assessor.assessi', [
+                    'title' => 'Assessi',
+                    'assessi' => $assessor->assessis,
+                ]);
+            }
+        }
     }
 
     public function update_password(Request $request)
@@ -54,12 +68,12 @@ class AssessorController extends Controller
             'password' => 'required|min:8|confirmed',
         ]);
 
-        if (Hash::check($request->current_password, auth()->user()->password)){
+        if (Hash::check($request->current_password, auth()->user()->password)) {
             auth()->user()->update(['password' => bcrypt($request->password)]);
             return redirect('/assessor')->with('toast_success', 'password berhasil di ubah');
         }
         throw ValidationException::withMessages([
-            'current_password'=> 'Password yang ada masukkan salah'
+            'current_password' => 'Password yang ada masukkan salah'
         ]);
     }
     public function list()
@@ -116,24 +130,28 @@ class AssessorController extends Controller
             }
         }
     }
-    public function export_apl01( $id){    
+    public function export_apl01($id)
+    {
         $data_assessor = DataAssessorModel::find(Auth::user()->id);
         foreach ($data_assessor->assessors as $a) {
             foreach ($a->assessis as $b) {
                 $assessi = $b;
-        $print = PDF::loadview('assessi.print_apl01', 
-         [
-            'apl01' => $assessi->apl01,
-            'assessi' => $assessi,
-            'title' => 'Skema',
-            'assessis' => $assessi->schema_class->schema,
-            
-        ]);
-        return $print->download('assessor.print_apl01');
+                $print = PDF::loadview(
+                    'assessi.print_apl01',
+                    [
+                        'apl01' => $assessi->apl01,
+                        'assessi' => $assessi,
+                        'title' => 'Skema',
+                        'assessis' => $assessi->schema_class->schema,
+
+                    ]
+                );
+                return $print->download('assessor.print_apl01');
+            }
+        }
     }
-}
-    }
-    public function export( $id){
+    public function export($id)
+    {
         $data_assessor = DataAssessorModel::find(Auth::user()->id);
         foreach ($data_assessor->assessors as $a) {
             $assessor = $a;
@@ -154,11 +172,11 @@ class AssessorController extends Controller
                     'units' => $assessi->schema_class->schema->unit_schemas,
                     'apl02' => $assessi->apl02,
                     'assessment' => $assessment,
-        
+
                 ]);
                 //mengambil data dan tampilan dari halaman laporan_pdf
                 //data di bawah ini bisa kalian ganti nantinya dengan data dari database
-                
+
                 //mendownload laporan.pdf
                 return $print->download('assessor.print_apl02');
             }
@@ -175,7 +193,7 @@ class AssessorController extends Controller
                     $validateData = $request->validate([
                         'assessor_signature' => 'required|image|file|max:1024',
                         'status' => 'required',
-                        
+
                     ]);
                     $validateData['assessi_id'] = $assessi->id;
                     $validateData['assessor_signature'] = $request->file('assessor_signature')->store('assessor_signature');
@@ -208,18 +226,6 @@ class AssessorController extends Controller
 
     public function ak01(AssessiModel $assessi)
     {
-        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
-        if ($tanggal_berakhir > date("m/d/Y")) {
-            return redirect('/')->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
-        }
-
-        $data_assessor = AssessorModel::where('data_assessor_id', Auth::user()->id)->where('class_id', $assessi->schema_class->id)->first();
-        if (!$data_assessor) {
-            return redirect('/');
-        }else if ($assessi->assessor_id != $data_assessor->id) {
-            return redirect('/');
-        }
-
         $data = [
             'ak01' => $assessi->ak01,
             'title' => 'AK01',
@@ -258,18 +264,6 @@ class AssessorController extends Controller
 
     public function muk01(AssessiModel $assessi)
     {
-        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
-        if ($tanggal_berakhir > date("m/d/Y")) {
-            return redirect('/')->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
-        }
-
-        $data_assessor = AssessorModel::where('data_assessor_id', Auth::user()->id)->where('class_id', $assessi->schema_class->id)->first();
-        if (!$data_assessor) {
-            return redirect('/');
-        }else if ($assessi->assessor_id != $data_assessor->id) {
-            return redirect('/');
-        }
-
         $data = [
             'title' => 'MUK01',
             'assessi' => $assessi,
@@ -297,18 +291,6 @@ class AssessorController extends Controller
 
     public function muk06(AssessiModel $assessi)
     {
-        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
-        if ($tanggal_berakhir > date("m/d/Y")) {
-            return redirect('/')->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
-        }
-        
-        $data_assessor = AssessorModel::where('data_assessor_id', Auth::user()->id)->where('class_id', $assessi->schema_class->id)->first();
-        if (!$data_assessor) {
-            return redirect('/');
-        }else if ($assessi->assessor_id != $data_assessor->id) {
-            return redirect('/');
-        }
-     
         $answer = Answer::all()->where('assessi_id', $assessi->id);
         $data = [
             'title' => 'assessi',
