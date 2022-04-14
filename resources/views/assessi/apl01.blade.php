@@ -10,18 +10,20 @@
                     <div class="card text-dark">
                         <div class="card-footer" style=" border-bottom: 7px solid  #191970;">
                             <h2 class="font-weight-bold card-title">FR-APL-01 FORMULIR PERMOHONAN SERTIFIKASI KOMPETENSI</h2>
-                            @if($apl01 != null)
-                            @if ($apl01->status == '1') 
-                            <a href="/exportlaporan/{{$assessi->id}}" class="btn btn-whatsapp float-right mr-3">Cetak<span
-                                    class="btn-icon-right"><i class="ti ti-printer"></i></span></a>
+                            @if ($apl01 != null)
+                                @if ($apl01->status == '1')
+                                    <a href="/exportlaporan/{{ $assessi->id }}"
+                                        class="btn btn-whatsapp float-right mr-3">Cetak<span class="btn-icon-right"><i
+                                                class="ti ti-printer"></i></span></a>
+                                @else
+                                    <a href="/exportlaporan/{{ $assessi->id }}"
+                                        class="btn btn-whatsapp float-right mr-3  disabled">Cetak<span
+                                            class="btn-icon-right"><i class="ti ti-printer"></i></span></a>
+                                @endif
                             @else
-                                <a href="/exportlaporan/{{$assessi->id}}" class="btn btn-whatsapp float-right mr-3  disabled">Cetak<span
-                                    class="btn-icon-right"><i class="ti ti-printer"></i></span></a>
-                            
-                            @endif
-                            @else
-                            <a href="/exportlaporan/{{$assessi->id}}" class="btn btn-whatsapp float-right mr-3  disabled">Cetak<span
-                                class="btn-icon-right"><i class="ti ti-printer"></i></span></a>
+                                <a href="/exportlaporan/{{ $assessi->id }}"
+                                    class="btn btn-whatsapp float-right mr-3  disabled">Cetak<span class="btn-icon-right"><i
+                                            class="ti ti-printer"></i></span></a>
                             @endif
                             <button type="submit" class="btn btn-primary float-right mr-1">Simpan <span
                                     class="btn-icon-right"><i class="fa fa-save"></i></span></button>
@@ -521,7 +523,7 @@
                                     <div class="col-xl-6">
                                         <div class="form-group row">
                                             <label class="col-lg-10  my-text " for="">Nomor
-                                                Skema&emsp;&emsp;&emsp;&emsp;:&emsp;&emsp;
+                                                SKKNI&emsp;&emsp;&emsp;&emsp;:&emsp;&emsp;
                                                 {{ $category->no_skkni }}
                                             </label>
                                         </div>
@@ -537,15 +539,14 @@
                                                 </tr>
                                             </thead>
                                             <tbody class="my-text">
-                                            @foreach ($assessis->unit_schemas as $value)
-                                                
+                                                @foreach ($assessis->unit_schemas as $value)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $value->unit->unit_code }}</td>
                                                         <td>{{ $value->unit->unit_title }}</td>
                                                         <td>{{ $value->schema->competency_package }}</td>
                                                 @endforeach
-                                                
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -562,7 +563,9 @@
                 <div class="col-lg-12">
                     <div class="card text-dark">
                         <div class="card-header" style="border-top: 7px solid  #191970;">
-                            <h4 class="font-weight-bold">Berkas Kelengkapan Pemohon <span><h6>*Berkas diupload dengan format pdf dengan ukuran max 1 MB</h6></span></h4>
+                            <h4 class="font-weight-bold">Berkas Kelengkapan Pemohon <span>
+                                    <h6>*Berkas diupload dengan format pdf dengan ukuran max 1 MB</h6>
+                                </span></h4>
                         </div>
                         <div class="card-body" style="border: none">
                             <div class="basic-form">
@@ -574,7 +577,14 @@
                                         </label>
                                         <div class=" input-group mb-3">
                                             <input class="form-control @error('ijazah') is-invalid @enderror" type="file"
-                                                value="{{ old('ijazah') }}" id="ijazah" name="ijazah">
+                                                id="ijazah" name="ijazah">
+                                            @if ($apl01)
+                                                <div class="input-group mb-3">
+                                                    <embed type="application/pdf"
+                                                        src="{{ asset('storage/' . $apl01->ijazah) }}" width="600"
+                                                        height="400"></embed>
+                                                </div>
+                                            @endif
                                             @error('ijazah')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -589,6 +599,13 @@
                                                 class="form-control
                                          @error('photo') is-invalid @enderror"
                                                 value="{{ old('photo') }}" id="photo" name="photo">
+                                            @if ($apl01)
+                                                <div class="input-group mb-3">
+                                                    <embed type="application/pdf"
+                                                        src="{{ asset('storage/' . $apl01->photo) }}" width="600"
+                                                        height="400"></embed>
+                                                </div>
+                                            @endif
                                             @error('photo')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -603,6 +620,13 @@
                                         <div class="mb-3">
                                             <input type="file" class="form-control @error('ktp') is-invalid @enderror"
                                                 value="{{ old('ktp') }}" id="ktp" name="ktp">
+                                            @if ($apl01)
+                                                <div class="input-group mb-3">
+                                                    <embed type="application/pdf"
+                                                        src="{{ asset('storage/' . $apl01->ktp) }}" width="600"
+                                                        height="400"></embed>
+                                                </div>
+                                            @endif
                                             @error('ktp')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -616,6 +640,13 @@
                                             <input type="file"
                                                 class="form-control @error('transcript') is-invalid @enderror"
                                                 value="{{ old('transcript') }}" id="transcript" name="transcript">
+                                            @if ($apl01)
+                                                <div class="input-group mb-3">
+                                                    <embed type="application/pdf"
+                                                        src="{{ asset('storage/' . $apl01->transcript) }}" width="600"
+                                                        height="400"></embed>
+                                                </div>
+                                            @endif
                                             @error('transcript')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -630,7 +661,14 @@
                                         </label>
                                         <div class="mb-3">
                                             <input type="file" class="form-control" id="work_exper_certif"
-                                                name="work_exper_certif">
+                                                value="{{ old('work_exper_certif') }}" name="work_exper_certif">
+                                            @if ($apl01)
+                                                <div class="input-group mb-3">
+                                                    <embed type="application/pdf"
+                                                        src="{{ asset('storage/' . $apl01->work_exper_certif) }}"
+                                                        width="600" height="400"></embed>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -659,10 +697,9 @@
                                                 Diterima / Ditolak
                                             </p>
                                         </div>
-                                       
+
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold  "
-                                                for="status">Status
+                                            <label class="col-lg-4 col-form-label font-weight-bold  " for="status">Status
                                             </label>
                                             <div class="col-lg-6">
                                                 <select class="form-control @error('status') is-invalid @enderror"
@@ -684,59 +721,69 @@
                                             </div>
                                         </div>
                                     </div>
-                                            <div class="col-xl-6">
-                                                <div class="form-group row">
-                                                    <label class="my-text">Catatan&emsp;:</label>
-                                                    <textarea class="form-control @error('note') is-invalid @enderror"
-                                                    id="note" name="note"
-                                                        rows="3" placeholder="catatan" disabled> 
-                                                            @if ($apl01 != null) {{$apl01->note }}
-                                                            @else {{ Request::old('note') }}
-                                                            @endif</textarea>
-                                                    @error('note')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
+                                    <div class="col-xl-6">
+                                        <div class="form-group row">
+                                            <label class="my-text">Catatan&emsp;:</label>
+                                            <textarea class="form-control @error('note') is-invalid @enderror" id="note" name="note" rows="3"
+                                                placeholder="catatan" disabled>
+                                                            @if ($apl01 != null)
+                                                            {{ $apl01->note }}
+                                                            @else
+                                                            {{ Request::old('note') }}
+                                                            @endif
+                                                            </textarea>
+                                            @error('note')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
                                                 </div>
-                                            </div>
+                                            @enderror
                                         </div>
-                                        <div class="row">
-                                            <div class="col-xl-6">
-                                                <div class="form-group row">
-                                                    <div class="input-group mb-3">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6">
-                                                <div class="form-group row">
-                                                    <div class="input-group mb-3">
-                                                        <input type="file"
-                                                            class="form-control @error('assessi_signature') is-invalid @enderror"
-                                                            value="{{ old('assessi_signature') }}" id="assessi_signature"
-                                                            name="assessi_signature">
-                                                        @error('assessi_signature')
-                                                            <div class="invalid-feedback">
-                                                                {{ $message }}
-                                                            </div>
-                                                        @enderror
-                                                    </div>
-                                                    <label class="my-text txt ">TTD Assssi
-                                                        <span class="text-danger txt">*</span>
-                                                        <p>(*format jpg) </p>
-                                                    </label>
-                                                </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-6">
+                                        <div class="form-group row">
+                                            <div class="input-group mb-3">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col">
-                                        <center><a href="#" class="btn btn-dark">Ke Atas <span class="btn-icon-right"><i class="fa fa-arrow-up"></i></span></a></center>
-                                    </div> <br><br>
+                                    <div class="col-xl-6">
+                                        <div class="form-group row">
+                                            <div class="input-group mb-3">
+                                                <input type="file"
+                                                    class="form-control @error('assessi_signature') is-invalid @enderror"
+                                                    value="{{ old('assessi_signature') }}" id="assessi_signature"
+                                                    name="assessi_signature">
+                                                @if ($apl01)
+                                                    <div class="input-group mb-3">
+                                                        <img type="application/pdf"
+                                                            src="{{ asset('storage/' . $apl01->assessi_signature) }}"
+                                                            style="margin-left:auto;margin-right:auto;display:block;width:200px">
+                                                    </div>
+                                                @endif
+                                                @error('assessi_signature')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                            <label class="my-text txt ">TTD Assssi
+                                                <span class="text-danger txt">*</span>
+                                                <p>(*format jpg) </p>
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="col">
+                                <center><a href="#" class="btn btn-dark">Ke Atas <span class="btn-icon-right"><i
+                                                class="fa fa-arrow-up"></i></span></a></center>
+                            </div> <br><br>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        </div>
     </form>
 @endsection
