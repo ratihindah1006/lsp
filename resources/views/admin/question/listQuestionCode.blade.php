@@ -47,8 +47,8 @@
                                         <thead>
                                             <tr>
                                                 <th>No Soal</th>
-                                                <th>Pertanyaan</th>
-                                                <th>Jawaban</th>
+                                                {{-- <th>Pertanyaan</th>
+                                                <th>Jawaban</th> --}}
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -56,8 +56,8 @@
                                             @foreach ($questions->where('unit_id', $units->id) as $question)
                                             <tr style="vertical-align:top">
                                                 <td>{{ $question->no_soal }}</td>
-                                                <td>{!! Str::limit($question->question, 75, $end='...') !!}</td>
-                                                <td>{!! Str::limit($question->key_answer, 75, $end='...') !!}</td>
+                                                {{-- <td>{!! Str::limit($question->question, 75, $end='...') !!}</td>
+                                                <td>{!! Str::limit($question->key_answer, 75, $end='...') !!}</td> --}}
                                                 <td><a href="/soal/{{ $question->id }}/edit" class="btn btn-sm btn-primary"><i class="ti-pencil"></i></a>
                                                     <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modalDeleteSoal{{ $question->id }}"><i class="ti-trash"></i></button>
                                                     <!-- Modal -->

@@ -30,7 +30,7 @@
         </div>
     @endif
   
-    <form method="post" action="/soal">
+    <form method="post" action="/soal" enctype="multipart/form-data">
         @csrf
           <input type="hidden" id="kode_soal" name="kode_soal" value="{{ $codeQuestion->id }}">
           @livewire('drop-down-by-code', ['codeQuestion' => $codeQuestion])

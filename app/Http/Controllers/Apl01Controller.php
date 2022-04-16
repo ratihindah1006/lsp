@@ -37,9 +37,7 @@ class Apl01Controller extends Controller
         $assessi = DataAssessiModel::find(Auth::user()->id);
         $asesi = $assessi->assessis->find($id);
 
-      
-
-        $validateData = $request->validate([
+        $rules = [
             'nik' => 'required|min:16|numeric',
             'name' => 'required',
             'domicile' => 'required',
@@ -61,22 +59,37 @@ class Apl01Controller extends Controller
             'postal_code' => 'required|min:5|numeric',
             'sert_schema' => 'required',
             'assessment_purpose' => 'required',
-            'ijazah' => 'required|mimes:pdf|max:1024',
-            'photo' => 'required|mimes:pdf|max:1024',
-            'ktp' => 'required|mimes:pdf|max:1024',
-            'transcript' => 'required|mimes:pdf|max:1024',
-            'assessi_signature' => 'required|image|file|max:1024',
-        ]);
+            
+        ];
 
-        $validateData['photo'] = $request->file('photo')->store('photo');
-        $validateData['ijazah'] = $request->file('ijazah')->store('ijazah');
-        $validateData['ktp'] = $request->file('ktp')->store('ktp');
-        $validateData['transcript'] = $request->file('transcript')->store('transcript');
-        $validateData['assessi_signature'] = $request->file('assessi_signature')->store('assessi_signature');
-        $validateData['assessi_id'] = $asesi->id;
-        //dd($validateData);
         $cek = $asesi->apl01;
-        //dd($validateData);
+        if(!$cek){
+            $rules['ijazah'] = 'required|mimes:pdf|max:1024';
+            $rules['photo'] = 'required|mimes:pdf|max:1024';
+            $rules['ktp'] = 'required|mimes:pdf|max:1024';
+            $rules['transcript'] = 'required|mimes:pdf|max:1024';
+            $rules['assessi_signature'] = 'required|image|file|max:1024';
+        }
+
+        $validateData = $request->validate($rules);
+        if($request->hasFile('ijazah')){ 
+            $validateData['ijazah'] = $request->file('ijazah')->store('ijazah');
+        }
+        if($request->hasFile('photo')){ 
+            $validateData['photo'] = $request->file('photo')->store('photo');
+        }
+        if($request->hasFile('ktp')){ 
+            $validateData['ktp'] = $request->file('ktp')->store('ktp');
+        }
+        if($request->hasFile('transcript')){ 
+            $validateData['transcript'] = $request->file('transcript')->store('transcript');
+        }
+        
+        if($request->hasFile('work_exper_certif')){ 
+            $validateData['work_exper_certif'] = $request->file('work_exper_certif')->store('work_exper_certif');
+        }
+       
+        $validateData['assessi_id'] = $asesi->id;
 
         if ($cek == Null) {
             Apl01::create($validateData);

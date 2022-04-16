@@ -270,7 +270,7 @@
                                     <div class="col-xl-6">
                                         <div class="form-group row">
                                             <label class="col-lg-10  my-text " for="">Nomor
-                                                Skema&emsp;&emsp;:&emsp;&emsp;
+                                                SKKNI&emsp;&emsp;:&emsp;&emsp;
                                                 {{ $category->no_skkni }}
                                             </label>
                                         </div>
