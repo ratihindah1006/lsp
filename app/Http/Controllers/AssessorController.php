@@ -49,15 +49,14 @@ class AssessorController extends Controller
 
     public function assessi($id)
     {
-        $event = EventModel::find($id);
-        foreach ($event->schema_class as $schema_class) {
-            foreach ($schema_class->assessors as $assessor) {
-
+        $data_assessor = DataAssessorModel::find(Auth::user()->id);
+        foreach ($data_assessor->assessors as $assessor) {
+            
                 return view('assessor.assessi', [
                     'title' => 'Assessi',
-                    'assessi' => $assessor->assessis,
+                    'assessi' => $assessor::find($id)->assessis,
                 ]);
-            }
+            
         }
     }
 
@@ -85,12 +84,15 @@ class AssessorController extends Controller
         ]);
     }
 
-    public function apl01()
+    public function apl01($id)
     {
         $data_assessor = DataAssessorModel::find(Auth::user()->id);
         foreach ($data_assessor->assessors as $a) {
+            
             foreach ($a->assessis as $b) {
-                $assessi = $b;
+                
+                
+                $assessi = $b::find($id);
                 return view('assessor.apl01', [
                     'apl01' => $assessi->apl01,
                     'assessi' => $assessi,
@@ -201,7 +203,8 @@ class AssessorController extends Controller
                 }
             }
         }
-        return redirect('/list')->with('toast_success', 'Status berhasil di Update!');
+        return redirect('/assessi'.'/'.$a->id)->with('toast_success', 'Status berhasil di Update!');
+        
     }
 
     public function status_apl02(Request $request, $id)
