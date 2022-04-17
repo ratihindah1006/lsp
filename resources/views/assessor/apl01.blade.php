@@ -399,16 +399,13 @@
                                     <div class="col-xl-6">
                                         <div class="form-group row">
                                             <label class="my-text">Catatan&emsp;:</label>
-                                            <textarea class="form-control @error('note') is-invalid @enderror" id="note"
-                                                name="note" rows="3">
-                                                @if ($apl01 != null) {{$apl01->note }}
-                                                @else {{ Request::old('note') }}
-                                                @endif</textarea>
+                                            <textarea class="form-control @error('note') is-invalid @enderror" id="note" name="note" rows="3" value=" {{ $apl01->note, old ('note') }}">{{ $apl01->note }}</textarea>
                                             @error('note')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>
                                             @enderror
+                                            
                                         </div>
                                     </div>
                                 </div>

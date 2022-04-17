@@ -101,6 +101,7 @@ class Apl01Controller extends Controller
         } else {
             $validateData['status'] = Null;
             $validateData['note'] = Null;
+            $validateData['assessor_signature'] = Null;
             Apl01::where('assessi_id', $asesi->id)
                 ->update($validateData);
             return redirect('/beranda')->with('toast_success', 'Apl01 Berhasil diupdate');
