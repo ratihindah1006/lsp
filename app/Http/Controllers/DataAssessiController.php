@@ -154,12 +154,10 @@ class DataAssessiController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|unique:data_assessi',
-            'password' => 'required|min:8',
         ]);
         $data_assessi = new DataAssessiModel([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password),
         ]);
         $data_assessi->save();
 

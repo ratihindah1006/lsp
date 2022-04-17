@@ -17,7 +17,7 @@ class DataAssessiModel extends Authenticatable
     protected $table = "data_assessi";
     protected $primaryKey = "id";
     protected $fillable = [
-        'name', 'email', 'password', 
+        'name', 'email',
     ];
     protected $hidden = [
         'password', 'remember_token',

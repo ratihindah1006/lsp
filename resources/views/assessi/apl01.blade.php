@@ -351,8 +351,7 @@
                                             }@else{
                                             value="{{ old('comp_address') }}"
                                             } @endif
-                                                    id="comp_address" name="comp_address" rows="5"
-                                                    placeholder="Tuliskan alamat kantor">
+                                                    id="comp_address" name="comp_address" rows="5">
                                                 @error('comp_address')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -373,7 +372,7 @@
                                             }@else{
                                             value="{{ old('comp_telp') }}"
                                             } @endif
-                                                    id="comp_telp" name="comp_telp" placeholder="212-999-0000">
+                                                    id="comp_telp" name="comp_telp" >
                                                 @error('comp_telp')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -394,7 +393,7 @@
                                             }@else{
                                             value="{{ old('comp_email') }}"
                                             } @endif
-                                                    id="comp_email" name="comp_email" placeholder="xxxx@mail.com">
+                                                    id="comp_email" name="comp_email" >
                                                 @error('comp_email')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -756,7 +755,7 @@
                                                     name="assessi_signature">
                                                 @if ($apl01)
                                                     <div class="input-group mb-3">
-                                                        <img type="application/pdf"
+                                                        <img 
                                                             src="{{ asset('storage/' . $apl01->assessi_signature) }}"
                                                             style="margin-left:auto;margin-right:auto;display:block;width:200px">
                                                     </div>
