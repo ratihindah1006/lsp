@@ -83,7 +83,7 @@
                     <b><u>Pertanyaan: </u></b> <br><br>
                     @foreach ($unit->questions->where('code_id', $schema_class->code_id) as $q)
                       @if (isset($q))
-                        <span class="text-light bg-info">{{ $q->no_soal }}</span> <br><br>
+                        <span style="background-color:yellow;" class="font-weight-bold">{{ $q->no_soal }}</span> <br><br>
                         {!! $q->question !!} <br>
                       @else
 
@@ -93,7 +93,7 @@
                     <b><u>Kunci Jawaban: </u></b><br><br>
                     @foreach ($unit->questions->where('code_id', $schema_class->code_id) as $q)
                       @if (isset($q))
-                        <span class="text-light bg-info">{{ $q->no_soal }}</span> <br><br>
+                        <span style="background-color:yellow;" class="font-weight-bold">{{ $q->no_soal }}</span> <br><br>
                         {!! $q->key_answer !!} <br>
                       @else
                 
@@ -103,7 +103,7 @@
                   <input type="hidden" id="unitId" name="unitId[]" value="{{ $unit->id }}">
                   <td style="vertical-align:top;">
                     <div class="form-group">
-                      <textarea class="summernote form-control @error('answer[]') is-invalid @enderror" name="answer[]">
+                      <textarea class="summernote-dis form-control @error('answer[]') is-invalid @enderror" name="answer[{{ $loop->iteration }}]">
                       @if(!$answer->where('unit_id', $unit->id)->isEmpty())
                         {{ $answer->where('unit_id', $unit->id)->first()->answer }}
                       @endif

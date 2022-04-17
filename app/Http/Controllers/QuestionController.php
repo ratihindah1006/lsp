@@ -90,12 +90,12 @@ class QuestionController extends Controller
         $images = $dom->getElementsByTagName('img');
         $images2 = $dom2->getElementsByTagName('img');
   
-        foreach($images as $k => $img){
+        foreach($images as $img){
             $data = $img->getAttribute('src');
             list($type, $data) = explode(';', $data);
             list(, $data)      = explode(',', $data);
             $data = base64_decode($data);
-            $image_name= "/upload/" . time().$k.'.png';
+            $image_name= "/upload/" . time().uniqid().'.png';
             $path = public_path('storage') . $image_name;
             file_put_contents($path, $data);
             $img->removeAttribute('src');
@@ -105,12 +105,12 @@ class QuestionController extends Controller
             $img->setAttribute('class', 'img-fluid');
         }
 
-        foreach($images2 as $k => $img){
+        foreach($images2 as $img){
             $data = $img->getAttribute('src');
             list($type, $data) = explode(';', $data);
             list(, $data)      = explode(',', $data);
             $data = base64_decode($data);
-            $image_name= "/upload/" . time().$k.'.png';
+            $image_name= "/upload/" . time().uniqid().'.png';
             $path = public_path('storage') . $image_name;
             file_put_contents($path, $data);
             $img->removeAttribute('src');
@@ -177,7 +177,55 @@ class QuestionController extends Controller
             'key_answer' => 'required'
         ]);
 
-        $question->update($validateData);
+        $pertanyaan = $request->question;
+        $jawaban = $request->key_answer;
+
+        $dom = new \DomDocument();
+        $dom2 = new \DomDocument();
+  
+        $dom->loadHtml($pertanyaan, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
+        $dom2->loadHtml($jawaban, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
+        
+        $images = $dom->getElementsByTagName('img');
+        $images2 = $dom2->getElementsByTagName('img');
+  
+        foreach($images as $img){
+            $data = $img->getAttribute('src');
+            list($type, $data) = explode(';', $data);
+            list(, $data)      = explode(',', $data);
+            $data = base64_decode($data);
+            $image_name= "/upload/" . time().uniqid().'.png';
+            $path = public_path('storage') . $image_name;
+            file_put_contents($path, $data);
+            $img->removeAttribute('src');
+            $img->removeAttribute('style');
+            $img->setAttribute('src', asset('/storage'.$image_name));
+            $img->setAttribute('style', 'width:500px;');
+            $img->setAttribute('class', 'img-fluid');
+        }
+
+        foreach($images2 as $img){
+            $data = $img->getAttribute('src');
+            list($type, $data) = explode(';', $data);
+            list(, $data)      = explode(',', $data);
+            $data = base64_decode($data);
+            $image_name= "/upload/" . time().uniqid().'.png';
+            $path = public_path('storage') . $image_name;
+            file_put_contents($path, $data);
+            $img->removeAttribute('src');
+            $img->removeAttribute('style');
+            $img->setAttribute('src', asset('/storage'.$image_name));
+            $img->setAttribute('width', '500px');
+            $img->setAttribute('class', 'img-fluid');
+        }
+  
+        $pertanyaan = $dom->saveHTML();
+        $jawaban = $dom2->saveHTML();
+
+        $question->update([
+            'question' => $pertanyaan,
+            'key_answer' => $jawaban,
+        ]);
 
         return redirect('soal/kodesoal/'.$question->code->id)->with('toast_success', 'Pertanyaan berhasil diupdate!');
     }

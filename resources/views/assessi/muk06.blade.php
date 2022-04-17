@@ -77,7 +77,7 @@
                   <b><u>Pertanyaan: </u></b> <br><br>
                   @foreach ($unit->questions->where('code_id', $schema_class->code_id) as $q)
                     @if (isset($q))
-                      <span class="text-light bg-info">{{ $q->no_soal }}</span> <br><br>
+                      <span style="background-color:yellow;" class="font-weight-bold">{{ $q->no_soal }}</span> <br><br>
                       {!! $q->question !!} <br>
                     @else
 
