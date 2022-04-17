@@ -53,7 +53,7 @@
                                         <td>
                                             <a href="/unit/{{ $v->schema_class->schema->id }}" class="btn btn-primary btn-sm mb-2">
                                                 <span>Unit</span></a>
-                                            <a href="/assessi/{{ $v->schema_class->event->id }}" class="btn btn-primary btn-sm mb-2">
+                                            <a href="/assessi/{{ $v->id }}" class="btn btn-primary btn-sm mb-2">
                                                 <span>Assessi</span></a>
                                         </td>
 
