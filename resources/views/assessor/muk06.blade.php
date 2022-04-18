@@ -19,32 +19,32 @@
                   <td rowspan="2">Skema Sertifikasi/Klaster Asesmen</td>
                   <td>Judul</td>
                   <td>: &nbsp;</td>
-                  <td>{{ $schema->schema_title }}</td>
+                  <td class="font-weight-bold">{{ $schema->schema_title }}</td>
                 </tr>
                 <tr>
                   <td>Nomor</td>
                   <td>: &nbsp;</td>
-                  <td>{{ $schema->category->no_skkni }}</td>
+                  <td class="font-weight-bold">{{ $schema->category->no_skkni }}</td>
                 </tr>
                 <tr>
                   <td colspan="2">TUK</td>
                   <td>: &nbsp;</td>
-                  <td>{{ $schema_class->tuk }}</td>
+                  <td class="font-weight-bold">{{ $schema_class->tuk }}</td>
                 </tr>
                 <tr>
                   <td colspan="2">Nama Assesor</td>
                   <td>: &nbsp;</td>
-                  <td>{{ $assessor }}</td>
+                  <td class="font-weight-bold">{{ $assessor }}</td>
                 </tr>
                 <tr>
                   <td colspan="2">Nama Peserta</td>
                   <td>: &nbsp;</td>
-                  <td>{{ $assessi->data_assessi->name }}</td>
+                  <td class="font-weight-bold">{{ $assessi->data_assessi->name }}</td>
                 </tr>
                 <tr>
                   <td colspan="2">Tanggal</td>
                   <td>: &nbsp;</td>
-                  <td>{{ $schema_class->event->event_time }}</td>
+                  <td class="font-weight-bold">{{ $schema_class->event->event_time }}</td>
                 </tr>
               </table>
               
@@ -74,7 +74,7 @@
                   <th style="width: 45%" rowspan="2">Jawaban</th>
                   <th colspan="2" class="text-center">Rekomendasi</th>
                 </tr>
-                <tr class="text-center">
+                <tr class="text-center font-weight-bold">
                   <td>K</td>
                   <td>BK</td>
                 </tr>

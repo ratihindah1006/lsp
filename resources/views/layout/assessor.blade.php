@@ -149,7 +149,8 @@
     <!-- Summernote -->
     <script src="/assets/vendor/summernote/js/summernote.min.js"></script>
     <script src="/assets/js/plugins-init/summernote-disable-init.js"></script>
-
+    
+    <script src="/assets/js/bootstrap-tooltip.js"></script>
 </body>
 
 </html>

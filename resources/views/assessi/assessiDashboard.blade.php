@@ -44,18 +44,18 @@
                     <div class="row">
                         <div class="col-lg-6 col-sm-6">
                             @if ($p->schema_class->event->status == 'Open')
-                            <a href="/apl01/{{ $p->id }}" class="btn btn-success btn-sm">
+                            <a href="/apl01/{{ $p->id }}" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="Permohonan Sertifikasi Kompetensi">
                                 <span>Apl 01</span>
                             </a>&emsp;
                             @if ($p->apl01 != null)
                             @if ($p->apl01->status == '1')
-                            <a href="/apl02/{{ $p->id }}" class="btn btn-primary btn-sm">
+                            <a href="/apl02/{{ $p->id }}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Asesmen Mandiri">
                                 <span>Apl 02</span>
                             </a>
                             @if ($p->apl02 != null)
                             @if ($p->apl02->status == '1')
                             &emsp;
-                            <a href="/assessi/muk06/{{ $p->id }}" class="btn btn-secondary btn-sm">
+                            <a href="/assessi/muk06/{{ $p->id }}" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Soal Esay">
                                 <span>MUK06</span>
                             </a>
                             @else

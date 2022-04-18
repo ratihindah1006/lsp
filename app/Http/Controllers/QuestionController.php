@@ -8,6 +8,7 @@ use App\Models\CodeQuestion;
 use App\Models\ElementModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use App\Http\Requests\StoreQuestionRequest;
 use App\Http\Requests\UpdateQuestionRequest;
 
@@ -84,6 +85,8 @@ class QuestionController extends Controller
         $dom = new \DomDocument();
         $dom2 = new \DomDocument();
   
+        libxml_use_internal_errors(true);
+
         $dom->loadHtml($pertanyaan, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
         $dom2->loadHtml($jawaban, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
         
@@ -160,6 +163,7 @@ class QuestionController extends Controller
             'question' => $question,
             'schema' => $question->unit->schema,
         ];
+
         return view('admin.question.editQuestion', $data);
     }
 
@@ -176,7 +180,38 @@ class QuestionController extends Controller
             'question' => 'required',
             'key_answer' => 'required'
         ]);
+        
+        $oldQuestion = $question->question;
+        $oldKeyAnswer = $question->key_answer;
 
+        $oldDom = new \DomDocument();
+        $oldDom2 = new \DomDocument();
+        
+        libxml_use_internal_errors(true);
+
+        $oldDom->loadHtml($oldQuestion, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
+        $oldDom2->loadHtml($oldKeyAnswer, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        
+        $oldImages = $oldDom->getElementsByTagName('img');
+        $oldImages2 = $oldDom2->getElementsByTagName('img');
+
+        foreach($oldImages as $img){
+            $data = $img->getAttribute('src');
+            $path = parse_url($data);
+            if (File::exists(public_path($path['path']))) {
+                File::delete(public_path($path['path'])); 
+            }
+        }
+
+        foreach($oldImages2 as $img){
+            $data = $img->getAttribute('src');
+            $path = parse_url($data);
+            if (File::exists(public_path($path['path']))) {
+                File::delete(public_path($path['path'])); 
+            }
+        }
+
+        //upload
         $pertanyaan = $request->question;
         $jawaban = $request->key_answer;
 
@@ -238,6 +273,35 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
+        $oldQuestion = $question->question;
+        $oldKeyAnswer = $question->key_answer;
+
+        $oldDom = new \DomDocument();
+        $oldDom2 = new \DomDocument();
+        
+        libxml_use_internal_errors(true);
+
+        $oldDom->loadHtml($oldQuestion, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
+        $oldDom2->loadHtml($oldKeyAnswer, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        
+        $oldImages = $oldDom->getElementsByTagName('img');
+        $oldImages2 = $oldDom2->getElementsByTagName('img');
+
+        foreach($oldImages as $img){
+            $data = $img->getAttribute('src');
+            $path = parse_url($data);
+            if (File::exists(public_path($path['path']))) {
+                File::delete(public_path($path['path'])); 
+            }
+        }
+
+        foreach($oldImages2 as $img){
+            $data = $img->getAttribute('src');
+            $path = parse_url($data);
+            if (File::exists(public_path($path['path']))) {
+                File::delete(public_path($path['path'])); 
+            }
+        }
         $question->delete();
 
         return redirect('soal/kodesoal/'.$question->code->id)->with('toast_success', 'Pertanyaan berhasil dihapus!');
