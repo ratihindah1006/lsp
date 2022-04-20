@@ -138,6 +138,8 @@
                     <li class="{{ request()->is('soal/*') ? 'mm-active' : '' }}"><a href="/soal"
                             aria-expanded="false"><i class="icon icon-edit-72"></i><span class="nav-text">Soal
                                 Esai</span></a></li>
+                    <li class="{{ request()->is('soalabc/*') ? 'mm-active' : '' }}"><a href="/soalabc"
+                            aria-expanded="false"><i class="icon icon-edit-72"></i><span class="nav-text">Soal Pilihan Ganda</span></a></li>
                 </ul>
                 </li>
                 </ul>

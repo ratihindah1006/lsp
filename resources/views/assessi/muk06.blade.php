@@ -2,7 +2,7 @@
 
 @section('container')
 
-<form method="post" action="/assessi/muk06/store">
+<form method="post" action="/assessi/muk06/store" enctype="multipart/form-data">
 @csrf
 <div class="container-fluid">
   <div class="row">
@@ -107,6 +107,41 @@
               </tr>
             </table>
             @endforeach
+            <p class="mt-5 mb-0">Note ***) diisi oleh Assessor</p>
+            <table style="min-width: 100%" border="3">
+              <tr class="font-weight-bold">
+                <td colspan="2">Pemohon **)</td>
+              </tr>
+              <tr>
+                <td style="vertical-align: top" width="40%" rowspan="2">Nama</td>
+                <td class="font-weight-bold">{{ $assessi->data_assessi->name }}
+                  <div class="custom-control custom-switch d-inline ml-2">
+                    <input type="checkbox" class="custom-control-input" id="assessi_switch" required>
+                    <label class="custom-control-label" for="assessi_switch"></label>
+                  </div> 
+                </td>
+              </tr>
+              <tr>
+                <td><img class="txt" src="{{ asset('storage/' . $assessi->apl01->assessi_signature) }}"
+                  height="100px"></td>
+              </tr>
+              <tr class="font-weight-bold">
+                <td colspan="2">Assessor ***)</td>
+              </tr>
+              <tr>
+                <td style="vertical-align: top" rowspan="2">Nama</td>
+                <td class="font-weight-bold">{{ $assessor->name }}</td>
+              </tr>
+              <tr>
+                <td><img class="txt" src="{{ asset('storage/' . $assessi->apl01->assessor_signature) }}"
+                  height="100px"></td>
+              </tr>
+              <tr>
+                <td>No. Registrasi</td>
+                <td class="font-weight-bold">{{ $assessor->no_met }}</td>
+              </tr>
+            </table>             
+          </div>
           </div>
             <div class="card-footer">
               <button type="submit" class="btn btn-primary float-right mr-3">Simpan <span

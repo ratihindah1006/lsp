@@ -19,7 +19,7 @@ class CreateAnswersTable extends Migration
             $table->foreign('assessi_id')->references('id')->on('assessi')->onDelete("cascade");
             $table->bigInteger('unit_id')->unsigned();
             $table->foreign('unit_id')->references('id')->on('unit_schema')->onDelete("cascade");
-            $table->text('answer')->nullable();
+            $table->longText('answer')->nullable();
             $table->boolean('status')->default(false);
             $table->boolean('rekomendasi')->nullable();
             $table->timestamps();

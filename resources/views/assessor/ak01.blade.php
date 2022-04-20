@@ -171,7 +171,12 @@
                     </tr>
                     <tr>
                       <td colspan="3">
-                        Tanda Tangan Peserta <br>
+                        Tanda Tangan Peserta
+                        <div class="custom-control custom-switch d-inline ml-3">
+                          <input type="checkbox" class="custom-control-input" id="assessi_switch" required>
+                          <label class="custom-control-label" for="assessi_switch"></label>
+                        </div>       
+                         <br>
                         <img class="txt" src="{{ asset('storage/' . $assessi->apl01->assessi_signature) }}"
                         height="100px">
                         <br>
@@ -180,11 +185,16 @@
                     </tr>
                     <tr>
                       <td colspan="3">
-                        Tanda Tangan Assesor <br>
+                        Tanda Tangan Assesor 
+                        <div class="custom-control custom-switch d-inline ml-3">
+                          <input type="checkbox" class="custom-control-input" id="assessor_switch" required>
+                          <label class="custom-control-label" for="assessor_switch"></label>
+                        </div>    
+                        <br>
                         <img class="txt" src="{{ asset('storage/' . $assessi->apl01->assessor_signature) }}"
                         height="100px">
                         <br>
-                        Tgl {{ $event_start }}
+                        Tgl {{ $event_start }}                     
                       </td>
                     </tr>
                 </table>

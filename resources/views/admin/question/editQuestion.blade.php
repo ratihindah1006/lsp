@@ -26,7 +26,7 @@
         </div>
     @endif
   
-    <form method="post" action="/soal/{{ $question->id }}">
+    <form method="post" action="/soal/{{ $question->id }}" enctype="multipart/form-data">
         @method('put')
         @csrf
         <div class="row">
