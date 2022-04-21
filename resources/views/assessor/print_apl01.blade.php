@@ -116,10 +116,10 @@
     <table border="1" style="border-style: solid;">
         <thead class="my-text font-weight-bold">
             <tr>
-                <th>No</th>
-                <th>Kode Unit</th>
-                <th>Judul Unit</th>
-                <th>Jenis Standar</th>
+                <th width="10">No</th>
+                <th width="100">Kode Unit</th>
+                <th width="290">Judul Unit</th>
+                <th width="100">Jenis Standar</th>
             </tr>
         </thead>
         <tbody class="my-text">
@@ -133,104 +133,3 @@
         </tbody>
     </table>
 </div>
-{{-- <div class="card-header">
-    
-</div>
-<h4 class="font-weight-bold ">Data Pribadi</h4>
-<div class="form-group row">
-    <label class="col-lg-4 col-form-label font-weight-bold ">Nama Lengkap : {{ $apl01->name }}</label>
-</div>
-<div class="form-group row">
-    <label class="col-lg-4 col-form-label font-weight-bold  " for="nik">NIK : {{ $apl01->nik }}</label>
-</div>
-<div class="form-group row">
-    <label class="col-lg-4 col-form-label font-weight-bold  " for="gender">Jenis Kelamin : {{ $apl01->gender }}</label>
-</div>
-<div class="form-group row">
-    <label class="col-lg-4 col-form-label font-weight-bold" for="place_of_birth">Tempat Lahir
-        :{{ $apl01->place_of_birth }} </label>
-</div>
-<div class="form-group row">
-    <label class="col-lg-4 col-form-label font-weight-bold " for="date_of_birth">Tanggal Lahir
-        :{{ $apl01->date_of_birth }}</label>
-</div>
-<div class="form-group row">
-    <label class="col-lg-4 col-form-label font-weight-bold  " for="domicile">Kota : {{ $apl01->domicile }}</label>
-</div>
-<div class="form-group row">
-    <label class="col-lg-4 col-form-label font-weight-bold  " for="address">Alamat : {{ $apl01->address }}</label>
-</div>
-<div class="form-group row">
-    <label class="col-lg-4 col-form-label font-weight-bold  " for="no_hp">Nomor Ponsel : {{ $apl01->no_hp }}</label>
-</div>
-<div class="form-group row">
-    <label class="col-lg-4 col-form-label font-weight-bold  " for="email">Email : {{ $apl01->email }}</label>
-</div>
-<div class="form-group row">
-    <label class="col-lg-4 col-form-label font-weight-bold" for="last_education">Pendidikan Terakhir :{{ $apl01->last_education }}</label>
-</div>
-<div class="form-group row">
-    <label class="col-lg-4 col-form-label font-weight-bold " for="nationality">Kebangsaan:{{ $apl01->nationality }}</label>
-</div>
-
-<h4 class="font-weight-bold">Data Pekerjaan</h4>
-<div class="form-group row">
-    <label class="col-lg-4 col-form-label font-weight-bold  " for="comp_name">Nama Perusahaan :{{ $apl01->comp_name }}</label>
-</div>
-<div class="form-group row">
-    <label class="col-lg-4 col-form-label font-weight-bold  " for="job_title">Pekerjaan :{{ $apl01->job_title }}</label>
-</div>
-<div class="form-group row">
-    <label class="col-lg-4 col-form-label font-weight-bold  " for="position">Jabatan :{{ $apl01->position }}</label>
-</div>
-<div class="form-group row">
-    <label class="col-lg-4 col-form-label font-weight-bold" for="comp_address">Alamat Kantor :{{ $apl01->comp_address }}</label>
-</div>
-<div class="form-group row">
-    <label class="col-lg-4 col-form-label font-weight-bold" for="comp_telp">Telepon Kantor :{{ $apl01->comp_telp }}</label>
-</div>
-<div class="form-group row">
-    <label class="col-lg-4 col-form-label font-weight-bold" for="comp_email">Email Kantor:{{ $apl01->comp_email }}</label>
-</div>
-<div class="form-group row">
-    <label class="col-lg-4 col-form-label font-weight-bold  " for="comp_fax">Fax Kantor :{{ $apl01->comp_fax }}</label>
-</div>
-<div class="form-group row">
-    <label class="col-lg-4 col-form-label font-weight-bold" for="postal_code">Kode Pos :{{ $apl01->postal_code }}</label>
-</div>
-<h4 class="font-weight-bold">Data Sertifikasi</h4>
-</div>
-<div class="form-group row">
-    <label class="col-lg-4 col-form-label font-weight-bold" for="sert_schema">Skema Sertifikasi :{{ $apl01->sert_schema }}</label>
-</div>
-<div class="form-group row">
-    <label class="col-lg-4 col-form-label font-weight-bold  " for="assessment_purpose">Tujuan Assessment :{{ $apl01->assessment_purpose }}</label>
-</div>
-<pre>
-
-    <label >Judul : {{ $assessis->schema_title }}</label>
-
-    <label >Nomor Skema :{{ $assessis->no_skkni }}</label>
-
-</pre>
-    <div class="table-responsive my-text">
-        <table class="table table-bordered ">
-            <thead class="my-text font-weight-bold">
-                <tr>
-                    <th>No</th>
-                    <th>Kode Unit</th>
-                    <th>Judul Unit</th>
-                    <th>Jenis Standar</th>
-                </tr>
-            </thead>
-            <tbody class="my-text">
-                @foreach ($assessis->units as $value)
-                    <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $value->unit_code }}</td>
-                        <td>{{ $value->unit_title }}</td>
-                        <td>{{ $value->schema->competency_package }}</td>
-                @endforeach
-            </tbody>
-        </table>
-    </div> --}}

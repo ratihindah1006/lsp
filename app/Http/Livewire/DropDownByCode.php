@@ -16,12 +16,14 @@ class DropDownByCode extends Component
     public $no_soal = [];
     public $aunit;
     public $codeQuestion;
+    public $code_id;
 
     public $selectedUnit = null;
     public $selectedElement = null;
 
     public function mount($selectedElement = null, $codeQuestion)
     {
+        $this->code_id = $codeQuestion->id;
         $this->codeQuestion = $codeQuestion->schema->id;
         $this->units = UnitSchemaModel::where('schema_id', $this->codeQuestion)->get();
         $this->elements = collect();
@@ -37,9 +39,9 @@ class DropDownByCode extends Component
     public function updatedSelectedUnit($unit)
     {
         if (!is_null($unit)) {
-            $aunit = UnitSchemaModel::where('id', $unit)->first();
-            if (!is_null($aunit)) {
-                $this->elements = ElementModel::where('unit_id', $aunit['unit_id'])->get();
+            $this->aunit = UnitSchemaModel::where('id', $unit)->first();
+            if (!is_null($this->aunit)) {
+                $this->elements = ElementModel::where('unit_id', $this->aunit['unit_id'])->get();
             }
         }
         $this->selectedElement = "";

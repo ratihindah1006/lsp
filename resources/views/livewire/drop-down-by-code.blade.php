@@ -39,7 +39,11 @@
                   @foreach ($criterias as $criteria)
                     <div class="form-group m-0">
                         <div class="form-check">
-                        <input wire:model="no_soal" type="checkbox" name="kuk.{{ $criteria->id }}" class="kuk.{{ $criteria->id }}" id="kuk.{{ $criteria->id }}" value=" KUK {{ $criteria->element->no_element.'.'.$criteria->no_criteria }}">
+                        <input wire:model="no_soal" type="checkbox" name="kuk.{{ $criteria->id }}" class="kuk.{{ $criteria->id }}" id="kuk.{{ $criteria->id }}" value=" KUK {{ $criteria->element->no_element.'.'.$criteria->no_criteria }}"
+                        @if (DB::table('question')->where('code_id', $code_id)->where('unit_id', $aunit->id)->where('no_soal','LIKE', '%'.$criteria->element->no_element.'.'.$criteria->no_criteria.'%')->count() > 0)
+                            disabled
+                        @endif
+                        >
                         <label class="kuk.{{ $criteria->id }}" for="kuk.{{ $criteria->id }}">{{ $criteria->element->no_element.'.'.$criteria->no_criteria.' '.$criteria->criteria_title  }}</label>
                         </div>
                     </div>
@@ -55,13 +59,7 @@
               <h4 class="card-title">No Soal</h4>
           </div>
           <div class="card-body">
-            <input wire:model="no_soal" type="text" name="no_soal" id="no_soal" class = "form-control"
-            value="
-            @if (is_array($no_soal) || is_object($no_soal)) 
-                @foreach ($no_soal as $no) 
-                    {{ $no }} 
-                @endforeach 
-            @endif" readonly required>
+            <input wire:model="no_soal" type="text" name="no_soal" id="no_soal" class = "form-control" value="" readonly required>
           </div>
       </div>
     </div>

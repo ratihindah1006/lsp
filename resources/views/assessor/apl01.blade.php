@@ -9,7 +9,7 @@
                 <div class="col-lg-1"></div>
                 <div class="col-lg-12">
                     < <div class="card text-dark">
-                        <div class="card-footer">
+                        <div class="card-footer" style=" border-bottom: 7px solid  #191970;">
                             <h2 class="font-weight-bold card-title">FR-APL-01 FORMULIR PERMOHONAN SERTIFIKASI KOMPETENSI</h2>
                             <a href="/exportlaporan_apl01/{{$assessi->id}}" class="btn btn-whatsapp float-right mr-3">Cetak<span
                                 class="btn-icon-right"><i class="ti ti-printer"></i></span></a>
@@ -18,11 +18,11 @@
                             <a href="/assessor" class="btn btn-danger float-right mr-1">Batal <span
                                     class="btn-icon-right"><i class="fa fa-close"></i></span></a>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="border: none">
                             <div class="form-validation">
                                 <div class="row">
                                     <div class="col-xl-6">
-                                        <h4 class="card-title">Data Pribadi</h4><br>
+                                        <h4 class="font-weight-bold ">Data Pribadi</h4><br>
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label font-weight-bold "
                                                 for="name">Nama
@@ -224,12 +224,11 @@
                 <div class="col-lg-1"></div>
                 <div class="col-lg-12">
                     <div class="card text-dark">
-                        <div class="card-header">
-
+                        <div class="card-header"  style="border-top: 7px solid  #191970;">
                             <h4 class="font-weight-bold">Data Sertifikasi</h4>
                         </div>
 
-                        <div class="card-body">
+                        <div class="card-body" style="border: none">
                             <div class="basic-form">
                                 <div class="row">
                                     <div class="col-xl-6">
@@ -308,10 +307,10 @@
                 <div class="col-lg-1"></div>
                 <div class="col-lg-12">
                     <div class="card text-dark">
-                        <div class="card-header">
+                        <div class="card-header"  style="border-top: 7px solid  #191970;">
                             <h4 class="font-weight-bold">Data Sertifikasi</h4>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="border: none">
                             <div class="basic-form">
                                 <div class="row">
                                     <div class="col-xl-6">
@@ -344,12 +343,8 @@
                                         <label class="font-weight-bold  ">5.&ensp; Surat Keterangan Pengalaman
                                             Kerja Minimal 1</label>
                                         <div class="input-group mb-3">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input"
-                                                    value="{{ old('work_exper_certif', $apl01->work_exper_certif) }}"
-                                                    id="work_exper_certif" name="work_exper_certif" disabled>
-                                                <label class="custom-file-label">Choose file</label>
-                                            </div>
+                                            <iframe type="application/pdf" src="{{ asset('storage/' . $apl01->work_exper_certif) }}"
+                                                width="600" height="400"></iframe>
                                         </div>
                                     </div>
                                 </div>
@@ -364,10 +359,10 @@
                 <div class="col-lg-1"></div>
                 <div class="col-lg-12">
                     <div class="card text-dark">
-                        <div class="card-header">
+                        <div class="card-header"  style="border-top: 7px solid  #191970;">
                             <h4 class="font-weight-bold ">Halaman Persetujuan</h4>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="border: none">
                             <div class="basic-form">
                                 <div class="row">
                                     <div class="col-xl-6">
@@ -404,16 +399,13 @@
                                     <div class="col-xl-6">
                                         <div class="form-group row">
                                             <label class="my-text">Catatan&emsp;:</label>
-                                            <textarea class="form-control @error('note') is-invalid @enderror" id="note"
-                                                name="note" rows="3">
-                                                @if ($apl01 != null) {{$apl01->note }}
-                                                @else {{ Request::old('note') }}
-                                                @endif</textarea>
+                                            <textarea class="form-control @error('note') is-invalid @enderror" id="note" name="note" rows="3" value=" {{ $apl01->note, old ('note') }}">{{ $apl01->note }}</textarea>
                                             @error('note')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>
                                             @enderror
+                                            
                                         </div>
                                     </div>
                                 </div>

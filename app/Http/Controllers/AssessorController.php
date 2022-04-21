@@ -197,13 +197,15 @@ class AssessorController extends Controller
                         'status' => 'required',
 
                     ]);
+                    $validateData['note'] = $request->note;
                     $validateData['assessi_id'] = $assessi->id;
                     $validateData['assessor_signature'] = $request->file('assessor_signature')->store('assessor_signature');
                     $assessi->apl01->update($validateData);
+                    return redirect('/assessi'.'/'.$a->id)->with('toast_success', 'Status berhasil di Update!');
                 }
             }
         }
-        return redirect('/assessi'.'/'.$a->id)->with('toast_success', 'Status berhasil di Update!');
+      
         
     }
 
@@ -299,7 +301,7 @@ class AssessorController extends Controller
         $data = [
             'title' => 'MUK01',
             'assessi' => $assessi,
-            'assessor' => Auth::user()->name,
+            'assessor' => $assessi->assessor->data_assessor,
             'schema_class' => $assessi->schema_class,
             'schema' => $assessi->schema_class->schema,
         ];
@@ -343,7 +345,7 @@ class AssessorController extends Controller
         $data = [
             'title' => 'assessi',
             'assessi' => $assessi,
-            'assessor' => Auth::user()->name,
+            'assessor' => $assessi->assessor->data_assessor,
             'schema_class' => $assessi->schema_class,
             'schema' => $assessi->schema_class->schema,
             'answer' => $answer

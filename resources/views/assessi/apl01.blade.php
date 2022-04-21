@@ -351,8 +351,7 @@
                                             }@else{
                                             value="{{ old('comp_address') }}"
                                             } @endif
-                                                    id="comp_address" name="comp_address" rows="5"
-                                                    placeholder="Tuliskan alamat kantor">
+                                                    id="comp_address" name="comp_address" rows="5">
                                                 @error('comp_address')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -373,7 +372,7 @@
                                             }@else{
                                             value="{{ old('comp_telp') }}"
                                             } @endif
-                                                    id="comp_telp" name="comp_telp" placeholder="212-999-0000">
+                                                    id="comp_telp" name="comp_telp">
                                                 @error('comp_telp')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -394,7 +393,7 @@
                                             }@else{
                                             value="{{ old('comp_email') }}"
                                             } @endif
-                                                    id="comp_email" name="comp_email" placeholder="xxxx@mail.com">
+                                                    id="comp_email" name="comp_email">
                                                 @error('comp_email')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -724,14 +723,16 @@
                                     <div class="col-xl-6">
                                         <div class="form-group row">
                                             <label class="my-text">Catatan&emsp;:</label>
-                                            <textarea class="form-control @error('note') is-invalid @enderror" id="note" name="note" rows="3"
-                                                placeholder="catatan" disabled>
-                                                            @if ($apl01 != null)
-                                                            {{ $apl01->note }}
-                                                            @else
-                                                            {{ Request::old('note') }}
-                                                            @endif
-                                                            </textarea>
+                                            @if ($apl01 != null)
+                                                @if ($apl01->note != null)
+                                                    <textarea class="form-control @error('note') is-invalid @enderror" style="text-align: left; padding:0px" id="note"
+                                                        name="note" rows="3" disabled
+                                                        value="{{ $apl01->note }}">{{ $apl01->note }}</textarea>
+                                                @endif
+                                            @else
+                                                <textarea class="form-control @error('note') is-invalid @enderror" style="text-align: left; padding:0px" id="note"
+                                                    name="note" rows="3" disabled value=""></textarea>
+                                            @endif
                                             @error('note')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -756,8 +757,7 @@
                                                     name="assessi_signature">
                                                 @if ($apl01)
                                                     <div class="input-group mb-3">
-                                                        <img type="application/pdf"
-                                                            src="{{ asset('storage/' . $apl01->assessi_signature) }}"
+                                                        <img src="{{ asset('storage/' . $apl01->assessi_signature) }}"
                                                             style="margin-left:auto;margin-right:auto;display:block;width:200px">
                                                     </div>
                                                 @endif

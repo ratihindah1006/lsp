@@ -30,7 +30,7 @@
         </div>
     @endif
   
-    <form method="post" action="/soal">
+    <form method="post" action="/soal" enctype="multipart/form-data">
         @csrf
             @livewire('dropdown-select')
     </form>

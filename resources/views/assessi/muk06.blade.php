@@ -2,7 +2,7 @@
 
 @section('container')
 
-<form method="post" action="/assessi/muk06/store">
+<form method="post" action="/assessi/muk06/store" enctype="multipart/form-data">
 @csrf
 <div class="container-fluid">
   <div class="row">
@@ -18,32 +18,32 @@
                 <td rowspan="2">Skema Sertifikasi/Klaster Asesmen</td>
                 <td>Judul</td>
                 <td>: &nbsp;</td>
-                <td>{{ $schema->schema_title }}</td>
+                <td class="font-weight-bold">{{ $schema->schema_title }}</td>
               </tr>
               <tr>
                 <td>Nomor</td>
                 <td>: &nbsp;</td>
-                <td>{{ $schema->category->no_skkni }}</td>
+                <td class="font-weight-bold">{{ $schema->category->no_skkni }}</td>
               </tr>
               <tr>
                 <td colspan="2">TUK</td>
                 <td>: &nbsp;</td>
-                <td>{{ $schema_class->tuk }}</td>
+                <td class="font-weight-bold">{{ $schema_class->tuk }}</td>
               </tr>
               <tr>
                 <td colspan="2">Nama Assesor</td>
                 <td>: &nbsp;</td>
-                <td>{{ $assessor->name }}</td>
+                <td class="font-weight-bold">{{ $assessor->name }}</td>
               </tr>
               <tr>
                 <td colspan="2">Nama Peserta</td>
                 <td>: &nbsp;</td>
-                <td>{{ $assessi->data_assessi->name }}</td>
+                <td class="font-weight-bold">{{ $assessi->data_assessi->name }}</td>
               </tr>
               <tr>
                 <td colspan="2">Tanggal</td>
                 <td>: &nbsp;</td>
-                <td>{{ $schema_class->event->event_time }}</td>
+                <td class="font-weight-bold">{{ $schema_class->event->event_time }}</td>
               </tr>
             </table>
             
@@ -77,7 +77,7 @@
                   <b><u>Pertanyaan: </u></b> <br><br>
                   @foreach ($unit->questions->where('code_id', $schema_class->code_id) as $q)
                     @if (isset($q))
-                      <span class="text-light bg-info">{{ $q->no_soal }}</span> <br><br>
+                      <span style="background-color:yellow;" class="font-weight-bold">{{ $q->no_soal }}</span> <br><br>
                       {!! $q->question !!} <br>
                     @else
 
@@ -107,6 +107,41 @@
               </tr>
             </table>
             @endforeach
+            <p class="mt-5 mb-0">Note ***) diisi oleh Assessor</p>
+            <table style="min-width: 100%" border="3">
+              <tr class="font-weight-bold">
+                <td colspan="2">Pemohon **)</td>
+              </tr>
+              <tr>
+                <td style="vertical-align: top" width="40%" rowspan="2">Nama</td>
+                <td class="font-weight-bold">{{ $assessi->data_assessi->name }}
+                  <div class="custom-control custom-switch d-inline ml-2">
+                    <input type="checkbox" class="custom-control-input" id="assessi_switch" required>
+                    <label class="custom-control-label" for="assessi_switch"></label>
+                  </div> 
+                </td>
+              </tr>
+              <tr>
+                <td><img class="txt" src="{{ asset('storage/' . $assessi->apl01->assessi_signature) }}"
+                  height="100px"></td>
+              </tr>
+              <tr class="font-weight-bold">
+                <td colspan="2">Assessor ***)</td>
+              </tr>
+              <tr>
+                <td style="vertical-align: top" rowspan="2">Nama</td>
+                <td class="font-weight-bold">{{ $assessor->name }}</td>
+              </tr>
+              <tr>
+                <td><img class="txt" src="{{ asset('storage/' . $assessi->apl01->assessor_signature) }}"
+                  height="100px"></td>
+              </tr>
+              <tr>
+                <td>No. Registrasi</td>
+                <td class="font-weight-bold">{{ $assessor->no_met }}</td>
+              </tr>
+            </table>             
+          </div>
           </div>
             <div class="card-footer">
               <button type="submit" class="btn btn-primary float-right mr-3">Simpan <span

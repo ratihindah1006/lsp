@@ -88,19 +88,26 @@ class Apl01Controller extends Controller
         if($request->hasFile('work_exper_certif')){ 
             $validateData['work_exper_certif'] = $request->file('work_exper_certif')->store('work_exper_certif');
         }
+
+        if($request->hasFile('assessi_signature')){ 
+            $validateData['assessi_signature'] = $request->file('assessi_signature')->store('assessi_signature');
+        }
        
         $validateData['assessi_id'] = $asesi->id;
 
         if ($cek == Null) {
             Apl01::create($validateData);
+            return redirect('/beranda')->with('toast_success', 'Apl01 Berhasil diinput');
         } else {
             $validateData['status'] = Null;
             $validateData['note'] = Null;
+            $validateData['assessor_signature'] = Null;
             Apl01::where('assessi_id', $asesi->id)
                 ->update($validateData);
+            return redirect('/beranda')->with('toast_success', 'Apl01 Berhasil diupdate');
         }
 
-        return redirect('/beranda')->with('toast_success', 'Apl01 Berhasil diinput');
+        
     }
 
     public function export( $id){
@@ -109,7 +116,7 @@ class Apl01Controller extends Controller
         $assessi = DataAssessiModel::find(Auth::user()->id);    
        
         $print = PDF::loadview('assessi.print_apl01', 
-        //Sdd($assessi->assessis->find($id)->apl01);
+      
          [
             'title' => 'APL 01',
             'assessi'=>$data3,
@@ -118,10 +125,7 @@ class Apl01Controller extends Controller
             'category' => $assessi->assessis->find($id)->schema_class->schema->category,
             
         ]);
-        //mengambil data dan tampilan dari halaman laporan_pdf
-        //data di bawah ini bisa kalian ganti nantinya dengan data dari database
         
-        //mendownload laporan.pdf
         return $print->download('assessi.print_apl01');
     	
     }
