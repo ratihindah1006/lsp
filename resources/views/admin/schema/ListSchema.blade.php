@@ -29,6 +29,7 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th> Kategori</th>
+                                                <th>Kode Skema</th>
                                                 <th>Judul Skema</th>
                                                 <th>Kemasan Kompetensi</th>
                                                 <th>Persyaratan Dasar Permohonan</th>
@@ -41,13 +42,13 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $value->category->category_title }}</td>
+                                                <td>{{ $value->schema_code }}</td>
                                                 <td>{{ $value->schema_title }}</td>
                                                 <td>{{ $value->competency_package }}</td>
                                                 <td>{{ $value->requirement }}</td>
                                                 <td>{{ $value->cost }}</td>
                                                 <td align="center">
                                                     <a href="/skema/{{ $value->id }}/unit" class="btn btn-primary btn-sm"><span class="ti-info"></span></a>
-                                                    <a href="/skema/{{ $value->id }}/show" class="btn btn-success btn-sm"><span class="ti-file"></span></a>
                                                     <a href="/skema/{{ $value->id }}/edit" class="btn btn-warning btn-sm"><span class="ti-pencil"></span></a>
                                                     <form action="/skema/{{ $value->id }}" method="POST" class="d-inline">
                                                         @csrf

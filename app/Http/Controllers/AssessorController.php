@@ -223,8 +223,9 @@ class AssessorController extends Controller
                     $assessi->apl02->update($validateData);
                 }
             }
+            return redirect('/assessi'.'/'.$a->id)->with('toast_success', 'Status berhasil di Update!');
         }
-        return redirect('/list')->with('toast_success', 'Status berhasil di Update!');
+        
     }
 
     public function ak01(AssessiModel $assessi)
