@@ -96,7 +96,7 @@ class AssessorController extends Controller
                 return view('assessor.apl01', [
                     'apl01' => $assessi->apl01,
                     'assessi' => $assessi,
-                    'title' => 'Skema',
+                    'title' => 'APL-01',
                     'category' => $assessi->schema_class->schema->category,
                     'assessis' => $assessi->schema_class->schema,
                 ]);

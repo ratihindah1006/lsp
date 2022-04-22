@@ -91,8 +91,9 @@
                                                 for="address">Alamat
                                             </label>
                                             <div class="col-lg-6">
-                                                <input name="address" type="text" class="form-control" id="address"
-                                                    value="{{ old('address', $apl01->address) }}" disabled>
+                                                <textarea class="form-control @error('note') is-invalid @enderror" style="text-align: left; padding:10px" id="note"
+                                                        name="note" rows="3" disabled
+                                                        value="{{ $apl01->address }}">{{ $apl01->address }}</textarea>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -168,9 +169,9 @@
                                                 for="comp_address">Alamat Perusahaan
                                             </label>
                                             <div class="col-lg-6">
-                                                <input name="comp_address" type="text" class="form-control"
-                                                    id="comp_address"
-                                                    value="{{ old('comp_address', $apl01->comp_address) }}" disabled>
+                                                <textarea class="form-control @error('note') is-invalid @enderror" style="text-align: left; padding:10px" id="note"
+                                                name="note" rows="3" disabled
+                                                value="{{ $apl01->comp_address }}">{{ $apl01->comp_address }}</textarea>
                                             </div>
                                         </div>
                                         <div class="form-group row">
