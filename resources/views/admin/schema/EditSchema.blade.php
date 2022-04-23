@@ -48,6 +48,16 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="schema_code" class="form-label">Kode Skema</label>
+                                    <input type="text" class="form-control @error('schema_code') is-invalid @enderror" id="schema_code" name="schema_code" value="{{ old('schema_code', $schema->schema_code) }}">
+                                    @error('schema_code')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
                                     <label for="schema_title" class="form-label">Judul Skema</label>
                                     <input type="text" class="form-control @error('schema_title') is-invalid @enderror" id="schema_title" name="schema_title" value="{{ old('schema_title', $schema->schema_title) }}">
                                     @error('schema_title')

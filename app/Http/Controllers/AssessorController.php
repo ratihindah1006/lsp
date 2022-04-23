@@ -225,8 +225,9 @@ class AssessorController extends Controller
                     $assessi->apl02->update($validateData);
                 }
             }
+            return redirect('/assessi'.'/'.$a->id)->with('toast_success', 'Status berhasil di Update!');
         }
-        return redirect('/list')->with('toast_success', 'Status berhasil di Update!');
+        
     }
 
     public function ak01(AssessiModel $assessi)
@@ -300,7 +301,7 @@ class AssessorController extends Controller
         $data = [
             'title' => 'MUK01',
             'assessi' => $assessi,
-            'assessor' => Auth::user()->name,
+            'assessor' => $assessi->assessor->data_assessor,
             'schema_class' => $assessi->schema_class,
             'schema' => $assessi->schema_class->schema,
         ];
@@ -344,7 +345,7 @@ class AssessorController extends Controller
         $data = [
             'title' => 'assessi',
             'assessi' => $assessi,
-            'assessor' => Auth::user()->name,
+            'assessor' => $assessi->assessor->data_assessor,
             'schema_class' => $assessi->schema_class,
             'schema' => $assessi->schema_class->schema,
             'answer' => $answer

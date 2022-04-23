@@ -45,7 +45,7 @@
                                     <div class="row">
                                         <div class="col-1 ml-5">
                                             <div class="form-group row">
-                                                <label for="no_criteria" class="form-label my-text">No Criteria</label>
+                                                <label for="no_criteria" class="form-label my-text">No Kriteria</label>
                                                 <input style="width: 100%; height:40px;" type="text" class="form-control @error('no_criteria') is-invalid @enderror" id="no_criteria" name="no_criteria" value="{{ old('no_criteria') }}">
                                                 @error('no_criteria')
                                                 <div class="invalid-feedback">

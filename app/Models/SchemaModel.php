@@ -11,7 +11,7 @@ class SchemaModel extends Model
     protected $table = "schema";
     protected $fillable = [
         'schema_title',
-        'no_skkni',
+        'schema_code',
         'category_id',
         'cost',
         'requirement',

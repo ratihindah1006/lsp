@@ -52,8 +52,6 @@
                             <li>
                                 <a href="/assessor" class="text-white {{ request()->is('assessor/*') ? 'mm-active' : '' }}" aria-expanded="false"><i
                                         class="icon icon-home text-white font-weight-bold"> Beranda</i></a>&emsp;
-                                <a href="/list" class="text-white {{ request()->is('list/*') ? 'mm-active' : '' }} " aria-expanded="false"><i
-                                        class=" ti-view-list-alt text-white font-weight-bold"> Daftar Assessi</i></a>
                             </li>
                             </h5>
                         </div>
@@ -148,8 +146,9 @@
 
     <!-- Summernote -->
     <script src="/assets/vendor/summernote/js/summernote.min.js"></script>
-    <script src="/assets/js/plugins-init/summernote-init.js"></script>
-
+    <script src="/assets/js/plugins-init/summernote-disable-init.js"></script>
+    
+    <script src="/assets/js/bootstrap-tooltip.js"></script>
 </body>
 
 </html>

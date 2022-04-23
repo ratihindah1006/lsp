@@ -165,14 +165,18 @@
                                                 <span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <textarea type="text"
-                                                    class="form-control @error('address') is-invalid @enderror" rows="4"
-                                                    @if ($apl01 != null) {
-                                            value= "{{ $apl01->address }}"
-                                            }@else{
-                                            value="{{ old('address') }}"
-                                            } @endif
-                                                    id="address" name="address"> {{$apl01->address }}</textarea>
+                                                @if ($apl01 != null)
+                                                    <textarea type="text" class="form-control @error('address') is-invalid @enderror" rows="4"
+                                                        @if ($apl01 != null) 
+                                                            value= "{{ $apl01->address }}"
+                                                        @else
+                                                        value="{{ old('address') }}"
+                                                        @endif
+                                                        id="address" name="address"> {{ $apl01->address }}</textarea>
+                                                @else
+                                                    <textarea type="text" class="form-control @error('address') is-invalid @enderror" rows="4" id="address"
+                                                        name="address"> </textarea>
+                                                @endif
                                                 @error('address')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -186,7 +190,8 @@
                                                 <span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="text" class="form-control @error('no_hp') is-invalid @enderror"
+                                                <input type="text"
+                                                    class="form-control @error('no_hp') is-invalid @enderror"
                                                     @if ($apl01 != null) {
                                             value= "{{ $apl01->no_hp }}"
                                             }@else{
@@ -279,7 +284,7 @@
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label font-weight-bold  " for="comp_name">Nama
                                                 Perusahaan
-                                                
+
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text"
@@ -321,7 +326,7 @@
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="position">Jabatan
-                                               
+
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text"
@@ -344,14 +349,18 @@
                                                 for="comp_address">Alamat Kantor
                                             </label>
                                             <div class="col-lg-6">
-                                                <textarea type="text"
-                                                    class="form-control @error('comp_address') is-invalid @enderror"
-                                                    @if ($apl01 != null) {
-                                            value= "{{ $apl01->comp_address }}"
-                                            }@else{
-                                            value="{{ old('comp_address') }}"
-                                            } @endif
+                                                @if ($apl01 != null)
+                                                <textarea type="text" class="form-control @error('comp_address') is-invalid @enderror"
+                                                    @if ($apl01 != null) 
+                                                        value= "{{ $apl01->comp_address }}"
+                                                    @else
+                                                        value="{{ old('comp_address') }}"
+                                                    @endif
+                                                    id="comp_address" name="comp_address" rows="4">{{$apl01->comp_address}}</textarea>
+                                                @else
+                                                <textarea type="text" class="form-control @error('comp_address') is-invalid @enderror"
                                                     id="comp_address" name="comp_address" rows="4"></textarea>
+                                                @endif
                                                 @error('comp_address')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -362,7 +371,6 @@
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="comp_telp">Telepon Kantor
-                                              
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text"
@@ -383,7 +391,7 @@
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="comp_email">Email Kantor
-                                              
+
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="email"
@@ -404,7 +412,7 @@
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label font-weight-bold  " for="comp_fax">Fax
                                                 Kantor
-                                               
+
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text"
@@ -425,7 +433,7 @@
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label font-weight-bold  "
                                                 for="postal_code">Kode Pos
-                                            
+
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text"

@@ -51,6 +51,7 @@ class SchemaController extends Controller
     {
         $validateData = $request->validate([
             'category_id' => 'required',
+            'schema_code' => 'required',
             'schema_title' => 'required',
             'requirement' => 'required',
             'competency_package' => 'required',
@@ -105,6 +106,7 @@ class SchemaController extends Controller
     {
         $rules=[
             'category_id' => 'required',
+            'schema_code' => 'required',
             'schema_title' => 'required',
             'requirement' => 'required',
             'competency_package' => 'required',

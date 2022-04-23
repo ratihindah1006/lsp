@@ -88,16 +88,46 @@ class AssessiController extends Controller
     {
         if (count($request->answer) > 0) {
             foreach ($request->answer as $key => $value) {
-                $data=array(
+                $jawaban = $request->answer[$key];
+            
+                if ($jawaban != null) {
+                    $dom = new \DomDocument();
+    
+                    libxml_use_internal_errors(true);
+                    $dom->loadHtml($jawaban, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
+                    
+                    $images = $dom->getElementsByTagName('img');
+              
+                    foreach($images as $img){
+                        $data = $img->getAttribute('src');
+                        if (strpos($data, 'data') !== false) {
+                            list($type, $data) = array_pad(explode(';', $data),2,null); 
+                            list(, $data) = array_pad(explode(',', $data),2,null); 
+                            $data = base64_decode($data);
+                            $image_name= "/upload/" . time().uniqid().'.png';
+                            $path = public_path('storage') . $image_name;
+                            file_put_contents($path, $data);
+                            $img->removeAttribute('src');
+                            $img->removeAttribute('style');
+                            $img->setAttribute('src', asset('/storage'.$image_name));
+                            $img->setAttribute('style', 'width:500px;');
+                            $img->setAttribute('class', 'img-fluid');
+                        }
+                    }
+              
+                    $jawaban = $dom->saveHTML();
+                }
+
+                $dataJawaban = array(
                     'assessi_id' => $request->assessiId[$key],
                     'unit_id' => $request->unitId[$key],
-                    'answer' => $request->answer[$key], 
+                    'answer' => $jawaban, 
                     'code_id' => $request->codeId[$key],
                 );
                 
                 Answer::updateOrCreate(
                     ['assessi_id' => $request->assessiId[$key], 'unit_id' => $request->unitId[$key]],
-                    $data
+                    $dataJawaban
                 );
             }            
         }
