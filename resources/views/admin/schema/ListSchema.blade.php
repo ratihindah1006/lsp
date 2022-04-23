@@ -28,7 +28,6 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th> Kategori</th>
                                                 <th>Kode Skema</th>
                                                 <th>Judul Skema</th>
                                                 <th>Kemasan Kompetensi</th>
@@ -41,7 +40,6 @@
                                             @foreach($schema as $value)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $value->category->category_title }}</td>
                                                 <td>{{ $value->schema_code }}</td>
                                                 <td>{{ $value->schema_title }}</td>
                                                 <td>{{ $value->competency_package }}</td>

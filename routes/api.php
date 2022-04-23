@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\UnitModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('/units', function (Request $request) {
+    
+    $units = UnitModel::whereIn('category_id', $request->category_id)->get();
+    return response()->json([
+        'status' => 'success',
+        'message' => 'berhasil get list unit',
+        'data' => $units
+    ]);
+})->name("api.units");

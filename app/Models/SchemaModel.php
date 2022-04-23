@@ -12,7 +12,6 @@ class SchemaModel extends Model
     protected $fillable = [
         'schema_title',
         'schema_code',
-        'category_id',
         'cost',
         'requirement',
         'competency_package'

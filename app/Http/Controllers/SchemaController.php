@@ -50,7 +50,6 @@ class SchemaController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'category_id' => 'required',
             'schema_code' => 'required',
             'schema_title' => 'required',
             'requirement' => 'required',
@@ -105,7 +104,6 @@ class SchemaController extends Controller
     public function update(Request $request, CategoryModel $category, SchemaModel $schema)
     {
         $rules=[
-            'category_id' => 'required',
             'schema_code' => 'required',
             'schema_title' => 'required',
             'requirement' => 'required',

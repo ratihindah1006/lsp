@@ -173,7 +173,7 @@
                                         </div>
                                         </p>
                                     </th>
-                                    <td width="200px" >&ensp;Nama : &ensp;</td>
+                                    <td width="200px">&ensp;Nama : &ensp;</td>
                                     <th>&ensp;{{ $asesi->data_assessi->name }}&ensp;
                                     <p>&ensp;TTD : &ensp;</p>
                                     <p>
