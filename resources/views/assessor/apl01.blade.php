@@ -91,8 +91,8 @@
                                                 for="address">Alamat
                                             </label>
                                             <div class="col-lg-6">
-                                                <textarea class="form-control @error('note') is-invalid @enderror" style="text-align: left; padding:10px" id="note"
-                                                        name="note" rows="3" disabled
+                                                <textarea class="form-control @error('address') is-invalid @enderror" style="text-align: left; padding:10px" id="address"
+                                                        name="address" rows="3" disabled
                                                         value="{{ $apl01->address }}">{{ $apl01->address }}</textarea>
                                             </div>
                                         </div>
@@ -169,8 +169,8 @@
                                                 for="comp_address">Alamat Perusahaan
                                             </label>
                                             <div class="col-lg-6">
-                                                <textarea class="form-control @error('note') is-invalid @enderror" style="text-align: left; padding:10px" id="note"
-                                                name="note" rows="3" disabled
+                                                <textarea class="form-control @error('comp_address') is-invalid @enderror" style="text-align: left; padding:10px" id="comp_address"
+                                                name="comp_address" rows="3" disabled
                                                 value="{{ $apl01->comp_address }}">{{ $apl01->comp_address }}</textarea>
                                             </div>
                                         </div>
@@ -271,7 +271,7 @@
                                         <div class="form-group row">
                                             <label class="col-lg-10  my-text " for="">Nomor
                                                 SKKNI&emsp;&emsp;:&emsp;&emsp;
-                                                {{ $category->no_skkni }}
+                                                {{ $assessis->schema_code }}
                                             </label>
                                         </div>
                                     </div>
@@ -291,7 +291,7 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $value->unit->unit_code }}</td>
                                                         <td>{{ $value->unit->unit_title }}</td>
-                                                        <td>{{$value->schema->competency_package}}</td>
+                                                        <td>{{$value->unit->category->jenis_standar}}</td>
                                                 @endforeach
                                             </tbody>
                                         </table>

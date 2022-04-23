@@ -175,7 +175,7 @@
                                                         id="address" name="address"> {{ $apl01->address }}</textarea>
                                                 @else
                                                     <textarea type="text" class="form-control @error('address') is-invalid @enderror" rows="4" id="address"
-                                                        name="address"> </textarea>
+                                                        name="address">{{ old('address') }} </textarea>
                                                 @endif
                                                 @error('address')
                                                     <div class="invalid-feedback">
@@ -359,7 +359,7 @@
                                                     id="comp_address" name="comp_address" rows="4">{{$apl01->comp_address}}</textarea>
                                                 @else
                                                 <textarea type="text" class="form-control @error('comp_address') is-invalid @enderror"
-                                                    id="comp_address" name="comp_address" rows="4"></textarea>
+                                                    id="comp_address" name="comp_address" rows="4">{{ old('comp_address') }}</textarea>
                                                 @endif
                                                 @error('comp_address')
                                                     <div class="invalid-feedback">
@@ -530,8 +530,8 @@
                                     <div class="col-xl-6">
                                         <div class="form-group row">
                                             <label class="col-lg-10  my-text " for="">Nomor
-                                                SKKNI&emsp;&emsp;&emsp;&emsp;:&emsp;&emsp;
-                                                {{ $category->no_skkni }}
+                                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;:&emsp;&emsp;
+                                                {{ $assessis->schema_code }}
                                             </label>
                                         </div>
                                     </div>
@@ -551,7 +551,7 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $value->unit->unit_code }}</td>
                                                         <td>{{ $value->unit->unit_title }}</td>
-                                                        <td>{{ $value->schema->competency_package }}</td>
+                                                        <td>{{ $value->unit->category->jenis_standar }}</td>
                                                 @endforeach
 
                                             </tbody>

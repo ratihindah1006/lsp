@@ -30,7 +30,7 @@
                                 <select class="multi-select" style="width: 100%; height:40px;" name="category_id[]" id="category_id" multiple="multiple" onchange="getUnit(this)">
                                     <option value=""></option>
                                     @foreach ($category as $category)
-                                    <option value="{{ $category->id }}" {{ old("category_id", $units->category_id) == $category->id ? 'selected' : null }}>{{ $category->category_title }}</option>
+                                    <option value="{{ $category->id }}" {{ old("category_id") == $category->id ? 'selected' : null }}>{{ $category->category_title }}</option>
                                     @endforeach
                                 </select>
                                 @error('category_id')
