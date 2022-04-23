@@ -20,7 +20,7 @@
                         @endif
 
                         <button type="submit" class="btn btn-primary float-right mr-1">Simpan <span class="btn-icon-right"><i class="fa fa-save"></i></span></button>
-                        <a href="/list" class="btn btn-danger float-right mr-1">Batal <span class="btn-icon-right"><i class="fa fa-close"></i></span></a>
+                        <a href="/assessi/{{ $asesor->id }}" class="btn btn-danger float-right mr-1">Batal <span class="btn-icon-right"><i class="fa fa-close"></i></span></a>
                     </div>
 
                     <div class="card-body" style="border: none">
@@ -174,12 +174,12 @@
                                         </div>
                                         </p>
                                     </th>
-                                    <th width="200px">&ensp;Nama&ensp;</th>
+                                    <td width="200px">&ensp;Nama&ensp;</td>
                                     <th>&ensp;{{ $assessi->data_assessi->name }}&ensp;</th>
                                 </tr>
 
                                 <tr>
-                                    <th>&ensp;TTD&ensp;</th>
+                                    <td>&ensp;TTD&ensp;</td>
                                     <th>
                                         <div class="col-xl-4">
                                             <div class="input-group mb-3">
@@ -190,7 +190,7 @@
                                 </tr>
 
                                 <tr>
-                                    <th rowspan="3">&ensp;
+                                    <th rowspan="4">&ensp;
                                         <div class="col-xl-10">
                                             <label class="my-text">&emsp;Catatan&emsp;:</label>
                                             <textarea class="form-control @error('note') is-invalid @enderror" id="note" name="note" rows="5" value=" {{ $apl02->note, old ('note') }}">{{ $apl02->note }}</textarea>
@@ -201,17 +201,17 @@
                                             @enderror
                                         </div> <br>
                                     </th>
-                                    <th colspan="2">&ensp;Admin LSP/Assesor ***)&ensp;</th>
+                                    <th colspan="3">&ensp;Admin LSP/Assesor ***)&ensp;</th>
 
                                 </tr>
 
                                 <tr>
-                                    <th>&ensp;Nama&ensp;</th>
+                                    <td>&ensp;Nama&ensp;</td>
                                     <th>&ensp;{{ $asesor->data_assessor->name }}&ensp;</th>
 
                                 </tr>
                                 <tr>
-                                    <th>&ensp;TTD&ensp;</th>
+                                    <td>&ensp;TTD&ensp;</td>
                                     <th>
                                         <div class="col-xl-4">
                                             <div class="input-group mb-3">
@@ -219,6 +219,11 @@
                                             </div>
                                         </div>
                                     </th>
+                                </tr>
+                                <tr>
+                                    <td>&ensp;No. Registrasi&ensp;</td>
+                                    <th>&ensp;{{ $asesor->data_assessor->no_met }}&ensp;</th>
+
                                 </tr>
                             </table>
                         </div>

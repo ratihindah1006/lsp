@@ -235,6 +235,8 @@
         });
     </script>
     @stack('scripts')
+
+    @yield("myscript")
 </body>
 
 </html>
