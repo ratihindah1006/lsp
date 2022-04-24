@@ -24,13 +24,13 @@ class UnitSchemaController extends Controller
         ]);
     }
 
-    public function create(SchemaModel $schema, CategoryModel $category, UnitSchemaModel $units)
+    public function create(Request $request, SchemaModel $schema, CategoryModel $category, UnitSchemaModel $units)
 
     {
         return view('admin.unit_schema.CreateUnit', [
             'schema' => $schema->id,
-            'category' => CategoryModel::all(),
-            'units' =>UnitSchemaModel::all(),
+            'categories' => CategoryModel::all(),
+            'units' =>UnitSchemaModel::where('schema_id', $schema->id)->get(),
             'un' => $schema->unit_schemas->pluck("unit_id"),
             'title' => 'Unit',
         ]);
