@@ -41,8 +41,6 @@ class Apl02Controller extends Controller
 
     public function store(Request $request, SchemaModel $schema, $id)
     {
-        //dd($request->all());
-        //$assessi = AssessiModel::find(Auth::user()->id);
         $dataAssessi = DataAssessiModel::find(Auth::user()->id);
         $assessi = $dataAssessi->assessis->find($id);
         $assessment = [];
