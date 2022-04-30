@@ -6,7 +6,7 @@
   <div class="row page-titles mx-0">
       <div class="col-sm-6 p-md-0">
           <div class="welcome-text">
-              <h4>Daftar {{ $title }} Skema <div class="text-danger d-inline"> {{ $codeQuestion->schema->schema_title }} </div> Kode <div class="text-danger d-inline">{{ $codeQuestion->code_name }}</div></h4>
+              <h4>Daftar {{ $title }} Skema <div class="text-danger d-inline"> {{ $codeQuestionLisan->schema->schema_title }} </div> Kode <div class="text-danger d-inline">{{ $codeQuestionLisan->code_lisan_name }}</div></h4>
           </div>
       </div>
       <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -34,9 +34,9 @@
                               </ul>
                           </div>
                       @endif
-                      <a href="/soal/create/{{ $codeQuestion->id }}" class="btn btn-primary btn-sm mr-2"><i
+                      <a href="/soallisan/create/{{ $codeQuestionLisan->id }}" class="btn btn-primary btn-sm mr-2"><i
                           class="ti-plus">&nbsp;&nbsp;&nbsp;</i>Tambah Soal</a><br><br>
-                        @foreach ($codeQuestion->schema->unit_schemas as $units)
+                        @foreach ($codeQuestionLisan->schema->unit_schemas as $units)
                             <div class="card mb-5">
                                 <div class="card-header bg-secondary solid">
                                     <h5 class="card-title text-light">{{ $units->unit->unit_code.' - '.$units->unit->unit_title }}</h5>
@@ -54,13 +54,13 @@
                                             @foreach ($questions->where('unit_id', $units->id) as $question)
                                             <tr style="vertical-align:top">
                                                 <td>{{ $question->no_soal }}</td>
-                                                <td><a href="/soal/{{ $question->id }}/edit" class="btn btn-sm btn-primary"><i class="ti-pencil"></i></a>
-                                                    <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modalDeleteSoal{{ $question->id }}"><i class="ti-trash"></i></button>
+                                                <td><a href="/soallisan/{{ $question->id }}/edit" class="btn btn-sm btn-primary"><i class="ti-pencil"></i></a>
+                                                    <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modalDeleteSoalLisan{{ $question->id }}"><i class="ti-trash"></i></button>
                                                     <!-- Modal -->
-                                                    <form method="post" action="/soal/{{ $question->id }}">
+                                                    <form method="post" action="/soallisan/{{ $question->id }}">
                                                         @csrf
                                                         @method('delete')
-                                                            <div class="modal fade" id="modalDeleteSoal{{ $question->id }}">
+                                                            <div class="modal fade" id="modalDeleteSoalLisan{{ $question->id }}">
                                                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header bg-danger">

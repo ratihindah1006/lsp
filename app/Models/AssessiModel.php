@@ -66,6 +66,11 @@ class AssessiModel extends Authenticatable
         return $this->hasMany(Answer::class, 'assessi_id', 'id');
     }
 
+    public function answer_lisan()
+    {
+        return $this->hasMany(AnswerLisan::class, 'assessi_id', 'id');
+    }
+
     public function ak01()
     {
         return $this->hasOne(AK01::class,'assessi_id','id'); 
@@ -74,5 +79,15 @@ class AssessiModel extends Authenticatable
     public function muk01()
     {
         return $this->hasOne(MUK01::class, 'assessi_id', 'id');
+    }
+
+    public function muk07()
+    {
+        return $this->hasOne(MUK07::class, 'assessi_id', 'id');
+    }
+
+    public function praktik()
+    {
+        return $this->hasMany(Praktik::class, 'assessi_id', 'id');
     }
 }

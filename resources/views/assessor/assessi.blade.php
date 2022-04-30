@@ -72,6 +72,7 @@
                                             @if (isset($v->ak01['l_obs_langsung']))
                                             @if ($v->ak01['l_obs_langsung'])
                                             <a href="/assessor/muk01/{{ $v->id }}" class="btn btn-secondary btn-sm mb-2"><span>FR.MUK.01</span></a>
+                                            <a href="/assessor/jawaban_assessi/{{ $v->id }}" class="btn btn-secondary btn-sm mb-2"><span>SOAL/JAWABAN ASESI</span></a>
                                             @endif
                                             @endif
                                             @if (isset($v->ak01['t_p_tulis']))
@@ -81,7 +82,7 @@
                                             @endif
                                             @if (isset($v->ak01['t_p_lisan']))
                                             @if ($v->ak01['t_p_lisan'])
-                                            <a href="/assessor/" class="btn btn-secondary btn-sm mb-2"><span>Pertanyaan Lisan</span></a>
+                                            <a href="/assessor/muk07/{{ $v->id }}" class="btn btn-secondary btn-sm mb-2"><span>FR.IA.07</span></a>
                                             @endif
                                             @endif
                                             @if (isset($v->ak01['t_p_wawancara']))

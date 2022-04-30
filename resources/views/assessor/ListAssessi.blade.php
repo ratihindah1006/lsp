@@ -82,7 +82,7 @@
                                                     @endif
                                                     @if (isset($v->ak01['t_p_lisan']))
                                                         @if ($v->ak01['t_p_lisan'])
-                                                            <a href="/assessor/" class="btn btn-secondary btn-sm mb-2"><span>Pertanyaan Lisan</span></a>
+                                                            <a href="/assessor/" class="btn btn-secondary btn-sm mb-2" data-toggle="tooltip" data-placement="bottom" title="Pertanyaan Lisan"><span>FR.IA.07</span></a>
                                                         @endif
                                                     @endif
                                                     @if (isset($v->ak01['t_p_wawancara']))

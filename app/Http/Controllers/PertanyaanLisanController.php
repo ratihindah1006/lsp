@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Question;
 use App\Models\SchemaModel;
-use App\Models\CodeQuestion;
-use App\Models\ElementModel;
 use Illuminate\Http\Request;
+use App\Models\PertanyaanLisan;
+use App\Models\CodeQuestionLisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use App\Http\Requests\StoreQuestionRequest;
-use App\Http\Requests\UpdateQuestionRequest;
 
-class QuestionController extends Controller
+class PertanyaanLisanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,21 +19,11 @@ class QuestionController extends Controller
     public function index(SchemaModel $schema)
     {
         $data = [
-            'title' => 'Soal Esai',
+            'title' => 'Pertanyaan Lisan',
             'schemas' => $schema::all(),
         ];
-        return view('admin.question.listQuestion', $data);
+        return view('admin.pertanyaan_lisan.listPertanyaanLisan', $data);
     }
-
-    public function getUnit(Request $request){
-        $unit = DB::table("unit")->where("schema_id", $request->schema_id)->pluck("unit_title", "id");
-        return response()->json($unit);
-    }
-
-    public function getElement(Request $request){
-        $element = DB::table("element")->where("unit_id", $request->unit_id)->pluck("element_title", "id");
-        return response()->json($element);
-    }    
 
     /**
      * Show the form for creating a new resource.
@@ -46,30 +33,30 @@ class QuestionController extends Controller
     public function create(SchemaModel $schema)
     {
         $data = [
-            'title' => 'Soal Esai',
+            'title' => 'Pertanyaan Lisan',
             'schemas' => $schema::all()
         ];
         
-        return view('admin.question.createQuestion', $data);
+        return view('admin.pertanyaan_lisan.createPertanyaanLisan', $data);
     }
 
-    public function createByCode(CodeQuestion $codeQuestion)
+    public function createByCode(CodeQuestionLisan $codeQuestionLisan)
     {
         $data = [
-            'title' => 'Soal Esai',
-            'codeQuestion' => $codeQuestion,
+            'title' => 'Pertanyaan Lisan',
+            'codeQuestionLisan' => $codeQuestionLisan,
         ];
         
-        return view('admin.question.createQuestionByCode', $data);
+        return view('admin.pertanyaan_lisan.createPertanyaanLisanByCode', $data);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreQuestionRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreQuestionRequest $request)
+    public function store(Request $request)
     {
         $validateData = $request->validate([
             'unit' => 'required',
@@ -126,9 +113,9 @@ class QuestionController extends Controller
         $pertanyaan = $dom->saveHTML();
         $jawaban = $dom2->saveHTML();
 
-        $data = new Question([
+        $data = new PertanyaanLisan([
             'unit_id' => $request->unit,
-            'code_id' => $request->kode_soal,
+            'code_lisan_id' => $request->kode_soal,
             'no_soal' => $request->no_soal,
             'question' => $pertanyaan,
             'key_answer' => $jawaban,
@@ -136,16 +123,16 @@ class QuestionController extends Controller
        
         $data->save();
 
-        return redirect('soal/kodesoal/'.$request->kode_soal)->with('toast_success', 'Pertanyaan berhasil di tambahkan!');
+        return redirect('soallisan/kodesoal/'.$request->kode_soal)->with('toast_success', 'Pertanyaan lisan berhasil di tambahkan!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Question  $question
+     * @param  \App\Models\PertanyaanLisan  $pertanyaanLisan
      * @return \Illuminate\Http\Response
      */
-    public function show(Question $question)
+    public function show(PertanyaanLisan $pertanyaanLisan)
     {
         //
     }
@@ -153,28 +140,28 @@ class QuestionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Question  $question
+     * @param  \App\Models\PertanyaanLisan  $pertanyaanLisan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Question $question)
+    public function edit(PertanyaanLisan $pertanyaanLisan)
     {
         $data = [
-            'title' => 'Soal Esai',
-            'question' => $question,
-            'schema' => $question->unit->schema,
+            'title' => 'Pertanyaan Lisan',
+            'question' => $pertanyaanLisan,
+            'schema' => $pertanyaanLisan->unit->schema,
         ];
 
-        return view('admin.question.editQuestion', $data);
+        return view('admin.pertanyaan_lisan.editPertanyaanLisan', $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateQuestionRequest  $request
-     * @param  \App\Models\Question  $question
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\PertanyaanLisan  $pertanyaanLisan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Question $question)
+    public function update(Request $request, PertanyaanLisan $pertanyaanLisan)
     {
         $validateData = $request->validate([
             'question' => 'required',
@@ -232,24 +219,24 @@ class QuestionController extends Controller
         $pertanyaan = $dom->saveHTML();
         $jawaban = $dom2->saveHTML();
 
-        $question->update([
+        $pertanyaanLisan->update([
             'question' => $pertanyaan,
             'key_answer' => $jawaban,
         ]);
 
-        return redirect('soal/kodesoal/'.$question->code->id)->with('toast_success', 'Pertanyaan berhasil diupdate!');
+        return redirect('soallisan/kodesoal/'.$pertanyaanLisan->code->id)->with('toast_success', 'Pertanyaan lisan berhasil diupdate!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Question  $question
+     * @param  \App\Models\PertanyaanLisan  $pertanyaanLisan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Question $question)
+    public function destroy(PertanyaanLisan $pertanyaanLisan)
     {
-        $oldQuestion = $question->question;
-        $oldKeyAnswer = $question->key_answer;
+        $oldQuestion = $pertanyaanLisan->question;
+        $oldKeyAnswer = $pertanyaanLisan->key_answer;
 
         $oldDom = new \DomDocument();
         $oldDom2 = new \DomDocument();
@@ -277,9 +264,9 @@ class QuestionController extends Controller
                 File::delete(public_path($path['path'])); 
             }
         }
-        $question->delete();
+        $pertanyaanLisan->delete();
 
-        return redirect('soal/kodesoal/'.$question->code->id)->with('toast_success', 'Pertanyaan berhasil dihapus!');
+        return redirect('soallisan/kodesoal/'.$pertanyaanLisan->code->id)->with('toast_success', 'Pertanyaan lisan berhasil dihapus!');
     }
 
     public function kodeSoal(Request $request)
@@ -289,28 +276,28 @@ class QuestionController extends Controller
             'kode_soal' => 'required',
         ]);
 
-        if (CodeQuestion::where('schema_id', $request->schema)->where('code_name', $request->kode_soal)->exists()) {
-            return redirect('soal')->with('toast_error', 'Kode soal tidak boleh sama');
+        if (CodeQuestionLisan::where('schema_id', $request->schema)->where('code_lisan_name', $request->kode_soal)->exists()) {
+            return redirect('soallisan')->with('toast_error', 'Kode soal tidak boleh sama');
         }
 
-        $data = new CodeQuestion([
+        $data = new CodeQuestionLisan([
             'schema_id' => $request->schema,
-            'code_name' => $request->kode_soal,
+            'code_lisan_name' => $request->kode_soal,
         ]);      
 
         $data->save();
 
-        return redirect('soal')->with('toast_success', 'Kode soal berhasil ditambah!');
+        return redirect('soallisan')->with('toast_success', 'Kode soal lisan berhasil ditambah!');
     }
 
-    public function listSoal(CodeQuestion $codeQuestion)
+    public function listSoal(CodeQuestionLisan $codeQuestionLisan)
     {
         $data = [
-            'title' => 'List Soal Esai',
-            'questions' => Question::where('code_id', $codeQuestion->id)->get(),
-            'codeQuestion' => $codeQuestion,
+            'title' => 'List Soal Lisan',
+            'questions' => PertanyaanLisan::where('code_lisan_id', $codeQuestionLisan->id)->get(),
+            'codeQuestionLisan' => $codeQuestionLisan,
         ];
-        
-        return view('admin.question.listQuestionCode', $data);
+   
+        return view('admin.pertanyaan_lisan.listPertanyaanLisanCode', $data);
     }
 }

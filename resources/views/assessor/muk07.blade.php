@@ -2,7 +2,7 @@
 
 @section('container')
 
-<form method="post" action="/assessor/muk06/update">
+<form method="post" action="/assessor/muk07/update">
   @csrf
   <input type="hidden" id="assessiId" name="assessiId" value="{{ $assessi->id }}">
   <div class="container-fluid">
@@ -11,7 +11,7 @@
         <div class="col-lg-12">
           <div class="card text-dark">
             <div class="card-header">
-              <h5 class="card-title bold">FR-MUK-06 FORMULIR PERTANYAAN ESSAY</h5>
+              <h5 class="card-title bold">FR-IA-07 PERTANYAAN LISAN</h5>
             </div>
             <div class="card-body">
               <table style="min-width: 100%" border="3">
@@ -48,10 +48,12 @@
                 </tr>
               </table>
               
-              <ul class="mt-5 mb-4">
-                <p class="font-weight-bold">Peserta diminta untuk:</p>
-                <li><span class="align-middle"><i class="fa fa-check text-info"></i></span> Membaca dengan seksama soal essay yang diberikan</li>
-                <li><span class="align-middle"><i class="fa fa-check text-info"></i></span> Menjawab pada kolom jawaban secara singkat dan jelas</li>
+              <ul class="mt-5 mb-4 list-icons">
+                <p class="font-weight-bold">PANDUAN BAGI ASESOR: Instruksi</p>
+                <li><span class="align-middle"><i class="fa fa-check text-info"></i></span> Ajukan pertanyaan kepada Asesi dari daftar terlampir untuk mengonfirmasi pengetahuan, sebagaimana diperlukan.</li>
+                <li><span class="align-middle"><i class="fa fa-check text-info"></i></span> Tempatkan centang di kotak untuk mencerminkan prestasi Asesi (Kompeten 'K' atau Belum Kompeten 'BK').</li>
+                <li><span class="align-middle"><i class="fa fa-check text-info"></i></span> Tulis jawaban Asesi secara singkat di tempat yang disediakan untuk setiap pertanyaan.</li>
+                <li><span class="align-middle"><i class="fa fa-check text-info"></i></span> Ceklist kolom tandatangan sebagai bukti rekaman mengumpulkan bukti tambahan pertanyaan lisan</li>
               </ul>
   
               @foreach ($schema->unit_schemas as $unit)
@@ -81,17 +83,17 @@
                 <tr>
                   <td class="p-2" bgcolor="lightgray" style="vertical-align:top;">
                     <b><u>Pertanyaan: </u></b> <br><br>
-                    @foreach ($unit->questions->where('code_id', $schema_class->code_id) as $q)
+                    @foreach ($unit->pertanyaan_lisans->where('code_lisan_id', $schema_class->code_lisan_id) as $q)
                       @if (isset($q))
                         <span style="background-color:yellow;" class="font-weight-bold">{{ $q->no_soal }}</span> <br><br>
                         {!! $q->question !!} <br>
                       @else
-
+                        
                       @endif
                     @endforeach 
                     <hr>
                     <b><u>Kunci Jawaban: </u></b><br><br>
-                    @foreach ($unit->questions->where('code_id', $schema_class->code_id) as $q)
+                    @foreach ($unit->pertanyaan_lisans->where('code_lisan_id', $schema_class->code_lisan_id) as $q)
                       @if (isset($q))
                         <span style="background-color:yellow;" class="font-weight-bold">{{ $q->no_soal }}</span> <br><br>
                         {!! $q->key_answer !!} <br>
@@ -101,35 +103,35 @@
                     @endforeach 
                   </td>
                   <input type="hidden" id="unitId" name="unitId[]" value="{{ $unit->id }}">
-                  <input type="hidden" id="codeId" name="codeId[]" value="{{ $schema_class->code_id }}">
+                  <input type="hidden" id="codeId" name="codeId" value="{{ $schema_class->code_lisan_id }}">
                   <td style="vertical-align:top;">
                     <div class="form-group">
-                      <textarea class="summernote-dis form-control @error('answer[]') is-invalid @enderror" name="answer[{{ $loop->iteration }}]">
-                      @if(!$answer->where('code_id', $schema_class->code_id)->where('unit_id', $unit->id)->isEmpty())
-                        {{ $answer->where('code_id', $schema_class->code_id)->where('unit_id', $unit->id)->first()->answer }}
-                      @endif
-                      </textarea>
-                      @error('answer[]')
-                      <div class="invalid-feedback">
-                          {{ $message }}
-                      </div>
-                      @enderror
+                      <textarea class="summernote form-control @error('answer[]') is-invalid @enderror" name="answer[{{ $loop->index }}]">
+                        @if(!$answer->where('code_lisan_id', $schema_class->code_lisan_id)->where('unit_id', $unit->id)->isEmpty())
+                        {{ $answer->where('code_lisan_id', $schema_class->code_lisan_id)->where('unit_id', $unit->id)->first()->answer }}
+                        @endif
+                        </textarea>
+                        @error('answer[]')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                   </td>
                   <div class="form-group">
                     <td class="text-center" style="vertical-align:top;">
                       <label class="radio-inline">
                           <input type="radio" name="rekomendasi[{{ $loop->index }}]" value="K"
-                          @if(!$answer->where('code_id', $schema_class->code_id)->where('unit_id', $unit->id)->where('rekomendasi', '===',  NULL)->first() && $answer->where('code_id', $schema_class->code_id)->where('unit_id', $unit->id)->where('rekomendasi', '===',  1)->first())
-                            {{ ' checked' }}
+                          @if(!$answer->where('code_lisan_id', $schema_class->code_lisan_id)->where('unit_id', $unit->id)->where('rekomendasi', '===',  NULL)->first() && $answer->where('code_lisan_id', $schema_class->code_lisan_id)->where('unit_id', $unit->id)->where('rekomendasi', '===',  1)->first())
+                          {{ ' checked' }}
                           @endif
                           ></label>
                     </td>
                     <td class="text-center" style="vertical-align:top;">     
                       <label class="radio-inline">
                           <input type="radio" name="rekomendasi[{{ $loop->index }}]" value="BK"
-                          @if(!$answer->where('code_id', $schema_class->code_id)->where('unit_id', $unit->id)->where('rekomendasi', '===',  NULL)->first() && $answer->where('code_id', $schema_class->code_id)->where('unit_id', $unit->id)->where('rekomendasi', '===',  0)->first())
-                            {{ ' checked' }}
+                          @if(!$answer->where('code_lisan_id', $schema_class->code_lisan_id)->where('unit_id', $unit->id)->where('rekomendasi', '===',  NULL)->first() && $answer->where('code_lisan_id', $schema_class->code_lisan_id)->where('unit_id', $unit->id)->where('rekomendasi', '===',  0)->first())
+                          {{ ' checked' }}
                           @endif
                           ></label>
                     </td>

@@ -58,6 +58,10 @@
                             <a href="/assessi/muk06/{{ $p->id }}" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Soal Esay">
                                 <span>MUK06</span>
                             </a>
+                            &emsp;
+                            <a href="/assessi/soalpraktik/{{ $p->id }}" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Tugas Praktik Demonstrasi">
+                                <span>FR.IA.02</span>
+                            </a>
                             @else
                             &emsp;
                             <a href="/" class="btn btn-secondary btn-sm disabled">

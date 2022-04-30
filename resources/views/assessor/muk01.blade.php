@@ -24,7 +24,7 @@
                 <tr>
                   <td>Nomor</td>
                   <td>: &nbsp;</td>
-                  <td class="font-weight-bold">{{ $schema->category->no_skkni }}</td>
+                  <td class="font-weight-bold">{{ $schema->schema_code }}</td>
                 </tr>
                 <tr>
                   <td colspan="2">TUK</td>
@@ -49,10 +49,10 @@
               </table>
               <h5 class="mt-5">PANDUAN BAGI ASESOR</h5>
               <ul class="mb-5">
-                <li>- Lengkapi nama unit kompetensi, elemen, dan kriteria unjuk kerja sesuai kolom dalam tabel.</li>
-                <li>- Istilah Acuan Pembanding dengan SOP/spesifikasi produk dari industri/organisasi dari tempat kerja atau simulasi tempat kerja.</li>
-                <li>- Beri tanda centang (V) pada kolom K jika Anda yakin asesi dapat melakukan/mendemonstrasikan tugas sesuai KUK, atau centang (V) pada kolom BK bila sebaliknya.</li>
-                <li>- Penilaian Lanjut diisi bila hasil belum dapat disimpulkan, untuk itu gunakan metode lain sehingga keputusan dapat dibuat.</li>
+                <li><span class="align-middle"><i class="fa fa-check text-info"></i></span> Lengkapi nama unit kompetensi, elemen, dan kriteria unjuk kerja sesuai kolom dalam tabel.</li>
+                <li><span class="align-middle"><i class="fa fa-check text-info"></i></span> Istilah Acuan Pembanding dengan SOP/spesifikasi produk dari industri/organisasi dari tempat kerja atau simulasi tempat kerja.</li>
+                <li><span class="align-middle"><i class="fa fa-check text-info"></i></span> Beri tanda centang (V) pada kolom K jika Anda yakin asesi dapat melakukan/mendemonstrasikan tugas sesuai KUK, atau centang (V) pada kolom BK bila sebaliknya.</li>
+                <li><span class="align-middle"><i class="fa fa-check text-info"></i></span> Penilaian Lanjut diisi bila hasil belum dapat disimpulkan, untuk itu gunakan metode lain sehingga keputusan dapat dibuat.</li>
               </ul>
 
               @foreach ($schema->unit_schemas as $unit)

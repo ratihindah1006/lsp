@@ -67,7 +67,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="code_id" class="form-label">Kode Soal</label>
+                                            <label for="code_id" class="form-label">Kode Soal Esai</label>
                                             <select name="code_id" id="code_id"
                                                 class="form-control maximum-search-length @error('code_id') is-invalid @enderror" required>
                                                 <option value="">Pilih Kode Soal</option>
@@ -77,6 +77,40 @@
                                                 @endforeach
                                             </select>
                                             @error('code_id')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="code_lisan_id" class="form-label">Kode Soal Lisan</label>
+                                            <select name="code_lisan_id" id="code_lisan_id"
+                                                class="form-control maximum-search-length @error('code_lisan_id') is-invalid @enderror" required>
+                                                <option value="">Pilih Kode Soal</option>
+                                                <option value="{{ $class->code_lisan_id }}" selected>{{ $class->code_lisan->code_lisan_name }}</option>
+                                                @foreach ($codes_lisan->where("schema_id", $class->schema_id)->where("id", "!=" ,$class->code_lisan_id ) as $item)
+                                                    <option value="{{ $item->id }}" >{{ $item->code_lisan_name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('code_lisan_id')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="code_praktik_id" class="form-label">Kode Soal Praktik</label>
+                                            <select name="code_praktik_id" id="code_praktik_id"
+                                                class="form-control maximum-search-length @error('code_praktik_id') is-invalid @enderror" required>
+                                                <option value="">Pilih Kode Soal</option>
+                                                <option value="{{ $class->code_praktik_id }}" selected>{{ $class->code_praktik->code_praktik_name }}</option>
+                                                @foreach ($codes_praktik->where("schema_id", $class->schema_id)->where("id", "!=" ,$class->code_praktik_id ) as $item)
+                                                    <option value="{{ $item->id }}" >{{ $item->code_praktik_name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('code_praktik_id')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>
