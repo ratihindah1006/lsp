@@ -5,19 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MUK01 extends Model
+class IA07 extends Model
 {
     use HasFactory;
-    protected $table = "muk01";
+    protected $table = "ia07";
     protected $fillable = [
         'assessi_id',
-        'rekomendasi',
         'status',
         'assessi_agreement',
         'assessor_agreement',
     ];
-
-    protected $casts = ['rekomendasi' => 'array'];
 
     public function assessi()
     {

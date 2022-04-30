@@ -4,6 +4,7 @@
 
 <form method="post" action="/assessi/muk06/store" enctype="multipart/form-data">
 @csrf
+<input type="hidden" id="assessiId" name="assessiId" value="{{ $assessi->id }}">
 <div class="container-fluid">
   <div class="row">
       <div class="col-lg-12">
@@ -48,8 +49,8 @@
               
               <ul class="mt-5 mb-4">
                 <p>Peserta diminta untuk:</p>
-                <li>- Membaca dengan seksama soal essay yang diberikan</li>
-                <li>- Menjawab pada kolom jawaban secara singkat dan jelas</li>
+                <li><span class="align-middle"><i class="fa fa-check text-info"></i></span> Membaca dengan seksama soal essay yang diberikan</li>
+                <li><span class="align-middle"><i class="fa fa-check text-info"></i></span> Menjawab pada kolom jawaban secara singkat dan jelas</li>
               </ul>
 
               @foreach ($schema->unit_schemas as $unit)
@@ -83,7 +84,6 @@
                       @endif
                     @endforeach 
                   </td>
-                  <input type="hidden" id="assessiId" name="assessiId[]" value="{{ $assessi->id }}">
                   <input type="hidden" id="unitId" name="unitId[]" value="{{ $unit->id }}">
                   <input type="hidden" id="codeId" name="codeId[]" value="{{ $schema_class->code_id }}">
                   <td style="min-width: 50%; vertical-align:top;" class="p-0">
@@ -115,9 +115,14 @@
                   <td style="vertical-align: top" width="40%" rowspan="2">Nama</td>
                   <td class="font-weight-bold">{{ $assessi->data_assessi->name }}
                     <div class="custom-control custom-switch d-inline ml-2">
-                      <input type="checkbox" class="custom-control-input" id="assessi_switch" required>
-                      <label class="custom-control-label" for="assessi_switch"></label>
-                    </div> 
+                      <input type="checkbox" class="custom-control-input" name="assessi_agreement" id="assessi_agreement" required
+                      @if (isset($assessi->muk06['assessi_agreement']))
+                        @if($assessi->muk06['assessi_agreement'])
+                          {{ 'checked' }}          
+                        @endif        
+                      @endif>
+                      <label class="custom-control-label" for="assessi_agreement"></label>
+                    </div>  
                   </td>
                 </tr>
                 <tr>

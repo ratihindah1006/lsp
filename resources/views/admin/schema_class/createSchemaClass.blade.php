@@ -94,7 +94,7 @@
                                             <div class="form-group">
                                                 <label for="code_lisan_id" class="form-label">Kode Soal Lisan</label>
                                                 <select name="code_lisan_id" id="code_lisan_id"
-                                                    class="form-control @error('code_lisan_id') is-invalid @enderror" required>
+                                                    class="form-control maximum-search-length @error('code_lisan_id') is-invalid @enderror" required>
                                                     <option value="">Pilih Kode Soal</option>
                                                 </select>
                                                 @error('code_lisan_id')
@@ -109,7 +109,7 @@
                                             <div class="form-group">
                                                 <label for="code_praktik_id" class="form-label">Kode Soal Praktik</label>
                                                 <select name="code_praktik_id" id="code_praktik_id"
-                                                    class="form-control @error('code_praktik_id') is-invalid @enderror" required>
+                                                    class="form-control maximum-search-length @error('code_praktik_id') is-invalid @enderror" required>
                                                     <option value="">Pilih Kode Soal</option>
                                                 </select>
                                                 @error('code_praktik_id')

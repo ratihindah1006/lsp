@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddBenchmarkToElementTable extends Migration
+class AddAssessiAssessorAgreementToAK01Table extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddBenchmarkToElementTable extends Migration
      */
     public function up()
     {
-        Schema::table('element', function (Blueprint $table) {
-            $table->string('benchmark')->after('element_title');
+        Schema::table('ak01', function (Blueprint $table) {
+            $table->boolean('assessor_agreement')->default(false)->after('status');
+            $table->boolean('assessi_agreement')->default(false)->after('status');
         });
     }
 
@@ -25,7 +26,7 @@ class AddBenchmarkToElementTable extends Migration
      */
     public function down()
     {
-        Schema::table('element', function (Blueprint $table) {
+        Schema::table('ak01', function (Blueprint $table) {
             //
         });
     }

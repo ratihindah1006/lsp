@@ -19,6 +19,8 @@ class AK01 extends Model
         'l_obs_langsung',
         'status',
         'tuk',
+        'assessi_agreement',
+        'assessor_agreement',
     ];
 
     public function assessi()

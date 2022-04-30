@@ -173,8 +173,13 @@
                       <td colspan="3">
                         Tanda Tangan Peserta
                         <div class="custom-control custom-switch d-inline ml-3">
-                          <input type="checkbox" class="custom-control-input" id="assessi_switch" required>
-                          <label class="custom-control-label" for="assessi_switch"></label>
+                          <input type="checkbox" class="custom-control-input" name="assessi_agreement" id="assessi_agreement" required
+                          @if (isset($ak01['assessi_agreement']))
+                            @if($ak01['assessi_agreement'])
+                              {{ 'checked' }}          
+                            @endif        
+                          @endif>
+                          <label class="custom-control-label" for="assessi_agreement"></label>
                         </div>       
                          <br>
                         <img class="txt" src="{{ asset('storage/' . $assessi->apl01->assessi_signature) }}"
@@ -187,8 +192,13 @@
                       <td colspan="3">
                         Tanda Tangan Assesor 
                         <div class="custom-control custom-switch d-inline ml-3">
-                          <input type="checkbox" class="custom-control-input" id="assessor_switch" required>
-                          <label class="custom-control-label" for="assessor_switch"></label>
+                          <input type="checkbox" class="custom-control-input" name="assessor_agreement" id="assessor_agreement" required
+                          @if (isset($ak01['assessor_agreement']))
+                            @if($ak01['assessor_agreement'])
+                              {{ 'checked' }}          
+                            @endif        
+                          @endif>
+                          <label class="custom-control-label" for="assessor_agreement"></label>
                         </div>    
                         <br>
                         <img class="txt" src="{{ asset('storage/' . $assessi->apl01->assessor_signature) }}"

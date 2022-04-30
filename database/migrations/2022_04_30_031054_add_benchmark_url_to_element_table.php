@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddBenchmarkToElementTable extends Migration
+class AddBenchmarkUrlToElementTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddBenchmarkToElementTable extends Migration
     public function up()
     {
         Schema::table('element', function (Blueprint $table) {
-            $table->string('benchmark')->after('element_title');
+            $table->string('benchmark_url')->after('element_title');
         });
     }
 

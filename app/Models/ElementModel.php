@@ -12,7 +12,8 @@ class ElementModel extends Model
         'element_title',
         'no_element',
         'unit_id',
-        'benchmark'
+        'benchmark',
+        'benchmark_url'
        ];
     use HasFactory;
     

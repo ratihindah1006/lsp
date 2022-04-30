@@ -14,7 +14,7 @@ class AddTukToAk01Table extends Migration
     public function up()
     {
         Schema::table('ak01', function (Blueprint $table) {
-            $table->string('tuk');
+            $table->string('tuk')->after('status');
         });
     }
 

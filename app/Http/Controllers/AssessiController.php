@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use PDF;
+use App\Models\MUK06;
 use App\Models\Answer;
 use App\Models\Praktik;
 use App\Models\AssessiModel;
@@ -12,8 +13,8 @@ use App\Models\DataAssessiModel;
 use App\Models\DataAssessorModel;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException as ValidationException;
 
 class AssessiController extends Controller
@@ -58,6 +59,15 @@ class AssessiController extends Controller
 
     public function muk06(AssessiModel $assessi)
     {
+        $cekAssessi = AssessiModel::where('data_assessi_id', Auth::user()->id)->where('id', $assessi->id)->exists();
+        if (!$cekAssessi) {
+            return redirect('/');
+        }
+
+        if ((!$assessi->apl02) || ($assessi->apl02 && $assessi->apl02->status != 1)) {
+            return redirect('/')->with('toast_error', 'Form APL01/APL02 belum diterima');
+        }
+
         if(!isset($assessi->ak01) || (isset($assessi->ak01) && $assessi->ak01->t_p_tulis != 1)){
             return redirect('/')->with('toast_error', 'Form MUK06 belum disetujui oleh asesor');
         }
@@ -65,11 +75,6 @@ class AssessiController extends Controller
         $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
         if (date("m/d/Y") > $tanggal_berakhir) {
             return redirect('/')->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
-        }
-
-        $cekAssessi = $assessi->where('data_assessi_id', Auth::user()->id)->exists();
-        if (!$cekAssessi) {
-            return redirect('/');
         }
 
         $assessor = DataAssessorModel::find($assessi->assessor->data_assessor_id);
@@ -121,23 +126,43 @@ class AssessiController extends Controller
                 }
 
                 $dataJawaban = array(
-                    'assessi_id' => $request->assessiId[$key],
+                    'assessi_id' => $request->assessiId,
                     'unit_id' => $request->unitId[$key],
                     'answer' => $jawaban, 
                     'code_id' => $request->codeId[$key],
                 );
                 
                 Answer::updateOrCreate(
-                    ['assessi_id' => $request->assessiId[$key], 'unit_id' => $request->unitId[$key]],
+                    ['assessi_id' => $request->assessiId, 'unit_id' => $request->unitId[$key]],
                     $dataJawaban
                 );
             }            
         }
+
+        $request->assessi_agreement == "on" ? $request->assessi_agreement = 1 : $request->assessi_agreement = 0;
+        $agreement = array(
+            'assessi_agreement' => $request->assessi_agreement,
+        );
+
+        MUK06::updateOrCreate(
+            ['assessi_id' => $request->assessiId],    
+            $agreement
+        );
+
         return redirect('/beranda')->with('toast_success', 'jawaban berhasil ditambahkan');
     }
 
     public function ia02(AssessiModel $assessi)
     {
+        $cekAssessi = AssessiModel::where('data_assessi_id', Auth::user()->id)->where('id', $assessi->id)->exists();
+        if (!$cekAssessi) {
+            return redirect('/');
+        }
+
+        if ((!$assessi->apl02) || ($assessi->apl02 && $assessi->apl02->status != 1)) {
+            return redirect('/')->with('toast_error', 'Form APL01/APL02 belum diterima');
+        }
+
         if(!isset($assessi->ak01) || (isset($assessi->ak01) && $assessi->ak01->l_obs_langsung != 1)){
             return redirect('/')->with('toast_error', 'Form IA.02 belum disetujui oleh asesor');
         }
@@ -145,11 +170,6 @@ class AssessiController extends Controller
         $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
         if (date("m/d/Y") > $tanggal_berakhir) {
             return redirect('/')->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
-        }
-
-        $cekAssessi = $assessi->where('data_assessi_id', Auth::user()->id)->exists();
-        if (!$cekAssessi) {
-            return redirect('/');
         }
 
         $assessor = DataAssessorModel::find($assessi->assessor->data_assessor_id);
@@ -167,6 +187,11 @@ class AssessiController extends Controller
 
     public function soalPraktik(AssessiModel $assessi)
     {
+        $cekAssessi = AssessiModel::where('data_assessi_id', Auth::user()->id)->where('id', $assessi->id)->exists();
+        if (!$cekAssessi) {
+            return redirect('/');
+        }
+
         if(!isset($assessi->ak01) || (isset($assessi->ak01) && $assessi->ak01->l_obs_langsung != 1)){
             return redirect('/')->with('toast_error', 'Form IA.02 belum disetujui oleh asesor');
         }
@@ -174,11 +199,6 @@ class AssessiController extends Controller
         $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
         if (date("m/d/Y") > $tanggal_berakhir) {
             return redirect('/')->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
-        }
-
-        $cekAssessi = $assessi->where('data_assessi_id', Auth::user()->id)->exists();
-        if (!$cekAssessi) {
-            return redirect('/');
         }
 
         $data = [
@@ -195,6 +215,11 @@ class AssessiController extends Controller
 
     public function jawabanPraktik(AssessiModel $assessi)
     {
+        $cekAssessi = AssessiModel::where('data_assessi_id', Auth::user()->id)->where('id', $assessi->id)->exists();
+        if (!$cekAssessi) {
+            return redirect('/');
+        }
+
         if(!isset($assessi->ak01) || (isset($assessi->ak01) && $assessi->ak01->l_obs_langsung != 1)){
             return redirect('/')->with('toast_error', 'Form IA.02 belum disetujui oleh asesor');
         }
@@ -202,11 +227,6 @@ class AssessiController extends Controller
         $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
         if (date("m/d/Y") > $tanggal_berakhir) {
             return redirect('/')->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
-        }
-
-        $cekAssessi = $assessi->where('data_assessi_id', Auth::user()->id)->exists();
-        if (!$cekAssessi) {
-            return redirect('/');
         }
 
         $data = [

@@ -90,4 +90,14 @@ class AssessiModel extends Authenticatable
     {
         return $this->hasMany(Praktik::class, 'assessi_id', 'id');
     }
+
+    public function muk06()
+    {
+        return $this->hasOne(MUK06::class, 'assessi_id', 'id');
+    }
+
+    public function ia07()
+    {
+        return $this->hasOne(IA07::class, 'assessi_id', 'id');
+    }
 }

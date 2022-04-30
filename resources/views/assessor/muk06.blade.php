@@ -144,7 +144,16 @@
                 </tr>
                 <tr>
                   <td style="vertical-align: top" width="40%" rowspan="2">Nama</td>
-                  <td class="font-weight-bold">{{ $assessi->data_assessi->name }}</td>
+                  <td class="font-weight-bold">{{ $assessi->data_assessi->name }}
+                    <div class="custom-control custom-switch d-inline ml-2">
+                      <input type="checkbox" class="custom-control-input" name="assessi_agreement" id="assessi_agreement" required disabled
+                      @if (isset($assessi->muk06['assessi_agreement']))
+                        @if($assessi->muk06['assessi_agreement'])
+                          {{ 'checked' }}          
+                        @endif        
+                      @endif>
+                      <label class="custom-control-label" for="assessi_agreement"></label>
+                    </div> </td>
                 </tr>
                 <tr>
                   <td><img class="txt" src="{{ asset('storage/' . $assessi->apl01->assessi_signature) }}"
@@ -156,10 +165,15 @@
                 <tr>
                   <td style="vertical-align: top" rowspan="2">Nama</td>
                   <td class="font-weight-bold">{{ $assessor->name }} 
-                      <div class="custom-control custom-switch d-inline ml-2">
-                        <input type="checkbox" class="custom-control-input" id="assessor_switch" required>
-                        <label class="custom-control-label" for="assessor_switch"></label>
-                      </div> 
+                    <div class="custom-control custom-switch d-inline ml-2">
+                      <input type="checkbox" class="custom-control-input" name="assessor_agreement" id="assessor_agreement" required
+                      @if (isset($assessi->muk06['assessor_agreement']))
+                        @if($assessi->muk06['assessor_agreement'])
+                          {{ 'checked' }}          
+                        @endif        
+                      @endif>
+                      <label class="custom-control-label" for="assessor_agreement"></label>
+                    </div> 
                   </td>
                 </tr>
                 <tr>

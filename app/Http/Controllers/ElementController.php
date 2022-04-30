@@ -47,6 +47,7 @@ class ElementController extends Controller
         $validateData = $request->validate([
             'no_element'=>'required',
             'element_title' => 'required',
+            'benchmark_url' => 'required|url',
             'benchmark' => 'required',
         ]);
         $validateData['unit_id']=$unit->id;
@@ -95,7 +96,8 @@ class ElementController extends Controller
         $rules=[
             'no_element' => 'required',
             'element_title' => 'required',
-            'benchmark' => 'required'
+            'benchmark' => 'required',
+            'benchmark_url' => 'required|url',
         ];
         $validateData['unit_id']=$unit->id;
         $validateData= $request->validate($rules);
