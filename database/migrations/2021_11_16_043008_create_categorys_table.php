@@ -17,6 +17,7 @@ class CreateCategorysTable extends Migration
             $table->bigIncrements('id');
             $table->string('no_skkni');
             $table->string('category_title');
+            $table->string('jenis_standar');
             $table->timestamps();
             $table->softDeletes();
         });

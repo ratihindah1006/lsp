@@ -28,20 +28,7 @@
                             <h3 class="card-title">Tambah Skema</h3>
                         </div>
                         <div class="card-body">
-                            <div class="form-group">
-                                <label>Judul Kategori</label>
-                                <select class="form-control maximum-search-length @error('category_id') is-invalid @enderror" style="width: 100%; height:40px;" name="category_id" id="category_id">
-                                    <option value=""></option>
-                                    @foreach ($category as $category)
-                                    <option value="{{ $category->id }}" {{ old("category_id") == $category->id ? 'selected' : null }}>{{ $category->category_title }}</option>
-                                    @endforeach
-                                </select>
-                                @error('category_id')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
+                            
 
                             <div class="form-group">
                                 <label for="schema_code" class="form-label">Kode Skema</label>
@@ -98,7 +85,7 @@
 
                             <div class="card-footer mb-3">
                                 <button type="submit" class="btn btn-primary float-right mr-3">Simpan <span class="btn-icon-right"><i class="fa fa-save"></i></span></button>
-                                <a href="/category/{{ $category }}/schema" class="btn btn-outline-primary float-right mr-2">Batal</a>
+                                <a href="/skema" class="btn btn-outline-primary float-right mr-2">Batal</a>
                             </div>
                         </div>
                     </div>

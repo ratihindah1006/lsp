@@ -49,14 +49,14 @@ class Apl01Controller extends Controller
             'email' => 'required|email',
             'no_hp' => 'required|min:11',
             'last_education' => 'required',
-            'comp_name' => 'required',
-            'position' => 'required',
-            'job_title' => 'required',
-            'comp_address' => 'required',
-            'comp_telp' => 'required|min:10|numeric',
-            'comp_email' => 'required',
-            'comp_fax' => 'required|min:10|numeric',
-            'postal_code' => 'required|min:5|numeric',
+            // 'comp_name' => 'required',
+            // 'position' => 'required',
+             'job_title' => 'required',
+            // 'comp_address' => 'required',
+            // 'comp_telp' => 'min:10|numeric',
+        //    // 'comp_email' => 'required',
+        //     'comp_fax' => 'min:10|numeric',
+        //     'postal_code' => 'min:5|numeric',
             'sert_schema' => 'required',
             'assessment_purpose' => 'required',
             
@@ -94,6 +94,14 @@ class Apl01Controller extends Controller
         }
        
         $validateData['assessi_id'] = $asesi->id;
+        $validateData['comp_name'] = $request->comp_name;
+        $validateData['position'] = $request->position;
+        $validateData['comp_address'] = $request->comp_address;
+        $validateData['comp_telp'] = $request->comp_telp;
+        $validateData['comp_email'] = $request->comp_email;
+        $validateData['comp_fax'] = $request->comp_fax;
+        $validateData['postal_code'] = $request->postal_code;
+      
 
         if ($cek == Null) {
             Apl01::create($validateData);

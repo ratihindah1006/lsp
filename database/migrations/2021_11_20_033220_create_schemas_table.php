@@ -15,8 +15,6 @@ class CreateSchemasTable extends Migration
     {
         Schema::create('schema', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('category')->onDelete("cascade");
             $table->string('schema_code');
             $table->string('schema_title');
             $table->string('competency_package');

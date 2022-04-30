@@ -33,6 +33,7 @@ class CategoryController extends Controller
 
         $validateData = $request->validate([
             'category_title' => 'required',
+            'jenis_standar' => 'required',
             'no_skkni' => 'required',
         ]);
 
@@ -58,6 +59,7 @@ class CategoryController extends Controller
     {
         $rules = [
             'category_title' => 'required',
+            'jenis_standar' => 'required',
             'no_skkni' => 'required',
         ];
         

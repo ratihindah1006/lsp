@@ -50,6 +50,19 @@
                                     @enderror
                                 </div>
 
+                                <div class="form-group">
+                                <label for="jenis_standar" class="form-label">Jenis Standar</label>
+                                <select class="form-control @error('jenis_standar') is-invalid @enderror" id="jenis_standar" name="jenis_standar">
+                                    <option value="">- - Pilih - -</option>
+                                    <option value="Standar Khusus">
+                                        Standar Khusus</option>
+                                    <option value="Standar Internasional">
+                                        Standar Internasional</option>
+                                    <option value="SKKNI">
+                                        SKKNI</option>
+                                </select>
+                            </div>
+
                                 <div class="card-footer mb-3">
                                     <button type="submit" class="btn btn-primary float-right mr-3">Simpan <span class="btn-icon-right"><i class="fa fa-save"></i></span></button>
                                     <a href="/category" class="btn btn-outline-primary float-right mr-2">Batal</a>

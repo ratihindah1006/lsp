@@ -29,6 +29,7 @@
                                                 <th>No</th>
                                                 <th>Nomor SKKNI </th>
                                                 <th>Judul Kategori</th>
+                                                <th>Jenis Standar</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -38,6 +39,7 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $value->no_skkni }}</td>
                                                 <td>{{ $value->category_title }}</td>
+                                                <td>{{ $value->jenis_standar }}</td>
                                                 <td align="center">
                                                     <a href="/category/{{ $value->id }}/unit" class="btn btn-primary btn-sm"><span class="ti-info"></span></a>
                                                     <a href="/category/{{ $value->id }}/edit" class="btn btn-warning btn-sm"><span class="ti-pencil"></span></a>

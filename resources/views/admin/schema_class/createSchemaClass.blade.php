@@ -41,7 +41,7 @@
                                             <div class="form-group">
                                                 <label>Judul Event</label>
                                                 <select style="width: 100%; height:40px; " name="event_id" id="event_id"
-                                                    class=" event_id form-control @error('event_id') is-invalid @enderror">
+                                                    class=" maximum-search-length form-control @error('event_id') is-invalid @enderror">
                                                     <option value="">Pilih Event</option>
                                                     @foreach ($event as $events)
                                                         <option value="{{ $events->id }}"
@@ -61,7 +61,7 @@
                                             <div class="form-group">
                                                 <label for="schema_id" class="form-label">Judul Skema</label>
                                                 <select name="schema_id" id="schema_id"
-                                                    class="form-control  @error('schema_id') is-invalid @enderror">
+                                                    class="form-control maximum-search-length  @error('schema_id') is-invalid @enderror">
                                                     <option value="">Pilih Skema</option>
                                                     @foreach ($schema as $schemas)
                                                         <option value="{{ $schemas->id }}">{{ $schemas->schema_title }}</option>
@@ -79,7 +79,7 @@
                                             <div class="form-group">
                                                 <label for="code_id" class="form-label">Kode Soal Esai</label>
                                                 <select name="code_id" id="code_id"
-                                                    class="form-control @error('code_id') is-invalid @enderror" required>
+                                                    class="form-control maximum-search-length @error('code_id') is-invalid @enderror" required>
                                                     <option value="">Pilih Kode Soal</option>
                                                 </select>
                                                 @error('code_id')
@@ -148,9 +148,9 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="description" class="form-label">Deskripsi</label>
-                                                <input name="description" type="text"
+                                                <textarea name="description" type="text"
                                                     class="form-control @error('description') is-invalid @enderror"
-                                                    id="description" value="{{ old('description') }}">
+                                                    id="description" value="{{ old('description') }}">{{old('description')}}</textarea>
                                                 @error('description')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}

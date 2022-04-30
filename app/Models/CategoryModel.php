@@ -11,6 +11,7 @@ class CategoryModel extends Model
     protected $table = "category";
     protected $fillable = [
         'category_title',
+        'jenis_standar',
         'no_skkni'
        ];
     use HasFactory;
