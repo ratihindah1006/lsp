@@ -65,7 +65,7 @@
                               </form>
                           </tr>
                         @empty
-                          <tr>
+                          <tr class="text-center">
                             <td colspan="5">Belum Ada File yang diupload</td>
                           </tr>
                         @endforelse

@@ -73,7 +73,7 @@ class SoalPraktikController extends Controller
                 $img->removeAttribute('src');
                 $img->removeAttribute('style');
                 $img->setAttribute('src', asset('/storage'.$image_name));
-                // $img->setAttribute('style', 'max-width:500px; width:100%;');
+                // $img->setAttribute('style', 'max-width:500px;');
                 $img->setAttribute('class', 'img-fluid');
             }
         }
