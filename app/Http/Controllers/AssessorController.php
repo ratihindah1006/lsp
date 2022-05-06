@@ -108,29 +108,27 @@ class AssessorController extends Controller
     {
         // $assessor = AssessorModel::find(Auth::user()->id);
         $data_assessor = DataAssessorModel::find(Auth::user()->id);
+        $assessment = [];
         foreach ($data_assessor->assessors as $a) {
             $assessor = $a;
             foreach ($a->assessis as $b) {
                 $assessi = $b;
                 if (isset($assessi->apl02->assessment)) {
                     $assessment = json_decode($assessi->apl02->assessment);
-                } else {
-                    $assessment = [];
                 }
-                return view('assessor.apl02', [
-                    'title' => 'APL02',
-                    'assessi' => $assessi,
-                    'skema' => $assessi->schema_class->schema,
-                    'asesor' => $assessor,
-                    'apl01' => $assessi->apl01,
-                    'class' => $assessi->schema_class,
-                    'units' => $assessi->schema_class->schema->unit_schemas,
-                    'apl02' => $assessi->apl02,
-                    'assessment' => $assessment,
-
-                ]);
             }
         }
+        return view('assessor.apl02', [
+            'title' => 'APL02',
+            'assessi' => $assessi,
+            'skema' => $assessi->schema_class->schema,
+            'asesor' => $assessor,
+            'apl01' => $assessi->apl01,
+            'class' => $assessi->schema_class,
+            'units' => $assessi->schema_class->schema->unit_schemas,
+            'apl02' => $assessi->apl02,
+            'assessment' => $assessment,
+        ]);
     }
     public function export_apl01($id)
     {

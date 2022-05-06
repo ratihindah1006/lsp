@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-1"></div>
                 <div class="col-lg-12">
-                    < <div class="card text-dark">
+                     <div class="card text-dark">
                         <div class="card-footer" style=" border-bottom: 7px solid  #191970;">
                             <h2 class="font-weight-bold card-title">FR-APL-01 FORMULIR PERMOHONAN SERTIFIKASI KOMPETENSI</h2>
                             <a href="/exportlaporan_apl01/{{$assessi->id}}" class="btn btn-whatsapp float-right mr-3">Cetak<span

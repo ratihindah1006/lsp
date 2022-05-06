@@ -12,9 +12,12 @@
                 <div class="card text-dark">
                     <div class="card-footer" style=" border-bottom: 7px solid  #191970;">
                         <h2 class="font-weight-bold card-title">FR-APL-02 ASSESMEN MANDIRI</h2>
-                       
+                        @if ($apl02->status != null)
                         <a href="/exportlaporanapl02/{{ $assessi->id }}" class="btn btn-whatsapp float-right mr-3">Cetak<span class="btn-icon-right"><i class="ti ti-printer"></i></span></a>
-                        
+                        @else
+                        <a href="/exportlaporanapl02/{{ $assessi->id }}" class="btn btn-whatsapp float-right mr-3 disabled">Cetak<span class="btn-icon-right"><i class="ti ti-printer"></i></span></a>
+
+                        @endif
 
                         <button type="submit" class="btn btn-primary float-right mr-1">Simpan <span class="btn-icon-right"><i class="fa fa-save"></i></span></button>
                         <a href="/assessi/{{ $asesor->id }}" class="btn btn-danger float-right mr-1">Batal <span class="btn-icon-right"><i class="fa fa-close"></i></span></a>
