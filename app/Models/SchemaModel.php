@@ -47,5 +47,13 @@ class SchemaModel extends Model
     {
         return $this->hasMany(UnitSchemaModel::class, 'schema_id', 'id'); 
     }
+    public function codes_lisan()
+    {
+        return $this->hasMany(CodeQuestionLisan::class, 'schema_id', 'id'); 
+    }
+    public function codes_praktik()
+    {
+        return $this->hasMany(CodePraktik::class, 'schema_id', 'id'); 
+    }
 
 }

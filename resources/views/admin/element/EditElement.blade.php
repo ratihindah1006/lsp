@@ -53,9 +53,19 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="benchmark" class="form-label">Benchmark</label>
+                                    <label for="benchmark" class="form-label">Judul Benchmark</label>
                                     <input type="text" class="form-control @error('benchmark') is-invalid @enderror" id="benchmark" name="benchmark" value="{{ old('benchmark', $element->benchmark) }}">
                                     @error('benchmark')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="benchmark" class="form-label">Benchmark Link</label>
+                                    <input type="url" class="form-control @error('benchmark_url') is-invalid @enderror" id="benchmark_url" name="benchmark_url" value="{{ old('benchmark_url', $element->benchmark_url) }}">
+                                    @error('benchmark_url')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>

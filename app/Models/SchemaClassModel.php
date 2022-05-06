@@ -16,6 +16,8 @@ class SchemaClassModel extends Model
         'event_id',
         'schema_id',
         'code_id',
+        'code_lisan_id',
+        'code_praktik_id',
         'date'
        ];
     use HasFactory;
@@ -43,5 +45,15 @@ class SchemaClassModel extends Model
     public function code()
     {
         return $this->belongsTo(CodeQuestion::class, 'code_id','id');
+    }
+
+    public function code_lisan()
+    {
+        return $this->belongsTo(CodeQuestionLisan::class, 'code_lisan_id','id');
+    }
+
+    public function code_praktik()
+    {
+        return $this->belongsTo(CodePraktik::class, 'code_praktik_id','id');
     }
 }

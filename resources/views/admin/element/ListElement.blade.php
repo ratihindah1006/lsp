@@ -50,7 +50,7 @@
                                                 @enderror
                                             </div>
                                         </div>&emsp;
-                                        <div class="col-4">
+                                        <div class="col-3">
                                             <div class="form-group row">
                                                 <label for="element_title" class="form-label my-text">Judul Element</label>
                                                 <input type="text" class="form-control @error('element_title') is-invalid @enderror" id="element_title" name="element_title" value="{{ old('element_title') }}">
@@ -61,11 +61,22 @@
                                                 @enderror
                                             </div>
                                         </div>&emsp;
-                                        <div class="col-3">
+                                        <div class="col-2">
                                             <div class="form-group row">
-                                                <label for="benchmark" class="form-label my-text">Benchmark</label>
+                                                <label for="benchmark" class="form-label my-text">Judul Benchmark</label>
                                                 <input type="text" class="form-control @error('benchmark') is-invalid @enderror" id="benchmark" name="benchmark" value="{{ old('benchmark') }}">
                                                 @error('benchmark')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+                                        </div>&emsp;
+                                        <div class="col-2">
+                                            <div class="form-group row">
+                                                <label for="benchmark_url" class="form-label my-text">Benchmark Link</label>
+                                                <input type="url" class="form-control @error('benchmark_url') is-invalid @enderror" id="benchmark_url" name="benchmark_url" value="{{ old('benchmark_url') }}">
+                                                @error('benchmark_url')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>

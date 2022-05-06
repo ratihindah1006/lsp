@@ -24,7 +24,7 @@
                 <tr>
                   <td>Nomor</td>
                   <td>: &nbsp;</td>
-                  <td class="font-weight-bold">{{ $schema->category->no_skkni }}</td>
+                  <td class="font-weight-bold">{{ $schema->schema_code }}</td>
                 </tr>
                 <tr>
                   <td colspan="2">TUK</td>
@@ -44,14 +44,14 @@
                 <tr>
                   <td colspan="2">Tanggal</td>
                   <td>: &nbsp;</td>
-                  <td class="font-weight-bold">{{ $schema_class->event->event_time }}</td>
+                  <td class="font-weight-bold">{{ $schema_class->date }}</td>
                 </tr>
               </table>
               
               <ul class="mt-5 mb-4">
-                <p>Peserta diminta untuk:</p>
-                <li>- Membaca dengan seksama soal essay yang diberikan</li>
-                <li>- Menjawab pada kolom jawaban secara singkat dan jelas</li>
+                <p class="font-weight-bold">Peserta diminta untuk:</p>
+                <li><span class="align-middle"><i class="fa fa-check text-info"></i></span> Membaca dengan seksama soal essay yang diberikan</li>
+                <li><span class="align-middle"><i class="fa fa-check text-info"></i></span> Menjawab pada kolom jawaban secara singkat dan jelas</li>
               </ul>
   
               @foreach ($schema->unit_schemas as $unit)
@@ -101,11 +101,12 @@
                     @endforeach 
                   </td>
                   <input type="hidden" id="unitId" name="unitId[]" value="{{ $unit->id }}">
+                  <input type="hidden" id="codeId" name="codeId[]" value="{{ $schema_class->code_id }}">
                   <td style="vertical-align:top;">
                     <div class="form-group">
                       <textarea class="summernote-dis form-control @error('answer[]') is-invalid @enderror" name="answer[{{ $loop->iteration }}]">
-                      @if(!$answer->where('unit_id', $unit->id)->isEmpty())
-                        {{ $answer->where('unit_id', $unit->id)->first()->answer }}
+                      @if(!$answer->where('code_id', $schema_class->code_id)->where('unit_id', $unit->id)->isEmpty())
+                        {{ $answer->where('code_id', $schema_class->code_id)->where('unit_id', $unit->id)->first()->answer }}
                       @endif
                       </textarea>
                       @error('answer[]')
@@ -119,7 +120,7 @@
                     <td class="text-center" style="vertical-align:top;">
                       <label class="radio-inline">
                           <input type="radio" name="rekomendasi[{{ $loop->index }}]" value="K"
-                          @if(!$answer->where('unit_id', $unit->id)->isEmpty() && !$answer->where('rekomendasi')->isEmpty() && $answer->where('unit_id', $unit->id)->first()->rekomendasi == 1)
+                          @if(!$answer->where('code_id', $schema_class->code_id)->where('unit_id', $unit->id)->where('rekomendasi', '===',  NULL)->first() && $answer->where('code_id', $schema_class->code_id)->where('unit_id', $unit->id)->where('rekomendasi', '===',  1)->first())
                             {{ ' checked' }}
                           @endif
                           ></label>
@@ -127,7 +128,7 @@
                     <td class="text-center" style="vertical-align:top;">     
                       <label class="radio-inline">
                           <input type="radio" name="rekomendasi[{{ $loop->index }}]" value="BK"
-                          @if(!$answer->where('unit_id', $unit->id)->isEmpty() && !$answer->where('rekomendasi')->isEmpty() && $answer->where('unit_id', $unit->id)->first()->rekomendasi == 0)
+                          @if(!$answer->where('code_id', $schema_class->code_id)->where('unit_id', $unit->id)->where('rekomendasi', '===',  NULL)->first() && $answer->where('code_id', $schema_class->code_id)->where('unit_id', $unit->id)->where('rekomendasi', '===',  0)->first())
                             {{ ' checked' }}
                           @endif
                           ></label>
@@ -143,7 +144,16 @@
                 </tr>
                 <tr>
                   <td style="vertical-align: top" width="40%" rowspan="2">Nama</td>
-                  <td class="font-weight-bold">{{ $assessi->data_assessi->name }}</td>
+                  <td class="font-weight-bold">{{ $assessi->data_assessi->name }}
+                    <div class="custom-control custom-switch d-inline ml-2">
+                      <input type="checkbox" class="custom-control-input" name="assessi_agreement" id="assessi_agreement" required disabled
+                      @if (isset($assessi->muk06['assessi_agreement']))
+                        @if($assessi->muk06['assessi_agreement'])
+                          {{ 'checked' }}          
+                        @endif        
+                      @endif>
+                      <label class="custom-control-label" for="assessi_agreement"></label>
+                    </div> </td>
                 </tr>
                 <tr>
                   <td><img class="txt" src="{{ asset('storage/' . $assessi->apl01->assessi_signature) }}"
@@ -155,10 +165,15 @@
                 <tr>
                   <td style="vertical-align: top" rowspan="2">Nama</td>
                   <td class="font-weight-bold">{{ $assessor->name }} 
-                      <div class="custom-control custom-switch d-inline ml-2">
-                        <input type="checkbox" class="custom-control-input" id="assessor_switch" required>
-                        <label class="custom-control-label" for="assessor_switch"></label>
-                      </div> 
+                    <div class="custom-control custom-switch d-inline ml-2">
+                      <input type="checkbox" class="custom-control-input" name="assessor_agreement" id="assessor_agreement" required
+                      @if (isset($assessi->muk06['assessor_agreement']))
+                        @if($assessi->muk06['assessor_agreement'])
+                          {{ 'checked' }}          
+                        @endif        
+                      @endif>
+                      <label class="custom-control-label" for="assessor_agreement"></label>
+                    </div> 
                   </td>
                 </tr>
                 <tr>

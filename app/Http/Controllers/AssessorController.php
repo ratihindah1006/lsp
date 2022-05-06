@@ -3,20 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\AK01;
+use App\Models\IA07;
 use App\Models\Apl01;
 use App\Models\MUK01;
+use App\Models\MUK06;
 use App\Models\Answer;
+use PDF; //library pdf
+use App\Models\Praktik;
 use App\Models\APL02Model;
+use App\Models\EventModel;
+use App\Models\AnswerLisan;
+use App\Models\SchemaModel;
 use App\Models\AssessiModel;
 use Illuminate\Http\Request;
 use App\Models\AssessorModel;
 use App\Models\DataAssessorModel;
-use App\Models\EventModel;
-use App\Models\SchemaModel;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException as ValidationException;
-use PDF; //library pdf
 
 class AssessorController extends Controller
 {
@@ -230,16 +235,21 @@ class AssessorController extends Controller
 
     public function ak01(AssessiModel $assessi)
     {
-        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
-        if (date("m/d/Y") > $tanggal_berakhir) {
-            return redirect('/list')->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
-        }
-
         $data_assessor = AssessorModel::where('data_assessor_id', Auth::user()->id)->where('class_id', $assessi->schema_class->id)->first();
         if (!$data_assessor) {
             return redirect('/');
         }else if ($assessi->assessor_id != $data_assessor->id) {
             return redirect('/');
+        }
+
+        $id_assessor = $assessi->assessor_id;
+        if ((!$assessi->apl02) || ($assessi->apl02 && $assessi->apl02->status != 1)) {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Form APL01/APL02 belum diterima');
+        }
+
+        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
+        if (date("m/d/Y") > $tanggal_berakhir) {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
         }
 
         $data = [
@@ -261,6 +271,8 @@ class AssessorController extends Controller
         $request->t_p_tulis == "on" ? $request->t_p_tulis = 1 : $request->t_p_tulis = 0;
         $request->t_p_lisan == "on" ? $request->t_p_lisan = 1 : $request->t_p_lisan = 0;
         $request->t_p_wawancara == "on" ? $request->t_p_wawancara = 1 : $request->t_p_wawancara = 0;
+        $request->assessi_agreement == "on" ? $request->assessi_agreement = 1 : $request->assessi_agreement = 0;
+        $request->assessor_agreement == "on" ? $request->assessor_agreement = 1 : $request->assessor_agreement = 0;
         $data = [
             'tl_verif_porto' => $request->tl_verif_porto,
             't_p_tulis' => $request->t_p_tulis,
@@ -268,6 +280,8 @@ class AssessorController extends Controller
             't_p_wawancara' => $request->t_p_wawancara,
             'l_obs_langsung' => $request->l_obs_langsung,
             'tuk' => $request->tuk,
+            'assessi_agreement' => $request->assessi_agreement,
+            'assessor_agreement' => $request->assessor_agreement,
         ];
 
         AK01::updateOrCreate(
@@ -275,25 +289,32 @@ class AssessorController extends Controller
             $data
         );
 
-        return redirect('/list')->with('toast_success', 'Form AK01 berhasil di Update!');
+        $assessi = AssessiModel::where('id', $request->assessiId)->first();
+
+        return redirect('/assessi/'.$assessi->assessor_id)->with('toast_success', 'Form AK01 berhasil di Update!');
     }
 
     public function muk01(AssessiModel $assessi)
     {
-        if(isset($assessi->ak01) && ($assessi->ak01->l_obs_langsung != 1)){
-            return redirect('/list');
-        }
-
-        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
-        if (date("m/d/Y") > $tanggal_berakhir) {
-            return redirect('/list')->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
-        }
-
         $data_assessor = AssessorModel::where('data_assessor_id', Auth::user()->id)->where('class_id', $assessi->schema_class->id)->first();
         if (!$data_assessor) {
             return redirect('/');
         }else if ($assessi->assessor_id != $data_assessor->id) {
             return redirect('/');
+        }
+
+        $id_assessor = $assessi->assessor_id;
+        if ((!$assessi->apl02) || ($assessi->apl02 && $assessi->apl02->status != 1)) {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Form APL01/APL02 belum diterima');
+        }
+
+        if(!isset($assessi->ak01) || (isset($assessi->ak01) && $assessi->ak01->l_obs_langsung != 1)){
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Form IA.02 belum disetujui oleh asesor');
+        }
+
+        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
+        if (date("m/d/Y") > $tanggal_berakhir) {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
         }
 
         $data = [
@@ -309,39 +330,59 @@ class AssessorController extends Controller
 
     public function updMUK01(Request $request)
     {
+        $request->assessi_agreement == "on" ? $request->assessi_agreement = 1 : $request->assessi_agreement = 0;
+        $request->assessor_agreement == "on" ? $request->assessor_agreement = 1 : $request->assessor_agreement = 0;
         $data = [
             'assessi_id' => $request->assessiId,
-            'rekomendasi' => $request->rekomendasi
+            'rekomendasi' => $request->rekomendasi,
+            'assessi_agreement' => $request->assessi_agreement,
+            'assessor_agreement' => $request->assessor_agreement,
         ];
         MUK01::updateOrCreate(
             ['assessi_id' => $request->assessiId],
             $data
         );
 
-        return redirect('/list')->with('toast_success', 'Form MUK01 berhasil di Update!');
+        $assessi = AssessiModel::where('id', $request->assessiId)->first();
+
+        return redirect('/assessi/'.$assessi->assessor_id)->with('toast_success', 'Form MUK01 berhasil di Update!');
     }
 
     public function muk06(AssessiModel $assessi)
     {
-        if(isset($assessi->ak01) && ($assessi->ak01->t_p_tulis != 1)){
-            return redirect('/list');
-        }
-
-        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
-        if (date("m/d/Y") > $tanggal_berakhir) {
-            return redirect('/list')->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
-        }
-        
         $data_assessor = AssessorModel::where('data_assessor_id', Auth::user()->id)->where('class_id', $assessi->schema_class->id)->first();
         if (!$data_assessor) {
             return redirect('/');
         }else if ($assessi->assessor_id != $data_assessor->id) {
             return redirect('/');
         }
+
+        $id_assessor = $assessi->assessor_id;
+        if ((!$assessi->apl02) || ($assessi->apl02 && $assessi->apl02->status != 1)) {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Form APL01/APL02 belum diterima');
+        }
+
+        if (!$assessi->ak01) {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Form AK01 belum dibuat');
+        }
+
+        if(isset($assessi->ak01) && ($assessi->ak01->t_p_tulis != 1)){
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Form AK01 pertanyaan tulis belum diceklist');
+        }
+
+        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
+        if (date("m/d/Y") > $tanggal_berakhir) {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
+        }
+
+        if ((isset($assessi->muk06) && ($assessi->muk06->assessi_agreement != 1)) || (!$assessi->muk06)) {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Assessi belum mengupload jawaban soal esai');
+        }
      
         $answer = Answer::all()->where('assessi_id', $assessi->id);
+        
         $data = [
-            'title' => 'assessi',
+            'title' => 'MUK06',
             'assessi' => $assessi,
             'assessor' => $assessi->assessor->data_assessor,
             'schema_class' => $assessi->schema_class,
@@ -354,7 +395,7 @@ class AssessorController extends Controller
     public function saveMUK06(Request $request)
     {
         $rekomendasi = null;
-        if (count($request->rekomendasi) > 0) {
+        if ($request->rekomendasi) {
             foreach ($request->rekomendasi as $key => $value) {
                 if ($request->rekomendasi[$key] == "K") {
                     $rekomendasi = 1;
@@ -368,11 +409,238 @@ class AssessorController extends Controller
                 );
 
                 Answer::updateOrCreate(
-                    ['assessi_id' => $request->assessiId, 'unit_id' => $request->unitId[$key]],
+                    ['assessi_id' => $request->assessiId, 'unit_id' => $request->unitId[$key], 'code_id' => $request->codeId[$key]],
                     $data
                 );
             }
         }
-        return redirect('/list')->with('toast_success', 'Form MUK06 berhasil disimpan!');
+
+        $request->assessor_agreement == "on" ? $request->assessor_agreement = 1 : $request->assessor_agreement = 0;
+        $agreement = array(
+            'assessor_agreement' => $request->assessor_agreement,
+        );
+
+        MUK06::updateOrCreate(
+            ['assessi_id' => $request->assessiId],    
+            $agreement
+        );
+
+        $assessi = AssessiModel::where('id', $request->assessiId)->first();
+
+        return redirect('/assessi/'.$assessi->assessor_id)->with('toast_success', 'Form MUK06 berhasil disimpan!');
+    }
+
+    public function muk07(AssessiModel $assessi)
+    {
+        $data_assessor = AssessorModel::where('data_assessor_id', Auth::user()->id)->where('class_id', $assessi->schema_class->id)->first();
+        if (!$data_assessor) {
+            return redirect('/');
+        }else if ($assessi->assessor_id != $data_assessor->id) {
+            return redirect('/');
+        }
+
+        $id_assessor = $assessi->assessor_id;
+        if (!$assessi->apl02) {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Form APL01/APL02 belum diterima');
+        }
+
+        if (!$assessi->ak01) {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Form AK01 belum dibuat');
+        }
+
+        if(isset($assessi->ak01) && ($assessi->ak01->t_p_lisan != 1)){
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Form AK01 pertanyaan lisan belum diceklist');
+        }
+
+        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
+        if (date("m/d/Y") > $tanggal_berakhir) {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
+        }
+        
+        $answer = AnswerLisan::all()->where('assessi_id', $assessi->id);
+        $data = [
+            'title' => 'MUK07',
+            'assessi' => $assessi,
+            'assessor' => $assessi->assessor->data_assessor,
+            'schema_class' => $assessi->schema_class,
+            'schema' => $assessi->schema_class->schema,
+            'answer' => $answer
+        ];
+        return view('assessor.muk07', $data);
+    }
+
+    public function saveMUK07(Request $request)
+    {
+        $rekomendasi = null;
+        if ($request->rekomendasi) {
+            foreach ($request->rekomendasi as $key => $value) {
+                if ($request->rekomendasi[$key] == "K") {
+                    $rekomendasi = 1;
+                } else if ($request->rekomendasi[$key] == "BK") {
+                    $rekomendasi = 0;
+                } else {
+                    $rekomendasi = null;
+                }
+                $data = array(
+                    'rekomendasi' => $rekomendasi
+                );
+
+                AnswerLisan::updateOrCreate(
+                    ['assessi_id' => $request->assessiId, 'unit_id' => $request->unitId[$key], 'code_lisan_id' => $request->codeId],
+                    $data
+                );
+            }
+        }
+        
+        if ($request->answer) {
+            foreach ($request->answer as $key => $value) {
+                $jawaban = $request->answer[$key];
+                if ($jawaban != null) {
+                    $dom = new \DomDocument();
+    
+                    libxml_use_internal_errors(true);
+                    $dom->loadHtml($jawaban, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
+                    
+                    $images = $dom->getElementsByTagName('img');
+              
+                    foreach($images as $img){
+                        $data = $img->getAttribute('src');
+                        if (strpos($data, 'data') !== false) {
+                            list($type, $data) = array_pad(explode(';', $data),2,null); 
+                            list(, $data) = array_pad(explode(',', $data),2,null); 
+                            $data = base64_decode($data);
+                            $image_name= "/upload/" . time().uniqid().'.png';
+                            $path = public_path('storage') . $image_name;
+                            file_put_contents($path, $data);
+                            $img->removeAttribute('src');
+                            $img->removeAttribute('style');
+                            $img->setAttribute('src', asset('/storage'.$image_name));
+                            $img->setAttribute('style', 'max-width:500px;');
+                            $img->setAttribute('class', 'img-fluid');
+                        }
+                    }
+              
+                    $jawaban = $dom->saveHTML();
+                }
+
+                $dataJawaban = array(
+                    'answer' => $jawaban, 
+                );
+                
+                AnswerLisan::updateOrCreate(
+                    ['assessi_id' => $request->assessiId, 'unit_id' => $request->unitId[$key], 'code_lisan_id' => $request->codeId],
+                    $dataJawaban
+                );
+            }            
+        }
+
+        $request->assessi_agreement == "on" ? $request->assessi_agreement = 1 : $request->assessi_agreement = 0;
+        $request->assessor_agreement == "on" ? $request->assessor_agreement = 1 : $request->assessor_agreement = 0;
+        $agreement = array(
+            'assessi_agreement' => $request->assessi_agreement,
+            'assessor_agreement' => $request->assessor_agreement,
+        );
+
+        IA07::updateOrCreate(
+            ['assessi_id' => $request->assessiId],    
+            $agreement
+        );
+
+        $assessi = AssessiModel::where('id', $request->assessiId)->first();
+
+        return redirect('/assessi/'.$assessi->assessor_id)->with('toast_success', 'FORM IA.07 berhasil ditambahkan');
+    }
+
+    public function listJawabanAssessi(AssessiModel $assessi)
+    {
+        $id_assessor = $assessi->assessor_id;
+
+        if ((!$assessi->apl02) || ($assessi->apl02 && $assessi->apl02->status != 1)) {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Form APL01/APL02 belum diterima');
+        }
+
+        if(!isset($assessi->ak01) || (isset($assessi->ak01) && $assessi->ak01->l_obs_langsung != 1)){
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Form IA.02 belum disetujui oleh asesor');
+        }
+
+        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
+        if (date("m/d/Y") > $tanggal_berakhir) {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
+        }
+
+        $data_assessor = AssessorModel::where('data_assessor_id', Auth::user()->id)->where('class_id', $assessi->schema_class->id)->first();
+        if (!$data_assessor) {
+            return redirect('/');
+        }else if ($assessi->assessor_id != $data_assessor->id) {
+            return redirect('/');
+        }
+
+        $data = [
+            'title' => 'Tugas Demonstrasi Praktik',
+            'assessi' => $assessi,
+            'schema_class' => $assessi->schema_class,
+            'code' => $assessi->schema_class->code_praktik,
+            'schema' => $assessi->schema_class->schema,
+            'bukti' => $assessi->praktik,
+        ];
+
+        return view('assessor.list_jawaban_assessi', $data);
+    }
+
+    public function downloadFile(Praktik $praktik) 
+    {
+        $file = public_path('storage/' . $praktik->file_path);
+        $name = basename($file);
+        return response()->download($file, $name);
+    }
+    
+    public function updateListJawaban(Request $request)
+    {
+        $rekomendasi = null;
+        if ($request->catatan) {
+            foreach ($request->catatan as $key => $value) {
+                Praktik::find($key)->update([
+                    'rekomendasi' => $request->rekomendasi[$key] ?? null,
+                    'catatan' => $request->catatan[$key],
+                ]);
+            }
+        }
+        return redirect('/')->with('toast_success', 'Penilaian berhasil disimpan!');
+    }
+
+    public function ia02(AssessiModel $assessi)
+    {
+        $data_assessor = AssessorModel::where('data_assessor_id', Auth::user()->id)->where('class_id', $assessi->schema_class->id)->first();
+        if (!$data_assessor) {
+            return redirect('/');
+        }else if ($assessi->assessor_id != $data_assessor->id) {
+            return redirect('/');
+        }
+
+        $id_assessor = $assessi->assessor_id;
+
+        if ((!$assessi->apl02) || ($assessi->apl02 && $assessi->apl02->status != 1)) {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Form APL01/APL02 belum diterima');
+        }
+
+        if(!isset($assessi->ak01) || (isset($assessi->ak01) && $assessi->ak01->l_obs_langsung != 1)){
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Form IA.02 belum disetujui oleh asesor');
+        }
+
+        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
+        if (date("m/d/Y") > $tanggal_berakhir) {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
+        }
+
+        $data = [
+            'title' => 'FR.IA.02',
+            'assessi' => $assessi,
+            'assessor' => $assessi->assessor->data_assessor,
+            'schema_class' => $assessi->schema_class,
+            'schema' => $assessi->schema_class->schema,
+            'instruksi' => $assessi->schema_class->code_praktik->soal_praktik
+        ];
+
+        return view('assessor.soal_praktik', $data);
     }
 }

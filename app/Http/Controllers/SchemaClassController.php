@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 use App\Models\AdminModel;
 use App\Models\EventModel;
+use App\Models\CodePraktik;
 use App\Models\SchemaModel;
 use App\Models\CodeQuestion;
 use Illuminate\Http\Request;
 use App\Models\AssessorModel;
-use App\Models\SchemaClassModel;
 
+use App\Models\SchemaClassModel;
+use App\Models\CodeQuestionLisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Testing\Fakes\EventFake;
@@ -42,6 +44,16 @@ class SchemaClassController extends Controller
         return response()->json($code);
     }
 
+    public function getKodeLisan(Request $request){
+        $code_lisan = DB::table("code_question_lisan")->where("schema_id", $request->schema_id)->pluck("code_lisan_name", "id");
+        return response()->json($code_lisan);
+    }
+
+    public function getKodePraktik(Request $request){
+        $code_praktik = DB::table("code_praktik")->where("schema_id", $request->schema_id)->pluck("code_praktik_name", "id");
+        return response()->json($code_praktik);
+    }
+
     public function store(Request $request)
     {
 
@@ -52,7 +64,9 @@ class SchemaClassController extends Controller
             'description' => 'required',
             'event_id' => 'required',
             'schema_id' => 'required',
-            'code_id' => 'required'
+            'code_id' => 'required',
+            'code_lisan_id' => 'required',
+            'code_praktik_id' => 'required',
         ]);
       
         $eventTime = EventModel::find($request->event_id);
@@ -68,6 +82,8 @@ class SchemaClassController extends Controller
             'event_id' =>  $request->event_id,
             'schema_id' =>  $request->schema_id,
             'code_id' => $request->code_id,
+            'code_lisan_id' => $request->code_lisan_id,
+            'code_praktik_id' => $request->code_praktik_id,
         ]);
         $class->save();
         return redirect('/KelasSkema')->with('toast_success', 'Data kelas Skema berhasil di tambahkan!');
@@ -79,6 +95,8 @@ class SchemaClassController extends Controller
             'event' => EventModel::all(),
             'schema' => SchemaModel::all(),
             'codes' => CodeQuestion::all(),
+            'codes_lisan' => CodeQuestionLisan::all(),
+            'codes_praktik' => CodePraktik::all(),
             'title'=> 'Data Kelas Skema',
             'class'=> $class,
         ]);
@@ -92,7 +110,9 @@ class SchemaClassController extends Controller
             'event_id' => 'required',
             'schema_id' => 'required',
             'date' => 'required',
-            'code_id' => 'required'
+            'code_id' => 'required',
+            'code_lisan_id' => 'required',
+            'code_praktik_id' => 'required',
         ];
         $eventTime = EventModel::find($request->event_id);
         if(!$this->isValidDate($request->date, $eventTime->event_time)){

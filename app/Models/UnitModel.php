@@ -31,13 +31,19 @@ class UnitModel extends Model
     {
         return $this->hasMany(ElementModel::class, 'unit_id', 'id'); 
     }
+
     public function unit_schemas()
     {
         return $this->hasMany(UnitSchemaModel::class, 'unit_id', 'id'); 
     }
+
     public function answer()
     {
         return $this->hasMany(Answer::class, 'unit_id', 'id');
     }
 
+    public function answer_lisan()
+    {
+        return $this->hasMany(AnswerLisan::class, 'unit_id', 'id');
+    }
 }
