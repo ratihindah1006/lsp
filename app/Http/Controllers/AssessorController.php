@@ -255,7 +255,8 @@ class AssessorController extends Controller
             'event_start' => $assessi->schema_class->date,
             'assessor' => Auth::user()->name,
             'assessi' => $assessi,
-            'schema' => $assessi->schema_class->schema
+            'schema' => $assessi->schema_class->schema,
+            'assessor_id' => $assessi->assessor_id,
         ];
 
         return view('assessor.ak01', $data);
@@ -320,6 +321,7 @@ class AssessorController extends Controller
             'assessor' => $assessi->assessor->data_assessor,
             'schema_class' => $assessi->schema_class,
             'schema' => $assessi->schema_class->schema,
+            'assessor_id' => $assessi->assessor_id,
         ];
 
         return view('assessor.muk01', $data);
@@ -384,7 +386,8 @@ class AssessorController extends Controller
             'assessor' => $assessi->assessor->data_assessor,
             'schema_class' => $assessi->schema_class,
             'schema' => $assessi->schema_class->schema,
-            'answer' => $answer
+            'answer' => $answer,
+            'assessor_id' => $assessi->assessor_id,
         ];
         return view('assessor.muk06', $data);
     }
@@ -461,7 +464,8 @@ class AssessorController extends Controller
             'assessor' => $assessi->assessor->data_assessor,
             'schema_class' => $assessi->schema_class,
             'schema' => $assessi->schema_class->schema,
-            'answer' => $answer
+            'answer' => $answer,
+            'assessor_id' => $assessi->assessor_id,
         ];
         return view('assessor.muk07', $data);
     }
@@ -579,6 +583,7 @@ class AssessorController extends Controller
             'code' => $assessi->schema_class->code_praktik,
             'schema' => $assessi->schema_class->schema,
             'bukti' => $assessi->praktik,
+            'assessor_id' => $assessi->assessor_id,
         ];
 
         return view('assessor.list_jawaban_assessi', $data);
