@@ -12,7 +12,9 @@ class MUK01 extends Model
     protected $fillable = [
         'assessi_id',
         'rekomendasi',
-        'status'
+        'status',
+        'assessi_agreement',
+        'assessor_agreement',
     ];
 
     protected $casts = ['rekomendasi' => 'array'];

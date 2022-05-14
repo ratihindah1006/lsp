@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UnitController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Apl01Controller;
 use App\Http\Controllers\Apl02Controller;
 use App\Http\Controllers\EventController;
@@ -15,11 +16,12 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UnitSchemaController;
 use App\Http\Controllers\DataAssessiController;
 use App\Http\Controllers\SchemaClassController;
+use App\Http\Controllers\SoalPraktikController;
 use App\Http\Controllers\DataAssessorController;
-use App\Http\Controllers\UnitSchemaController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PertanyaanLisanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -162,7 +164,24 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::delete('/soal/{question}', [QuestionController::class, 'destroy']);
     Route::post('/soal/kodeSoal', [QuestionController::class, 'kodeSoal']);
     Route::get('/soal/kodesoal/{code_question:id}', [QuestionController::class, 'listSoal']);
-    Route::get('/getKode',[SchemaClassController::class, 'getKode'])->name('getKode');
+    Route::get('/getKode',[SchemaClassController::class, 'getKode']);
+    Route::get('/getKodeLisan',[SchemaClassController::class, 'getKodeLisan']);
+    Route::get('/getKodePraktik',[SchemaClassController::class, 'getKodePraktik']);
+
+    Route::get('/soallisan', [PertanyaanLisanController::class, 'index']);
+    Route::get('/soallisan/create', [PertanyaanLisanController::class, 'create']);
+    Route::get('/soallisan/create/{code_question_lisan}', [PertanyaanLisanController::class, 'createByCode']);
+    Route::post('/soallisan', [PertanyaanLisanController::class, 'store']);
+    Route::get('/soallisan/{pertanyaan_lisan}/edit', [PertanyaanLisanController::class, 'edit']);
+    Route::put('/soallisan/{pertanyaan_lisan}', [PertanyaanLisanController::class, 'update']);
+    Route::delete('/soallisan/{pertanyaan_lisan}', [PertanyaanLisanController::class, 'destroy']);
+    Route::post('/soallisan/kodeSoal', [PertanyaanLisanController::class, 'kodeSoal']);
+    Route::get('/soallisan/kodesoal/{code_question_lisan:id}', [PertanyaanLisanController::class, 'listSoal']);
+
+    Route::get('/soalpraktik', [SoalPraktikController::class, 'index']);
+    Route::post('/soalpraktik/kodeSoal', [SoalPraktikController::class, 'kodeSoal']);
+    Route::get('/soalpraktik/kodesoal/{code_praktik:id}', [SoalPraktikController::class, 'create']);
+    Route::put('/soalpraktik', [SoalPraktikController::class, 'store']);
 });
 
 Route::group(['middleware' => 'auth:assessi'], function () {
@@ -178,6 +197,12 @@ Route::group(['middleware' => 'auth:assessi'], function () {
     Route::post('/assessi/muk06/store', [AssessiController::class, 'saveMUK06']);
     Route::get('/assessi/muk06/{assessi:id}', [AssessiController::class, 'muk06']);
     Route::get('/exportlaporan/{assessi:id}',  [Apl01Controller::class, 'export'] );
+    Route::get('/assessi/ia02/{assessi:id}', [AssessiController::class, 'ia02']);
+    Route::get('/assessi/soalpraktik/{assessi:id}', [AssessiController::class, 'soalPraktik']);
+    Route::get('/assessi/jawabanpraktik/{assessi:id}', [AssessiController::class, 'jawabanPraktik']);
+    Route::post('/assessi/uploadpraktik', [AssessiController::class, 'uploadJawabanPraktik']);
+    Route::get('/assessi/download/{praktik:id}', [AssessiController::class, 'downloadFile']);
+    Route::delete('/assessi/deletefile/{praktik:id}', [AssessiController::class, 'deleteFileBukti']);
 });
 
 Route::group(['middleware' => 'auth:assessor'], function () {
@@ -199,6 +224,12 @@ Route::group(['middleware' => 'auth:assessor'], function () {
     Route::post('/assessor/muk01/update/{assessi:id}', [AssessorController::class, 'updMUK01']);
     Route::get('/assessor/muk06/{assessi:id}', [AssessorController::class, 'muk06']);
     Route::post('/assessor/muk06/update', [AssessorController::class, 'saveMUK06']);
+    Route::get('/assessor/muk07/{assessi:id}', [AssessorController::class, 'muk07']);
+    Route::post('/assessor/muk07/update', [AssessorController::class, 'saveMUK07']);
+    Route::get('/assessor/jawaban_assessi/{assessi:id}', [AssessorController::class, 'listJawabanAssessi']);
+    Route::get('/assessor/ia02/{assessi:id}', [AssessorController::class, 'ia02']);
+    Route::put('/assessor/jawaban_assessi', [AssessorController::class, 'updateListJawaban']);
+    Route::get('/assessor/download/{praktik:id}', [AssessorController::class, 'downloadFile']);
 });
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');

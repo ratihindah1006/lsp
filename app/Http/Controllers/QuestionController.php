@@ -95,32 +95,36 @@ class QuestionController extends Controller
   
         foreach($images as $img){
             $data = $img->getAttribute('src');
-            list($type, $data) = explode(';', $data);
-            list(, $data)      = explode(',', $data);
-            $data = base64_decode($data);
-            $image_name= "/upload/" . time().uniqid().'.png';
-            $path = public_path('storage') . $image_name;
-            file_put_contents($path, $data);
-            $img->removeAttribute('src');
-            $img->removeAttribute('style');
-            $img->setAttribute('src', asset('/storage'.$image_name));
-            $img->setAttribute('style', 'width:500px;');
-            $img->setAttribute('class', 'img-fluid');
+            if (strpos($data, 'data') !== false) {
+                list($type, $data) = array_pad(explode(';', $data),2,null); 
+                list(, $data) = array_pad(explode(',', $data),2,null); 
+                $data = base64_decode($data);
+                $image_name= "/upload/" . time().uniqid().'.png';
+                $path = public_path('storage') . $image_name;
+                file_put_contents($path, $data);
+                $img->removeAttribute('src');
+                $img->removeAttribute('style');
+                $img->setAttribute('src', asset('/storage'.$image_name));
+                // $img->setAttribute('style', 'max-width:500px;');
+                $img->setAttribute('class', 'img-fluid');
+            }
         }
 
         foreach($images2 as $img){
             $data = $img->getAttribute('src');
-            list($type, $data) = explode(';', $data);
-            list(, $data)      = explode(',', $data);
-            $data = base64_decode($data);
-            $image_name= "/upload/" . time().uniqid().'.png';
-            $path = public_path('storage') . $image_name;
-            file_put_contents($path, $data);
-            $img->removeAttribute('src');
-            $img->removeAttribute('style');
-            $img->setAttribute('src', asset('/storage'.$image_name));
-            $img->setAttribute('width', '500px');
-            $img->setAttribute('class', 'img-fluid');
+            if (strpos($data, 'data') !== false) {
+                list($type, $data) = array_pad(explode(';', $data),2,null); 
+                list(, $data) = array_pad(explode(',', $data),2,null); 
+                $data = base64_decode($data);
+                $image_name= "/upload/" . time().uniqid().'.png';
+                $path = public_path('storage') . $image_name;
+                file_put_contents($path, $data);
+                $img->removeAttribute('src');
+                $img->removeAttribute('style');
+                $img->setAttribute('src', asset('/storage'.$image_name));
+                // $img->setAttribute('style', 'max-width:500px;');
+                $img->setAttribute('class', 'img-fluid');
+            }
         }
   
         $pertanyaan = $dom->saveHTML();
@@ -181,37 +185,6 @@ class QuestionController extends Controller
             'key_answer' => 'required'
         ]);
         
-        // $oldQuestion = $question->question;
-        // $oldKeyAnswer = $question->key_answer;
-
-        // $oldDom = new \DomDocument();
-        // $oldDom2 = new \DomDocument();
-        
-        // libxml_use_internal_errors(true);
-
-        // $oldDom->loadHtml($oldQuestion, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
-        // $oldDom2->loadHtml($oldKeyAnswer, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-        
-        // $oldImages = $oldDom->getElementsByTagName('img');
-        // $oldImages2 = $oldDom2->getElementsByTagName('img');
-
-        // foreach($oldImages as $img){
-        //     $data = $img->getAttribute('src');
-        //     $path = parse_url($data);
-        //     if (File::exists(public_path($path['path']))) {
-        //         File::delete(public_path($path['path'])); 
-        //     }
-        // }
-
-        // foreach($oldImages2 as $img){
-        //     $data = $img->getAttribute('src');
-        //     $path = parse_url($data);
-        //     if (File::exists(public_path($path['path']))) {
-        //         File::delete(public_path($path['path'])); 
-        //     }
-        // }
-
-        //upload
         $pertanyaan = $request->question;
         $jawaban = $request->key_answer;
 
@@ -238,7 +211,7 @@ class QuestionController extends Controller
                 $img->removeAttribute('src');
                 $img->removeAttribute('style');
                 $img->setAttribute('src', asset('/storage'.$image_name));
-                $img->setAttribute('style', 'width:500px;');
+                // $img->setAttribute('style', 'max-width:500px;');
                 $img->setAttribute('class', 'img-fluid');
             }
         }
@@ -255,7 +228,7 @@ class QuestionController extends Controller
                 $img->removeAttribute('src');
                 $img->removeAttribute('style');
                 $img->setAttribute('src', asset('/storage'.$image_name));
-                $img->setAttribute('style', 'width:500px;');
+                // $img->setAttribute('style', 'max-width:500px;');
                 $img->setAttribute('class', 'img-fluid');
             }
         }

@@ -32,4 +32,9 @@ class UnitSchemaModel extends Model
     {
         return $this->hasMany(Question::class, 'unit_id', 'id')->orderBy('no_soal');
     }
+    
+    public function pertanyaan_lisans()
+    {
+        return $this->hasMany(PertanyaanLisan::class, 'unit_id', 'id')->orderBy('no_soal');
+    }
 }

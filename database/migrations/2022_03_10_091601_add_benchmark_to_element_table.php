@@ -14,7 +14,7 @@ class AddBenchmarkToElementTable extends Migration
     public function up()
     {
         Schema::table('element', function (Blueprint $table) {
-            $table->string('benchmark');
+            $table->string('benchmark')->after('element_title');
         });
     }
 
