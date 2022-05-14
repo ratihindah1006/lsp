@@ -30,22 +30,6 @@
                         </div>
                         <div class="card-content-center">
                             <div class="card-body">
-                                <div class="form-group">
-                                    <label>Judul Kategori</label>
-                                    <select style="width: 100%; height:40px;" name="category_id" id="category_id" class="form-control maximum-search-length @error('category_id') is-invalid @enderror">
-                                        <option value=""></option>
-                                        @foreach ($category as $categorys)
-                                        <option value="{{ $categorys->id }}" {{ old('category_id', $schema->category_id) == $categorys->id ? 'selected' : null }}>
-                                            {{ $categorys->category_title }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                    @error('category_id')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
 
                                 <div class="form-group">
                                     <label for="schema_code" class="form-label">Kode Skema</label>

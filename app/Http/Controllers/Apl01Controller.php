@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\DataAssessiModel;
 use App\Models\AssessiModel;
 use App\Models\Apl01;
+use App\Models\APL02Model;
 use App\Models\SchemaClassModel;
 use Illuminate\Support\Facades\Auth;
 use PDF;
@@ -102,7 +103,6 @@ class Apl01Controller extends Controller
         $validateData['comp_fax'] = $request->comp_fax;
         $validateData['postal_code'] = $request->postal_code;
       
-
         if ($cek == Null) {
             Apl01::create($validateData);
             return redirect('/beranda')->with('toast_success', 'Apl01 Berhasil diinput');
@@ -112,6 +112,7 @@ class Apl01Controller extends Controller
             $validateData['assessor_signature'] = Null;
             Apl01::where('assessi_id', $asesi->id)
                 ->update($validateData);
+            APL02Model::whereAssessiId($asesi->id)->delete();
             return redirect('/beranda')->with('toast_success', 'Apl01 Berhasil diupdate');
         }
 
