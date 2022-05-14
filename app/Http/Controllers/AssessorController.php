@@ -93,20 +93,17 @@ class AssessorController extends Controller
     {
         $data_assessor = DataAssessorModel::find(Auth::user()->id);
         foreach ($data_assessor->assessors as $a) {
-            
             foreach ($a->assessis as $b) {
-                
-                
                 $assessi = $b::find($id);
-                return view('assessor.apl01', [
-                    'apl01' => $assessi->apl01,
-                    'assessi' => $assessi,
-                    'title' => 'APL-01',
-                    'category' => $assessi->schema_class->schema->category,
-                    'assessis' => $assessi->schema_class->schema,
-                ]);
             }
         }
+        return view('assessor.apl01', [
+            'apl01' => $assessi->apl01,
+            'assessi' => $assessi,
+            'title' => 'APL-01',
+            'category' => $assessi->schema_class->schema->category,
+            'assessis' => $assessi->schema_class->schema,
+        ]);
     }
 
     public function apl02()
@@ -196,7 +193,7 @@ class AssessorController extends Controller
                 $assessi = $b->find($id);
                 if ($assessi->apl01 != null) {
                     $validateData = $request->validate([
-                        'assessor_signature' => 'required|image|file|max:1024',
+                        'assessor_signature' => 'required|file|image|mimes:jpeg,jpg,png|max:1024',
                         'status' => 'required',
 
                     ]);

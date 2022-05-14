@@ -22,7 +22,7 @@
                     <div class="card-body">
                         <a href="/KelasSkema" class="btn btn-primary ti-angle-left"></a><br>
                         <br>
-                        <table style="min-width: 100%" border="3" class="my-text mb-3">
+                        <table style="min-width: " border="3" class="my-text mb-3">
                             <tr>
                                 <th width="400px">Nama </th>
                                 <th width="1000px"> {{ $class->name }}</th>
@@ -36,8 +36,16 @@
                                 <th width="1000px"> {{ $class->schema->schema_title}}</th>
                             </tr>
                             <tr>
-                                <th width="400px">Kode Soal </th>
+                                <th width="400px">Kode Soal Esai </th>
                                 <th width="1000px"> {{ $class->code->code_name}}</th>
+                            </tr>
+                            <tr>
+                                <th width="400px">Kode Soal Lisan </th>
+                                <th width="1000px"> {{ $class->code_lisan->code_lisan_name}}</th>
+                            </tr>
+                            <tr>
+                                <th width="400px">Kode Soal Praktik </th>
+                                <th width="1000px"> {{ $class->code_praktik->code_praktik_name}}</th>
                             </tr>
                             <tr>
                                 <th width="400px">Tanggal</th>

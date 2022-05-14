@@ -571,7 +571,7 @@
                     <div class="card text-dark">
                         <div class="card-header" style="border-top: 7px solid  #191970;">
                             <h4 class="font-weight-bold">Berkas Kelengkapan Pemohon <span>
-                                    <h6>*Berkas diupload dengan format pdf dengan ukuran max 1 MB</h6>
+                                    <h6>*Berkas diupload dengan format pdf, jpeg, jpg, atau png dengan ukuran max 1 MB</h6>
                                 </span></h4>
                         </div>
                         <div class="card-body" style="border: none">
@@ -777,7 +777,7 @@
                                             </div>
                                             <label class="my-text txt ">TTD Assssi
                                                 <span class="text-danger txt">*</span>
-                                                <p>(*format jpg) </p>
+                                                <p>(*format jpg, jpeg, atau png dengan ukuran Max 1 MB) </p>
                                             </label>
                                         </div>
                                     </div>

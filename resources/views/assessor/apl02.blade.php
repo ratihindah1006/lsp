@@ -120,6 +120,7 @@
                                         </div>
                                     </th>
                                     <td>
+                                        
                                         <a href="{{ asset('storage/' . $apl01->transcript) }}" class="my-text-link">Transkip
                                             nilai atau sertifikat pelatihan yang relevan dengan skema
                                             {{ $skema->schema_title }}</a><br><br>

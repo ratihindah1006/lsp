@@ -63,12 +63,19 @@ class Apl01Controller extends Controller
         ];
 
         $cek = $asesi->apl01;
+       
         if(!$cek){
-            $rules['ijazah'] = 'required|mimes:pdf|max:1024';
-            $rules['photo'] = 'required|mimes:pdf|max:1024';
-            $rules['ktp'] = 'required|mimes:pdf|max:1024';
-            $rules['transcript'] = 'required|mimes:pdf|max:1024';
-            $rules['assessi_signature'] = 'required|image|file|max:1024';
+            $rules['ijazah'] = 'required|file|mimes:pdf,jpg,png,jpeg|max:1024';
+            $rules['photo'] = 'required|file|mimes:pdf,jpg,png,jpeg|max:1024';
+            $rules['ktp'] = 'required|file|mimes:pdf,jpg,png,jpeg|max:1024';
+            $rules['transcript'] = 'required|file|mimes:pdf,jpg,png,jpeg|max:1024';
+            $rules['assessi_signature'] = 'required|file|image|mimes:jpeg,png,jpg|max:1024';
+        }else{
+            $rules['ijazah'] = 'file|mimes:pdf,jpg,png,jpeg|max:1024';
+            $rules['photo'] = 'file|mimes:pdf,jpg,png,jpeg|max:1024';
+            $rules['ktp'] = 'file|mimes:pdf,jpg,png,jpeg|max:1024';
+            $rules['transcript'] = 'file|mimes:pdf,jpg,png,jpeg|max:1024';
+            $rules['assessi_signature'] = 'file|image|mimes:jpeg,png,jpg|max:1024';
         }
 
         $validateData = $request->validate($rules);
