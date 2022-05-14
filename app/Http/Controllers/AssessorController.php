@@ -223,8 +223,8 @@ class AssessorController extends Controller
                 if ($assessi->apl02 != null) {
                     $validateData = $request->validate([
                         'status' => 'required',
-                        'lane' => 'required',
                     ]);
+                    $validateData['lane'] = $request->lane;
                     $validateData['note'] = $request->note;
                     $validateData['assessi_id'] = $assessi->id;
                     $assessi->apl02->update($validateData);
