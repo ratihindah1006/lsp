@@ -91,6 +91,13 @@ class AssessorController extends Controller
 
     public function apl01($id)
     {
+        $asesi = AssessiModel::find($id);
+        $id_assessor = $asesi->assessor_id;
+
+        if ($asesi->schema_class->event->status == "Close") {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Event telah ditutup, data tidak dapat diupdate kembali');
+        }
+
         $data_assessor = DataAssessorModel::find(Auth::user()->id);
         foreach ($data_assessor->assessors as $a) {
             foreach ($a->assessis as $b) {
@@ -109,7 +116,13 @@ class AssessorController extends Controller
 
     public function apl02($id)
     {
-        // $assessor = AssessorModel::find(Auth::user()->id);
+        $asesi = AssessiModel::find($id);
+        $id_assessor = $asesi->assessor_id;
+
+        if ($asesi->schema_class->event->status == "Close") {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Event telah ditutup, data tidak dapat diupdate kembali');
+        }
+        
         $data_assessor = DataAssessorModel::find(Auth::user()->id);
         $assessment = [];
         foreach ($data_assessor->assessors as $a) {
@@ -246,9 +259,8 @@ class AssessorController extends Controller
             return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Form APL01/APL02 belum diterima');
         }
 
-        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
-        if (date("m/d/Y") > $tanggal_berakhir) {
-            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
+        if ($assessi->schema_class->event->status == "Close") {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Event telah ditutup, data tidak dapat diupdate kembali');
         }
 
         $data = [
@@ -312,9 +324,8 @@ class AssessorController extends Controller
             return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Form IA.02 belum disetujui oleh asesor');
         }
 
-        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
-        if (date("m/d/Y") > $tanggal_berakhir) {
-            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
+        if ($assessi->schema_class->event->status == "Close") {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Event telah ditutup, data tidak dapat diupdate kembali');
         }
 
         $data = [
@@ -371,9 +382,8 @@ class AssessorController extends Controller
             return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Form AK01 pertanyaan tulis belum diceklist');
         }
 
-        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
-        if (date("m/d/Y") > $tanggal_berakhir) {
-            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
+        if ($assessi->schema_class->event->status == "Close") {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Event telah ditutup, data tidak dapat diupdate kembali');
         }
 
         if ((isset($assessi->muk06) && ($assessi->muk06->assessi_agreement != 1)) || (!$assessi->muk06)) {
@@ -454,9 +464,8 @@ class AssessorController extends Controller
             return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Form AK01 pertanyaan lisan belum diceklist');
         }
 
-        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
-        if (date("m/d/Y") > $tanggal_berakhir) {
-            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
+        if ($assessi->schema_class->event->status == "Close") {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Event telah ditutup, data tidak dapat diupdate kembali');
         }
         
         $answer = AnswerLisan::all()->where('assessi_id', $assessi->id);
@@ -566,9 +575,8 @@ class AssessorController extends Controller
             return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Form IA.02 belum disetujui oleh asesor');
         }
 
-        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
-        if (date("m/d/Y") > $tanggal_berakhir) {
-            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
+        if ($assessi->schema_class->event->status == "Close") {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Event telah ditutup, data tidak dapat diupdate kembali');
         }
 
         $data_assessor = AssessorModel::where('data_assessor_id', Auth::user()->id)->where('class_id', $assessi->schema_class->id)->first();
@@ -609,7 +617,7 @@ class AssessorController extends Controller
                 ]);
             }
         }
-        return redirect('/')->with('toast_success', 'Penilaian berhasil disimpan!');
+        return redirect('/assessor')->with('toast_success', 'Penilaian berhasil disimpan!');
     }
 
     public function ia02(AssessiModel $assessi)
@@ -631,9 +639,8 @@ class AssessorController extends Controller
             return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Form IA.02 belum disetujui oleh asesor');
         }
 
-        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
-        if (date("m/d/Y") > $tanggal_berakhir) {
-            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
+        if ($assessi->schema_class->event->status == "Close") {
+            return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Event telah ditutup, data tidak dapat diupdate kembali');
         }
 
         $data = [

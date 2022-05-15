@@ -80,6 +80,9 @@
                             </button>
                         </div>
                     </div>
+                    <div class="text-center mt-4">
+                        <a href="/" class="text-primary"><u>Kembali ke menu utama</u></a>
+                    </div>
                 </form>
             </div>
         </div>

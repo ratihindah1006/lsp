@@ -65,16 +65,15 @@ class AssessiController extends Controller
         }
 
         if ((!$assessi->apl02) || ($assessi->apl02 && $assessi->apl02->status != 1)) {
-            return redirect('/')->with('toast_error', 'Form APL01/APL02 belum diterima');
+            return redirect('/beranda')->with('toast_error', 'Form APL01/APL02 belum diterima');
         }
 
         if(!isset($assessi->ak01) || (isset($assessi->ak01) && $assessi->ak01->t_p_tulis != 1)){
-            return redirect('/')->with('toast_error', 'Form MUK06 belum disetujui oleh asesor');
+            return redirect('/beranda')->with('toast_error', 'Form MUK06 belum disetujui oleh asesor');
         }
 
-        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
-        if (date("m/d/Y") > $tanggal_berakhir) {
-            return redirect('/')->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
+        if ($assessi->schema_class->event->status == "Close") {
+            return redirect('/beranda')->with('toast_error', 'Event telah ditutup, data tidak dapat diupdate kembali');
         }
 
         $assessor = DataAssessorModel::find($assessi->assessor->data_assessor_id);
@@ -160,16 +159,15 @@ class AssessiController extends Controller
         }
 
         if ((!$assessi->apl02) || ($assessi->apl02 && $assessi->apl02->status != 1)) {
-            return redirect('/')->with('toast_error', 'Form APL01/APL02 belum diterima');
+            return redirect('/beranda')->with('toast_error', 'Form APL01/APL02 belum diterima');
         }
 
         if(!isset($assessi->ak01) || (isset($assessi->ak01) && $assessi->ak01->l_obs_langsung != 1)){
-            return redirect('/')->with('toast_error', 'Form IA.02 belum disetujui oleh asesor');
+            return redirect('/beranda')->with('toast_error', 'Form IA.02 belum disetujui oleh asesor');
         }
 
-        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
-        if (date("m/d/Y") > $tanggal_berakhir) {
-            return redirect('/')->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
+        if ($assessi->schema_class->event->status == "Close") {
+            return redirect('/beranda')->with('toast_error', 'Event telah ditutup, data tidak dapat diupdate kembali');
         }
 
         $assessor = DataAssessorModel::find($assessi->assessor->data_assessor_id);
@@ -193,12 +191,11 @@ class AssessiController extends Controller
         }
 
         if(!isset($assessi->ak01) || (isset($assessi->ak01) && $assessi->ak01->l_obs_langsung != 1)){
-            return redirect('/')->with('toast_error', 'Form IA.02 belum disetujui oleh asesor');
+            return redirect('/beranda')->with('toast_error', 'Form IA.02 belum disetujui oleh asesor');
         }
 
-        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
-        if (date("m/d/Y") > $tanggal_berakhir) {
-            return redirect('/')->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
+        if ($assessi->schema_class->event->status == "Close") {
+            return redirect('/beranda')->with('toast_error', 'Event telah ditutup, data tidak dapat diupdate kembali');
         }
 
         $data = [
@@ -221,12 +218,11 @@ class AssessiController extends Controller
         }
 
         if(!isset($assessi->ak01) || (isset($assessi->ak01) && $assessi->ak01->l_obs_langsung != 1)){
-            return redirect('/')->with('toast_error', 'Form IA.02 belum disetujui oleh asesor');
+            return redirect('/beranda')->with('toast_error', 'Form IA.02 belum disetujui oleh asesor');
         }
 
-        $tanggal_berakhir = substr($assessi->schema_class->event->event_time, 13);
-        if (date("m/d/Y") > $tanggal_berakhir) {
-            return redirect('/')->with('toast_error', 'Event telah berakhir, data tidak dapat diupdate kembali');
+        if ($assessi->schema_class->event->status == "Close") {
+            return redirect('/beranda')->with('toast_error', 'Event telah ditutup, data tidak dapat diupdate kembali');
         }
 
         $data = [

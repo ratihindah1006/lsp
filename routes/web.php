@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\AdminController;
@@ -234,3 +235,13 @@ Route::group(['middleware' => 'auth:assessor'], function () {
 });
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/artisan', function(){
+    Artisan::call('storage:link');
+});
+
+// Route::get('/link', function () {        
+//     $target = '/home/public_html/storage/app/public';
+//     $shortcut = '/home/public_html/public/storage';
+//     symlink($target, $shortcut);
+//  });

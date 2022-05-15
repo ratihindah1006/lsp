@@ -5,8 +5,6 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -73,8 +71,6 @@
   </header>
   <!-- ***** Header Area End ***** -->
 
-</div>
-
   <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
     <div class="container">
       <div class="row">
@@ -103,11 +99,11 @@
   </div>
 
   <div id="services" class="services section">
-    <div class="container"></div>
+    <div class="container">
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
           <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
-            <h4>Amazing <em>Services &amp; Features</em> for you</h4>
+            <h4><em>Layanan &amp; Fitur</em> menakjubkan untukmu</h4>
             <img src="/assets_landing/assets/images/heading-line-dec.png" alt="">
             <p>Beberapa fitur yang ada dalam sistem informasi Lembaga Sertifikasi Profesi</p>
           </div>
