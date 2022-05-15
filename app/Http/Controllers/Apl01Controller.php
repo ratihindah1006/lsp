@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataAssessiModel;
-use App\Models\AssessiModel;
 use App\Models\Apl01;
 use App\Models\APL02Model;
 use App\Models\SchemaClassModel;
@@ -15,19 +14,17 @@ use phpDocumentor\Reflection\Types\Null_;
 
 class Apl01Controller extends Controller
 {
-    public function index(SchemaClassModel $schema_class, $id)
+    public function index( $id)
     {
         
         $data = DataAssessiModel::find(Auth::user()->id);
         $data3=$data->assessis->find($id);
         $assessi = DataAssessiModel::find(Auth::user()->id);    
-        //dd($assessi->assessis->find($id)->schema_class->schema->category);
 
         return view('assessi.apl01', [
             'title' => 'APL 01',
             'assessi'=>$data3,
             'assessis' => $assessi->assessis->find($id)->schema_class->schema,
-            //'unit_schema' => $assessi->assessis->find($id)->schema_class->schema->unit_schemas,
             'category' => $assessi->assessis->find($id)->schema_class->schema->category,
             'apl01' => $assessi->assessis->find($id)->apl01,
         ]);
@@ -57,12 +54,19 @@ class Apl01Controller extends Controller
         ];
 
         $cek = $asesi->apl01;
+       
         if(!$cek){
-            $rules['ijazah'] = 'required|mimes:pdf|max:1024';
-            $rules['photo'] = 'required|mimes:pdf|max:1024';
-            $rules['ktp'] = 'required|mimes:pdf|max:1024';
-            $rules['transcript'] = 'required|mimes:pdf|max:1024';
-            $rules['assessi_signature'] = 'required|image|file|max:1024';
+            $rules['ijazah'] = 'required|file|mimes:pdf,jpg,png,jpeg|max:1024';
+            $rules['photo'] = 'required|file|mimes:pdf,jpg,png,jpeg|max:1024';
+            $rules['ktp'] = 'required|file|mimes:pdf,jpg,png,jpeg|max:1024';
+            $rules['transcript'] = 'required|file|mimes:pdf,jpg,png,jpeg|max:1024';
+            $rules['assessi_signature'] = 'required|file|image|mimes:jpeg,png,jpg|max:1024';
+        }else{
+            $rules['ijazah'] = 'file|mimes:pdf,jpg,png,jpeg|max:1024';
+            $rules['photo'] = 'file|mimes:pdf,jpg,png,jpeg|max:1024';
+            $rules['ktp'] = 'file|mimes:pdf,jpg,png,jpeg|max:1024';
+            $rules['transcript'] = 'file|mimes:pdf,jpg,png,jpeg|max:1024';
+            $rules['assessi_signature'] = 'file|image|mimes:jpeg,png,jpg|max:1024';
         }
 
         $validateData = $request->validate($rules);
@@ -96,6 +100,7 @@ class Apl01Controller extends Controller
         $validateData['comp_fax'] = $request->comp_fax;
         $validateData['postal_code'] = $request->postal_code;
       
+
         if ($cek == Null) {
             Apl01::create($validateData);
             return redirect('/beranda')->with('toast_success', 'Apl01 Berhasil diinput');

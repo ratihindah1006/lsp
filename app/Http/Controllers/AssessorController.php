@@ -93,50 +93,47 @@ class AssessorController extends Controller
     {
         $data_assessor = DataAssessorModel::find(Auth::user()->id);
         foreach ($data_assessor->assessors as $a) {
-            
             foreach ($a->assessis as $b) {
-                
-                
                 $assessi = $b::find($id);
-                return view('assessor.apl01', [
-                    'apl01' => $assessi->apl01,
-                    'assessi' => $assessi,
-                    'title' => 'APL-01',
-                    'category' => $assessi->schema_class->schema->category,
-                    'assessis' => $assessi->schema_class->schema,
-                ]);
             }
         }
+        return view('assessor.apl01', [
+            'apl01' => $assessi->apl01,
+            'assessi' => $assessi,
+            'title' => 'APL-01',
+            'category' => $assessi->schema_class->schema->category,
+            'assessis' => $assessi->schema_class->schema,
+            'assessor_id' => $assessi->assessor_id,
+        ]);
     }
 
     public function apl02($id)
     {
         // $assessor = AssessorModel::find(Auth::user()->id);
         $data_assessor = DataAssessorModel::find(Auth::user()->id);
+        $assessment = [];
         foreach ($data_assessor->assessors as $a) {
             $assessor = $a;
             foreach ($a->assessis as $b) {
                 $assessi = $b::find($id);
                 if (isset($assessi->apl02->assessment)) {
                     $assessment = json_decode($assessi->apl02->assessment);
-                } else {
-                    $assessment = [];
                 }
-                return view('assessor.apl02', [
-                    'title' => 'APL02',
-                    'assessi' => $assessi,
-                    'skema' => $assessi->schema_class->schema,
-                    'asesor' => $assessor,
-                    'apl01' => $assessi->apl01,
-                    'class' => $assessi->schema_class,
-                    'units' => $assessi->schema_class->schema->unit_schemas,
-                    'apl02' => $assessi->apl02,
-                    'assessment' => $assessment,
-
-                ]);
             }
         }
+        return view('assessor.apl02', [
+            'title' => 'APL02',
+            'assessi' => $assessi,
+            'skema' => $assessi->schema_class->schema,
+            'asesor' => $assessor,
+            'apl01' => $assessi->apl01,
+            'class' => $assessi->schema_class,
+            'units' => $assessi->schema_class->schema->unit_schemas,
+            'apl02' => $assessi->apl02,
+            'assessment' => $assessment,
+        ]);
     }
+   
     public function export_apl01($id)
     {
         $data_assessor = DataAssessorModel::find(Auth::user()->id);
@@ -144,18 +141,18 @@ class AssessorController extends Controller
             foreach ($a->assessis as $b) {
                 $assessi = $b::find($id);
                 $print = PDF::loadview(
-                    'assessi.print_apl01',
+                    'assessor.print_apl01',
                     [
                         'apl01' => $assessi->apl01,
                         'assessi' => $assessi,
                         'title' => 'Skema',
                         'assessis' => $assessi->schema_class->schema,
-
                     ]
                 );
                 return $print->download('assessor.print_apl01');
             }
         }
+      
     }
     public function export($id)
     {
@@ -181,10 +178,6 @@ class AssessorController extends Controller
                     'assessment' => $assessment,
 
                 ]);
-                //mengambil data dan tampilan dari halaman laporan_pdf
-                //data di bawah ini bisa kalian ganti nantinya dengan data dari database
-
-                //mendownload laporan.pdf
                 return $print->download('assessor.print_apl02');
             }
         }
@@ -198,19 +191,23 @@ class AssessorController extends Controller
                 $assessi = $b->find($id);
                 if ($assessi->apl01 != null) {
                     $validateData = $request->validate([
-                        'assessor_signature' => 'required|image|file|max:1024',
+                        'assessor_signature' => 'file|image|mimes:jpeg,jpg,png|max:1024',
                         'status' => 'required',
 
                     ]);
                     $validateData['note'] = $request->note;
                     $validateData['assessi_id'] = $assessi->id;
+                    if($request->hasFile('assessor_signature')){ 
                     $validateData['assessor_signature'] = $request->file('assessor_signature')->store('assessor_signature');
+                    }
                     $assessi->apl01->update($validateData);
-                    return redirect('/assessi'.'/'.$a->id)->with('toast_success', 'Status berhasil di Update!');
+                   
                 }
             }
         }
-      
+        
+        $assessor = $assessi->assessor_id;
+        return redirect('/assessi/'.$assessor)->with('toast_success', 'Status berhasil di Update!');
         
     }
 
@@ -230,9 +227,9 @@ class AssessorController extends Controller
                     $assessi->apl02->update($validateData);
                 }
             }
-            return redirect('/assessi'.'/'.$a->id)->with('toast_success', 'Status berhasil di Update!');
         }
-        
+        $assessor = $assessi->assessor_id;
+        return redirect('/assessi/'.$assessor)->with('toast_success', 'Status berhasil di Update!');
     }
 
     public function ak01(AssessiModel $assessi)

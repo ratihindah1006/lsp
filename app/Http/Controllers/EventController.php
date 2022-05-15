@@ -42,7 +42,7 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, AdminModel $admin)
+    public function store(Request $request)
     {
         
         $validateData = $request->validate([

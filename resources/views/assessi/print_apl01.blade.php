@@ -37,9 +37,9 @@
             <td width="100"> Tempat Lahir</td>
             <td width="10">:</td>
             <td width="150">{{ $apl01->place_of_birth }}</td>
-            <td width="100">Alamat Kantor</td>
+            <td width="100">Fax Kantor</td>
             <td width="10">:</td>
-            <td width="150">{{ $apl01->comp_address }}</td>
+            <td width="150">{{ $apl01->comp_fax }}</td>
         </tr>
         <tr >
             <td width="100"> Tanggal Lahir</td>
@@ -58,20 +58,22 @@
             <td width="150">{{ $apl01->comp_email }}</td>
         </tr>
         <tr >
-            <td width="100"> Alamat</td>
-            <td width="10">:</td>
-            <td width="150">{{ $apl01->address }}</td>
-            <td width="100">Fax Kantor</td>
-            <td width="10">:</td>
-            <td width="150">{{ $apl01->comp_fax }}</td>
-        </tr>
-        <tr >
-            <td width="100"> Nomor Ponsel</td>
+             <td width="100"> Nomor Ponsel</td>
             <td width="10">:</td>
             <td width="150">{{ $apl01->no_hp }}</td>
             <td width="100">Kode Pos</td>
             <td width="10">:</td>
             <td width="150">{{ $apl01->postal_code }}</td>
+        </tr>
+        <tr >
+           
+            <td width="100"> Alamat</td>
+            <td width="10">:</td>
+            <td width="150">{{ $apl01->address }}</td>
+            <td width="100">Alamat Kantor</td>
+            <td width="10">:</td>
+            <td width="150">{{ $apl01->comp_address }}</td>
+            
         </tr>
         <tr >
             <td width="100"> Pendidikan Terakhir</td>

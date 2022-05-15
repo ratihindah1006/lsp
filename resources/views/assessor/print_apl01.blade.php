@@ -108,7 +108,7 @@
             <td width="150">{{ $assessis->schema_title }}</td>
             <td width="100">Nomor Skema</td>
             <td width="10">:</td>
-            <td width="150">{{ $category->schema_code }}</td>
+            <td width="150">{{ $assessis->schema_code }}</td>
         </tr>
     </tbody>
 </table><br>
@@ -123,7 +123,7 @@
             </tr>
         </thead>
         <tbody class="my-text">
-            @foreach ($assessis->units as $value)
+            @foreach ($assessis->unit_schemas as $value)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $value->unit_code }}</td>

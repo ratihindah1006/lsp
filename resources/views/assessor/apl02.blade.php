@@ -118,6 +118,7 @@
                                         </div>
                                     </th>
                                     <td>
+                                        
                                         <a href="{{ asset('storage/' . $apl01->transcript) }}" class="my-text-link">Transkip
                                             nilai atau sertifikat pelatihan yang relevan dengan skema
                                             {{ $skema->schema_title }}</a><br><br>
@@ -143,7 +144,7 @@
                 <div class="card text-dark">
                     <div class="card-header" style="border-top: 7px solid  #191970;">
                         <div class="card-body" style="border: none">
-                            <p class="my-text">Note ***) Diisi oleh Assessor</p>
+                            <p class="my-text">Note *) Diisi oleh Assessor</p>
                             <table style="min-width: 100%" border="3" class="my-text">
                                 <tr>
                                     <th width="800px">&ensp;Rekomendasi </th>
