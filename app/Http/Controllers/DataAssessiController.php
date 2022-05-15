@@ -24,7 +24,7 @@ class DataAssessiController extends Controller
     {
         
         $data = $admin->where('id', Auth::user()->id)->get();
-        return view('admin.assessi.listAssessi', [
+        return view('admin.assessi.ListAssessi', [
             'class' => $class->id,
             'assessi' => $class->assessis,
             'title' => 'asesi',

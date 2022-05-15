@@ -27,7 +27,6 @@
 
                     <div class="card-body" style="border: none">
                         <div class="my-text">
-
                             <p>&emsp; Panduan Asesmen mandiri</p><br>
                             <p>&emsp; Judul Skema Sertifikasi &emsp; : &emsp; {{$skema->schema_title}}</p>
                             <p>&emsp; Nomor &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : &emsp; {{$skema->schema_code}}</p>
@@ -35,14 +34,13 @@
                             <p>&emsp; Nama Asesor &emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : &emsp; {{$asesor->data_assessor->name}}</p>
                             <p>&emsp; Nama Asesi &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; : &emsp; {{$asesi->data_assessi->name}}</p>
                             <p>&emsp; Tanggal &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; : &emsp; {{$asesi->schema_class->event->event_time}}</p><br>
-                            <p>&emsp; Asesi diminta untuk :</p>
-
-                            <li>&emsp; , Batasan Variabel, Panduan Penilaian, dan Aspek Kritis seluruh Unit Kompetensi yang diminta
+                            <p>Asesi diminta untuk :</p>
+                            <li>1. Batasan Variabel, Panduan Penilaian, dan Aspek Kritis seluruh Unit Kompetensi yang diminta
                                 untuk di Ases.</li>
-                            <li>&emsp; Melaksanakan Penilaian Mandiri secara obyektif atas sejumlah pertanyaan yang diajukan, bilamana Anda menilai diri sudah kompeten atas
+                            <li>2. Melaksanakan Penilaian Mandiri secara obyektif atas sejumlah pertanyaan yang diajukan, bilamana Anda menilai diri sudah kompeten atas
                                 pertanyaan tersebut, tuliskan tanda ? pada kolom (K), dan bilamana Anda menilai diri belum kompeten tuliskan tanda ? pada kolom (BK).</li>
-                            <li>&emsp; Mengisi bukti-bukti kompetensi yang relevan atas sejumlah pertanyaan yang dinyatakan Kompeten (bila ada).</li>
-                            <li>&emsp; Menandatangani form Asesmen Mandiri.</li>
+                            <li>3. Mengisi bukti-bukti kompetensi yang relevan atas sejumlah pertanyaan yang dinyatakan Kompeten (bila ada).</li>
+                            <li>4. Menandatangani form Asesmen Mandiri.</li>
                         </div>
                     </div>
                 </div>
@@ -173,16 +171,16 @@
                                         </div>
                                         </p>
                                     </th>
-                                    <td width="200px">&ensp;Nama : &ensp;</td>
+                                    <td width="200px" valign="top">&ensp;Nama : &ensp;</td>
                                     <th>&ensp;{{ $asesi->data_assessi->name }}&ensp;
-                                    <p>&ensp;TTD : &ensp;</p>
-                                    <p>
+                                        <p>&ensp;Tanda Tangan : &ensp;</p>
+                                        <p>
                                         <div class="col-xl-4">
                                             <div class="input-group mb-3">
                                                 <img class="txt" src="{{ asset('storage/' . $apl01->assessi_signature) }}" width="100px" height="100px">
                                             </div>
                                         </div>
-                                    </p>
+                                        </p>
                                     </th>
                                 </tr>
 
@@ -190,11 +188,20 @@
                                     <th rowspan="3">&ensp;
                                         <div class="col-xl-10">
                                             <label class="my-text">Catatan&emsp;:</label>
-                                            <textarea class="form-control @error('note') is-invalid @enderror" id="note" name="note" rows="5" disabled></textarea>
+                                            @if ($apl02 != null)
+                                                @if ($apl02->note != null)
+                                                    <textarea class="form-control @error('note') is-invalid @enderror" style="text-align: left; padding:10px" id="note"
+                                                        name="note" rows="3" disabled
+                                                        value="{{ $apl01->note }}">{{ $apl02->note }}</textarea>
+                                                @endif
+                                            @else
+                                                <textarea class="form-control @error('note') is-invalid @enderror" style="text-align: left; padding:10px" id="note"
+                                                    name="note" rows="3" disabled value=""></textarea>
+                                            @endif
                                             @error('note')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
                                             @enderror
                                         </div> <br>
                                     </th>
@@ -203,16 +210,16 @@
                                 </tr>
 
                                 <tr>
-                                    <td>&ensp;Nama : &ensp;</td>
+                                    <td valign="top">&ensp;Nama : &ensp;</td>
                                     <th>&ensp;{{ $asesor->data_assessor->name }}&ensp;
-                                    <p>&ensp;TTD : &ensp;</p>
-                                    <p>
+                                        <p>&ensp;Tanda Tangan : &ensp;</p>
+                                        <p>
                                         <div class="col-xl-4">
                                             <div class="input-group mb-3">
                                                 <img class="txt" src="{{ asset('storage/' . $apl01->assessor_signature) }}" width="100px" height="100px">
                                             </div>
                                         </div>
-                                    </p>
+                                        </p>
                                     </th>
 
                                 </tr>

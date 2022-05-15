@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\DataAssessiModel;
 use App\Models\AssessiModel;
 use App\Models\Apl01;
+use App\Models\APL02Model;
 use App\Models\SchemaClassModel;
 use Illuminate\Support\Facades\Auth;
 use PDF;
@@ -49,14 +50,7 @@ class Apl01Controller extends Controller
             'email' => 'required|email',
             'no_hp' => 'required|min:11',
             'last_education' => 'required',
-            // 'comp_name' => 'required',
-            // 'position' => 'required',
              'job_title' => 'required',
-            // 'comp_address' => 'required',
-            // 'comp_telp' => 'min:10|numeric',
-        //    // 'comp_email' => 'required',
-        //     'comp_fax' => 'min:10|numeric',
-        //     'postal_code' => 'min:5|numeric',
             'sert_schema' => 'required',
             'assessment_purpose' => 'required',
             
@@ -119,6 +113,7 @@ class Apl01Controller extends Controller
             $validateData['assessor_signature'] = Null;
             Apl01::where('assessi_id', $asesi->id)
                 ->update($validateData);
+            APL02Model::whereAssessiId($asesi->id)->delete();
             return redirect('/beranda')->with('toast_success', 'Apl01 Berhasil diupdate');
         }
 

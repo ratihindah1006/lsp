@@ -24,24 +24,22 @@
                     </div>
 
                     <div class="card-body" style="border: none">
-
-                        <p class="my-text">&emsp; Panduan Asesmen mandiri</p><br>
-                        <p class="my-text">&emsp; Judul Skema Sertifikasi &emsp; : &emsp; {{ $skema->schema_title }}</p>
-                        <p class="my-text">&emsp; Nomor &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : &emsp; {{ $skema->schema_code }}</p>
-                        <p class="my-text">&emsp; Tempat Uji Kompetensi&emsp;&ensp; : &emsp; {{ $class->tuk }}</p>
-                        <p class="my-text">&emsp; Nama Asesor &emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : &emsp; {{ $asesor->data_assessor->name }}</p>
-                        <p class="my-text">&emsp; Nama Asesi &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; : &emsp; {{ $assessi->data_assessi->name }} </p>
-                        <p class="my-text">&emsp; Tanggal &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; : &emsp; {{ $assessi->schema_class->event->event_time }}</p><br>
-                        <p class="my-text">&emsp; Asesi diminta untuk :</p>
-                        <p class="my-text">&emsp; 1. Mempelajari Kriteria Unjuk Kerja (KUK), Batasan Variabel, Panduan Penilaian, dan Aspek
-                            Kritis seluruh Unit Kompetensi yang diminta untuk di Ases.</p>
-                        <p class="my-text">&emsp; 2. Melaksanakan Penilaian Mandiri secara obyektif atas sejumlah pertanyaan yang diajukan,
-                            bilamana Anda menilai diri sudah kompeten atas
-                            pertanyaan tersebut, tuliskan tanda ? pada kolom (K), dan bilamana Anda menilai diri belum kompeten tuliskan
-                            tanda ? pada kolom (BK).</p>
-                        <p class="my-text">&emsp; 3. Mengisi bukti-bukti kompetensi yang relevan atas sejumlah pertanyaan yang dinyatakan
-                            Kompeten (bila ada).</p>
-                        <p class="my-text">&emsp; 4. Menandatangani form Asesmen Mandiri.</p>
+                        <div class="my-text">
+                            <p>&emsp; Panduan Asesmen mandiri</p><br>
+                            <p>&emsp; Judul Skema Sertifikasi &emsp; : &emsp; {{ $skema->schema_title }}</p>
+                            <p>&emsp; Nomor &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : &emsp; {{ $skema->schema_code }}</p>
+                            <p>&emsp; Tempat Uji Kompetensi&emsp;&ensp; : &emsp; {{ $class->tuk }}</p>
+                            <p>&emsp; Nama Asesor &emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : &emsp; {{ $asesor->data_assessor->name }}</p>
+                            <p>&emsp; Nama Asesi &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; : &emsp; {{ $assessi->data_assessi->name }} </p>
+                            <p>&emsp; Tanggal &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; : &emsp; {{ $assessi->schema_class->event->event_time }}</p><br>
+                            <p>&emsp; Asesi diminta untuk :</p>
+                            <li>1. Batasan Variabel, Panduan Penilaian, dan Aspek Kritis seluruh Unit Kompetensi yang diminta
+                                untuk di Ases.</li>
+                            <li>2. Melaksanakan Penilaian Mandiri secara obyektif atas sejumlah pertanyaan yang diajukan, bilamana Anda menilai diri sudah kompeten atas
+                                pertanyaan tersebut, tuliskan tanda ? pada kolom (K), dan bilamana Anda menilai diri belum kompeten tuliskan tanda ? pada kolom (BK).</li>
+                            <li>3. Mengisi bukti-bukti kompetensi yang relevan atas sejumlah pertanyaan yang dinyatakan Kompeten (bila ada).</li>
+                            <li>4. Menandatangani form Asesmen Mandiri.</li>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -105,7 +103,7 @@
                                         <br>
                                         <div class="form-check">
                                             <label class="radio-inline" for="{{ $element->id }}">
-                                                <input required class="form-check-input" type="radio" name="element_{{ $element->id }}" id="{{ $element->id }}" value="K" @if(isset($assessment[$i])) @if ($assessment && $assessment[$i]=='K' ) checked @endif @endif disabled>
+                                                <input style="background-clip:content-box; border:2px solid #ffffff; background-color:red" required class="form-check-input" type="radio" name="element_{{ $element->id }}" id="{{ $element->id }}" value="K" @if(isset($assessment[$i])) @if ($assessment && $assessment[$i]=='K' ) checked @endif @endif disabled>
                                             </label>
                                         </div>
                                     </th>
@@ -114,7 +112,7 @@
                                         <br>
                                         <div class="form-check">
                                             <label class="radio-inline" for="{{ $element->id }}">
-                                                <input class="form-check-input" type="radio" name="element_{{ $element->id }}" id="{{ $element->id }}" value="BK" @if(isset($assessment[$i])) @if ($assessment && $assessment[$i]=='BK' ) checked @endif @endif disabled>
+                                                <input style="background-clip:content-box; border:2px solid #ffffff; background-color:red" class="form-check-input" type="radio" name="element_{{ $element->id }}" id="{{ $element->id }}" value="BK" @if(isset($assessment[$i])) @if ($assessment && $assessment[$i]=='BK' ) checked @endif @endif disabled>
                                             </label>
                                             <?php $i++; ?>
                                         </div>
@@ -153,7 +151,7 @@
                                     <th colspan="2" width="300px">&ensp;Pemohon **)&ensp;</th>
                                 </tr>
                                 <tr>
-                                    <th rowspan="2">
+                                    <th rowspan="1">
                                         <p class="form-check-inline">&emsp;1. Assessment
                                         <div class="form-check form-check-inline">
                                             <input required class="form-check-input" type="radio" name="status" id="status" value="1" @if ($apl02->status == '1') checked @endif>
@@ -166,7 +164,7 @@
                                         </p>
                                         <p class="form-check-inline">&emsp;2. Proses Assessment dilanjutkan Melalui
                                         <div class="form-check form-check-inline">
-                                            <input required class="form-check-input" type="radio" name="lane" id="lane" value="Uji Kompetensi" @if ($apl02->lane == 'Uji Kompetensi') checked @endif>
+                                            <input class="form-check-input" type="radio" name="lane" id="lane" value="Uji Kompetensi" @if ($apl02->lane == 'Uji Kompetensi') checked @endif>
                                             <label class="form-check-label" for="lane">Uji Kompetensi</label>
                                         </div>
                                         <div class="form-check form-check-inline">
@@ -175,25 +173,23 @@
                                         </div>
                                         </p>
                                     </th>
-                                    <td width="200px">&ensp;Nama&ensp;</td>
-                                    <th>&ensp;{{ $assessi->data_assessi->name }}&ensp;</th>
-                                </tr>
-
-                                <tr>
-                                    <td>&ensp;TTD&ensp;</td>
-                                    <th>
+                                    <td width="200px" valign="top">&ensp;Nama : &ensp;</td>
+                                    <th>&ensp;{{ $assessi->data_assessi->name }}&ensp;
+                                        <p>&ensp;Tanda Tangan : &ensp;</p>
+                                        <p>
                                         <div class="col-xl-4">
                                             <div class="input-group mb-3">
                                                 <img class="txt" src="{{ asset('storage/' . $apl01->assessi_signature) }}" width="100px" height="100px">
                                             </div>
                                         </div>
+                                        </p>
                                     </th>
                                 </tr>
 
                                 <tr>
-                                    <th rowspan="4">&ensp;
+                                    <th rowspan="3">&ensp;
                                         <div class="col-xl-10">
-                                            <label class="my-text">&emsp;Catatan&emsp;:</label>
+                                            <label class="my-text">Catatan&emsp;:</label>
                                             <textarea class="form-control @error('note') is-invalid @enderror" id="note" name="note" rows="5" value=" {{ $apl02->note, old ('note') }}">{{ $apl02->note }}</textarea>
                                             @error('note')
                                             <div class="invalid-feedback">
@@ -202,30 +198,29 @@
                                             @enderror
                                         </div> <br>
                                     </th>
-                                    <th colspan="3">&ensp;Admin LSP/Assesor *)&ensp;</th>
+                                    <th colspan="2">&ensp;Admin LSP/Assesor ***)&ensp;</th>
 
                                 </tr>
 
                                 <tr>
-                                    <td>&ensp;Nama&ensp;</td>
-                                    <th>&ensp;{{ $asesor->data_assessor->name }}&ensp;</th>
-
-                                </tr>
-                                <tr>
-                                    <td>&ensp;TTD&ensp;</td>
-                                    <th>
+                                    <td valign="top">&ensp;Nama : &ensp;</td>
+                                    <th>&ensp;{{ $asesor->data_assessor->name }}&ensp;
+                                        <p>&ensp;Tanda Tangan : &ensp;</p>
+                                        <p>
                                         <div class="col-xl-4">
                                             <div class="input-group mb-3">
                                                 <img class="txt" src="{{ asset('storage/' . $apl01->assessor_signature) }}" width="100px" height="100px">
                                             </div>
                                         </div>
+                                        </p>
                                     </th>
+
                                 </tr>
                                 <tr>
                                     <td>&ensp;No. Registrasi&ensp;</td>
-                                    <th>&ensp;{{ $asesor->data_assessor->no_met }}&ensp;</th>
-
+                                    <th>&ensp;{{ $asesor->data_assessor->no_met }}&ensp;
                                 </tr>
+
                             </table>
                         </div>
                     </div><br><br>
