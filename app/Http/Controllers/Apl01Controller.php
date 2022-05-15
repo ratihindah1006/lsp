@@ -116,8 +116,6 @@ class Apl01Controller extends Controller
             APL02Model::whereAssessiId($asesi->id)->delete();
             return redirect('/beranda')->with('toast_success', 'Apl01 Berhasil diupdate');
         }
-
-        
     }
 
     public function export( $id){

@@ -18,14 +18,11 @@
     <form method="post" action="/KelasSkema/{{ $class->id }}">
         @method('put')
         @csrf
-        <div class="col-lg-8">
-            <div class="card-center-assessi">
-                <div class="row mt-1">
-                    <div class="col-md-14">
-                        <div class="card">
-                            <div class="card-content-center">
-                                <div class="card-body" style="width: 50rem;">
-                                    <div class="col-12">
+        <div class="card">
+            <div class="col-md-14">
+                    <div class="card-content-center">
+                        <div class="card-body" style="width: auto; ">
+                            <div class="col-xl-12 col-xxl-12">
                                         <div class="form-group">
                                             <label for="name" class="form-label">Nama</label>
                                             <input name="name" type="text"
@@ -158,8 +155,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
         </div>
     </form>
     </div>

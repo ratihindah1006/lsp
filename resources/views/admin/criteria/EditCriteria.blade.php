@@ -19,22 +19,14 @@
             </ol>
         </div>
     </div>
-</div>
 
-<div class="col-lg-8">
     <form method="post" action="/category/{{ $category->id }}/unit/{{ $unit->id }}/element/{{ $element->id }}/criteria/{{ $criteria->id }}">
         @method('put')
         @csrf
-        <div class="card-center">
-            <div class="row mt-1">
-                <div class="col-md-14">
-                    <div class="card">
-                        <div class="card-header" style="width: 50rem; ">
-                            <h4 class="card-title">Edit Kriteria Unjuk Kerja</h4>
-                        </div>
-                        <div class="card-content-center">
-                            <div class="card-body">
-
+        <div class="card">
+            <div class="col-md-14">
+                <div class="card-content-center">
+                    <div class="card-body" style="width: auto; ">
                             <div class="form-group">
                                     <label for="no_criteria" class="form-label">No Kriteria</label>
                                     <input type="text" class="form-control @error('no_criteria') is-invalid @enderror" id="no_criteria" name="no_criteria" value="{{ old('no_criteria', $criteria->no_criteria) }}">
@@ -61,9 +53,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </div>  
     </form>
 </div>
 

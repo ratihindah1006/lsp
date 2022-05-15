@@ -18,6 +18,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UnitSchemaController;
 use App\Http\Controllers\DataAssessiController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\SchemaClassController;
 use App\Http\Controllers\SoalPraktikController;
 use App\Http\Controllers\DataAssessorController;
@@ -39,7 +40,7 @@ use App\Http\Controllers\PertanyaanLisanController;
 
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
-Route::get('/', [AuthController::class, 'index'])->name('login');
+Route::get('/', [LandingPageController::class, 'index']);
 Route::post('/postLogin', [AuthController::class, 'postLogin'])->name('postLogin');
 
 

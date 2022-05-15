@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="data-table-area">
-        <div class="container">
+        <div class="container col-12">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="data-table-list">                        
@@ -25,7 +25,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive my-text">
-                                    <table class="display" id="example">
+                                    <table class="display p-0" id="example">
                                         <thead>
                                             <tr>
                                                 <th>No</th>

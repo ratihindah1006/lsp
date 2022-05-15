@@ -15,16 +15,14 @@
             </ol>
         </div>
     </div>
-    <div class="col-lg-8">
         <form method="post" action="/event/{{ $event->id}}">
             @method('put')
-            @csrf <div class="card-center-assessi">
-                <div class="row mt-1">
-                    <div class="col-md-14">
-                        <div class="card">
-                            <div class="card-content-center">
-                                <div class="card-body" style="width: 50rem;">
-                                    <div class="col-12">
+            @csrf 
+            <div class="card">
+                <div class="col-md-14">
+                        <div class="card-content-center">
+                            <div class="card-body" style="width: auto; ">
+                                <div class="col-xl-12 col-xxl-12">
                                         <div class="mb-3">
                                             <label for="event_name" class="form-label">Nama Event</label>
                                             <input type="text" class="form-control @error('event_name') is-invalid @enderror"
