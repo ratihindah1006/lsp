@@ -15,7 +15,7 @@
                                 class="btn-icon-right"><i class="ti ti-printer"></i></span></a>
                             <button type="submit" class="btn btn-primary float-right mr-1">Simpan <span
                                     class="btn-icon-right"><i class="fa fa-save"></i></span></button>
-                            <a href="/assessor" class="btn btn-danger float-right mr-1">Batal <span
+                            <a href="/assessi/{{ $assessor_id }}" class="btn btn-danger float-right mr-1">Batal <span
                                     class="btn-icon-right"><i class="fa fa-close"></i></span></a>
                         </div>
                         <div class="card-body" style="border: none">

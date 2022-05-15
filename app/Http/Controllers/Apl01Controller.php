@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataAssessiModel;
-use App\Models\AssessiModel;
 use App\Models\Apl01;
 use App\Models\APL02Model;
 use App\Models\SchemaClassModel;
@@ -15,19 +14,17 @@ use phpDocumentor\Reflection\Types\Null_;
 
 class Apl01Controller extends Controller
 {
-    public function index(SchemaClassModel $schema_class, $id)
+    public function index( $id)
     {
         
         $data = DataAssessiModel::find(Auth::user()->id);
         $data3=$data->assessis->find($id);
         $assessi = DataAssessiModel::find(Auth::user()->id);    
-        //dd($assessi->assessis->find($id)->schema_class->schema->category);
 
         return view('assessi.apl01', [
             'title' => 'APL 01',
             'assessi'=>$data3,
             'assessis' => $assessi->assessis->find($id)->schema_class->schema,
-            //'unit_schema' => $assessi->assessis->find($id)->schema_class->schema->unit_schemas,
             'category' => $assessi->assessis->find($id)->schema_class->schema->category,
             'apl01' => $assessi->assessis->find($id)->apl01,
         ]);

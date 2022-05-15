@@ -26,7 +26,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-8 ml-5">
+                                            <div class="col-9 ml-5">
                                                 <div class="form-group row">
                                                     <h5>Tambah Asesor (*maksimal 2)</h5>
                                                     <select style="width: 100%; height:40px;" name="data_assessor_id"
@@ -46,14 +46,14 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col ml-5">
+                                            <div class="col ml-4">
                                                 <div class="form-group row">
                                                     @if ($count < 2)
                                                         <button type="submit" class="btn btn-primary mt-4"
-                                                            style="width: 100px">Tambah</button>
+                                                        style="width: 50%; height:30px;">Tambah</button>
                                                     @else
                                                         <a class="btn btn-primary mt-4 disabled"
-                                                            style="width: 100px">Tambah</a>
+                                                        style="width: 50%; height:30px;">Tambah</a>
                                                     @endif
                                                 </div>
                                             </div>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\AdminModel;
 use App\Models\AssessiModel;
-use App\Models\Assessis;
 use App\Models\DataAssessiModel;
 use App\Models\SchemaClassModel;
 use Illuminate\Support\Facades\DB;
@@ -37,7 +36,7 @@ class DataAssessiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(SchemaClassModel $class, DataAssessiModel $assessi)
+    public function create(SchemaClassModel $class)
     {
         $classId = $class->event->schema_class->pluck("id");
         $assessis = DataAssessiModel::whereDoesntHave('assessis', function ($query) use ($classId) {

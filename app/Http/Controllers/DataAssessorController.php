@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\AdminModel;
 use App\Models\AssessorModel;
-use App\Models\CategoryModel;
 use App\Models\SchemaClassModel;
 use App\Models\DataAssessorModel;
-use App\Models\SchemaModel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 

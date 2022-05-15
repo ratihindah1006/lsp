@@ -26,7 +26,7 @@ class AuthController extends Controller
 
     public function postLogin(Request $request)
     {
-        //dd($request->all());
+        
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->intended('dashboard');
         } elseif (Auth::guard('assessi')->attempt(['email' => $request->email, 'password' => $request->password])) {
