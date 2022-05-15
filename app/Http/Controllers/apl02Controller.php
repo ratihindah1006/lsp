@@ -23,20 +23,29 @@ class Apl02Controller extends Controller
         } else {
             $assessment = [];
         }
-        return view(
-            'assessi.apl02',
-            [
-                'title' => 'apl02',
-                'asesi' => $assessi,
-                'skema' => $assessi->schema_class->schema,
-                'apl01' => $assessi->apl01,
-                'asesor' => $assessi->assessor,
-                'class' => $assessi->schema_class,
-                'units' => $assessi->schema_class->schema->unit_schemas,
-                'apl02' => $assessi->apl02,
-                'assessment' => $assessment,
-            ]
-        );
+        if ($assessi != null && $assessi->apl02 != null) {
+            return view(
+                'assessi.apl02',
+                [
+                    'title' => 'apl02',
+                    'asesi' => $assessi,
+                    'skema' => $assessi->schema_class->schema,
+                    'apl01' => $assessi->apl01,
+                    'asesor' => $assessi->assessor,
+                    'class' => $assessi->schema_class,
+                    'units' => $assessi->schema_class->schema->unit_schemas,
+                    'apl02' => $assessi->apl02,
+                    'assessment' => $assessment,
+                ]
+            );
+        } else {
+            return view(
+                'assessi.gagal',
+                [
+                    'title' => '404',
+                ]
+            );
+        }
     }
 
     public function store(Request $request, SchemaModel $schema, $id)
@@ -71,7 +80,8 @@ class Apl02Controller extends Controller
         return redirect('/beranda')->with('toast_success', 'assessment berhasil di tambahkan!');
     }
 
-    public function export( $id){
+    public function export($id)
+    {
         $dataAssessi = DataAssessiModel::find(Auth::user()->id);
         $assessi = $dataAssessi->assessis->find($id);
         //$assessi = AssessiModel::find(Auth::user()->id);
@@ -80,12 +90,13 @@ class Apl02Controller extends Controller
             $assessment = json_decode($assessi->apl02->assessment);
         } else {
             $assessment = [];
-        }    
-       
-        $print = PDF::loadview('assessi.print_apl02', 
-        //Sdd($assessi->assessis->find($id)->apl01);
-         [
-            'title' => 'apl02',
+        }
+
+        $print = PDF::loadview(
+            'assessi.print_apl02',
+            //Sdd($assessi->assessis->find($id)->apl01);
+            [
+                'title' => 'apl02',
                 'asesi' => $assessi,
                 'skema' => $assessi->schema_class->schema,
                 'apl01' => $assessi->apl01,
@@ -94,13 +105,13 @@ class Apl02Controller extends Controller
                 'units' => $assessi->schema_class->schema->unit_schemas,
                 'apl02' => $assessi->apl02,
                 'assessment' => $assessment,
-            
-        ]);
+
+            ]
+        );
         //mengambil data dan tampilan dari halaman laporan_pdf
         //data di bawah ini bisa kalian ganti nantinya dengan data dari database
-        
+
         //mendownload laporan.pdf
         return $print->download('assessi.print_apl02');
-    	
     }
 }
