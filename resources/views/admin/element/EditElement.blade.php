@@ -18,7 +18,7 @@
             </ol>
         </div>
     </div>
-    
+
     <form method="post" action="/category/{{ $category->id }}/unit/{{ $unit->id }}/element/{{ $element->id }}">
         @method('put')
         @csrf
@@ -26,53 +26,56 @@
             <div class="col-md-14">
                 <div class="card-content-center">
                     <div class="card-body" style="width: auto; ">
-                            <div class="form-group">
-                                    <label for="no_element" class="form-label">No Element</label>
-                                    <input type="text" class="form-control @error('no_element') is-invalid @enderror" id="no_element" name="no_element" value="{{ old('no_element', $element->no_element) }}">
-                                    @error('no_element')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="element_title" class="form-label">Judul Element</label>
-                                    <input type="text" class="form-control @error('element_title') is-invalid @enderror" id="element_title" name="element_title" value="{{ old('element_title', $element->element_title) }}">
-                                    @error('element_title')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="benchmark" class="form-label">Judul Benchmark</label>
-                                    <input type="text" class="form-control @error('benchmark') is-invalid @enderror" id="benchmark" name="benchmark" value="{{ old('benchmark', $element->benchmark) }}">
-                                    @error('benchmark')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="benchmark" class="form-label">Benchmark Link</label>
-                                    <input type="url" class="form-control @error('benchmark_url') is-invalid @enderror" id="benchmark_url" name="benchmark_url" value="{{ old('benchmark_url', $element->benchmark_url) }}">
-                                    @error('benchmark_url')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
-
-                                <div class="card-footer mb-3">
-                                    <button type="submit" class="btn btn-warning float-right mr-3">Simpan <span class="btn-icon-right"><i class="fa fa-save"></i></span></button>
-                                    <a href="/category/{{ $category->id }}/unit/{{ $unit->id }}/element" class="btn btn-outline-primary float-right mr-2">Batal</a>
-                                </div>
+                    
+                        <div class="form-group">
+                            <label for="no_element" class="form-label">No Element</label>
+                            <input type="text" class="form-control @error('no_element') is-invalid @enderror" id="no_element" name="no_element" value="{{ old('no_element', $element->no_element) }}">
+                            @error('no_element')
+                            <div class="invalid-feedback">
+                                {{ $message }}
                             </div>
+                            @enderror
                         </div>
+
+                        <div class="form-group">
+                            <label for="element_title" class="form-label">Judul Element</label>
+                            <input type="text" class="form-control @error('element_title') is-invalid @enderror" id="element_title" name="element_title" value="{{ old('element_title', $element->element_title) }}">
+                            @error('element_title')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="benchmark" class="form-label">Judul Benchmark</label>
+                            <input type="text" class="form-control @error('benchmark') is-invalid @enderror" id="benchmark" name="benchmark" value="{{ old('benchmark', $element->benchmark) }}">
+                            @error('benchmark')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="benchmark" class="form-label">Benchmark Link</label>
+                            <input type="url" class="form-control @error('benchmark_url') is-invalid @enderror" id="benchmark_url" name="benchmark_url" value="{{ old('benchmark_url', $element->benchmark_url) }}">
+                            @error('benchmark_url')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="card-footer mb-3">
+                            <button type="submit" class="btn btn-warning float-right mr-3">Simpan <span class="btn-icon-right"><i class="fa fa-save"></i></span></button>
+                            <a href="/category/{{ $category->id }}/unit/{{ $unit->id }}/element" class="btn btn-outline-primary float-right mr-2">Batal</a>
+                        </div>
+
                     </div>
                 </div>
+            </div>
+        </div>
     </form>
 </div>
 

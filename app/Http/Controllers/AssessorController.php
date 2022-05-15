@@ -109,14 +109,14 @@ class AssessorController extends Controller
         }
     }
 
-    public function apl02()
+    public function apl02($id)
     {
         // $assessor = AssessorModel::find(Auth::user()->id);
         $data_assessor = DataAssessorModel::find(Auth::user()->id);
         foreach ($data_assessor->assessors as $a) {
             $assessor = $a;
             foreach ($a->assessis as $b) {
-                $assessi = $b;
+                $assessi = $b::find($id);
                 if (isset($assessi->apl02->assessment)) {
                     $assessment = json_decode($assessi->apl02->assessment);
                 } else {
@@ -142,7 +142,7 @@ class AssessorController extends Controller
         $data_assessor = DataAssessorModel::find(Auth::user()->id);
         foreach ($data_assessor->assessors as $a) {
             foreach ($a->assessis as $b) {
-                $assessi = $b;
+                $assessi = $b::find($id);
                 $print = PDF::loadview(
                     'assessi.print_apl01',
                     [
@@ -163,7 +163,7 @@ class AssessorController extends Controller
         foreach ($data_assessor->assessors as $a) {
             $assessor = $a;
             foreach ($a->assessis as $b) {
-                $assessi = $b;
+                $assessi = $b::find($id);
                 if (isset($assessi->apl02->assessment)) {
                     $assessment = json_decode($assessi->apl02->assessment);
                 } else {

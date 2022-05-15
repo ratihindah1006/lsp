@@ -15,10 +15,10 @@
         </div>
     </div>
     <div class="data-table-area">
-            <div class="container col-12">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="data-table-list">
+        <div class="container col-12">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="data-table-list">
                         <a href="/category/create" class="btn btn-primary btn-sm"><i class="ti-plus ">&nbsp;&nbsp;&nbsp;</i>Add</a><br><br>
                         <div class="card">
                             <div class="card-body">
@@ -66,4 +66,4 @@
 
 
 
-    @endsection
+@endsection
