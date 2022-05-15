@@ -15,92 +15,83 @@
             </ol>
         </div>
     </div>
-</div>
 
-<form method="post" action="/skema/{{ $schema->id }}">
-    @method('put')
-    @csrf
-    <div class="col-lg-8">
-        <div class="card-center">
-            <div class="row mt-1">
-                <div class="col-md-14">
-                    <div class="card">
-                        <div class="card-header" style="width: 50rem; ">
-                            <h4 class="card-title">Edit Skema</h4>
-                        </div>
-                        <div class="card-content-center">
-                            <div class="card-body">
+    <form method="post" action="/skema/{{ $schema->id }}">
+        @method('put')
+        @csrf
+        <div class="card">
+            <div class="col-md-14">
+                <div class="card-content-center">
+                    <div class="card-body" style="width: auto;">
 
-                                <div class="form-group">
-                                    <label for="schema_code" class="form-label">Kode Skema</label>
-                                    <input type="text" class="form-control @error('schema_code') is-invalid @enderror" id="schema_code" name="schema_code" value="{{ old('schema_code', $schema->schema_code) }}">
-                                    @error('schema_code')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="schema_title" class="form-label">Judul Skema</label>
-                                    <input type="text" class="form-control @error('schema_title') is-invalid @enderror" id="schema_title" name="schema_title" value="{{ old('schema_title', $schema->schema_title) }}">
-                                    @error('schema_title')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="competency_package" class="form-label">Kemasan Kompetensi</label>
-                                    <select class="form-control @error('competency_package') is-invalid @enderror" id="competency_package" name="competency_package">
-
-                                        <option value="KKNI" {{  $schema->competency_package == 'KKNI' ? 'selected' : '' }}>
-                                            KKNI</option>
-                                        <option value="Okupasi Nasional" {{  $schema->competency_package == 'Okupasi Nasional' ? 'selected' : '' }}>
-                                            Okupasi Nasional</option>
-                                        <option value="Klaster" {{  $schema->competency_package == 'Klaster' ? 'selected' : '' }}>
-                                            Klaster</option>
-                                    </select>
-                                    @error('competency_package')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="requirement" class="form-label">Persyaratan Dasar Permohonan</label>
-                                    <input type="text" class="form-control @error('requirement') is-invalid @enderror" id="requirement" name="requirement" value="{{ old('requirement', $schema->requirement) }}">
-                                    @error('requirement')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="cost" class="form-label">Biaya</label>
-                                    <input type="text" class="form-control @error('cost') is-invalid @enderror" id="cost" name="cost" value="{{ old('cost', $schema->cost) }}">
-                                    @error('cost')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
-
-                                <div class="card-footer mb-3">
-                                    <button type="submit" class="btn btn-warning float-right mr-3">Simpan <span class="btn-icon-right"><i class="fa fa-save"></i></span></button>
-                                    <a href="/skema" class="btn btn-outline-primary float-right mr-2">Batal</a>
-                                </div>
-
+                        <div class="form-group">
+                            <label for="schema_code" class="form-label">Kode Skema</label>
+                            <input type="text" class="form-control @error('schema_code') is-invalid @enderror" id="schema_code" name="schema_code" value="{{ old('schema_code', $schema->schema_code) }}">
+                            @error('schema_code')
+                            <div class="invalid-feedback">
+                                {{ $message }}
                             </div>
+                            @enderror
                         </div>
+
+                        <div class="form-group">
+                            <label for="schema_title" class="form-label">Judul Skema</label>
+                            <input type="text" class="form-control @error('schema_title') is-invalid @enderror" id="schema_title" name="schema_title" value="{{ old('schema_title', $schema->schema_title) }}">
+                            @error('schema_title')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="competency_package" class="form-label">Kemasan Kompetensi</label>
+                            <select class="form-control @error('competency_package') is-invalid @enderror" id="competency_package" name="competency_package">
+
+                                <option value="KKNI" {{  $schema->competency_package == 'KKNI' ? 'selected' : '' }}>
+                                    KKNI</option>
+                                <option value="Okupasi Nasional" {{  $schema->competency_package == 'Okupasi Nasional' ? 'selected' : '' }}>
+                                    Okupasi Nasional</option>
+                                <option value="Klaster" {{  $schema->competency_package == 'Klaster' ? 'selected' : '' }}>
+                                    Klaster</option>
+                            </select>
+                            @error('competency_package')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="requirement" class="form-label">Persyaratan Dasar Permohonan</label>
+                            <input type="text" class="form-control @error('requirement') is-invalid @enderror" id="requirement" name="requirement" value="{{ old('requirement', $schema->requirement) }}">
+                            @error('requirement')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cost" class="form-label">Biaya</label>
+                            <input type="text" class="form-control @error('cost') is-invalid @enderror" id="cost" name="cost" value="{{ old('cost', $schema->cost) }}">
+                            @error('cost')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="card-footer mb-3">
+                            <button type="submit" class="btn btn-warning float-right mr-3">Simpan <span class="btn-icon-right"><i class="fa fa-save"></i></span></button>
+                            <a href="/skema" class="btn btn-outline-primary float-right mr-2">Batal</a>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</form>
+    </form>
+</div>
 
 @endsection

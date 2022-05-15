@@ -58,7 +58,7 @@
             <td width="150">{{ $apl01->comp_email }}</td>
         </tr>
         <tr >
-            <td width="100"> Nomor Ponsel</td>
+             <td width="100"> Nomor Ponsel</td>
             <td width="10">:</td>
             <td width="150">{{ $apl01->no_hp }}</td>
             <td width="100">Kode Pos</td>

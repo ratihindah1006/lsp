@@ -107,7 +107,7 @@ class AssessorController extends Controller
         ]);
     }
 
-    public function apl02()
+    public function apl02($id)
     {
         // $assessor = AssessorModel::find(Auth::user()->id);
         $data_assessor = DataAssessorModel::find(Auth::user()->id);
@@ -115,7 +115,7 @@ class AssessorController extends Controller
         foreach ($data_assessor->assessors as $a) {
             $assessor = $a;
             foreach ($a->assessis as $b) {
-                $assessi = $b;
+                $assessi = $b::find($id);
                 if (isset($assessi->apl02->assessment)) {
                     $assessment = json_decode($assessi->apl02->assessment);
                 }
@@ -140,7 +140,6 @@ class AssessorController extends Controller
         foreach ($data_assessor->assessors as $a) {
             foreach ($a->assessis as $b) {
                 $assessi = $b::find($id);
-         
                 $print = PDF::loadview(
                     'assessor.print_apl01',
                     [
@@ -150,10 +149,10 @@ class AssessorController extends Controller
                         'assessis' => $assessi->schema_class->schema,
                     ]
                 );
-               
+                return $print->download('assessor.print_apl01');
             }
         }
-        return $print->download('assessor.print_apl01');
+      
     }
     public function export($id)
     {
@@ -161,7 +160,7 @@ class AssessorController extends Controller
         foreach ($data_assessor->assessors as $a) {
             $assessor = $a;
             foreach ($a->assessis as $b) {
-                $assessi = $b;
+                $assessi = $b::find($id);
                 if (isset($assessi->apl02->assessment)) {
                     $assessment = json_decode($assessi->apl02->assessment);
                 } else {
@@ -207,8 +206,8 @@ class AssessorController extends Controller
             }
         }
         
-        $assessi = AssessiModel::where('id', $request->assessiId)->first();
-        return redirect('/assessi/'.$assessi->assessor_id)->with('toast_success', 'Status berhasil di Update!');
+        $assessor = $assessi->assessor_id;
+        return redirect('/assessi/'.$assessor)->with('toast_success', 'Status berhasil di Update!');
         
     }
 
@@ -228,9 +227,9 @@ class AssessorController extends Controller
                     $assessi->apl02->update($validateData);
                 }
             }
-            return redirect('/assessi'.'/'.$a->id)->with('toast_success', 'Status berhasil di Update!');
         }
-        
+        $assessor = $assessi->assessor_id;
+        return redirect('/assessi/'.$assessor)->with('toast_success', 'Status berhasil di Update!');
     }
 
     public function ak01(AssessiModel $assessi)

@@ -31,7 +31,6 @@
         </div>
     </div>
 
-
     <div class="data-table-area">
         <div class="container col-12">
             <div class="row">

@@ -123,7 +123,7 @@
             </tr>
         </thead>
         <tbody class="my-text">
-            @foreach ($assessis->unit_schemas->unit as $value)
+            @foreach ($assessis->unit_schemas as $value)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $value->unit_code }}</td>

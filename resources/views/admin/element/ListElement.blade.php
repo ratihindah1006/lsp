@@ -39,7 +39,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row">
-                                    <div class="col-1 ml-5">
+                                        <div class="col-1 ml-5">
                                             <div class="form-group row">
                                                 <label for="no_element" class="form-label my-text">No Element</label>
                                                 <input type="text" class="form-control @error('no_element') is-invalid @enderror" id="no_element" name="no_element" value="{{ old('element_title') }}">
@@ -92,7 +92,6 @@
                                 </div>
                             </div>
                         </form>
-
 
                         <div class="card">
                             <div class="card-body">
