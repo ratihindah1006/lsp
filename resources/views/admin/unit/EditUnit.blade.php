@@ -16,21 +16,14 @@
             </ol>
         </div>
     </div>
-</div>
 
 <form method="post" action="/category/{{ $category->id }}/unit/{{ $unit->id }}">
     @method('put')
     @csrf
-    <div class="col-lg-8">
-        <div class="card-center">
-            <div class="row mt-1">
-                <div class="col-md-14">
-                    <div class="card">
-                        <div class="card-header" style="width: 50rem; ">
-                            <h4 class="card-title">Edit Unit</h4>
-                        </div>
-                        <div class="card-content-center">
-                            <div class="card-body">
+    <div class="card">
+        <div class="col-md-14">
+            <div class="card-content-center">
+                <div class="card-body" style="width: auto; ">
 
                                 <div class="form-group">
                                     <label for="unit_code" class="form-label">Kode Unit</label>
@@ -58,10 +51,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    </div>
+            
 </form>
 </div>
 

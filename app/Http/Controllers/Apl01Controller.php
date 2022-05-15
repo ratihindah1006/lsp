@@ -50,14 +50,7 @@ class Apl01Controller extends Controller
             'email' => 'required|email',
             'no_hp' => 'required|min:11',
             'last_education' => 'required',
-            // 'comp_name' => 'required',
-            // 'position' => 'required',
              'job_title' => 'required',
-            // 'comp_address' => 'required',
-            // 'comp_telp' => 'min:10|numeric',
-        //    // 'comp_email' => 'required',
-        //     'comp_fax' => 'min:10|numeric',
-        //     'postal_code' => 'min:5|numeric',
             'sert_schema' => 'required',
             'assessment_purpose' => 'required',
             
@@ -115,8 +108,6 @@ class Apl01Controller extends Controller
             APL02Model::whereAssessiId($asesi->id)->delete();
             return redirect('/beranda')->with('toast_success', 'Apl01 Berhasil diupdate');
         }
-
-        
     }
 
     public function export( $id){

@@ -27,7 +27,7 @@
     </div>
 
     <div class="data-table-area">
-        <div class="container">
+        <div class="container col-12">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="data-table-list">
@@ -75,8 +75,8 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Unit Code</th>
-                                                <th>Unit Title</th>
+                                                <th>Kode Unit</th>
+                                                <th>Judul Unit</th>
                                                 <th width="100px">Action</th>
                                             </tr>
                                         </thead>

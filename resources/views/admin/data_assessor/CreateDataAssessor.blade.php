@@ -15,16 +15,13 @@
                 </ol>
             </div>
         </div>
-        <div class="col-lg-8">
             <form method="post" action="/dataAssessor">
                 @csrf
-                <div class="card-center">
-                    <div class="row mt-1">
-                        <div class="col-md-14">
-                            <div class="card">
-                                <div class="card-content-center">
-                                    <div class="card-body" style="width: 50rem; ">
-                                        <div class="col-12">
+                <div class="card">
+                    <div class="col-md-14">
+                            <div class="card-content-center">
+                                <div class="card-body" style="width: auto; ">
+                                    <div class="col-xl-12 col-xxl-12">
                                             <div class="form-group">
                                                 <label for="name" class="form-label">Nama</label>
                                                 <input name="name" type="text"
@@ -62,19 +59,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        {{-- <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="password" class="form-label">Password</label>
-                                                <input type="text"
-                                                    class="form-control @error('password') is-invalid @enderror"
-                                                    id="password" name="password" value="{{ old('password') }}">
-                                                @error('password')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
-                                            </div>
-                                        </div> --}}
+                                       
                                         <div class="card-footer mb-3">
                                             <button type="submit" class="btn btn-primary float-right mr-3">Simpan <span
                                                     class="btn-icon-right"><i class="fa fa-save"></i></span></button>

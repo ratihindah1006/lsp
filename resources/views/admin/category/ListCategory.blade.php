@@ -15,11 +15,11 @@
         </div>
     </div>
     <div class="data-table-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="data-table-list">
-                        <a href="/category/create" class="btn btn-primary btn-sm  mt-2"><i class="ti-plus ">&nbsp;&nbsp;&nbsp;</i>Add</a><br><br>
+            <div class="container col-12">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="data-table-list">
+                        <a href="/category/create" class="btn btn-primary btn-sm"><i class="ti-plus ">&nbsp;&nbsp;&nbsp;</i>Add</a><br><br>
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive my-text">
@@ -30,7 +30,7 @@
                                                 <th>Nomor SKKNI </th>
                                                 <th>Judul Kategori</th>
                                                 <th>Jenis Standar</th>
-                                                <th>Action</th>
+                                                <th width="100px">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>

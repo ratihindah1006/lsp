@@ -31,7 +31,7 @@ class DataAssessorController extends Controller
             return $query->whereIn('class_id', $classId);
         })->get();
         $count=AssessorModel::where('class_id',$class_id)->count();
-        return view('admin.assessor.listAssessor', [
+        return view('admin.assessor.ListAssessor', [
             'class'=>$class->id,
             'assessor' => $assessor,
             'assessors' => $class->assessors,

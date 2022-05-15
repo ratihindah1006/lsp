@@ -5,7 +5,7 @@
     <div class="row page-titles mx-0">
         <div class="col-sm-6 p-md-0">
             <div class="welcome-text">
-                <h4>Daftar Asesi</h4>
+                <h4>Tambah Asesi</h4>
             </div>
         </div>
         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -16,16 +16,13 @@
             </ol>
         </div>
     </div>
-    <div class="col-lg-8">
         <form method="post" action="/KelasSkema/{{ $class }}/dataAsesi">
             @csrf
-            <div class="card-center-assessi">
-                <div class="row mt-5">
-                    <div class="col-md-14">
-                        <div class="card">
-                            <div class="card-content-center">
-                                <div class="card-body" style="width: 50rem; ">
-                                    <div class="col-12">
+            <div class="card">
+                <div class="col-md-14">
+                        <div class="card-content-center">
+                            <div class="card-body" style="width: auto; ">
+                                <div class="col-xl-12 col-xxl-12">
                                         <div class="form-group">
                                         <label>Nama Asesi</label>
                                           <select class="form-control maximum-search-length @error('data_assessi_id') is-invalid @enderror" style="width: 100%; height:40px;" name="data_assessi_id" id="data_assessi_id">
