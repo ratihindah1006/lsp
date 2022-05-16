@@ -26,7 +26,7 @@
         </div>
     @endif
     
-    <form method="post" action="/soalpraktik/" enctype="multipart/form-data">
+    <form method="post" action="/soalpraktik" enctype="multipart/form-data">
       @method('put')
       @csrf
       <input type="hidden" id="codeId" name="codeId" value="{{ $code_praktik->id }}">
