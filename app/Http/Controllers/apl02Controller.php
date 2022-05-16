@@ -13,7 +13,6 @@ use PDF; //library pdf
 
 class Apl02Controller extends Controller
 {
-
     public function index($id)
     {
         $dataAssessi = DataAssessiModel::find(Auth::user()->id);
