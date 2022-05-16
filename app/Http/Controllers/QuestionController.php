@@ -99,6 +99,7 @@ class QuestionController extends Controller
                 list($type, $data) = array_pad(explode(';', $data),2,null); 
                 list(, $data) = array_pad(explode(',', $data),2,null); 
                 $data = base64_decode($data);
+                File::ensureDirectoryExists(public_path('storage').'/upload');
                 $image_name= "/upload/" . time().uniqid().'.png';
                 $path = public_path('storage') . $image_name;
                 file_put_contents($path, $data);
@@ -116,6 +117,7 @@ class QuestionController extends Controller
                 list($type, $data) = array_pad(explode(';', $data),2,null); 
                 list(, $data) = array_pad(explode(',', $data),2,null); 
                 $data = base64_decode($data);
+                File::ensureDirectoryExists(public_path('storage').'/upload');
                 $image_name= "/upload/" . time().uniqid().'.png';
                 $path = public_path('storage') . $image_name;
                 file_put_contents($path, $data);
@@ -205,6 +207,7 @@ class QuestionController extends Controller
                 list($type, $data) = array_pad(explode(';', $data),2,null); 
                 list(, $data) = array_pad(explode(',', $data),2,null); 
                 $data = base64_decode($data);
+                File::ensureDirectoryExists(public_path('storage').'/upload');
                 $image_name= "/upload/" . time().uniqid().'.png';
                 $path = public_path('storage') . $image_name;
                 file_put_contents($path, $data);
@@ -222,6 +225,7 @@ class QuestionController extends Controller
                 list($type, $data) = array_pad(explode(';', $data),2,null); 
                 list(, $data) = array_pad(explode(',', $data),2,null); 
                 $data = base64_decode($data);
+                File::ensureDirectoryExists(public_path('storage').'/upload');
                 $image_name= "/upload/" . time().uniqid().'.png';
                 $path = public_path('storage') . $image_name;
                 file_put_contents($path, $data);
