@@ -121,7 +121,7 @@
                       <label class="radio-inline">
                           <input type="radio" name="rekomendasi[{{ $loop->index }}]" value="K"
                           @if(!$answer->where('code_id', $schema_class->code_id)->where('unit_id', $unit->id)->where('rekomendasi', '===',  NULL)->first() && $answer->where('code_id', $schema_class->code_id)->where('unit_id', $unit->id)->where('rekomendasi', '==',  "1")->first())
-                            {{ ' checked' }}
+                            {{ 'checked' }}
                           @endif
                           ></label>
                     </td>
@@ -129,7 +129,7 @@
                       <label class="radio-inline">
                           <input type="radio" name="rekomendasi[{{ $loop->index }}]" value="BK"
                           @if(!$answer->where('code_id', $schema_class->code_id)->where('unit_id', $unit->id)->where('rekomendasi', '===',  NULL)->first() && $answer->where('code_id', $schema_class->code_id)->where('unit_id', $unit->id)->where('rekomendasi', '==',  "0")->first())
-                            {{ ' checked' }}
+                            {{ 'checked' }}
                           @endif
                           ></label>
                     </td>

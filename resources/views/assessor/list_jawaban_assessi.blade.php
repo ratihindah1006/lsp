@@ -62,12 +62,12 @@
                               <td><textarea name="catatan[{{ $item->id }}]" id="catatan[{{ $item->id }}]">{{ $item->catatan }}</textarea></td>
                               <td class="text-center"><input type="radio" name="rekomendasi[{{ $item->id }}]" id="rekomendasi[{{ $item->id }}]" value="1" 
                                 @if ($item->rekomendasi == "1")
-                                  {{ ' checked' }}
+                                  {{ 'checked' }}
                                 @endif
                                 ></td>
                               <td class="text-center"><input type="radio" name="rekomendasi[{{ $item->id }}]" id="rekomendasi[{{ $item->id }}]" value="0"
                                 @if ($item->rekomendasi == "0")
-                                  {{ ' checked' }}
+                                  {{ 'checked' }}
                                 @endif
                                 ></td>
                           </tr>
