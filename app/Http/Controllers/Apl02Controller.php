@@ -22,7 +22,7 @@ class Apl02Controller extends Controller
         } else {
             $assessment = [];
         }
-        if ($assessi != null && $assessi->apl02 != null) {
+        if ($assessi != null && $assessi->apl01 != null) {
             return view(
                 'assessi.apl02',
                 [
