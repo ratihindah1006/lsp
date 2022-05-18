@@ -137,15 +137,13 @@ class DataAssessorController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|unique:data_assessor',
-           
-            'no_met' => 'required'
+            'no_met' => 'required|unique:data_assessor'
           
         ]);
         
         $assessis = new DataAssessorModel([
             'name' => $request->name,
             'email' => $request->email,
-           
             'no_met' => $request->no_met,
            
         ]);
@@ -168,10 +166,12 @@ class DataAssessorController extends Controller
     {
         $rules = [
             'name' => 'required',
-            'no_met' => 'required'
         ];
         if ($request->email != $data_assessor->email) {
-            $rules['email'] = 'required';
+            $rules['email'] = 'required|unique:data_assessor';
+        }
+        if ($request->no_met != $data_assessor->no_met) {
+            $rules['no_met'] = 'required|unique:data_assessor';
         }
         $validateData = $request->validate($rules);
         $data_assessor->update($validateData);

@@ -775,7 +775,7 @@
                                                     </div>
                                                 @enderror
                                             </div>
-                                            <label class="my-text txt ">TTD Assssi
+                                            <label class="my-text txt ">TTD Asesi
                                                 <span class="text-danger txt">*</span>
                                                 <p>(*format jpg, jpeg, atau png dengan ukuran Max 1 MB) </p>
                                             </label>

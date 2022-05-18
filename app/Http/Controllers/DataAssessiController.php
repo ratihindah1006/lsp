@@ -179,7 +179,7 @@ class DataAssessiController extends Controller
             
         ];
         if ($request->email != $data_assessi->email) {
-            $rules['email'] = 'required';
+            $rules['email'] = 'required|unique:data_assessi';
         }
         $validateData = $request->validate($rules);
         $data_assessi->update($validateData);

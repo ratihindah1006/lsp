@@ -46,7 +46,7 @@ class EventController extends Controller
     {
         
         $validateData = $request->validate([
-            'event_name' => 'required',
+            'event_name' => 'required|unique:event',
             'event_time' => 'required',
             'type' => 'required',
             'status' => 'required',
@@ -102,12 +102,25 @@ class EventController extends Controller
     public function update(Request $request, EventModel $event, AdminModel $admin)
     {
         $rules=[
-            'event_name' => 'required',
+           
             'event_time' => 'required',
             'type' => 'required',
             'status' => 'required',
         ];
+        if ($request->event_name != $event->event_name) {
+            $rules['event_name'] = 'required|unique:event';
+        }
+        
         $validateData= $request->validate($rules);
+        $tmp = explode(" - ", $validateData['event_time']);
+        $date1 = $tmp[0];
+        $date2 = $tmp[1];
+        if(!$this->isValidDate($date1)){
+            return back()->with('toast_error', 'Tanggal tidak valid!')->withInput($request->all());
+        }
+        if(!$this->isValidDate($date2)){
+            return back()->with('toast_error', 'Tanggal tidak valid!')->withInput($request->all());
+        }
         $event->update($validateData);
 
         return redirect('/event')->with('toast_success', 'Event berhasil di Update!');

@@ -436,7 +436,7 @@
                                                     src="{{ asset('storage/' . $apl01->assessi_signature) }}" width="200px"
                                                     height="150px">
                                             </div>
-                                            <label class="my-text txt ">TTD Assssi
+                                            <label class="my-text txt ">TTD Asesi
                                             </label>
                                         </div>
                                     </div>
