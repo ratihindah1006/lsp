@@ -152,7 +152,7 @@ class DataAssessiController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|unique:data_assessi',
+            'email' => 'required|unique:data_assessi|email',
         ]);
         $data_assessi = new DataAssessiModel([
             'name' => $request->name,
@@ -179,7 +179,7 @@ class DataAssessiController extends Controller
             
         ];
         if ($request->email != $data_assessi->email) {
-            $rules['email'] = 'required|unique:data_assessi';
+            $rules['email'] = 'required|unique:data_assessi|email';
         }
         $validateData = $request->validate($rules);
         $data_assessi->update($validateData);

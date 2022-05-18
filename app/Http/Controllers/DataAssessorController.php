@@ -136,7 +136,7 @@ class DataAssessorController extends Controller
   
         $request->validate([
             'name' => 'required',
-            'email' => 'required|unique:data_assessor',
+            'email' => 'required|unique:data_assessor|email',
             'no_met' => 'required|unique:data_assessor'
           
         ]);
@@ -168,7 +168,7 @@ class DataAssessorController extends Controller
             'name' => 'required',
         ];
         if ($request->email != $data_assessor->email) {
-            $rules['email'] = 'required|unique:data_assessor';
+            $rules['email'] = 'required|unique:data_assessor|email';
         }
         if ($request->no_met != $data_assessor->no_met) {
             $rules['no_met'] = 'required|unique:data_assessor';
