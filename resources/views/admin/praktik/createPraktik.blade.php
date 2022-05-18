@@ -26,7 +26,7 @@
         </div>
     @endif
     
-    <form method="post" action="/soalpraktik/" enctype="multipart/form-data">
+    <form method="post" action="/soalpraktik" enctype="multipart/form-data">
       @method('put')
       @csrf
       <input type="hidden" id="codeId" name="codeId" value="{{ $code_praktik->id }}">
@@ -34,7 +34,7 @@
           <div class="col-xl-12 col-xxl-12">
               <div class="card">
                   <div class="card-header">
-                      <h4 class="card-title">Instruksi</h4>
+                      <h4 class="card-title">Instruksi Soal Praktik</h4>
                   </div>
                   <div class="card-body">
                       <div class="form-group">

@@ -13,7 +13,6 @@ use PDF; //library pdf
 
 class Apl02Controller extends Controller
 {
-
     public function index($id)
     {
         $dataAssessi = DataAssessiModel::find(Auth::user()->id);
@@ -23,7 +22,7 @@ class Apl02Controller extends Controller
         } else {
             $assessment = [];
         }
-        if ($assessi != null && $assessi->apl02 != null) {
+        if ($assessi != null && $assessi->apl01 != null) {
             return view(
                 'assessi.apl02',
                 [

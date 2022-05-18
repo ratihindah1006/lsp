@@ -122,16 +122,16 @@
                     <td class="text-center" style="vertical-align:top;">
                       <label class="radio-inline">
                           <input type="radio" name="rekomendasi[{{ $loop->index }}]" value="K"
-                          @if(!$answer->where('code_lisan_id', $schema_class->code_lisan_id)->where('unit_id', $unit->id)->where('rekomendasi', '===',  NULL)->first() && $answer->where('code_lisan_id', $schema_class->code_lisan_id)->where('unit_id', $unit->id)->where('rekomendasi', '===',  1)->first())
-                          {{ ' checked' }}
+                          @if(!$answer->where('code_lisan_id', $schema_class->code_lisan_id)->where('unit_id', $unit->id)->where('rekomendasi', '===',  NULL)->first() && $answer->where('code_lisan_id', $schema_class->code_lisan_id)->where('unit_id', $unit->id)->where('rekomendasi', '==',  "1")->first())
+                          {{ 'checked' }}
                           @endif
                           ></label>
                     </td>
                     <td class="text-center" style="vertical-align:top;">     
                       <label class="radio-inline">
                           <input type="radio" name="rekomendasi[{{ $loop->index }}]" value="BK"
-                          @if(!$answer->where('code_lisan_id', $schema_class->code_lisan_id)->where('unit_id', $unit->id)->where('rekomendasi', '===',  NULL)->first() && $answer->where('code_lisan_id', $schema_class->code_lisan_id)->where('unit_id', $unit->id)->where('rekomendasi', '===',  0)->first())
-                          {{ ' checked' }}
+                          @if(!$answer->where('code_lisan_id', $schema_class->code_lisan_id)->where('unit_id', $unit->id)->where('rekomendasi', '===',  NULL)->first() && $answer->where('code_lisan_id', $schema_class->code_lisan_id)->where('unit_id', $unit->id)->where('rekomendasi', '==',  "0")->first())
+                          {{ 'checked' }}
                           @endif
                           ></label>
                     </td>

@@ -10,7 +10,6 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
     <link href="/assets/vendor/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
-    <link href="/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet">
     <link href="/assets/css/style.css" rel="stylesheet">
     <link href="/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="/assets/vendor/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
@@ -48,7 +47,7 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href=# class="brand-logo">
+            <a href="/dashboard" class="brand-logo">
                 <img class="logo-abbr" src="/assets/images/unila.png" alt="">
                 <div class="brand-title">LSP Universitas Lampung</div>
             </a>
@@ -81,7 +80,7 @@
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
                                     <i class="mdi mdi-account"></i>
                                 </a>
-                                <span class="user-avatar"> {{ Auth::user()->name }}
+                                <span class="user-avatar"> {{ Auth::user()->name }}</span>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <a href="{{ url('logout') }}" class="dropdown-item">
                                             <i class="ti-power-off"></i>
@@ -109,7 +108,6 @@
             <div class="quixnav-scroll">
                 <ul class="metismenu" id="menu">
                     <li class="nav-label first">Main Menu</li>
-                    
 
                     <li class="{{ request()->is('dashboard/*') ? 'mm-active' : '' }}"><a href="/dashboard"
                             aria-expanded="false"><i class="icon icon-home"></i><span
@@ -143,8 +141,6 @@
                     <li class="{{ request()->is('soalpraktik/*') ? 'mm-active' : '' }}"><a href="/soalpraktik"
                             aria-expanded="false"><i class="icon icon-edit-72"></i><span class="nav-text">Soal Praktik</span></a></li>
                 </ul>
-                </li>
-                </ul>
             </div>
         </div>
         <!--**********************************
@@ -172,7 +168,7 @@
             <p><a href="#" target="_blank"></a> 2022</p>
         </div>
     </div>
-    </div>
+
     <!--**********************************
         Main wrapper end
     ***********************************-->
@@ -185,14 +181,9 @@
     <script src="/assets/js/quixnav-init.js"></script>
     <script src="/assets/js/custom.min.js"></script>
 
-    <script src="/assets/vendor/chartist/js/chartist.min.js"></script>
-
     <script src="/assets/vendor/moment/moment.min.js"></script>
     <script src="/assets/vendor/pg-calendar/js/pignose.calendar.min.js"></script>
-
-
-    <script src="/assets/js/dashboard/dashboard-2.js"></script>
-
+    
     <!-- Datatable -->
     <script src="/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="/assets/js/plugins-init/datatables.init.js"></script>
