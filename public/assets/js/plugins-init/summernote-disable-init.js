@@ -10,5 +10,6 @@ jQuery(document).ready(function() {
           ['insert', ['link', 'picture']],
           ['view', ['fullscreen', 'codeview', 'help']]
       ],
+      followingToolbar: false,
   }), $('.note-editable').attr('contenteditable',false);
 });
