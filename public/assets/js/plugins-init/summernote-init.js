@@ -13,6 +13,7 @@ jQuery(document).ready(function() {
         // minHeight: null,
         // maxHeight: null,
         // focus: !1
+        followingToolbar: false,
     }), $(".inline-editor").summernote({
         airMode: !0
     })

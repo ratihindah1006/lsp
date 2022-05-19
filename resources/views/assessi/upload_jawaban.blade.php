@@ -22,7 +22,7 @@
               <div class="form-group">
                 <label for="file_jawaban" class="font-weight-bold">Upload File</label>
                 <input type="file" class="form-control-file @error('file_jawaban') is-invalid @enderror" id="file_jawaban" name="file_jawaban" required>
-                <label class="text-danger font-weight-bold">*File Harus Berformat jpg|jpeg|png|pdf|doc|docx|pptx|ppt|xls|xlsx|zip|rar Max:2MB</label>
+                <label class="text-danger font-weight-bold">*File Harus Berformat jpg | jpeg | png | pdf | doc | docx | pptx | ppt | xls | xlsx | zip | rar Max:2MB</label>
                 @error('file_jawaban')
                 <div class="invalid-feedback">
                     {{ $message }}

@@ -44,12 +44,12 @@
                     <div class="row">
                         <div class="col-lg-12 col-sm-12">
                             @if ($p->schema_class->event->status == 'Open')
-                                <a href="/apl01/{{ $p->id }}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Permohonan Sertifikasi Kompetensi">
+                                <a href="/apl01/{{ $p->id }}" class="btn btn-primary btn-sm mb-2" data-toggle="tooltip" data-placement="bottom" title="Permohonan Sertifikasi Kompetensi">
                                     <span>Apl 01</span>
                                 </a>&emsp;
                                 @if ($p->apl01 != null)
                                     @if ($p->apl01->status == '1')
-                                    <a href="/apl02/{{ $p->id }}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Asesmen Mandiri">
+                                    <a href="/apl02/{{ $p->id }}" class="btn btn-primary btn-sm mb-2" data-toggle="tooltip" data-placement="bottom" title="Asesmen Mandiri">
                                         <span>Apl 02</span>
                                     </a>
                                 @if ($p->apl02 != null)
@@ -57,83 +57,83 @@
                                         &emsp;
                                         @if ($p->ak01)
                                             @if ($p->ak01->t_p_tulis == '1')
-                                                <a href="/assessi/muk06/{{ $p->id }}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Soal Esay">
+                                                <a href="/assessi/muk06/{{ $p->id }}" class="btn btn-primary btn-sm mb-2" data-toggle="tooltip" data-placement="bottom" title="Soal Esay">
                                                     <span>MUK06</span>
                                                 </a>&emsp;
                                             @else
-                                                <a href="/" class="btn btn-primary btn-sm disabled">
+                                                <a href="/" class="btn btn-primary btn-sm disabled mb-2">
                                                     <span>MUK06</span>
                                                 </a>&emsp;
                                             @endif
                                             @if ($p->ak01->t_p_lisan == '1')
-                                                <a href="/assessi/soalpraktik/{{ $p->id }}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Tugas Praktik Demonstrasi">
+                                                <a href="/assessi/soalpraktik/{{ $p->id }}" class="btn btn-primary btn-sm mb-2" data-toggle="tooltip" data-placement="bottom" title="Tugas Praktik Demonstrasi">
                                                     <span>FR.IA.02</span>
                                                 </a>
                                             @else
-                                                <a href="/" class="btn btn-primary btn-sm disabled">
+                                                <a href="/" class="btn btn-primary btn-sm disabled mb-2">
                                                     <span>FR.IA.02</span>
                                                 </a>
                                             @endif
                                         @else
-                                            <a href="/" class="btn btn-primary btn-sm disabled">
+                                            <a href="/" class="btn btn-primary btn-sm disabled mb-2">
                                                 <span>MUK06</span>
                                             </a>&emsp;
-                                            <a href="/" class="btn btn-primary btn-sm disabled">
+                                            <a href="/" class="btn btn-primary btn-sm disabled mb-2">
                                                 <span>FR.IA.02</span>
                                             </a>    
                                         @endif
                                     @else
                                         &emsp;
-                                        <a href="/" class="btn btn-primary btn-sm disabled">
+                                        <a href="/" class="btn btn-primary btn-sm disabled mb-2">
                                             <span>MUK06</span>
                                         </a>&emsp;
-                                        <a href="/" class="btn btn-primary btn-sm disabled">
+                                        <a href="/" class="btn btn-primary btn-sm disabled mb-2">
                                             <span>FR.IA.02</span>
                                         </a>
                                 @endif
                                 @else
                                     &emsp;
-                                    <a href="/" class="btn btn-primary btn-sm disabled">
+                                    <a href="/" class="btn btn-primary btn-sm disabled mb-2">
                                         <span>MUK06</span>
                                     </a>&emsp;
-                                    <a href="/" class="btn btn-primary btn-sm disabled">
+                                    <a href="/" class="btn btn-primary btn-sm disabled mb-2">
                                         <span>FR.IA.02</span>
                                     </a>
                                 @endif
                                 @else
-                                    <a href="/apl02" class="btn btn-primary btn-sm disabled">
+                                    <a href="/apl02" class="btn btn-primary btn-sm disabled mb-2">
                                         <span>Apl 02</span>
                                     </a>&emsp;
-                                    <a href="/" class="btn btn-primary btn-sm disabled">
+                                    <a href="/" class="btn btn-primary btn-sm disabled mb-2">
                                         <span>MUK06</span>
                                     </a>&emsp;
-                                    <a href="/" class="btn btn-primary btn-sm disabled">
+                                    <a href="/" class="btn btn-primary btn-sm disabled mb-2">
                                         <span>FR.IA.02</span>
                                     </a>
                                 @endif
                                 @else
-                                    <a href="/apl02" class="btn btn-primary btn-sm disabled">
+                                    <a href="/apl02" class="btn btn-primary btn-sm disabled mb-2">
                                         <span>Apl 02</span>
                                     </a>&emsp;
-                                    <a href="/assessi/muk06/{{ $p->id }}" class="btn btn-primary btn-sm disabled">
+                                    <a href="/assessi/muk06/{{ $p->id }}" class="btn btn-primary btn-sm disabled mb-2">
                                         <span>MUK06</span>
                                     </a>
                                     &emsp;
-                                    <a href="/" class="btn btn-primary btn-sm disabled">
+                                    <a href="/" class="btn btn-primary btn-sm disabled mb-2">
                                         <span>FR.IA.02</span>
                                     </a>
                                 @endif
                             @else
-                                <a href="/apl01/{{ $p->id }}" class="btn btn-primary btn-sm disabled">
+                                <a href="/apl01/{{ $p->id }}" class="btn btn-primary btn-sm disabled mb-2">
                                     <span>Apl 01</span>
                                 </a>&emsp;
-                                <a href="/apl02" class="btn btn-primary btn-sm disabled">
+                                <a href="/apl02" class="btn btn-primary btn-sm disabled mb-2">
                                     <span>Apl 02</span>
                                 </a>&emsp;
-                                <a href="/" class="btn btn-primary btn-sm disabled">
+                                <a href="/" class="btn btn-primary btn-sm disabled mb-2">
                                     <span>MUK06</span>
                                 </a>&emsp;
-                                <a href="/" class="btn btn-primary btn-sm disabled">
+                                <a href="/" class="btn btn-primary btn-sm disabled mb-2">
                                     <span>FR.IA.02</span>
                                 </a>
                             @endif
