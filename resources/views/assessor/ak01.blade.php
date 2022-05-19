@@ -15,6 +15,7 @@
               <h5 class="card-title bold">FR-AK-01 FORMULIR PERSETUJUAN ASESMEN DAN KERAHASIAAN</h5>
             </div>
             <div class="card-body">
+              <div class="table-responsive">
                 <table style="min-width: 100%" border="3">
                   <tr>
                     <td colspan="3">Persetujuan Assessmen ini untuk menjamin bahwa Peserta telah diberikan secara rinci tentang perencanaan dan proses asesmen</td>
@@ -208,6 +209,7 @@
                       </td>
                     </tr>
                 </table>
+              </div>  
               </div>
               <div class="card-footer">
                 <button type="submit" class="btn btn-primary float-right mr-3">Simpan <span

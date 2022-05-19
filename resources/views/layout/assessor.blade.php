@@ -10,7 +10,6 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
     <link href="/assets/vendor/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
-    <link href="/assets/vendor/chartist/css/chartist.min.css" rel="stylesheet">
     <link href="/assets/css/style.css" rel="stylesheet">
     <link href="/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="/assets/vendor/summernote/summernote.css" rel="stylesheet">
@@ -132,13 +131,8 @@
     <script src="/assets/js/quixnav-init.js"></script>
     <script src="/assets/js/custom.min.js"></script>
 
-    <script src="/assets/vendor/chartist/js/chartist.min.js"></script>
-
     <script src="/assets/vendor/moment/moment.min.js"></script>
     <script src="/assets/vendor/pg-calendar/js/pignose.calendar.min.js"></script>
-
-
-    <script src="/assets/js/dashboard/dashboard-2.js"></script>
 
     <!-- Datatable -->
     <script src="/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
