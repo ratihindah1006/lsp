@@ -36,8 +36,8 @@ class Apl01Controller extends Controller
         $asesi = $assessi->assessis->find($id);
 
         $rules = [
-            'nik' => 'required|min:16|numeric',
-            'name' => 'required',
+            'nik' => 'required|regex:/[0-9]{16}/',
+            'name' => 'required|regex:/^[A-Za-z ]+$/',
             'domicile' => 'required',
             'place_of_birth' => 'required',
             'date_of_birth' => 'required',
@@ -45,12 +45,11 @@ class Apl01Controller extends Controller
             'nationality' => 'required',
             'address' => 'required',
             'email' => 'required|email',
-            'no_hp' => 'required|min:11',
+            'no_hp' => 'required|regex:/^08[0-9]{9,11}$/',
             'last_education' => 'required',
-             'job_title' => 'required',
+            'job_title' => 'required',
             'sert_schema' => 'required',
             'assessment_purpose' => 'required',
-            
         ];
 
         $cek = $asesi->apl01;

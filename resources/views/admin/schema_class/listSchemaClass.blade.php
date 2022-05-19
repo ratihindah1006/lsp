@@ -30,7 +30,7 @@
                                                     <th>No</th>
                                                     <th>Nama Kelas</th>
                                                     <th>Tanggal</th>
-                                                    <th>TUK</th>
+                                                    <th>Event</th>
                                                     <th width="200px">Action</th>
                                                 </tr>
                                             </thead>
@@ -40,7 +40,7 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $value->name }}</td>
                                                         <td>{{ $value->date}}</td>
-                                                        <td>{{ $value->tuk }}</td>
+                                                        <td>{{ $value->event->event_name }}</td>
                                                         <td align="center" style="width: 18rem">
                                                             <a href="/KelasSkema/{{ $value->id}}/dataAsesor" class="btn btn-whatsapp btn-sm">Asesor<span
                                                                     ></span></a>
