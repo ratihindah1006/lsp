@@ -50,7 +50,7 @@
                 </table>
               </div>
               <h5 class="mt-5">PANDUAN BAGI ASESOR</h5>
-              <ul class="mb-5">
+              <ul class="mb-5" style="list-style: none;">
                 <li><span class="align-middle"><i class="fa fa-check text-info"></i></span> Lengkapi nama unit kompetensi, elemen, dan kriteria unjuk kerja sesuai kolom dalam tabel.</li>
                 <li><span class="align-middle"><i class="fa fa-check text-info"></i></span> Istilah Acuan Pembanding dengan SOP/spesifikasi produk dari industri/organisasi dari tempat kerja atau simulasi tempat kerja.</li>
                 <li><span class="align-middle"><i class="fa fa-check text-info"></i></span> Beri tanda centang (V) pada kolom K jika Anda yakin asesi dapat melakukan/mendemonstrasikan tugas sesuai KUK, atau centang (V) pada kolom BK bila sebaliknya.</li>
@@ -84,7 +84,7 @@
                     <td style="width: 50%">
                         <b>Element : {{ $e->element_title }}</b><br>
                         <b>Kriteria unjuk kerja: </b><br>
-                        <ul>
+                        <ul style="list-style: none;">
                         @foreach ($e->criterias as $criteria)
                           <li>{{ $criteria->element->no_element.'.'.$criteria->no_criteria.' '.$criteria->criteria_title }}</li>
                         @endforeach

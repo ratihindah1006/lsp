@@ -60,10 +60,10 @@
 @import url("./../icons/themify-icons/css/themify-icons.css");
 @import url("./../icons/line-awesome/css/line-awesome.min.css");
 @import url("./../icons/avasta/css/style.css");
-@import url(./../vendor/animate/animate.min.css);
-@import url(./../vendor/aos/css/aos.min.css);
-@import url(./../vendor/perfect-scrollbar/css/perfect-scrollbar.css);
-@import url(./../vendor/metismenu/css/metisMenu.min.css);
+@import url("./../vendor/animate/animate.min.css");
+@import url("./../vendor/aos/css/aos.min.css");
+@import url("./../vendor/perfect-scrollbar/css/perfect-scrollbar.css");
+@import url("./../vendor/metismenu/css/metisMenu.min.css");
 
 .card-center {
         margin: auto;
@@ -7946,7 +7946,8 @@ ul {
   margin: 0; }
 
 li {
-  list-style: none; }
+  list-style-position: inside !important;
+}
 
 a {
   color: #BDBDC7; }
