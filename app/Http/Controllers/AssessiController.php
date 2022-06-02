@@ -273,7 +273,7 @@ class AssessiController extends Controller
 
         $praktik->delete();
 
-        return redirect('/assessi/soalpraktik/'.$praktik->assessi->id)->with('toast_success', 'Pertanyaan berhasil dihapus!');
+        return redirect('/assessi/soalpraktik/'.$praktik->assessi->id)->with('toast_success', 'File berhasil dihapus!');
     }
 
 }

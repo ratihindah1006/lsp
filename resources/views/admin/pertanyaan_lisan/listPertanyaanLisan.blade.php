@@ -33,9 +33,9 @@
                                     </ul>
                                 </div>
                             @endif
-                            <a href="/soallisan/create" class="btn btn-primary btn-sm mr-2"><i
+                            <a href="/soallisan/create" class="btn btn-primary btn-sm mr-2 mb-2"><i
                                 class="ti-plus">&nbsp;&nbsp;&nbsp;</i>Tambah Soal</a>
-                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalTambahKodeSoalLisan"><i
+                            <button class="btn btn-primary btn-sm mb-2" data-toggle="modal" data-target="#modalTambahKodeSoalLisan"><i
                                     class="ti-plus">&nbsp;&nbsp;&nbsp;</i>Tambah Kode</button><br><br>
                             <div class="card">
                                 <div class="card-body">

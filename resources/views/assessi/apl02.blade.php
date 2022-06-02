@@ -34,13 +34,15 @@
                             <p>&emsp; Nama Asesor &emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : &emsp; {{$asesor->data_assessor->name}}</p>
                             <p>&emsp; Nama Asesi &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; : &emsp; {{$asesi->data_assessi->name}}</p>
                             <p>&emsp; Tanggal &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; : &emsp; {{$asesi->schema_class->event->event_time}}</p><br>
-                            <p>Asesi diminta untuk :</p>
-                            <li>1. Batasan Variabel, Panduan Penilaian, dan Aspek Kritis seluruh Unit Kompetensi yang diminta
-                                untuk di Ases.</li>
-                            <li>2. Melaksanakan Penilaian Mandiri secara obyektif atas sejumlah pertanyaan yang diajukan, bilamana Anda menilai diri sudah kompeten atas
-                                pertanyaan tersebut, tuliskan tanda ? pada kolom (K), dan bilamana Anda menilai diri belum kompeten tuliskan tanda ? pada kolom (BK).</li>
-                            <li>3. Mengisi bukti-bukti kompetensi yang relevan atas sejumlah pertanyaan yang dinyatakan Kompeten (bila ada).</li>
-                            <li>4. Menandatangani form Asesmen Mandiri.</li>
+                            <p>&emsp;Asesi diminta untuk :</p>
+                            <ul style="list-style: none">
+                                <li>&emsp;1. Batasan Variabel, Panduan Penilaian, dan Aspek Kritis seluruh Unit Kompetensi yang diminta
+                                    untuk di Ases.</li>
+                                <li>&emsp;2. Melaksanakan Penilaian Mandiri secara obyektif atas sejumlah pertanyaan yang diajukan, bilamana Anda menilai diri sudah kompeten atas
+                                    pertanyaan tersebut, tuliskan tanda ? pada kolom (K), dan bilamana Anda menilai diri belum kompeten tuliskan tanda ? pada kolom (BK).</li>
+                                <li>&emsp;3. Mengisi bukti-bukti kompetensi yang relevan atas sejumlah pertanyaan yang dinyatakan Kompeten (bila ada).</li>
+                                <li>&emsp;4. Menandatangani form Asesmen Mandiri.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -90,7 +92,7 @@
                                     <td style="width: 50%">
                                         <b>Element : {{ $element->element_title }}</b><br>
                                         <b>Kriteria unjuk kerja: </b><br>
-                                        <ul>
+                                        <ul style="list-style: none">
                                             @foreach ($element->criterias as $criteria)
                                             <li>{{ $r.'.'.$loop->iteration.' '.$criteria->criteria_title }}</li>
                                             @endforeach

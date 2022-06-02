@@ -49,7 +49,7 @@
                 </table>
               </div>
 
-              <ul class="mt-5 mb-4">
+              <ul class="mt-5 mb-4" style="list-style: none">
                 <p>Peserta diminta untuk:</p>
                 <li><span class="align-middle"><i class="fa fa-check text-info"></i></span> Membaca dengan seksama soal essay yang diberikan</li>
                 <li><span class="align-middle"><i class="fa fa-check text-info"></i></span> Menjawab pada kolom jawaban secara singkat dan jelas</li>

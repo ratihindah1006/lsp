@@ -66,7 +66,7 @@
                                                     <a href="/assessor/ak01/{{ $v->id }}" class="btn btn-primary btn-sm mb-2" data-toggle="tooltip" data-placement="bottom" title="Persetujuan Asesmen"><span>FR.AK.01</span></a>
                                                     @if (isset($v->ak01['tl_verif_porto']))
                                                         @if ($v->ak01['tl_verif_porto'])
-                                                            <a href="/assessor/" class="btn btn-primary btn-sm mb-2" data-toggle="tooltip" data-placement="bottom" title="Vertifikasi Portofolio"><span>Verif Porto</span></a>
+                                                            <a href="/assessor/" class="btn btn-primary btn-sm mb-2 disabled" data-toggle="tooltip" data-placement="bottom" title="Vertifikasi Portofolio"><span>Verif Porto</span></a>
                                                         @endif
                                                     @endif
                                                     @if (isset($v->ak01['l_obs_langsung']))
@@ -87,7 +87,7 @@
                                                     @endif
                                                     @if (isset($v->ak01['t_p_wawancara']))
                                                         @if ($v->ak01['t_p_wawancara'])
-                                                            <a href="/assessor/" class="btn btn-primary btn-sm mb-2" data-toggle="tooltip" data-placement="bottom" title="Pertanyaan Wawancara"><span>Pertanyaan Wawancara</span></a>
+                                                            <a href="/assessor/" class="btn btn-primary btn-sm mb-2 disabled" data-toggle="tooltip" data-placement="bottom" title="Pertanyaan Wawancara"><span>Pertanyaan Wawancara</span></a>
                                                         @endif
                                                     @endif
                                                 @else

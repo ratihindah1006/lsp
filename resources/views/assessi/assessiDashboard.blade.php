@@ -65,7 +65,7 @@
                                                     <span>MUK06</span>
                                                 </a>&emsp;
                                             @endif
-                                            @if ($p->ak01->t_p_lisan == '1')
+                                            @if ($p->ak01->l_obs_langsung == '1')
                                                 <a href="/assessi/soalpraktik/{{ $p->id }}" class="btn btn-primary btn-sm mb-2" data-toggle="tooltip" data-placement="bottom" title="Tugas Praktik Demonstrasi">
                                                     <span>FR.IA.02</span>
                                                 </a>

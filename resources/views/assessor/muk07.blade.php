@@ -50,7 +50,7 @@
                 </table>
               </div>
               
-              <ul class="mt-5 mb-4 list-icons">
+              <ul class="mt-5 mb-4" style="list-style: none;">
                 <p class="font-weight-bold">PANDUAN BAGI ASESOR: Instruksi</p>
                 <li><span class="align-middle"><i class="fa fa-check text-info"></i></span> Ajukan pertanyaan kepada Asesi dari daftar terlampir untuk mengonfirmasi pengetahuan, sebagaimana diperlukan.</li>
                 <li><span class="align-middle"><i class="fa fa-check text-info"></i></span> Tempatkan centang di kotak untuk mencerminkan prestasi Asesi (Kompeten 'K' atau Belum Kompeten 'BK').</li>
