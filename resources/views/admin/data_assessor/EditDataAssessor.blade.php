@@ -15,7 +15,7 @@
             </ol>
         </div>
     </div>
-    <form method="post" action="/dataAssessor/{{ $data_assessor->id }}">
+    <form method="post" action="/dataAssessor/{{ $data_assessor->id }}" enctype="multipart/form-data">
         @method('put')
         @csrf
         <div class="card">
@@ -55,7 +55,20 @@
                                                 </div>
                                             @enderror
                                         </div>
-                                  
+                                        <div class="form-group">
+                                            <label for="assessor_signature" class="form-label">Tanda Tangan</label>
+                                            <input type="file" class="form-control @error('assessor_signature') is-invalid @enderror"
+                                                id="assessor_signature" name="assessor_signature" value="{{ old('assessor_signature', $data_assessor->assessor_signature) }}">
+                                                <div class="input-group mb-3">
+                                                    <img src="{{ asset('storage/' . $data_assessor->assessor_signature) }}"
+                                                        style="margin-left:auto;margin-right:auto;display:block;width:200px">
+                                                </div>
+                                            @error('assessor_signature')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
                                         <div class="card-footer mb-3">
                                             <button type="submit" class="btn btn-primary float-right mr-3">Simpan <span
                                                     class="btn-icon-right"><i class="fa fa-save"></i></span></button>

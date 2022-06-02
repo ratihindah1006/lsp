@@ -15,7 +15,7 @@
                 </ol>
             </div>
         </div>
-            <form method="post" action="/dataAssessor">
+            <form method="post" action="/dataAssessor" enctype="multipart/form-data">
                 @csrf
                 <div class="card">
                     <div class="col-md-14">
@@ -59,7 +59,18 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                       
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="assessor_signature" class="form-label">Tanda Tangan</label>
+                                                <input type="file" class="form-control @error('assessor_signature') is-invalid @enderror"
+                                                    id="assessor_signature" name="assessor_signature" value="{{ old('assessor_signature') }}">
+                                                @error('assessor_signature')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
                                         <div class="card-footer mb-3">
                                             <button type="submit" class="btn btn-primary float-right mr-3">Simpan <span
                                                     class="btn-icon-right"><i class="fa fa-save"></i></span></button>

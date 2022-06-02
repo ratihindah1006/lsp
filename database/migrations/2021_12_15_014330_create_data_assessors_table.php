@@ -18,6 +18,7 @@ class CreateDataAssessorsTable extends Migration
             $table->string('name');
             $table->string('no_met');
             $table->string('email')->unique();
+            $table->string('assessor_signature');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->default(bcrypt('12345678'));
             $table->rememberToken();

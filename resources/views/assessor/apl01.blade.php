@@ -317,24 +317,32 @@
                                     <div class="col-xl-6">
                                         <label class="font-weight-bold  ">1.&ensp; Ijazah Pendidikan Terakhir (
                                             Minimal SMA)</label>
-                                        <div class="input-group mb-3">
+                                        <a href="/list/download_ijazah/{{$apl01->id}}" class="btn btn-whatsapp"><b>Download</b>
+                                            <span class="btn-icon-right"><i class="ti-arrow-down"></i></span></a>
+                                        <div class="input-group mb-3 mt-2">
                                             <iframe type="application/pdf" src="{{ asset('storage/' . $apl01->ijazah) }}"
                                                 width="600" height="400"></iframe>
                                         </div>
                                         <label class="font-weight-bold  ">2.&ensp; Pas Foto Berwarna</label>
-                                        <div class="input-group mb-3">
+                                        <a href="/list/download_photo/{{$apl01->id}}" class="btn btn-whatsapp"><b>Download</b>
+                                            <span class="btn-icon-right"><i class="ti-arrow-down"></i></span></a>
+                                        <div class="input-group mb-3 mt-2">
                                             <iframe type="application/pdf" src="{{ asset('storage/' . $apl01->photo) }}"
                                                 width="600" height="400"></iframe>
                                         </div>
                                     </div>
                                     <div class="col-xl-6">
                                         <label class="font-weight-bold  ">3.&ensp; KTP/SIM/Paspor</label>
-                                        <div class="input-group mb-3">
+                                        <a href="/list/download_ktp/{{$apl01->id}}" class="btn btn-whatsapp"><b>Download</b>
+                                            <span class="btn-icon-right"><i class="ti-arrow-down"></i></span></a>
+                                        <div class="input-group mb-3 mt-2">
                                             <iframe type="application/pdf" src="{{ asset('storage/' . $apl01->ktp) }}"
                                                 width="600" height="400"></iframe>
                                         </div>
                                         <label class="font-weight-bold  ">4.&ensp; Transkip Nilai</label>
-                                        <div class="input-group mb-3">
+                                        <a href="/list/download_transcript/{{$apl01->id}}" class="btn btn-whatsapp"><b>Download</b>
+                                            <span class="btn-icon-right"><i class="ti-arrow-down"></i></span></a>
+                                        <div class="input-group mb-3 mt-2">
                                             <iframe type="application/pdf"
                                                 src="{{ asset('storage/' . $apl01->transcript) }}" width="600"
                                                 height="400"></iframe>
@@ -343,7 +351,9 @@
                                     <div class="col-xl-12">
                                         <label class="font-weight-bold  ">5.&ensp; Surat Keterangan Pengalaman
                                             Kerja Minimal 1</label>
-                                        <div class="input-group mb-3">
+                                            <a href="/list/download_work/{{$apl01->id}}" class="btn btn-whatsapp"><b>Download</b>
+                                                <span class="btn-icon-right"><i class="ti-arrow-down"></i></span></a>
+                                        <div class="input-group mb-3 mt-2">
                                             <iframe type="application/pdf" src="{{ asset('storage/' . $apl01->work_exper_certif) }}"
                                                 width="600" height="400"></iframe>
                                         </div>

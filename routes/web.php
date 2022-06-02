@@ -215,7 +215,11 @@ Route::group(['middleware' => 'auth:assessor'], function () {
     Route::put('/ubah_password', [AssessorController::class, 'update_password']);
     Route::get('/list', [AssessorController::class, 'list']);
     Route::get('/list/{assessi:id}', [AssessorController::class, 'apl01']);
-    Route::get('/list02/{assessi:id}', [AssessorController::class, 'apl02']);
+    Route::get('/list/download_ijazah/{id}', [AssessorController::class, 'download_ijazah']);
+    Route::get('/list/download_ktp/{id}', [AssessorController::class, 'download_ktp']);
+    Route::get('/list/download_transcript/{id}', [AssessorController::class, 'download_transcript']);
+    Route::get('/list/download_photo/{id}', [AssessorController::class, 'download_photo']);
+    Route::get('/list/download_work/{id}', [AssessorController::class, 'download_work']);
     Route::put('/list01/{assessi:id}', [AssessorController::class, 'status_apl01']);
     Route::put('/list/02/{assessi:id}', [AssessorController::class, 'status_apl02']);
     Route::get('/exportlaporanapl02/{assessi:id}',  [AssessorController::class, 'export'] );

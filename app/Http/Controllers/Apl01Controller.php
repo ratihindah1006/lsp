@@ -59,12 +59,14 @@ class Apl01Controller extends Controller
             $rules['photo'] = 'required|file|mimes:pdf,jpg,png,jpeg|max:1024';
             $rules['ktp'] = 'required|file|mimes:pdf,jpg,png,jpeg|max:1024';
             $rules['transcript'] = 'required|file|mimes:pdf,jpg,png,jpeg|max:1024';
+            $rules['work_exper_certif'] = 'file|mimes:pdf,jpg,png,jpeg|max:1024';
             $rules['assessi_signature'] = 'required|file|image|mimes:jpeg,png,jpg|max:1024';
         }else{
             $rules['ijazah'] = 'file|mimes:pdf,jpg,png,jpeg|max:1024';
             $rules['photo'] = 'file|mimes:pdf,jpg,png,jpeg|max:1024';
             $rules['ktp'] = 'file|mimes:pdf,jpg,png,jpeg|max:1024';
             $rules['transcript'] = 'file|mimes:pdf,jpg,png,jpeg|max:1024';
+            $rules['work_exper_certif'] = 'file|mimes:pdf,jpg,png,jpeg|max:1024';
             $rules['assessi_signature'] = 'file|image|mimes:jpeg,png,jpg|max:1024';
         }
 

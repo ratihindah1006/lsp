@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AdminModel;
 use App\Models\AssessorModel;
+use App\Models\DataAssessiModel;
 use App\Models\SchemaClassModel;
 use App\Models\DataAssessorModel;
 use Illuminate\Support\Facades\DB;
@@ -134,20 +135,18 @@ class DataAssessorController extends Controller
     public function store_data_assessor(Request $request)
     {
   
-        $request->validate([
+        $rules=[
             'name' => 'required',
             'email' => 'required|unique:data_assessor|email',
-            'no_met' => 'required|unique:data_assessor'
-          
-        ]);
+            'no_met' => 'required|unique:data_assessor',
+            'assessor_signature' => 'required|file|image|mimes:png,jpg,jpeg|max:1024'
+        ];
+        $validateData=$request->validate($rules);
+       
+        $validateData['assessor_signature']=$request->file('assessor_signature')->store('assessor_signature');
         
-        $assessis = new DataAssessorModel([
-            'name' => $request->name,
-            'email' => $request->email,
-            'no_met' => $request->no_met,
-           
-        ]);
-        $assessis->save();
+        DataAssessorModel::create($validateData);
+        
         return redirect('/dataAssessor')->with('toast_success', 'Data Asesi berhasil di tambahkan!');
     }
 
@@ -166,6 +165,7 @@ class DataAssessorController extends Controller
     {
         $rules = [
             'name' => 'required',
+            'assessor_signature'=> 'file|image|mimes:jpeg,png,jpg|max:1024',
         ];
         if ($request->email != $data_assessor->email) {
             $rules['email'] = 'required|unique:data_assessor|email';
@@ -174,6 +174,10 @@ class DataAssessorController extends Controller
             $rules['no_met'] = 'required|unique:data_assessor';
         }
         $validateData = $request->validate($rules);
+        if ($request->hasFile('assessor_signature')) {
+            $validateData['assessor_signature']=$request->file('assessor_signature')->store('assessor_signature');
+        }
+        
         $data_assessor->update($validateData);
 
         return redirect('/dataAssessor')->with('toast_success', 'Data assessor berhasil di Update!');

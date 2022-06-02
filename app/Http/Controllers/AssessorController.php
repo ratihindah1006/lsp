@@ -21,7 +21,9 @@ use App\Models\DataAssessorModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException as ValidationException;
+use Svg\Tag\Rect;
 
 class AssessorController extends Controller
 {
@@ -113,6 +115,54 @@ class AssessorController extends Controller
             'assessor_id' => $assessi->assessor_id,
         ]);
     }
+
+    public function download_ijazah(Request $request)
+    {
+        $id = $request->id;
+        $apl01 = Apl01::find($id);
+        $file = $apl01->ijazah;
+        $path = public_path('storage/' . $file);
+        return response()->download($path);
+    }
+    public function download_ktp(Request $request)
+    {
+        $id = $request->id;
+        $apl01 = Apl01::find($id);
+        $file = $apl01->ktp;
+        $path = public_path('storage/' . $file);
+        return response()->download($path);
+    }
+    public function download_transcript(Request $request)
+    {
+        $id = $request->id;
+        $apl01 = Apl01::find($id);
+        $file = $apl01->transcript;
+        $path = public_path('storage/' . $file);
+        return response()->download($path);
+    }
+    public function download_photo(Request $request)
+    {
+        $id = $request->id;
+        $apl01 = Apl01::find($id);
+        $file = $apl01->photo;
+        $path = public_path('storage/' . $file);
+        return response()->download($path);
+    }
+    public function download_work(Request $request)
+    {
+        try {
+            $id = $request->id;
+            $apl01 = Apl01::find($id);
+            $file = $apl01->work_exper_certif;
+            $path = public_path('storage/' . $file);
+            return response()->download($path);
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('toast_error', 'File tidak ditemukan');
+        }
+       
+    }
+
+
 
     public function apl02($id)
     {

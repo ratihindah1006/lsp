@@ -44,7 +44,6 @@ class CreateApl01sTable extends Migration
             $table->string('transcript');
             $table->string('work_exper_certif')->nullable();
             $table->string('assessi_signature');
-            $table->string('assessor_signature')->nullable();
             $table->string('note')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
