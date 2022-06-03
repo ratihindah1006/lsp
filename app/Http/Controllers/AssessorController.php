@@ -248,21 +248,18 @@ class AssessorController extends Controller
 
     public function status_apl01(Request $request, Apl01 $apl01, $id)
     {
+        $request->assessor_agreement == "on" ? $request->assessor_agreement = 1 : $request->assessor_agreement = 0;
         $data_assessor = DataAssessorModel::find(Auth::user()->id);
         foreach ($data_assessor->assessors as $a) {
             foreach ($a->assessis as $b) {
                 $assessi = $b->find($id);
                 if ($assessi->apl01 != null) {
                     $validateData = $request->validate([
-                        'assessor_signature' => 'file|image|mimes:jpeg,jpg,png|max:1024',
                         'status' => 'required',
-
                     ]);
                     $validateData['note'] = $request->note;
+                    $validateData['assessor_agreement'] =  $request->assessor_agreement;
                     $validateData['assessi_id'] = $assessi->id;
-                    if($request->hasFile('assessor_signature')){ 
-                    $validateData['assessor_signature'] = $request->file('assessor_signature')->store('assessor_signature');
-                    }
                     $assessi->apl01->update($validateData);
                    
                 }

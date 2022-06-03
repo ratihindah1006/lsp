@@ -100,7 +100,7 @@ class Apl01Controller extends Controller
         $validateData['comp_email'] = $request->comp_email;
         $validateData['comp_fax'] = $request->comp_fax;
         $validateData['postal_code'] = $request->postal_code;
-      
+     
 
         if ($cek == Null) {
             Apl01::create($validateData);
@@ -108,7 +108,7 @@ class Apl01Controller extends Controller
         } else {
             $validateData['status'] = Null;
             $validateData['note'] = Null;
-            $validateData['assessor_signature'] = Null;
+            $validateData['assessor_agreement'] = Null;
             Apl01::where('assessi_id', $asesi->id)
                 ->update($validateData);
             APL02Model::whereAssessiId($asesi->id)->delete();

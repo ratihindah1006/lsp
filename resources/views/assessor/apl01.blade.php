@@ -8,11 +8,12 @@
             <div class="row">
                 <div class="col-lg-1"></div>
                 <div class="col-lg-12">
-                     <div class="card text-dark">
+                    <div class="card text-dark">
                         <div class="card-footer" style=" border-bottom: 7px solid  #191970;">
                             <h2 class="font-weight-bold card-title">FR-APL-01 FORMULIR PERMOHONAN SERTIFIKASI KOMPETENSI</h2>
-                            <a href="/exportlaporan_apl01/{{$assessi->id}}" class="btn btn-whatsapp float-right mr-3">Cetak<span
-                                class="btn-icon-right"><i class="ti ti-printer"></i></span></a>
+                            <a href="/exportlaporan_apl01/{{ $assessi->id }}"
+                                class="btn btn-whatsapp float-right mr-3">Cetak<span class="btn-icon-right"><i
+                                        class="ti ti-printer"></i></span></a>
                             <button type="submit" class="btn btn-primary float-right mr-1">Simpan <span
                                     class="btn-icon-right"><i class="fa fa-save"></i></span></button>
                             <a href="/assessi/{{ $assessor_id }}" class="btn btn-danger float-right mr-1">Batal <span
@@ -24,8 +25,7 @@
                                     <div class="col-xl-6">
                                         <h4 class="font-weight-bold ">Data Pribadi</h4><br>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold "
-                                                for="name">Nama
+                                            <label class="col-lg-4 col-form-label font-weight-bold " for="name">Nama
                                                 Lengkap
                                             </label>
                                             <div class="col-lg-6">
@@ -40,8 +40,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold  "
-                                                for="nik">NIK
+                                            <label class="col-lg-4 col-form-label font-weight-bold  " for="nik">NIK
                                             </label>
                                             <div class="col-lg-6">
                                                 <input name="nik" type="text" class="form-control" id="nik"
@@ -49,8 +48,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold  "
-                                                for="gender">Jenis Kelamin
+                                            <label class="col-lg-4 col-form-label font-weight-bold  " for="gender">Jenis
+                                                Kelamin
                                             </label>
                                             <div class="col-lg-6">
                                                 <input name="gender" type="text" class="form-control" id="gender"
@@ -87,18 +86,16 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold  "
-                                                for="address">Alamat
+                                            <label class="col-lg-4 col-form-label font-weight-bold  " for="address">Alamat
                                             </label>
                                             <div class="col-lg-6">
-                                                <textarea class="form-control @error('address') is-invalid @enderror" style="text-align: left; padding:10px" id="address"
-                                                        name="address" rows="3" disabled
-                                                        value="{{ $apl01->address }}">{{ $apl01->address }}</textarea>
+                                                <textarea class="form-control @error('address') is-invalid @enderror" style="text-align: left; padding:10px"
+                                                    id="address" name="address" rows="3" disabled
+                                                    value="{{ $apl01->address }}">{{ $apl01->address }}</textarea>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold  "
-                                                for="no_hp">Nomor Hp
+                                            <label class="col-lg-4 col-form-label font-weight-bold  " for="no_hp">Nomor Hp
                                             </label>
                                             <div class="col-lg-6">
                                                 <input name="no_hp" type="text" class="form-control" id=no_hp"
@@ -106,8 +103,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold  "
-                                                for="email">Email
+                                            <label class="col-lg-4 col-form-label font-weight-bold  " for="email">Email
                                             </label>
                                             <div class="col-lg-6">
                                                 <input name="email" type="text" class="form-control" id="email"
@@ -138,8 +134,8 @@
                                     <div class="col-xl-6">
                                         <h4 class="card-title">Data Pekerjaan</h4><br>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold  "
-                                                for="comp_name">Nama Perusahaan
+                                            <label class="col-lg-4 col-form-label font-weight-bold  " for="comp_name">Nama
+                                                Perusahaan
                                             </label>
                                             <div class="col-lg-6">
                                                 <input name="comp_name" type="text" class="form-control" id="comp_name"
@@ -147,8 +143,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold  "
-                                                for="job_title">Nama Pekerjaan
+                                            <label class="col-lg-4 col-form-label font-weight-bold  " for="job_title">Nama
+                                                Pekerjaan
                                             </label>
                                             <div class="col-lg-6">
                                                 <input name="job_title" type="text" class="form-control" id="job_title"
@@ -156,8 +152,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold  "
-                                                for="position">Jabatan
+                                            <label class="col-lg-4 col-form-label font-weight-bold  " for="position">Jabatan
                                             </label>
                                             <div class="col-lg-6">
                                                 <input name="position" type="text" class="form-control" id="position"
@@ -169,9 +164,9 @@
                                                 for="comp_address">Alamat Perusahaan
                                             </label>
                                             <div class="col-lg-6">
-                                                <textarea class="form-control @error('comp_address') is-invalid @enderror" style="text-align: left; padding:10px" id="comp_address"
-                                                name="comp_address" rows="3" disabled
-                                                value="{{ $apl01->comp_address }}">{{ $apl01->comp_address }}</textarea>
+                                                <textarea class="form-control @error('comp_address') is-invalid @enderror" style="text-align: left; padding:10px"
+                                                    id="comp_address" name="comp_address" rows="3" disabled
+                                                    value="{{ $apl01->comp_address }}">{{ $apl01->comp_address }}</textarea>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -184,8 +179,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold  "
-                                                for="comp_email">Email Perusahaan
+                                            <label class="col-lg-4 col-form-label font-weight-bold  " for="comp_email">Email
+                                                Perusahaan
                                             </label>
                                             <div class="col-lg-6">
                                                 <input name="comp_email" type="text" class="form-control" id="comp_email"
@@ -193,8 +188,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold  "
-                                                for="comp_fax">Fax Perusahaan
+                                            <label class="col-lg-4 col-form-label font-weight-bold  " for="comp_fax">Fax
+                                                Perusahaan
                                             </label>
                                             <div class="col-lg-6">
                                                 <input name="comp_fax" type="text" class="form-control" id="comp_fax"
@@ -202,8 +197,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label font-weight-bold  "
-                                                for="postal_code">Kode Pos
+                                            <label class="col-lg-4 col-form-label font-weight-bold  " for="postal_code">Kode
+                                                Pos
                                             </label>
                                             <div class="col-lg-6">
                                                 <input name="postal_code" type="text" class="form-control"
@@ -225,7 +220,7 @@
                 <div class="col-lg-1"></div>
                 <div class="col-lg-12">
                     <div class="card text-dark">
-                        <div class="card-header"  style="border-top: 7px solid  #191970;">
+                        <div class="card-header" style="border-top: 7px solid  #191970;">
                             <h4 class="font-weight-bold">Data Sertifikasi</h4>
                         </div>
 
@@ -291,7 +286,7 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $value->unit->unit_code }}</td>
                                                         <td>{{ $value->unit->unit_title }}</td>
-                                                        <td>{{$value->unit->category->jenis_standar}}</td>
+                                                        <td>{{ $value->unit->category->jenis_standar }}</td>
                                                 @endforeach
                                             </tbody>
                                         </table>
@@ -308,7 +303,7 @@
                 <div class="col-lg-1"></div>
                 <div class="col-lg-12">
                     <div class="card text-dark">
-                        <div class="card-header"  style="border-top: 7px solid  #191970;">
+                        <div class="card-header" style="border-top: 7px solid  #191970;">
                             <h4 class="font-weight-bold">Data Sertifikasi</h4>
                         </div>
                         <div class="card-body" style="border: none">
@@ -317,14 +312,16 @@
                                     <div class="col-xl-6">
                                         <label class="font-weight-bold  ">1.&ensp; Ijazah Pendidikan Terakhir (
                                             Minimal SMA)</label>
-                                        <a href="/list/download_ijazah/{{$apl01->id}}" class="btn btn-whatsapp"><b>Download</b>
+                                        <a href="/list/download_ijazah/{{ $apl01->id }}"
+                                            class="btn btn-whatsapp"><b>Download</b>
                                             <span class="btn-icon-right"><i class="ti-arrow-down"></i></span></a>
                                         <div class="input-group mb-3 mt-2">
                                             <iframe type="application/pdf" src="{{ asset('storage/' . $apl01->ijazah) }}"
                                                 width="600" height="400"></iframe>
                                         </div>
                                         <label class="font-weight-bold  ">2.&ensp; Pas Foto Berwarna</label>
-                                        <a href="/list/download_photo/{{$apl01->id}}" class="btn btn-whatsapp"><b>Download</b>
+                                        <a href="/list/download_photo/{{ $apl01->id }}"
+                                            class="btn btn-whatsapp"><b>Download</b>
                                             <span class="btn-icon-right"><i class="ti-arrow-down"></i></span></a>
                                         <div class="input-group mb-3 mt-2">
                                             <iframe type="application/pdf" src="{{ asset('storage/' . $apl01->photo) }}"
@@ -333,14 +330,16 @@
                                     </div>
                                     <div class="col-xl-6">
                                         <label class="font-weight-bold  ">3.&ensp; KTP/SIM/Paspor</label>
-                                        <a href="/list/download_ktp/{{$apl01->id}}" class="btn btn-whatsapp"><b>Download</b>
+                                        <a href="/list/download_ktp/{{ $apl01->id }}"
+                                            class="btn btn-whatsapp"><b>Download</b>
                                             <span class="btn-icon-right"><i class="ti-arrow-down"></i></span></a>
                                         <div class="input-group mb-3 mt-2">
                                             <iframe type="application/pdf" src="{{ asset('storage/' . $apl01->ktp) }}"
                                                 width="600" height="400"></iframe>
                                         </div>
                                         <label class="font-weight-bold  ">4.&ensp; Transkip Nilai</label>
-                                        <a href="/list/download_transcript/{{$apl01->id}}" class="btn btn-whatsapp"><b>Download</b>
+                                        <a href="/list/download_transcript/{{ $apl01->id }}"
+                                            class="btn btn-whatsapp"><b>Download</b>
                                             <span class="btn-icon-right"><i class="ti-arrow-down"></i></span></a>
                                         <div class="input-group mb-3 mt-2">
                                             <iframe type="application/pdf"
@@ -351,11 +350,13 @@
                                     <div class="col-xl-12">
                                         <label class="font-weight-bold  ">5.&ensp; Surat Keterangan Pengalaman
                                             Kerja Minimal 1</label>
-                                            <a href="/list/download_work/{{$apl01->id}}" class="btn btn-whatsapp"><b>Download</b>
-                                                <span class="btn-icon-right"><i class="ti-arrow-down"></i></span></a>
+                                        <a href="/list/download_work/{{ $apl01->id }}"
+                                            class="btn btn-whatsapp"><b>Download</b>
+                                            <span class="btn-icon-right"><i class="ti-arrow-down"></i></span></a>
                                         <div class="input-group mb-3 mt-2">
-                                            <iframe type="application/pdf" src="{{ asset('storage/' . $apl01->work_exper_certif) }}"
-                                                width="600" height="400"></iframe>
+                                            <iframe type="application/pdf"
+                                                src="{{ asset('storage/' . $apl01->work_exper_certif) }}" width="600"
+                                                height="400"></iframe>
                                         </div>
                                     </div>
                                 </div>
@@ -370,7 +371,7 @@
                 <div class="col-lg-1"></div>
                 <div class="col-lg-12">
                     <div class="card text-dark">
-                        <div class="card-header"  style="border-top: 7px solid  #191970;">
+                        <div class="card-header" style="border-top: 7px solid  #191970;">
                             <h4 class="font-weight-bold ">Halaman Persetujuan</h4>
                         </div>
                         <div class="card-body" style="border: none">
@@ -393,11 +394,11 @@
                                                     id="status" name="status">
                                                     <option value=>- - Pilih - -</option>
                                                     <option value="0"
-                                                    @if ($apl01 != null) {{ $apl01->status === '0' ? 'selected' : '' }}@else{{ old('status') == '0' ? 'selected' : '' }} @endif>
-                                                   Ditolak</option>
+                                                        @if ($apl01 != null) {{ $apl01->status === '0' ? 'selected' : '' }}@else{{ old('status') == '0' ? 'selected' : '' }} @endif>
+                                                        Ditolak</option>
                                                     <option value="1"
-                                                    @if ($apl01 != null) {{ $apl01->status === '1' ? 'selected' : '' }} @else {{ old('status') == '1' ? 'selected' : '' }} @endif>
-                                                    Diterima</option>
+                                                        @if ($apl01 != null) {{ $apl01->status === '1' ? 'selected' : '' }} @else {{ old('status') == '1' ? 'selected' : '' }} @endif>
+                                                        Diterima</option>
                                                 </select>
                                                 @error('status')
                                                     <div class="invalid-feedback">
@@ -410,13 +411,13 @@
                                     <div class="col-xl-6">
                                         <div class="form-group row">
                                             <label class="my-text">Catatan&emsp;:</label>
-                                            <textarea class="form-control @error('note') is-invalid @enderror" id="note" name="note" rows="3" value=" {{ $apl01->note, old ('note') }}">{{ $apl01->note }}</textarea>
+                                            <textarea class="form-control @error('note') is-invalid @enderror" id="note" name="note" rows="3"
+                                                value=" {{ $apl01->note, old('note') }}">{{ $apl01->note }}</textarea>
                                             @error('note')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>
                                             @enderror
-                                            
                                         </div>
                                     </div>
                                 </div>
@@ -424,7 +425,10 @@
                                     <div class="col-xl-6">
                                         <div class="form-group row">
                                             <div class="input-group mb-3">
-                                                <input type="file"
+                                                <img class="txt"
+                                                    src="{{ asset('storage/' . $assessi->assessor->data_assessor->assessor_signature) }}"
+                                                    width="200px" height="150px">
+                                                {{-- <input type="file"
                                                     class="form-control @error('assessor_signature') is-invalid @enderror"
                                                     value="{{ old('assessor_signature') }}" id="assessor_signature"
                                                     name="assessor_signature">
@@ -432,28 +436,37 @@
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
                                                     </div>
-                                                @enderror
+                                                @enderror --}}
                                             </div>
-                                            <label class="my-text txt ">TTD Assssor
-                                                <span class="text-danger txt">*</span>
-                                            </label>
+                                            <div class="row" style="margin: auto; text-align:center">
+                                                {{ $assessi->assessor->data_assessor->name }}
+                                                <div class="custom-control custom-switch d-inline ml-4">
+                                                    <input type="checkbox" class="custom-control-input"
+                                                        name="assessor_agreement" id="assessor_agreement" required
+                                                        @if (isset($apl01['assessor_agreement'])) @if ($apl01['assessor_agreement'])
+                                                    {{ 'checked' }} @endif
+                                                        @endif>
+                                                    <label class="custom-control-label" for="assessor_agreement"></label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-6">
                                         <div class="form-group row">
                                             <div class="input-group mb-3">
                                                 <img class="txt"
-                                                    src="{{ asset('storage/' . $apl01->assessi_signature) }}" width="200px"
-                                                    height="150px">
+                                                    src="{{ asset('storage/' . $apl01->assessi_signature) }}"
+                                                    width="200px" height="150px">
                                             </div>
-                                            <label class="my-text txt ">TTD Asesi
+                                            <label class="my-text txt ">{{ $apl01->name }}
                                             </label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
-                                <center><a href="#" class="btn btn-dark">Ke Atas <span class="btn-icon-right"><i class="fa fa-arrow-up"></i></span></a></center>
+                                <center><a href="#" class="btn btn-dark">Ke Atas <span class="btn-icon-right"><i
+                                                class="fa fa-arrow-up"></i></span></a></center>
                             </div> <br><br>
                         </div>
                     </div>
