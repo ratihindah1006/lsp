@@ -211,7 +211,7 @@
                                         <p>
                                         <div class="col-xl-4">
                                             <div class="input-group mb-3">
-                                                <img class="txt" src="{{ asset('storage/' . $apl01->assessor_signature) }}" width="100px" height="100px">
+                                                <img class="txt" src="{{ asset('storage/' . $asesor->data_assessor->assessor_signature) }}" width="100px" height="100px">
                                             </div>
                                         </div>
                                         </p>

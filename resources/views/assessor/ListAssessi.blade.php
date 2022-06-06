@@ -38,11 +38,7 @@
                                     @foreach ($assessi->assessors as $value)
                                     @foreach($value->assessis as $v)
                                     <tr>
-                                       
                                         <td>{{ $loop->iteration }}</td>
-
-                                        
-
                                         <td>{{ $v->data_assessi->name}}</td>
                                         <td>{{ $v->data_assessi->email }}</td>
                                         <td>{{$v->schema_class->name}}</td>
@@ -50,6 +46,13 @@
                                             @if ($v->apl01 != null)
                                             <a href="/list/{{ $v->id }}" class="btn btn-primary btn-sm mb-2" data-toggle="tooltip" data-placement="bottom" title="Permohonan Sertifikasi Kompetensi">
                                                 <span>Apl 01</span></a>
+                                            @elseif($v->apl01 != null && $v->apl01->status == 1)
+                                                <a href="/list/{{ $v->id }}" class="btn btn-success btn-sm mb-2" data-toggle="tooltip" data-placement="bottom" title="Permohonan Sertifikasi Kompetensi">
+                                                    <span>Apl 01</span></a>
+                                            @elseif($v->apl01 != null && $v->apl01->status == 0)
+                                                <a href="/list/{{ $v->id }}" class="btn btn-danger btn-sm mb-2" data-toggle="tooltip" data-placement="bottom" title="Permohonan Sertifikasi Kompetensi">
+                                                    <span>Apl 01</span></a>
+                                            
                                             @else
                                             <a href="/list/{{ $v->id }}" class="btn btn-primary btn-sm disabled mb-2">
                                                 <span>Apl 01</span></a>
