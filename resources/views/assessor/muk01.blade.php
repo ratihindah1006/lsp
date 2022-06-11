@@ -75,9 +75,9 @@
                     <td>Penilaian Lanjut</td>
                   </tr>
                   <tr class="text-center">
-                    <td><span class="badge badge-success text-light">K</span></td>
-                    <td><span class="badge badge-danger">BK</span></td>
-                    <td><span class="badge badge-primary">PL</span></td>
+                    <td><button type="button" style="border:none;" onclick="checkedK()"><span class="badge badge-success text-light" >K</span></button></td>
+                    <td><button type="button" style="border:none;" onclick="checkedBK()"><span class="badge badge-danger">BK</span></button></td>
+                    <td><button type="button" style="border:none;" onclick="checkedPL()"><span class="badge badge-primary">PL</span></button></td>
                   </tr>
                   @foreach ($unit->unit->elements as $e)
                   <tr>
@@ -187,4 +187,34 @@
     </div>
   </div>
 </form>
+<script>
+  var btns = document.querySelectorAll('input[type="radio"]');
+  function checkedK(){
+    for(var i=0; i < btns.length; i++){
+      if(btns[i].value == "K" && btns[i].checked == false) {
+        btns[i].checked = true;
+      } else{
+        btns[i].checked = false;
+      }
+    }
+  }
+  function checkedBK(){
+    for(var i=0; i < btns.length; i++){
+      if(btns[i].value == "BK" && btns[i].checked == false) {
+        btns[i].checked = true;
+      } else{
+        btns[i].checked = false;
+      }
+    }
+  }
+  function checkedPL() {
+    for(var i=0; i < btns.length; i++){
+      if(btns[i].value == "PL" && btns[i].checked == false) {
+        btns[i].checked = true;
+      } else{
+        btns[i].checked = false;
+      }
+    }
+  }
+</script>
 @endsection

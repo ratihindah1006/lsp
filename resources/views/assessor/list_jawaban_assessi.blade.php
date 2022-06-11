@@ -57,7 +57,7 @@
                         @forelse ($bukti as $item)
                           <tr class="text-dark">
                               <td>{{ $loop->iteration }}</td>
-                              <td><a href="/assessor/download/{{ $item->id }}" target="_blank" rel="noopener">{{ $item->file_name }}</a></td>
+                              <td><a href="/assessor/download/{{ $item->id }}" class="text-primary" target="_blank" rel="noopener"><u>{{ $item->file_name }}</u></a></td>
                               <td>{{ $item->keterangan ?? '-' }}</td>
                               <td><textarea name="catatan[{{ $item->id }}]" id="catatan[{{ $item->id }}]">{{ $item->catatan }}</textarea></td>
                               <td class="text-center"><input type="radio" name="rekomendasi[{{ $item->id }}]" id="rekomendasi[{{ $item->id }}]" value="1" 
