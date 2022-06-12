@@ -18,9 +18,13 @@ class CreateApl02sTable extends Migration
             $table->foreign('assessi_id')->references('id')->on('assessi')->onDelete("cascade");
             $table->bigInteger('assessi_id')->unsigned();
             $table->string('assessment');
+            $table->string('transcript');
+            $table->string('work_exper_certif');
             $table->string('status')->nullable();
             $table->string('lane')->nullable();
             $table->string('note')->nullable();
+            $table->boolean('assessor_agreement')->nullable();
+            $table->boolean('assessi_agreement')->nullable();
             $table->timestamps();
         });
     }

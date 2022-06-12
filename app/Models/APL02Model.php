@@ -9,7 +9,7 @@ class APL02Model extends Model
 {
     protected $table = "apl02";
     protected $fillable = [
-        'assessi_id', 'note', 'assessment','status','lane'
+        'assessi_id', 'note', 'assessment', 'transcript', 'work_exper_certif', 'status', 'lane', 'assessor_agreement'
     ];
     use HasFactory;
 

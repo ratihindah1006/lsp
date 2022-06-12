@@ -57,8 +57,11 @@
                 <div class="card text-dark">
                     <div class="card-header" style="border-top: 7px solid  #191970;">
                         <?php $i = 0; ?>
+                        <?php $j = 0; ?>
+                        <?php $k = 0; ?>
                         <div class="card-body" style="border: none">
 
+                            <?php $xxx = 1; ?>
                             @foreach ($units as $unit)<br>
                             @php
                             $r = 1;
@@ -78,7 +81,7 @@
                                 <tr>
                                     <th rowspan="2">&ensp;Dapatkah Saya...?&ensp;</th>
                                     <th colspan="2" width="350px" style="text-align:center">&ensp;Penilaian&ensp;</th>
-                                    <th rowspan="2" width="350px" style="text-align:center">&ensp;Bukti-bukti Kompetensi&ensp;</th>
+                                    <th rowspan="2" width="350px" style="text-align:center"> <input type="checkbox" class="checkedall_{{ $xxx }}" onchange="checkedAll(this, event)">&ensp;Bukti-bukti Kompetensi&ensp;</th>
                                 </tr>
 
                                 <tr align="center">
@@ -121,12 +124,23 @@
                                         </div>
                                     </th>
                                     <td>
-                                        <a href="{{ asset('storage/'.$apl01->transcript) }}" class="my-text-link">Transkip nilai atau sertifikat pelatihan yang relevan dengan skema {{$skema->schema_title}}</a><br><br>
+                                        <label> 1. 
+                                    <input required type="checkbox" name="elemen_{{ $element->id }}" id="{{ $element->id }}" class="checkbox_{{ $xxx }}" value="1" @if(isset($transcript[$j])) @if($transcript && $transcript[$j]=='1' ) checked @endif @endif>
+                                        <a href="{{ asset('storage/'.$apl01->transcript) }}" class="my-text-link">Transkip nilai atau sertifikat pelatihan yang relevan dengan skema {{$skema->schema_title}}</a><br>
+                                        </label>
+                                        <?php $j++; ?>
+                                        
+                                        <label> 2. 
+                                    <input required type="checkbox" name="elemenn_{{ $element->id }}" id="{{ $element->id }}" class="checkbox_{{ $xxx }}" value="1" @if(isset($work_exper_certif[$k])) @if($work_exper_certif && $work_exper_certif[$k]=='1' ) checked @endif @endif>
                                         <a href="{{ asset('storage/'.$apl01->work_exper_certif) }}" class="my-text-link">Surat keterangan pengalaman kerja yang relevan dalam bidang {{$skema->schema_title}} minimal 1 tahun</a>
+                                        </label>
+                                        <?php $k++; ?>
                                     </td>
                                 </tr>
+                                
                                 @endforeach
                             </table>
+                            <?php $xxx++; ?>
                             @endforeach
                         </div>
                     </div>
@@ -180,6 +194,10 @@
                                         <div class="col-xl-4">
                                             <div class="input-group mb-3">
                                                 <img class="txt" src="{{ asset('storage/' . $apl01->assessi_signature) }}" width="100px" height="100px">
+                                                <div class="custom-control custom-switch d-inline">
+                                                    <input type="checkbox" class="custom-control-input" name="assessi_agreement" id="assessi_agreement" required @if (isset($apl02['assessi_agreement'])) @if ($apl02['assessi_agreement']) {{ 'checked' }} @endif @endif>
+                                                    <label class="custom-control-label" for="assessi_agreement"></label>
+                                                </div>
                                             </div>
                                         </div>
                                         </p>
@@ -246,4 +264,14 @@
 
 
 
+@endsection
+@section("script")
+    <script>
+        function checkedAll (element, e) {
+            const e_class = element.className;
+            const no = e_class.split("_")[1];
+            const t_class = `.checkbox_${no}`;
+            $(t_class).prop("checked", element.checked);
+        }
+    </script>
 @endsection

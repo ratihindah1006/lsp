@@ -55,6 +55,8 @@
                     <div class="card-header" style="border-top: 7px solid  #191970;">
                         <div class="card-body" style="border: none">
                             <?php $i = 0; ?>
+                            <?php $j = 0; ?>
+                            <?php $k = 0; ?>
 
                             @foreach ($units as $unit)
                             @php
@@ -120,13 +122,22 @@
                                         </div>
                                     </th>
                                     <td>
-                                        
-                                        <a href="{{ asset('storage/' . $apl01->transcript) }}" class="my-text-link">Transkip
-                                            nilai atau sertifikat pelatihan yang relevan dengan skema
-                                            {{ $skema->schema_title }}</a><br><br>
-                                        <a href="{{ asset('storage/' . $apl01->work_exper_certif) }}" class="my-text-link">Surat
-                                            keterangan pengalaman kerja yang relevan dalam bidang {{ $skema->schema_title }}
-                                            minimal 1 tahun</a>
+                                        <label> 1.
+                                            <input required type="checkbox" name="elemen_{{ $element->id }}" id="{{ $element->id }}" value="1" @if(isset($transcript[$j])) @if($transcript && $transcript[$j]=='1' ) checked @endif @endif disabled>
+                                            <a href="{{ asset('storage/' . $apl01->transcript) }}" class="my-text-link">Transkip
+                                                nilai atau sertifikat pelatihan yang relevan dengan skema
+                                                {{ $skema->schema_title }}</a><br>
+                                        </label>
+                                        <?php $j++; ?>
+
+                                        <label> 2.
+                                            <input required type="checkbox" name="elemenn_{{ $element->id }}" id="{{ $element->id }}" value="1" @if(isset($work_exper_certif[$k])) @if($work_exper_certif && $work_exper_certif[$k]=='1' ) checked @endif @endif disabled>
+
+                                            <a href="{{ asset('storage/' . $apl01->work_exper_certif) }}" class="my-text-link">Surat
+                                                keterangan pengalaman kerja yang relevan dalam bidang {{ $skema->schema_title }}
+                                                minimal 1 tahun</a>
+                                        </label>
+                                        <?php $k++; ?>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -212,6 +223,10 @@
                                         <div class="col-xl-4">
                                             <div class="input-group mb-3">
                                                 <img class="txt" src="{{ asset('storage/' . $asesor->data_assessor->assessor_signature) }}" width="100px" height="100px">
+                                                <div class="custom-control custom-switch d-inline">
+                                                    <input type="checkbox" class="custom-control-input" name="assessor_agreement" id="assessor_agreement" required @if (isset($apl02['assessor_agreement'])) @if ($apl02['assessor_agreement']) {{ 'checked' }} @endif @endif>
+                                                    <label class="custom-control-label" for="assessor_agreement"></label>
+                                                </div>
                                             </div>
                                         </div>
                                         </p>

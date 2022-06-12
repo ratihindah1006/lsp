@@ -22,6 +22,16 @@ class Apl02Controller extends Controller
         } else {
             $assessment = [];
         }
+        if (isset($assessi->apl02->transcript)) {
+            $transcript = json_decode($assessi->apl02->transcript);
+        } else {
+            $transcript = [];
+        }
+        if (isset($assessi->apl02->work_exper_certif)) {
+            $work_exper_certif = json_decode($assessi->apl02->work_exper_certif);
+        } else {
+            $work_exper_certif = [];
+        }
         if ($assessi != null && $assessi->apl01 != null) {
             return view(
                 'assessi.apl02',
@@ -35,6 +45,8 @@ class Apl02Controller extends Controller
                     'units' => $assessi->schema_class->schema->unit_schemas,
                     'apl02' => $assessi->apl02,
                     'assessment' => $assessment,
+                    'transcript' => $transcript,
+                    'work_exper_certif' => $work_exper_certif,
                 ]
             );
         } else {
@@ -49,20 +61,36 @@ class Apl02Controller extends Controller
 
     public function store(Request $request, SchemaModel $schema, $id)
     {
+        $request->assessi_agreement == "on" ? $request->assessi_agreement = 1 : $request->assessi_agreement = 0;
         $dataAssessi = DataAssessiModel::find(Auth::user()->id);
         $assessi = $dataAssessi->assessis->find($id);
+        
         $assessment = [];
-        $i = 0;
-        foreach ($request->all() as $data) {
-            if ($i == 0 || $i == count($request->all())) {
-                $i = $i + 1;
-                continue;
+        $pattern = "/element_/i";
+        foreach($request->all() as $key => $val) {
+            if(preg_match($pattern, $key)){
+                $assessment[] = $val;
             }
-            $assessment[] = $data;
-            $i = $i + 1;
+        }
+        $transcript = [];
+        $pattern = "/elemen_/i";
+        foreach($request->all() as $key => $val) {
+            if(preg_match($pattern, $key)){
+                $transcript[] = $val;
+            }
+        }
+        $work_exper_certif = [];
+        $pattern = "/elemenn_/i";
+        foreach($request->all() as $key => $val) {
+            if(preg_match($pattern, $key)){
+                $work_exper_certif[] = $val;
+            }
         }
         $validateData['assessi_id'] = $assessi->id;
         $validateData['assessment'] = json_encode($assessment);
+        $validateData['transcript'] = json_encode($transcript);
+        $validateData['work_exper_certif'] = json_encode($work_exper_certif);
+        $validateData['assessi_agreement'] = $request->assessi_agreement;
         $cek = $assessi->apl02;
 
         if ($cek == Null) {
@@ -71,6 +99,7 @@ class Apl02Controller extends Controller
             $validateData['status'] = Null;
             $validateData['lane'] = Null;
             $validateData['note'] = Null;
+            $validateData['assessor_agreement'] = Null;
             APL02Model::where('assessi_id', $assessi->id)
                 ->update($validateData);
         }
