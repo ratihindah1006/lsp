@@ -55,7 +55,7 @@
                         @forelse ($bukti as $item)
                           <tr class="text-dark">
                               <td>{{ $loop->iteration }}</td>
-                              <td><a href="/assessi/download/{{ $item->id }}" target="_blank" rel="noopener">{{ $item->file_name }}</a></td>
+                              <td><a href="/assessi/download/{{ $item->id }}" class="text-primary" target="_blank" rel="noopener"><u>{{ $item->file_name }}</u></a></td>
                               <td>{{ $item->keterangan ?? '-' }}</td>
                               <td><textarea disabled>{{ $item->catatan }}</textarea></td>
                               <form action="/assessi/deletefile/{{ $item->id }}" method="POST" class="d-inline">
