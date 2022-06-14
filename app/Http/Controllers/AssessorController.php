@@ -181,6 +181,18 @@ class AssessorController extends Controller
                 $assessi = $b::find($id);
                 if (isset($assessi->apl02->assessment)) {
                     $assessment = json_decode($assessi->apl02->assessment);
+                }else {
+                    $assessment = [];
+                }
+                if (isset($assessi->apl02->transcript)) {
+                    $transcript = json_decode($assessi->apl02->transcript);
+                } else {
+                    $transcript = [];
+                }
+                if (isset($assessi->apl02->work_exper_certif)) {
+                    $work_exper_certif = json_decode($assessi->apl02->work_exper_certif);
+                } else {
+                    $work_exper_certif = [];
                 }
             }
         }
@@ -194,6 +206,8 @@ class AssessorController extends Controller
             'units' => $assessi->schema_class->schema->unit_schemas,
             'apl02' => $assessi->apl02,
             'assessment' => $assessment,
+            'transcript' => $transcript,
+            'work_exper_certif' => $work_exper_certif,
         ]);
     }
    
@@ -273,6 +287,7 @@ class AssessorController extends Controller
 
     public function status_apl02(Request $request, $id)
     {
+        $request->assessor_agreement == "on" ? $request->assessor_agreement = 1 : $request->assessor_agreement = 0;
         $data_assessor = DataAssessorModel::find(Auth::user()->id);
         foreach ($data_assessor->assessors as $a) {
             foreach ($a->assessis as $b) {
@@ -283,6 +298,7 @@ class AssessorController extends Controller
                     ]);
                     $validateData['lane'] = $request->lane;
                     $validateData['note'] = $request->note;
+                    $validateData['assessor_agreement'] =  $request->assessor_agreement;
                     $validateData['assessi_id'] = $assessi->id;
                     $assessi->apl02->update($validateData);
                 }

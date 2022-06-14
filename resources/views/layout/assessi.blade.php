@@ -139,6 +139,7 @@
     <script src="/assets/js/plugins-init/summernote-init.js"></script>
 
     <script src="/assets/js/bootstrap-tooltip.js"></script>
+    @yield('script')
 </body>
 
 </html>
