@@ -97,7 +97,7 @@
                     <td class="text-center">
                         <div class="form-group m-0">
                           <label class="radio-inline">
-                            <input type="radio" name="rekomendasi[{{ $e->id }}]" value="K"
+                            <input type="radio" name="rekomendasi[{{ $e->id }}]" value="K" required
                             @if (isset($assessi->muk01->rekomendasi[$e->id]) && $assessi->muk01->rekomendasi[$e->id] == "K")
                               {{ ' checked' }}
                             @endif
@@ -105,7 +105,7 @@
                         </td>
                         <td class="text-center">
                           <label class="radio-inline">
-                            <input type="radio" name="rekomendasi[{{ $e->id }}]" value="BK"
+                            <input type="radio" name="rekomendasi[{{ $e->id }}]" value="BK" required
                             @if (isset($assessi->muk01->rekomendasi[$e->id]) && $assessi->muk01->rekomendasi[$e->id] == "BK")
                               {{ ' checked' }}
                             @endif
@@ -113,7 +113,7 @@
                         </td>
                         <td class="text-center">
                           <label class="radio-inline">
-                            <input type="radio" name="rekomendasi[{{ $e->id }}]" value="PL"
+                            <input type="radio" name="rekomendasi[{{ $e->id }}]" value="PL" required
                             @if (isset($assessi->muk01->rekomendasi[$e->id]) && $assessi->muk01->rekomendasi[$e->id] == "PL")
                               {{ ' checked' }}
                             @endif

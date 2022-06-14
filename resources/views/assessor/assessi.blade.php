@@ -76,7 +76,7 @@
 
                                             @if ($v->apl02 != null)
                                                 @if ($v->apl02['status'])
-                                                    <a href="/assessor/ak01/{{ $v->id }}" class="btn btn-primary btn-sm mb-2" data-toggle="tooltip" data-placement="bottom" title="Persetujuan Asesmen"><span>FR.AK.01</span></a>
+                                                    <a href="/assessor/ak01/{{ $v->id }}" class="btn @if ($v->ak01 && $v->ak01->assessor_agreement == "1") {{ "btn-success" }} @else {{ "btn-primary" }} @endif btn-sm mb-2 text-white" data-toggle="tooltip" data-placement="bottom" title="Persetujuan Asesmen"><span>FR.AK.01</span></a>
                                                     @if (isset($v->ak01['tl_verif_porto']))
                                                         @if ($v->ak01['tl_verif_porto'])
                                                             <a href="/assessor/" class="btn btn-primary btn-sm mb-2 disabled" data-toggle="tooltip" data-placement="bottom" title="Vertifikasi Portofolio"><span>Verif Porto</span></a>
@@ -84,18 +84,18 @@
                                                     @endif
                                                     @if (isset($v->ak01['l_obs_langsung']))
                                                         @if ($v->ak01['l_obs_langsung'])
-                                                            <a href="/assessor/muk01/{{ $v->id }}" class="btn btn-primary btn-sm mb-2" data-toggle="tooltip" data-placement="bottom" title="Ceklist Observasi"><span>FR.MUK.01</span></a>
+                                                            <a href="/assessor/muk01/{{ $v->id }}" class="btn @if ($v->muk01 && $v->muk01->assessor_agreement == "1") {{ "btn-success" }} @else {{ "btn-primary" }} @endif btn-sm mb-2 text-white" data-toggle="tooltip" data-placement="bottom" title="Ceklist Observasi"><span>FR.MUK.01</span></a>
                                                             <a href="/assessor/jawaban_assessi/{{ $v->id }}" class="btn btn-primary btn-sm mb-2" data-toggle="tooltip" data-placement="bottom" title="Soal/Jawaban Praktik"><span>SOAL/JAWABAN ASESI</span></a>
                                                         @endif
                                                     @endif
                                                     @if (isset($v->ak01['t_p_tulis']))
                                                         @if ($v->ak01['t_p_tulis'])
-                                                            <a href="/assessor/muk06/{{ $v->id }}" class="btn btn-primary btn-sm mb-2" data-toggle="tooltip" data-placement="bottom" title="Soal Esay"><span>FR.MUK.06</span></a>
+                                                            <a href="/assessor/muk06/{{ $v->id }}" class="btn @if (!$v->muk06) {{ "btn-warning" }} @elseif ($v->muk06 && $v->muk01->assessor_agreement == "1") {{ "btn-success" }} @else {{ "btn-primary" }} @endif btn-sm mb-2 text-white" data-toggle="tooltip" data-placement="bottom" title="Soal Esay @if (!$v->muk06) {{ "Belum diisi oleh Asesi" }} @endif"><span>FR.MUK.06</span></a>
                                                         @endif
                                                     @endif
                                                     @if (isset($v->ak01['t_p_lisan']))
                                                         @if ($v->ak01['t_p_lisan'])
-                                                            <a href="/assessor/muk07/{{ $v->id }}" class="btn btn-primary btn-sm mb-2" data-toggle="tooltip" data-placement="bottom" title="Soal Lisan"><span>FR.IA.07</span></a>
+                                                            <a href="/assessor/muk07/{{ $v->id }}" class="btn @if ($v->ia07 && $v->ia07->assessor_agreement == "1") {{ "btn-success" }} @else {{ "btn-primary" }} @endif btn-sm mb-2 text-white" data-toggle="tooltip" data-placement="bottom" title="Soal Lisan"><span>FR.IA.07</span></a>
                                                         @endif
                                                     @endif
                                                     @if (isset($v->ak01['t_p_wawancara']))

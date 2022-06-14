@@ -126,7 +126,7 @@
                     <div class="form-group">
                       <td class="text-center" style="vertical-align:top;">
                         <label class="radio-inline">
-                            <input type="radio" name="rekomendasi[{{ $loop->index }}]" value="K"
+                            <input type="radio" name="rekomendasi[{{ $loop->index }}]" value="K" required
                             @if(!$answer->where('code_lisan_id', $schema_class->code_lisan_id)->where('unit_id', $unit->id)->where('rekomendasi', '===',  NULL)->first() && $answer->where('code_lisan_id', $schema_class->code_lisan_id)->where('unit_id', $unit->id)->where('rekomendasi', '==',  "1")->first())
                             {{ 'checked' }}
                             @endif
@@ -134,7 +134,7 @@
                       </td>
                       <td class="text-center" style="vertical-align:top;">     
                         <label class="radio-inline">
-                            <input type="radio" name="rekomendasi[{{ $loop->index }}]" value="BK"
+                            <input type="radio" name="rekomendasi[{{ $loop->index }}]" value="BK" required
                             @if(!$answer->where('code_lisan_id', $schema_class->code_lisan_id)->where('unit_id', $unit->id)->where('rekomendasi', '===',  NULL)->first() && $answer->where('code_lisan_id', $schema_class->code_lisan_id)->where('unit_id', $unit->id)->where('rekomendasi', '==',  "0")->first())
                             {{ 'checked' }}
                             @endif
