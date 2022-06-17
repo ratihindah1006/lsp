@@ -48,7 +48,7 @@
                                         <td>
                                             
                                             @if($v->apl01 != null && $v->apl01->status == '1')
-                                                <a href="/list/{{ $v->id }}" class="btn btn-success btn-sm mb-2" data-toggle="tooltip" data-placement="bottom" title="Permohonan Sertifikasi Kompetensi">
+                                                <a href="/list/{{ $v->id }}" class="btn btn-success btn-sm mb-2 text-white" data-toggle="tooltip" data-placement="bottom" title="Permohonan Sertifikasi Kompetensi">
                                                     <span>Apl 01-Diterima</span></a>
                                             @elseif($v->apl01 != null && $v->apl01->status == '0')
                                                 <a href="/list/{{ $v->id }}" class="btn btn-danger btn-sm mb-2" data-toggle="tooltip" data-placement="bottom" title="Permohonan Sertifikasi Kompetensi">
@@ -67,7 +67,7 @@
                                             <a href="/list02/{{ $v->id }}" class="btn btn-danger btn-sm mb-2" data-toggle="tooltip" data-placement="bottom" title="Asesmen Mandiri">
                                                 <span>Apl 02-Ditolak</span></a>
                                             @elseif($v->apl02 != null && $v->apl02->status == '1')
-                                            <a href="/list02/{{ $v->id }}" class="btn btn-success btn-sm mb-2" data-toggle="tooltip" data-placement="bottom" title="Asesmen Mandiri">
+                                            <a href="/list02/{{ $v->id }}" class="btn btn-success btn-sm mb-2 text-white" data-toggle="tooltip" data-placement="bottom" title="Asesmen Mandiri">
                                                 <span>Apl 02-Diterima</span></a>
                                             @else
                                             <a href="/list02/{{ $v->id }}" class="btn btn-primary btn-sm disabled mb-2">
@@ -90,7 +90,7 @@
                                                     @endif
                                                     @if (isset($v->ak01['t_p_tulis']))
                                                         @if ($v->ak01['t_p_tulis'])
-                                                            <a href="/assessor/muk06/{{ $v->id }}" class="btn @if (!$v->muk06) {{ "btn-warning" }} @elseif ($v->muk06 && $v->muk01->assessor_agreement == "1") {{ "btn-success" }} @else {{ "btn-primary" }} @endif btn-sm mb-2 text-white" data-toggle="tooltip" data-placement="bottom" title="Soal Esay @if (!$v->muk06) {{ "Belum diisi oleh Asesi" }} @endif"><span>FR.MUK.06</span></a>
+                                                            <a href="/assessor/muk06/{{ $v->id }}" class="btn @if (!$v->muk06) {{ "btn-warning" }} @elseif ($v->muk06 && $v->muk06->assessor_agreement == "1") {{ "btn-success" }} @else {{ "btn-primary" }} @endif btn-sm mb-2 text-white" data-toggle="tooltip" data-placement="bottom" title="Soal Esay @if (!$v->muk06) {{ "Belum diisi oleh Asesi" }} @endif"><span>FR.MUK.06</span></a>
                                                         @endif
                                                     @endif
                                                     @if (isset($v->ak01['t_p_lisan']))

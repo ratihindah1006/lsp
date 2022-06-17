@@ -325,7 +325,7 @@ class AssessorController extends Controller
         if ($assessi->schema_class->event->status == "Close") {
             return redirect('/assessi/'.$id_assessor)->with('toast_error', 'Event telah ditutup, data tidak dapat diupdate kembali');
         }
-
+        
         $data = [
             'ak01' => $assessi->ak01,
             'title' => 'AK01',
@@ -334,6 +334,7 @@ class AssessorController extends Controller
             'assessi' => $assessi,
             'schema' => $assessi->schema_class->schema,
             'assessor_id' => $assessi->assessor_id,
+            'assessor_signature' => $data_assessor->data_assessor->assessor_signature,
         ];
 
         return view('assessor.ak01', $data);
@@ -398,6 +399,7 @@ class AssessorController extends Controller
             'schema_class' => $assessi->schema_class,
             'schema' => $assessi->schema_class->schema,
             'assessor_id' => $assessi->assessor_id,
+            'assessor_signature' => $data_assessor->data_assessor->assessor_signature,
         ];
 
         return view('assessor.muk01', $data);
@@ -463,6 +465,7 @@ class AssessorController extends Controller
             'schema' => $assessi->schema_class->schema,
             'answer' => $answer,
             'assessor_id' => $assessi->assessor_id,
+            'assessor_signature' => $data_assessor->data_assessor->assessor_signature,
         ];
         return view('assessor.muk06', $data);
     }
@@ -540,6 +543,7 @@ class AssessorController extends Controller
             'schema' => $assessi->schema_class->schema,
             'answer' => $answer,
             'assessor_id' => $assessi->assessor_id,
+            'assessor_signature' => $data_assessor->data_assessor->assessor_signature,
         ];
         return view('assessor.muk07', $data);
     }

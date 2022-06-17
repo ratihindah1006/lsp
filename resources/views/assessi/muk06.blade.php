@@ -144,7 +144,7 @@
                     <td class="font-weight-bold">{{ $assessor->name }}</td>
                   </tr>
                   <tr>
-                    <td><img class="txt" src="{{ asset('storage/' . $assessi->apl01->assessor_signature) }}"
+                    <td><img class="txt" src="{{ asset('storage/' . $assessor->assessor_signature) }}"
                       height="100px"></td>
                   </tr>
                   <tr>

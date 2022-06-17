@@ -202,7 +202,7 @@
                           <label class="custom-control-label" for="assessor_agreement"></label>
                         </div>    
                         <br>
-                        <img class="txt" src="{{ asset('storage/' . $assessi->apl01->assessor_signature) }}"
+                        <img class="txt" src="{{ asset('storage/' . $assessor_signature) }}"
                         height="100px">
                         <br>
                         Tgl {{ $event_start }}                     

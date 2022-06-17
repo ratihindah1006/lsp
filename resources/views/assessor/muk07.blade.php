@@ -187,7 +187,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <td><img class="txt" src="{{ asset('storage/' . $assessi->apl01->assessor_signature) }}"
+                    <td><img class="txt" src="{{ asset('storage/' . $assessor_signature) }}"
                       height="100px"></td>
                   </tr>
                   <tr>
